@@ -1,163 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pablo & Evren Tour</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pablo X Evren World Tour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0d0d0d;
+      --white: #fafaf8;
+      --cream: #f2f0eb;
+      --accent: #c8a96e;
+      --mid: #888880;
+      --gap: clamp(40px, 8vw, 100px);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: white;
-      color: black;
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
     }
 
-    header {
-      background-image: url("https://stupiddope.com/2026/04/kanye-west-drops-full-sofi-stadium-concert-film-featuring-bully/");
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px;
+      background: rgba(250,250,248,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-
-    header h1 {
-      font-size: 60px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 10px;
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 400;
+      color: var(--black); text-decoration: none;
     }
-
-    .section {
-      padding: 50px;
-      text-align: center;
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--black); text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--accent); }
 
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1a1a18 0%, #2e2a22 55%, #3d3626 100%);
+    }
+    /* Decorative grain */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    /* Concert light beams */
+    .beam {
+      position: absolute; bottom: 0;
+      width: 2px; transform-origin: bottom center;
+      opacity: 0.12;
+    }
+    .beam-1 { left: 20%; height: 70%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(-18deg); animation: beamPulse 4s ease-in-out infinite; }
+    .beam-2 { left: 35%; height: 80%; background: linear-gradient(to top, #fff, transparent); transform: rotate(-5deg); animation: beamPulse 5s ease-in-out infinite 0.5s; }
+    .beam-3 { left: 50%; height: 75%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(5deg); animation: beamPulse 4.5s ease-in-out infinite 1s; }
+    .beam-4 { left: 65%; height: 85%; background: linear-gradient(to top, #fff, transparent); transform: rotate(15deg); animation: beamPulse 3.8s ease-in-out infinite 1.5s; }
+    .beam-5 { left: 80%; height: 65%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(25deg); animation: beamPulse 5.2s ease-in-out infinite 0.8s; }
+    @keyframes beamPulse { 0%,100%{opacity:0.08} 50%{opacity:0.22} }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 clamp(24px, 6vw, 80px) clamp(60px, 10vw, 120px);
+      animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500; margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 13vw, 13rem);
+      font-weight: 400; line-height: 0.88;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 32px;
+    }
+    .hero-title em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      margin-top: 40px;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
     .btn {
-      display: inline-block;
-      padding: 15px 25px;
-      margin: 10px;
-      background: black;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
+      display: inline-block; padding: 14px 36px;
+      font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.25s;
+    }
+    .btn-primary { background: var(--accent); color: var(--black); }
+    .btn-primary:hover { background: #d4b97a; }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; right: 48px; bottom: 48px; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.35); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+    @keyframes scrollDown { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+    /* ── SECTION SHARED ── */
+    section { padding: var(--gap) clamp(24px, 6vw, 80px); }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 400; line-height: 1; letter-spacing: 0.05em;
+    }
+    .divider {
+      width: 48px; height: 1px; background: var(--accent);
+      margin: 28px 0 44px;
     }
 
-    .btn:hover {
-      background: gray;
+    /* ── TOUR DATES ── */
+    #dates { background: var(--cream); }
+    .dates-grid { display: flex; flex-direction: column; gap: 0; }
+    .date-row {
+      display: grid; grid-template-columns: 90px 1fr auto;
+      align-items: center; gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      transition: background 0.2s;
+    }
+    .date-row:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+    .date-row:hover { background: rgba(200,169,110,0.06); }
+    .date-month {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500;
+    }
+    .date-day {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem; font-weight: 400; line-height: 1; letter-spacing: 0.04em;
+    }
+    .date-info h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .date-info p {
+      font-size: 0.8rem; color: var(--mid); margin-top: 4px; letter-spacing: 0.04em;
+    }
+    .date-ticket {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid var(--black); padding: 10px 22px;
+      text-decoration: none; color: var(--black);
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .date-ticket:hover { background: var(--black); color: var(--white); }
+    .sold-out { border-color: var(--mid); color: var(--mid); cursor: default; }
+    .sold-out:hover { background: transparent; color: var(--mid); }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--black); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-label { color: var(--accent); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+      margin-top: 44px;
+    }
+    .gallery-item {
+      background: #1e1e1c;
+      overflow: hidden; position: relative;
+      cursor: pointer;
+    }
+    .gallery-item::before {
+      content: attr(data-label);
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; color: rgba(255,255,255,0.2);
+      letter-spacing: 0.14em; z-index: 1;
+      text-align: center; text-transform: uppercase;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+      opacity: 0.85;
+    }
+    .gallery-item:hover img { transform: scale(1.04); opacity: 1; }
+    .g1 { grid-column: span 7; height: 380px; }
+    .g2 { grid-column: span 5; height: 380px; }
+    .g3 { grid-column: span 4; height: 280px; }
+    .g4 { grid-column: span 4; height: 280px; }
+    .g5 { grid-column: span 4; height: 280px; }
+
+    /* placeholder colors for demo */
+    .g1 { background: #1e1e1c; }
+    .g2 { background: #232320; }
+    .g3 { background: #1a1a18; }
+    .g4 { background: #262622; }
+    .g5 { background: #1e1e1c; }
+
+    .gallery-note {
+      margin-top: 20px;
+      font-size: 0.75rem; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--cream);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-photo-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: var(--mid); letter-spacing: 0.1em;
+      text-align: center;
+    }
+    .about-text { padding-top: 12px; }
+    .about-text p {
+      font-size: 1rem; line-height: 1.75; color: #444;
+      margin-bottom: 20px;
+    }
+    .about-stat { margin-top: 40px; display: flex; gap: 40px; }
+    .stat h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; font-weight: 400; color: var(--accent); letter-spacing: 0.04em;
+    }
+    .stat p { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-top: 4px; }
+
+    /* ── MUSIC ── */
+    #music { background: var(--cream); }
+    .music-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px; margin-top: 44px;
+    }
+    .track-card {
+      background: var(--white); padding: 24px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .track-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .track-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--accent); font-weight: 400; letter-spacing: 0.06em;
+    }
+    .track-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 6px;
+    }
+    .track-meta { font-size: 0.75rem; color: var(--mid); letter-spacing: 0.06em; }
+    .track-play {
+      margin-top: 20px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+    }
+    .play-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-icon svg { width: 10px; fill: var(--accent); margin-left: 2px; }
+    .music-platforms { margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .music-platforms span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .platform-btn {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 10px 22px; border: 1px solid rgba(0,0,0,0.15);
+      text-decoration: none; color: var(--black);
+      transition: all 0.2s;
+    }
+    .platform-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); color: var(--white); }
+    #contact .section-title { color: var(--white); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .contact-intro { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: 8px; }
+    .contact-links { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .contact-link {
+      display: flex; gap: 16px; align-items: center;
+      text-decoration: none; color: rgba(255,255,255,0.55);
+      font-size: 0.85rem; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+      min-width: 60px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    .form-field input, .form-field textarea, .form-field select {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none; resize: vertical;
+      transition: border-color 0.2s;
+    }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+      border-color: var(--accent);
+    }
+    .form-field select option { background: #1a1a18; }
+    .btn-send {
+      background: var(--accent); color: var(--black);
+      border: none; padding: 15px 36px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem;
+      letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+      cursor: pointer; align-self: flex-start; margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .btn-send:hover { background: #d4b97a; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px clamp(24px, 6vw, 80px);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    footer span { font-size: 0.72rem; letter-spacing: 0.1em; }
+    .footer-socials { display: flex; gap: 24px; }
+    .footer-socials a {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .scroll-hint { display: none; }
+      .date-row { grid-template-columns: 70px 1fr; }
+      .date-ticket { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; height: 200px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Pablo & Evren Tour</h1>
-</header>
-
-<div class="section">
-  <h2>Explore</h2>
-
-  <a href="#tour" class="btn">Tour Dates</a>
-  <a href="#gallery" class="btn">Gallery</a>
-  <a href="#about" class="btn">About Us</a>
-  <a href="#music" class="btn">Listen Now</a>
-  <a href="#contact" class="btn">Contact</a>
-</div>
-
-<div id="tour" class="section">
-  <h2>Tour Dates</h2>
-
-  <ul style="list-style:none; padding:0; font-size:18px; line-height:1.8;">
-    <li>April–July: Basel, Switzerland</li>
-    <li>April–May: Spain</li>
-    <li>May: Liechtenstein</li>
-    <li>May: Austria</li>
-    <li>May: Germany</li>
-    <li>May: France</li>
-    <li>July: Egypt</li>
-    <li>18 July: Reggio Emilia, Italy</li>
-    <li>July: Sweden</li>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span style="color:var(--accent)">Pablo</span> X <span style="color:var(--accent)">Evren</span></a>
+  <ul class="nav-links">
+    <li><a href="#dates">Tour Dates</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+</nav>
 
-  <h3>Rumours</h3>
-  <ul style="list-style:none; padding:0; font-size:16px;">
-    <li>Yerevan, Armenia</li>
-    <li>Almaty, Kazakhstan</li>
-    <li>Lima, Peru (50%)</li>
-    <li>Istanbul, Turkey (67%)</li>
-    <li>Bosnia (5%)</li>
-  </ul>
-</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="beam beam-1"></div>
+    <div class="beam beam-2"></div>
+    <div class="beam beam-3"></div>
+    <div class="beam beam-4"></div>
+    <div class="beam beam-5"></div>
+  </div>
 
-<div id="gallery" class="section">
-  <h2>Gallery</h2>
+  <!--
+    ════════════════════════════════════════════════
+    HOW TO ADD YOUR CONCERT HERO PHOTO
+    ════════════════════════════════════════════════
+    STEP 1 — Upload your photo to your GitHub repo.
+             In GitHub: click "Add file" → "Upload files"
+             Name it something simple, e.g. hero.jpg
 
-  <img src="https://www.reddit.com/r/angrybirds/comments/zc9az6/tony_should_be_introduced_into_ab2/" width="300">
-  <img src="https://tenor.com/search/forklift-peter-gifs" width="300">
+    STEP 2 — Delete the entire <div class="hero-bg"> block below.
 
-  <br><br>
+    STEP 3 — Paste this in its place:
+             <img src="hero.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6">
 
-  <iframe width="300" height="200"
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-    allowfullscreen>
-  </iframe>
-</div>
+    STEP 4 — Commit the change. Done!
+    ════════════════════════════════════════════════
+  -->
 
-<div id="about" class="section">
-  <h2>About Pablo & Evren</h2>
-  <div id="about" class="section">
-  <h2>About Pablo & Evren</h2>
+  <div class="hero-content">
+    <p class="hero-eyebrow">World Tour 2026</p>
+    <h1 class="hero-title"><em>Pablo</em><br>X <em>Evren</em></h1>
+    <p class="hero-sub">An unforgettable journey across stages, cities, and continents. Experience the music live.</p>
+    <div class="hero-cta">
+      <a href="#dates" class="btn btn-primary">Get Tickets</a>
+      <a href="#music" class="btn btn-outline">Listen Now</a>
+    </div>
+  </div>
 
-  <p>
-    Pablo & Evren met at ZBA (Zentrum für Brückenangebot) in Basel, Switzerland. At first, everything was random — different personalities, different energy, different paths — but somehow they ended up in the same orbit.
-  </p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
 
-  <p>
-    Over time, small moments turned into a real friendship. Between studying, school life, and creative chaos, they started building ideas together that slowly turned into music.
-  </p>
+<!-- TOUR DATES -->
+<section id="dates">
+  <p class="section-label">On the Road</p>
+  <h2 class="section-title">Pablo X Evren Concert — World Tour Dates</h2>
+  <div class="divider"></div>
 
-  <p>
-    People around them started giving them nicknames, inside jokes formed, and their world became its own universe — part serious, part chaotic, part completely unpredictable.
-  </p>
+  <div class="dates-grid">
 
-  <p>
-    What started as a normal school connection became a creative duo focused on sound, emotion, and building something bigger than just music.
-  </p>
+    <div class="date-row">
+      <div>
+        <div class="date-month">Apr–Jul</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Basel, Switzerland</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-  <p>
-    Today, Pablo & Evren combine everything they’ve experienced into their work — turning everyday life into cinematic, high-energy music and performances.
-  </p>
-</div>
-</div>
+    <div class="date-row">
+      <div>
+        <div class="date-month">Apr–May</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Cadiz, Spain</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-<div id="music" class="section">
-  <h2>Listen Now</h2>
+    <div class="date-row">
+      <div>
+        <div class="date-month">May</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Vaduz, Liechtenstein</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-  <iframe style="border-radius:12px"
-    src="https://open.spotify.com/track/5RzSnxqTx4vYEp9re5E0ud?si=5e0b97bf278c48ae"
-    width="300" height="80" frameborder="0">
-  </iframe>
+    <div class="date-row">
+      <div>
+        <div class="date-month">May</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Bregenz, Austria</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-  <br><br>
+    <div class="date-row">
+      <div>
+        <div class="date-month">May</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Germany</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-  <iframe width="300" height="200"
-    src="https://www.youtube.com/watch?v=qeWutl38TQw"
-    allowfullscreen>
-  </iframe>
-</div>
+    <div class="date-row">
+      <div>
+        <div class="date-month">May</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>France</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-<div id="contact" class="section">
-  <h2>Contact</h2>
+    <div class="date-row">
+      <div>
+        <div class="date-month">Jul</div>
+        <div class="date-day">TBA</div>
+      </div>
+      <div class="date-info">
+        <h3>Egypt</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
 
-  <p>Email: pabloevrentour@gmail.com</p>
-  <p>Booking: management@pabloevren.com</p>
-</div>
+    <div class="date-row">
+      <div>
+        <div class="date-month">Jul</div>
+        <div class="date-day">18</div>
+      </div>
+      <div class="date-info">
+        <h3>Reggio Emilia, Italy</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div>
+        <div class="date-month">Jul</div>
+        <div class="date-day">11</div>
+      </div>
+      <div class="date-info">
+        <h3>Stockholm, Sweden</h3>
+        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <!-- RUMOURS -->
+    <div class="date-row" style="opacity:0.5;">
+      <div>
+        <div class="date-month" style="color:var(--mid)">Rumour</div>
+        <div class="date-day">?</div>
+      </div>
+      <div class="date-info">
+        <h3>Yerevan, Armenia</h3>
+        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
+      </div>
+      <span class="date-ticket sold-out">Rumour</span>
+    </div>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div>
+        <div class="date-month" style="color:var(--mid)">Rumour</div>
+        <div class="date-day">?</div>
+      </div>
+      <div class="date-info">
+        <h3>Almaty, Kazakhstan</h3>
+        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
+      </div>
+      <span class="date-ticket sold-out">Rumour</span>
+    </div>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div>
+        <div class="date-month" style="color:var(--mid)">50% ?</div>
+        <div class="date-day">?</div>
+      </div>
+      <div class="date-info">
+        <h3>Lima, Peru</h3>
+        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
+      </div>
+      <span class="date-ticket sold-out">Rumour</span>
+    </div>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div>
+        <div class="date-month" style="color:var(--mid)">67% ?</div>
+        <div class="date-day">?</div>
+      </div>
+      <div class="date-info">
+        <h3>Istanbul, Turkey</h3>
+        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
+      </div>
+      <span class="date-ticket sold-out">Rumour</span>
+    </div>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div>
+        <div class="date-month" style="color:var(--mid)">5% ?</div>
+        <div class="date-day">?</div>
+      </div>
+      <div class="date-info">
+        <h3>Bosnia &amp; Herzegovina</h3>
+        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
+      </div>
+      <span class="date-ticket sold-out">Rumour</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <p class="section-label">Behind the Lens</p>
+  <h2 class="section-title">Gallery</h2>
+  <div class="divider"></div>
+
+  <div class="gallery-grid">
+    <!--
+      ★ HOW TO ADD YOUR PHOTOS ★
+      Replace the data-label text with your image tags:
+      <img src="concert1.jpg" alt="...">
+      inside each .gallery-item div
+    -->
+    <div class="gallery-item g1" data-label="Upload your concert photo here">
+      <!-- <img src="photo1.jpg" alt="Pablo & Evren on stage"> -->
+    </div>
+    <div class="gallery-item g2" data-label="Upload your concert photo here">
+      <!-- <img src="photo2.jpg" alt="Crowd shot"> -->
+    </div>
+    <div class="gallery-item g3" data-label="Photo here">
+      <!-- <img src="photo3.jpg" alt="Backstage"> -->
+    </div>
+    <div class="gallery-item g4" data-label="Photo here">
+      <!-- <img src="photo4.jpg" alt="Performance"> -->
+    </div>
+    <div class="gallery-item g5" data-label="Photo here">
+      <!-- <img src="photo5.jpg" alt="Lights"> -->
+    </div>
+  </div>
+  <p class="gallery-note">★ To add your photos: upload image files to your repo, then replace the comments above with &lt;img src="yourfile.jpg"&gt;</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">The Story</p>
+  <h2 class="section-title">About Bablo &amp; Evren</h2>
+  <div class="divider"></div>
+
+  <div class="about-inner">
+    <div class="about-photo">
+      <div class="about-photo-placeholder">
+        <!-- ★ Add your photo:<br><img src="artists.jpg"> -->
+        Upload your artist<br>photo here
+      </div>
+    </div>
+    <div class="about-text">
+      <!--
+        ★ REPLACE this text with your real bio! ★
+      -->
+      <p>Pablo and Evren are two artists whose musical worlds collided in an unexpected collaboration that has since captured audiences across the globe. Their chemistry on stage is undeniable — raw energy meeting refined artistry.</p>
+      <p>From small venues to festival main stages, their journey together has been one of creative risk-taking and genuine connection. Every show is different. Every night is its own story.</p>
+      <p>The World Tour 2026 marks a new chapter — bigger stages, new cities, and music that continues to push boundaries while staying true to what moves people.</p>
+
+      <div class="about-stat">
+        <div class="stat">
+          <h4>40+</h4>
+          <p>Cities</p>
+        </div>
+        <div class="stat">
+          <h4>12</h4>
+          <p>Countries</p>
+        </div>
+        <div class="stat">
+          <h4>200k</h4>
+          <p>Fans Live</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music">
+  <p class="section-label">The Sound</p>
+  <h2 class="section-title">Listen Now</h2>
+  <div class="divider"></div>
+
+  <!--
+    ════════════════════════════════════════════════
+    HOW TO EDIT YOUR TRACKS
+    ════════════════════════════════════════════════
+    For each track card below, change:
+    - "Track Title Here"  → your real song name
+    - "Album Name"        → your album/EP name
+    - The href="#" on the play button → your song link (Spotify, YouTube, etc.)
+
+    To ADD more tracks: copy a whole <div class="track-card">...</div> block and paste it.
+    To REMOVE a track: delete the whole <div class="track-card">...</div> block.
+    ════════════════════════════════════════════════
+  -->
+
+  <!--
+    ════════════════════════════════════════════════
+    HOW TO UPDATE YOUR PLATFORM LINKS (Spotify etc.)
+    ════════════════════════════════════════════════
+    Find the buttons near the bottom of this section.
+    Replace href="#" with your actual link, e.g.:
+    href="https://open.spotify.com/artist/YOURID"
+    href="https://music.apple.com/artist/YOURID"
+    href="https://www.youtube.com/@YOURCHANNEL"
+    ════════════════════════════════════════════════
+  -->
+  <div class="music-grid">
+    <div class="track-card">
+      <div class="track-number">01</div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play">
+        <div class="play-icon">
+          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+        </div>
+        Play
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-number">02</div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play">
+        <div class="play-icon">
+          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+        </div>
+        Play
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-number">03</div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play">
+        <div class="play-icon">
+          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+        </div>
+        Play
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-number">04</div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play">
+        <div class="play-icon">
+          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+        </div>
+        Play
+      </div>
+    </div>
+  </div>
+
+  <div class="music-platforms">
+    <span>Listen on</span>
+    <!-- ★ Replace # with your real Spotify/Apple/YouTube links ★ -->
+    <a href="#" class="platform-btn">Spotify</a>
+    <a href="#" class="platform-btn">Apple Music</a>
+    <a href="#" class="platform-btn">YouTube</a>
+    <a href="#" class="platform-btn">SoundCloud</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="divider"></div>
+
+  <div class="contact-inner">
+    <div>
+      <p class="contact-intro">For booking inquiries, press, collaborations, or fan messages — we'd love to hear from you.</p>
+      <div class="contact-links">
+        <!-- ★ Replace with your real email/social handles ★ -->
+        <a href="mailto:booking@pabloevrentour.com" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          booking@pabloevrentour.com
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-label">Instagram</span>
+          @pabloevrentour
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-label">TikTok</span>
+          @pabloevrentour
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-field">
+        <label>Your Name</label>
+        <input type="text" placeholder="Pablo Evren">
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-field">
+        <label>Subject</label>
+        <select>
+          <option>General Inquiry</option>
+          <option>Booking / Booking Agent</option>
+          <option>Press / Media</option>
+          <option>Collaboration</option>
+          <option>Fan Message</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="btn-send">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Bablo X Evren World Tour. All rights reserved.</span>
+  <div class="footer-socials">
+    <a href="#">Instagram</a>
+    <a href="#">Spotify</a>
+    <a href="#">YouTube</a>
+  </div>
+</footer>
 
 </body>
 </html>
