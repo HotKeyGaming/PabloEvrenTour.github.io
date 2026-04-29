@@ -40,7 +40,7 @@
     #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-img {
       position: absolute; inset: 0;
-      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/SzeO7nARL3Fc4i1WE6JL/image.png') center center / cover no-repeat;
+      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png') center center / cover no-repeat;
     }
     .hero-img::after {
       content: ''; position: absolute; inset: 0;
@@ -65,6 +65,7 @@
     .scroll-hint { position: absolute; right: 48px; bottom: 44px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
     .scroll-line { width: 1px; height: 55px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollAnim 2s ease-in-out infinite; }
     @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
 
     /* SHARED */
     section { padding: var(--gap) clamp(24px,6vw,80px); }
@@ -347,22 +348,22 @@
   <div class="dates-grid">
     <div class="date-row">
       <div><div class="date-month">Apr–Jul</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Basel, Switzerland</h3><p>Doors 21:00 &nbsp;·&nbsp; St. Jakob Stadium</p></div>
+      <div class="date-info"><h3>Basel, Switzerland</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
-      <div><div class="date-month">30thApr–4thMay</div><div class="date-day">30.04-04.05</div></div>
+      <div><div class="date-month">Apr–May</div><div class="date-day">TBA</div></div>
       <div class="date-info"><h3>Cadiz, Spain</h3><p>JP Financial Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
       <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Vaduz, Liechtenstein</h3><p>Doors 21:00 &nbsp;·&nbsp; Rheinpark Stadium</p></div>
+      <div class="date-info"><h3>Vaduz, Liechtenstein</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
       <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Bregenz, Austria</h3><p>Doors 21:00 &nbsp;·&nbsp; ImmoAgentur Stadium</p></div>
+      <div class="date-info"><h3>Bregenz, Austria</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
@@ -377,19 +378,50 @@
     </div>
     <div class="date-row">
       <div><div class="date-month">Jul</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Cairo, Egypt</h3><p>Doors 21:00 &nbsp;·&nbsp; Cairo International Stadium</p></div>
+      <div class="date-info"><h3>Egypt</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+    <div class="date-row">
+      <div><div class="date-month">May</div><div class="date-day">30</div></div>
+      <div class="date-info"><h3>Istanbul, Turkey</h3><p>Ataturk Olimpik Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+    <div class="date-row">
+      <div><div class="date-month">Jun</div><div class="date-day">19</div></div>
+      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+    <div class="date-row">
+      <div><div class="date-month">Jun</div><div class="date-day">21</div></div>
+      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
       <div><div class="date-month">Jul</div><div class="date-day">11</div></div>
-      <div class="date-info"><h3>Stockholm, Sweden</h3><p>Doors 21:00 &nbsp;·&nbsp; Strawberry Arena</p></div>
+      <div class="date-info"><h3>Stockholm, Sweden</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+    <div class="date-row">
+      <div><div class="date-month">Jul</div><div class="date-day">13</div></div>
+      <div class="date-info"><h3>Copenhagen, Denmark</h3><p>Parken Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
     <div class="date-row">
       <div><div class="date-month">Jul</div><div class="date-day">18</div></div>
-      <div class="date-info"><h3>Reggio Emilia, Italy</h3><p>18 July 2026 &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; RCF Arena</p></div>
+      <div class="date-info"><h3>Reggio Emilia, Italy</h3><p>18 July 2026 &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
+
+    <!-- NEW DATES COMING SOON BANNER -->
+    <div style="padding: 28px 0; border-bottom: 1px solid rgba(200,169,110,0.15); border-top: 1px solid rgba(200,169,110,0.15); margin: 8px 0; display:flex; align-items:center; gap: 20px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">More Dates Coming Soon</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.06em;">New cities being added to the 2026 World Tour. Subscribe to the newsletter to be first to know.</div>
+      </div>
+      <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">Notify Me</a>
+    </div>
+
     <!-- RUMOURS -->
     <div class="date-row" style="opacity:0.42;">
       <div><div class="date-month" style="color:var(--mid)">Rumour</div><div class="date-day">?</div></div>
@@ -404,11 +436,6 @@
     <div class="date-row" style="opacity:0.42;">
       <div><div class="date-month" style="color:var(--mid)">50%</div><div class="date-day">?</div></div>
       <div class="date-info"><h3>Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Rumour</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">67%</div><div class="date-day">30</div></div>
-      <div class="date-info"><h3>Istanbul, Turkey</h3><p>30 May 2026 &nbsp;·&nbsp; Unconfirmed — Stay tuned in Ataturk Olympik Stadium</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
     <div class="date-row" style="opacity:0.42;">
@@ -476,11 +503,11 @@
   <h2 class="section-title">Gallery</h2>
   <div class="divider"></div>
   <div class="gallery-grid">
-    <div class="gallery-item g1" data-label="Upload your concert photo — see instructions in the code"></div>
-    <div class="gallery-item g2" data-label="Upload your concert photo here"></div>
-    <div class="gallery-item g3" data-label="Photo here"></div>
-    <div class="gallery-item g4" data-label="Photo here"></div>
-    <div class="gallery-item g5" data-label="Photo here"></div>
+    <div class="gallery-item g1"><img src="https://www.angrybirds.com/wp-content/uploads/2022/05/ABCOM_202203_1000x1000_CharacterDimensio_Terence_Classic.png" alt="Terence"></div>
+    <div class="gallery-item g2"><img src="https://preview.redd.it/tony-should-be-introduced-into-ab2-v0-p9hb79m9qv3a1.jpg?width=640&crop=smart&auto=webp&s=fabb009e30b607cdf8aad0957284f7b59f431f73" alt="Tony"></div>
+    <div class="gallery-item g3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7zdDGmqqEMTNqoN_rVki9GAqK936_jIRT8A&s" alt="Gallery 3"></div>
+    <div class="gallery-item g4"><img src="https://m.media-amazon.com/images/M/MV5BZjFhMmVjMjktYzlkNS00NWJkLTkwYWItMjM0NDc3YTUyOWIwXkEyXkFqcGc@._V1_.jpg" alt="Gallery 4"></div>
+    <div class="gallery-item g5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxr6rcTduqBmHTo2KJPh17d78b41Q5nGSMg&s" alt="Gallery 5"></div>
   </div>
   <p class="gallery-note">★ To add photos: upload images to your GitHub repo, then inside each div above add: &lt;img src="yourfile.jpg" alt="..."&gt;</p>
 </section>
@@ -492,7 +519,7 @@
   <div class="divider"></div>
   <div class="about-inner">
     <div class="about-photo">
-      <div class="about-photo-placeholder">Upload artist photo here<br><br>(&lt;img src="artists.jpg"&gt;)</div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb5hzmr_B1HLt4ZZu1CF9fEwv1TX1n2G75hw&s" alt="Pablo and Evren" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="about-text">
       <p>Pablo and Evren first crossed paths at <strong>ZBA</strong> — the Zentrum für Brückenangebot in Basel, Switzerland. They were both there to Study. Pablo, being honest, clocked Evren from across the room and was immediately convinced he was dealing with a full Talahon and probably very Left. The kind of person you don't approach first.</p>
@@ -528,20 +555,20 @@
   <div class="music-grid">
     <div class="track-card">
       <div class="track-number">01</div>
-      <h3 class="track-title">RIVER</h3>
-      <p class="track-meta">VULTURES 2 · 2024</p>
+      <h3 class="track-title">River</h3>
+      <p class="track-meta">Vultures 2 · 2024</p>
       <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
       <div class="track-number">02</div>
-      <h3 class="track-title">BOMB</h3>
-      <p class="track-meta">VULTURES 2 · 2024</p>
+      <h3 class="track-title">Bomb</h3>
+      <p class="track-meta">Vultures 2 · 2024</p>
       <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
       <div class="track-number">03</div>
-      <h3 class="track-title">ALL THE LOVE</h3>
-      <p class="track-meta">BULLY · 2026</p>
+      <h3 class="track-title">All The Love</h3>
+      <p class="track-meta">Bully · 2026</p>
       <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
@@ -596,32 +623,32 @@
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote>
-      <div class="fan-author">— Moggogogers. <span class="fan-city">/ Basel, CH</span></div>
+      <div class="fan-author">— moggogogers <span class="fan-city">/ Basel, CH</span></div>
     </div>
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote>
-      <div class="fan-author">— Family Nibbooggers. <span class="fan-city">/ Istanbul</span></div>
+      <div class="fan-author">— family nibbooggers <span class="fan-city">/ Istanbul</span></div>
     </div>
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote>
-      <div class="fan-author">— Big Terence. <span class="fan-city">/ Germany</span></div>
+      <div class="fan-author">— big terence <span class="fan-city">/ Germany</span></div>
     </div>
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"Holy Obesity is the best thing to come out of Basel. These two together are a movement. Cannot wait for the world tour."</blockquote>
-      <div class="fan-author">— Dogmoggers. <span class="fan-city">/ Switzerland</span></div>
+      <div class="fan-author">— dogmoggers <span class="fan-city">/ Switzerland</span></div>
     </div>
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote>
-      <div class="fan-author">— Big Bork. <span class="fan-city">/ France</span></div>
+      <div class="fan-author">— big bork <span class="fan-city">/ France</span></div>
     </div>
     <div class="fan-msg">
       <div class="fan-stars">★★★★★</div>
       <blockquote>"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote>
-      <div class="fan-author">— 45 Bus Line. <span class="fan-city">/ Spain</span></div>
+      <div class="fan-author">— bus line 45 <span class="fan-city">/ Spain</span></div>
     </div>
   </div>
 </section>
