@@ -1,388 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pablo X Evren World Tour</title>
+  <title>Pablo X Evren World Tour 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://stupiddope.com/wp-content/uploads/2026/04/Kanye-West-Drops-Full-SOFI-Stadium-Concert-Film-Featuring-BULLY.jpg" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #0d0d0d;
+      --black: #0a0a0a;
+      --dark: #111110;
+      --dark2: #181816;
       --white: #fafaf8;
-      --cream: #f2f0eb;
+      --cream: #f0ede6;
       --accent: #c8a96e;
-      --mid: #888880;
-      --gap: clamp(40px, 8vw, 100px);
+      --accent2: #e2c688;
+      --mid: #777770;
+      --gap: clamp(50px, 8vw, 100px);
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 48px;
-      background: rgba(250,250,248,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 18px 48px;
+      background: rgba(10,10,10,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
     }
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem; letter-spacing: 0.15em;
-      text-transform: uppercase; font-weight: 400;
-      color: var(--black); text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--black); text-decoration: none; font-weight: 500;
-      transition: color 0.2s;
-    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.18em; text-decoration: none; color: var(--white); }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100svh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg {
+    /* HERO */
+    #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-img {
       position: absolute; inset: 0;
-      background: linear-gradient(160deg, #1a1a18 0%, #2e2a22 55%, #3d3626 100%);
+      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/SzeO7nARL3Fc4i1WE6JL/image.png') center center / cover no-repeat;
     }
-    /* Decorative grain */
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.5;
+    .hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.94) 100%);
     }
-    /* Concert light beams */
-    .beam {
-      position: absolute; bottom: 0;
-      width: 2px; transform-origin: bottom center;
-      opacity: 0.12;
-    }
-    .beam-1 { left: 20%; height: 70%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(-18deg); animation: beamPulse 4s ease-in-out infinite; }
-    .beam-2 { left: 35%; height: 80%; background: linear-gradient(to top, #fff, transparent); transform: rotate(-5deg); animation: beamPulse 5s ease-in-out infinite 0.5s; }
-    .beam-3 { left: 50%; height: 75%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(5deg); animation: beamPulse 4.5s ease-in-out infinite 1s; }
-    .beam-4 { left: 65%; height: 85%; background: linear-gradient(to top, #fff, transparent); transform: rotate(15deg); animation: beamPulse 3.8s ease-in-out infinite 1.5s; }
-    .beam-5 { left: 80%; height: 65%; background: linear-gradient(to top, var(--accent), transparent); transform: rotate(25deg); animation: beamPulse 5.2s ease-in-out infinite 0.8s; }
-    @keyframes beamPulse { 0%,100%{opacity:0.08} 50%{opacity:0.22} }
-
     .hero-content {
       position: relative; z-index: 2;
-      padding: 0 clamp(24px, 6vw, 80px) clamp(60px, 10vw, 120px);
+      padding: 0 clamp(24px,6vw,80px) clamp(60px,8vw,110px);
       animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both;
     }
     @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
-
-    .hero-eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--accent); font-weight: 500; margin-bottom: 20px;
-    }
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 13vw, 13rem);
-      font-weight: 400; line-height: 0.88;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      margin-bottom: 32px;
-    }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem,13vw,13rem); font-weight: 400; line-height: 0.88; letter-spacing: 0.04em; color: var(--white); margin-bottom: 24px; }
     .hero-title em { font-style: normal; color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(0.85rem, 1.5vw, 1rem);
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.06em;
-      max-width: 480px;
-      line-height: 1.6;
-    }
-    .hero-cta {
-      margin-top: 40px;
-      display: flex; gap: 16px; flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-block; padding: 14px 36px;
-      font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
-      text-decoration: none; cursor: pointer; border: none;
-      transition: all 0.25s;
-    }
+    .hero-sub { font-size: clamp(0.9rem,1.6vw,1.05rem); color: rgba(255,255,255,0.65); letter-spacing: 0.04em; max-width: 500px; line-height: 1.65; }
+    .hero-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 14px 36px; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
     .btn-primary { background: var(--accent); color: var(--black); }
-    .btn-primary:hover { background: #d4b97a; }
-    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+    .btn-primary:hover { background: var(--accent2); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+    .scroll-hint { position: absolute; right: 48px; bottom: 44px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 55px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 
-    /* Scroll indicator */
-    .scroll-hint {
-      position: absolute; right: 48px; bottom: 48px; z-index: 2;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.35); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px; height: 60px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
-      animation: scrollDown 2s ease-in-out infinite;
-    }
-    @keyframes scrollDown { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+    /* SHARED */
+    section { padding: var(--gap) clamp(24px,6vw,80px); }
+    .section-label { font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem,5vw,5rem); font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .divider { width: 48px; height: 1px; background: var(--accent); margin: 24px 0 40px; }
+    .on-light .section-title { color: #111; }
+    .on-light .section-label { color: #9a742e; }
+    .on-light .divider { background: #9a742e; }
 
-    /* ── SECTION SHARED ── */
-    section { padding: var(--gap) clamp(24px, 6vw, 80px); }
-    .section-label {
-      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--accent); font-weight: 500; margin-bottom: 16px;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 400; line-height: 1; letter-spacing: 0.05em;
-    }
-    .divider {
-      width: 48px; height: 1px; background: var(--accent);
-      margin: 28px 0 44px;
-    }
+    /* COUNTDOWN */
+    #countdown { background: var(--accent); padding: 26px clamp(24px,6vw,80px); }
+    .countdown-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .countdown-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--black); opacity: 0.8; }
+    .countdown-venue { font-size: 0.78rem; color: var(--black); opacity: 0.6; letter-spacing: 0.08em; margin-top: 4px; }
+    .countdown-timer { display: flex; gap: 22px; }
+    .cd-unit { text-align: center; }
+    .cd-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem,5vw,3.6rem); color: var(--black); line-height: 1; letter-spacing: 0.04em; }
+    .cd-text { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-top: 2px; }
+    .countdown-cta .btn-cd { background: var(--black); color: var(--accent); display: inline-block; padding: 13px 30px; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .countdown-cta .btn-cd:hover { background: #222; }
 
-    /* ── TOUR DATES ── */
-    #dates { background: var(--cream); }
-    .dates-grid { display: flex; flex-direction: column; gap: 0; }
-    .date-row {
-      display: grid; grid-template-columns: 90px 1fr auto;
-      align-items: center; gap: 32px;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      transition: background 0.2s;
-    }
-    .date-row:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
-    .date-row:hover { background: rgba(200,169,110,0.06); }
-    .date-month {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); font-weight: 500;
-    }
-    .date-day {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.4rem; font-weight: 400; line-height: 1; letter-spacing: 0.04em;
-    }
-    .date-info h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.35rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    .date-info p {
-      font-size: 0.8rem; color: var(--mid); margin-top: 4px; letter-spacing: 0.04em;
-    }
-    .date-ticket {
-      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-      border: 1px solid var(--black); padding: 10px 22px;
-      text-decoration: none; color: var(--black);
-      transition: all 0.2s; white-space: nowrap;
-    }
-    .date-ticket:hover { background: var(--black); color: var(--white); }
-    .sold-out { border-color: var(--mid); color: var(--mid); cursor: default; }
-    .sold-out:hover { background: transparent; color: var(--mid); }
+    /* SOCIAL PROOF STRIP */
+    #proof { background: var(--dark2); padding: 36px clamp(24px,6vw,80px); border-top: 1px solid rgba(200,169,110,0.08); border-bottom: 1px solid rgba(200,169,110,0.08); }
+    .proof-grid { display: flex; gap: clamp(28px,4vw,70px); flex-wrap: wrap; align-items: center; }
+    .proof-stat h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem,4vw,3.2rem); color: var(--accent); letter-spacing: 0.06em; line-height: 1; }
+    .proof-stat p { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px; }
+    .proof-div { width: 1px; height: 56px; background: rgba(200,169,110,0.18); flex-shrink: 0; }
+    .proof-quote blockquote { font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.65); line-height: 1.6; border-left: 2px solid var(--accent); padding-left: 18px; }
+    .proof-quote cite { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 10px; font-style: normal; }
 
-    /* ── GALLERY ── */
-    #gallery { background: var(--black); }
-    #gallery .section-title { color: var(--white); }
-    #gallery .section-label { color: var(--accent); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
-      gap: 12px;
-      margin-top: 44px;
-    }
-    .gallery-item {
-      background: #1e1e1c;
-      overflow: hidden; position: relative;
-      cursor: pointer;
-    }
-    .gallery-item::before {
-      content: attr(data-label);
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem; color: rgba(255,255,255,0.2);
-      letter-spacing: 0.14em; z-index: 1;
-      text-align: center; text-transform: uppercase;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
-      opacity: 0.85;
-    }
+    /* TOUR DATES */
+    #dates { background: var(--dark); background-image: radial-gradient(ellipse at 80% 50%, rgba(200,169,110,0.04) 0%, transparent 70%); }
+    .dates-grid { display: flex; flex-direction: column; }
+    .date-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; }
+    .date-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .date-row:hover { background: rgba(200,169,110,0.05); padding-left: 10px; }
+    .date-month { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .date-day { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; letter-spacing: 0.04em; color: var(--white); }
+    .date-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); }
+    .date-info p { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 4px; }
+    .date-ticket { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(200,169,110,0.45); padding: 9px 20px; text-decoration: none; color: var(--accent); transition: all 0.2s; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; }
+    .date-ticket:hover { background: var(--accent); color: var(--black); }
+    .sold-out { border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.22); cursor: default; }
+    .sold-out:hover { background: transparent; color: rgba(255,255,255,0.22); }
+
+    /* TOUR MAP */
+    #tourmap { background: var(--dark2); }
+    .map-wrap { margin-top: 40px; position: relative; border: 1px solid rgba(200,169,110,0.2); overflow: hidden; }
+    .map-wrap iframe { width: 100%; height: 480px; border: none; display: block; }
+    .map-badge { position: absolute; top: 16px; left: 16px; z-index: 10; background: rgba(10,10,10,0.9); backdrop-filter: blur(8px); padding: 14px 18px; border-left: 2px solid var(--accent); }
+    .map-badge h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.12em; color: var(--accent); }
+    .map-badge p { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    /* WHAT TO EXPECT */
+    #expect { background: var(--black); }
+    .expect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 2px; margin-top: 40px; }
+    .expect-card { background: var(--dark); padding: 36px 28px; border: 1px solid rgba(200,169,110,0.07); transition: border-color 0.3s, background 0.3s; }
+    .expect-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.04); }
+    .expect-icon { font-size: 1.8rem; margin-bottom: 18px; }
+    .expect-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+    .expect-card p { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.65; }
+
+    /* GALLERY */
+    #gallery { background: var(--dark2); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 8px; margin-top: 40px; }
+    .gallery-item { background: #1a1a18; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item::before { content: attr(data-label); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.18); letter-spacing: 0.14em; z-index: 1; text-align: center; text-transform: uppercase; width: 85%; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); opacity: 0.85; }
     .gallery-item:hover img { transform: scale(1.04); opacity: 1; }
-    .g1 { grid-column: span 7; height: 380px; }
-    .g2 { grid-column: span 5; height: 380px; }
-    .g3 { grid-column: span 4; height: 280px; }
-    .g4 { grid-column: span 4; height: 280px; }
-    .g5 { grid-column: span 4; height: 280px; }
+    .g1 { grid-column: span 7; height: 360px; }
+    .g2 { grid-column: span 5; height: 360px; }
+    .g3 { grid-column: span 4; height: 260px; }
+    .g4 { grid-column: span 4; height: 260px; }
+    .g5 { grid-column: span 4; height: 260px; }
+    .gallery-note { margin-top: 14px; font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
 
-    /* placeholder colors for demo */
-    .g1 { background: #1e1e1c; }
-    .g2 { background: #232320; }
-    .g3 { background: #1a1a18; }
-    .g4 { background: #262622; }
-    .g5 { background: #1e1e1c; }
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .about-photo { width: 100%; aspect-ratio: 3/4; background: #d5cfc3; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-photo-placeholder { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; color: #999; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; padding: 20px; }
+    .about-text p { font-size: 0.97rem; line-height: 1.8; color: #3a3830; margin-bottom: 18px; }
+    .about-text strong { color: #111; }
+    .about-stat { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; }
+    .stat h4 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: #9a742e; letter-spacing: 0.04em; line-height: 1; }
+    .stat p { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #888; margin-top: 4px; }
 
-    .gallery-note {
-      margin-top: 20px;
-      font-size: 0.75rem; color: rgba(255,255,255,0.3);
-      letter-spacing: 0.08em;
-    }
-
-    /* ── ABOUT ── */
-    #about { background: var(--white); }
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px);
-      align-items: start;
-    }
-    .about-photo {
-      width: 100%; aspect-ratio: 3/4;
-      background: var(--cream);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-photo-placeholder {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem; color: var(--mid); letter-spacing: 0.1em;
-      text-align: center;
-    }
-    .about-text { padding-top: 12px; }
-    .about-text p {
-      font-size: 1rem; line-height: 1.75; color: #444;
-      margin-bottom: 20px;
-    }
-    .about-stat { margin-top: 40px; display: flex; gap: 40px; }
-    .stat h4 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem; font-weight: 400; color: var(--accent); letter-spacing: 0.04em;
-    }
-    .stat p { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-top: 4px; }
-
-    /* ── MUSIC ── */
-    #music { background: var(--cream); }
-    .music-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px; margin-top: 44px;
-    }
-    .track-card {
-      background: var(--white); padding: 24px;
-      border: 1px solid rgba(0,0,0,0.06);
-      transition: box-shadow 0.2s, transform 0.2s;
-      cursor: pointer;
-    }
-    .track-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .track-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem; color: var(--accent); font-weight: 400; letter-spacing: 0.06em;
-    }
-    .track-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 6px;
-    }
-    .track-meta { font-size: 0.75rem; color: var(--mid); letter-spacing: 0.06em; }
-    .track-play {
-      margin-top: 20px;
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-    }
-    .play-icon {
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 1px solid var(--accent);
-      display: flex; align-items: center; justify-content: center;
-    }
+    /* MUSIC */
+    #music { background: var(--dark); background-image: radial-gradient(ellipse at 20% 80%, rgba(200,169,110,0.06) 0%, transparent 60%); }
+    .music-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 16px; margin-top: 40px; }
+    .track-card { background: rgba(255,255,255,0.03); padding: 24px; border: 1px solid rgba(255,255,255,0.07); transition: all 0.2s; cursor: pointer; }
+    .track-card:hover { border-color: rgba(200,169,110,0.35); background: rgba(200,169,110,0.05); transform: translateY(-2px); }
+    .track-number { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); letter-spacing: 0.06em; }
+    .track-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 6px; color: var(--white); }
+    .track-meta { font-size: 0.72rem; color: rgba(255,255,255,0.32); letter-spacing: 0.06em; }
+    .track-play { margin-top: 18px; display: flex; align-items: center; gap: 10px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .play-icon { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .play-icon svg { width: 10px; fill: var(--accent); margin-left: 2px; }
-    .music-platforms { margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-    .music-platforms span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
-    .platform-btn {
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 10px 22px; border: 1px solid rgba(0,0,0,0.15);
-      text-decoration: none; color: var(--black);
-      transition: all 0.2s;
-    }
-    .platform-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+    .music-platforms { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .music-platforms span { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .platform-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(200,169,110,0.28); text-decoration: none; color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; transition: all 0.2s; }
+    .platform-btn:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--black); color: var(--white); }
-    #contact .section-title { color: var(--white); }
-    .contact-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px);
-      align-items: start;
-    }
-    .contact-intro { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: 8px; }
-    .contact-links { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
-    .contact-link {
-      display: flex; gap: 16px; align-items: center;
-      text-decoration: none; color: rgba(255,255,255,0.55);
-      font-size: 0.85rem; letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
+    /* VIP */
+    #vip { background: var(--black); background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a96e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .vip-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: center; margin-top: 40px; }
+    .vip-text p { font-size: 0.97rem; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 16px; }
+    .vip-perks { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 11px; }
+    .vip-perks li { font-size: 0.85rem; color: rgba(255,255,255,0.62); padding-left: 20px; position: relative; }
+    .vip-perks li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+    .vip-card { border: 1px solid rgba(200,169,110,0.22); padding: 48px 36px; text-align: center; background: rgba(200,169,110,0.03); position: relative; overflow: hidden; }
+    .vip-card::before { content: 'VIP'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 9rem; color: rgba(200,169,110,0.04); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: 0.1em; }
+    .vip-badge { display: inline-block; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(200,169,110,0.38); padding: 6px 16px; margin-bottom: 24px; }
+    .vip-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .vip-card p { font-size: 0.85rem; color: rgba(255,255,255,0.42); line-height: 1.6; margin-bottom: 28px; }
+    .vip-notify { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .vip-notify:hover { background: var(--accent2); }
+
+    /* FAN WALL */
+    #fanwall { background: var(--dark2); background-image: radial-gradient(ellipse at 50% 100%, rgba(200,169,110,0.04) 0%, transparent 60%); }
+    .fanwall-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px; margin-top: 40px; }
+    .fan-msg { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); padding: 24px 22px; transition: border-color 0.2s; }
+    .fan-msg:hover { border-color: rgba(200,169,110,0.25); }
+    .fan-stars { color: var(--accent); font-size: 0.78rem; letter-spacing: 4px; margin-bottom: 14px; }
+    .fan-msg blockquote { font-size: 0.9rem; font-style: italic; color: rgba(255,255,255,0.68); line-height: 1.65; }
+    .fan-author { margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .fan-city { color: rgba(255,255,255,0.28); }
+
+    /* PRESS */
+    #press { background: var(--cream); }
+    .press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,80px); margin-top: 40px; }
+    .press-bio p { font-size: 0.95rem; color: #3a3830; line-height: 1.78; margin-bottom: 16px; }
+    .press-downloads h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #222; margin-bottom: 18px; }
+    .download-list { display: flex; flex-direction: column; gap: 9px; }
+    .download-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(0,0,0,0.1); text-decoration: none; color: #333; transition: all 0.2s; background: rgba(255,255,255,0.5); }
+    .download-item:hover { background: #fff; border-color: #9a742e; color: #9a742e; }
+    .dl-icon { font-size: 1.2rem; }
+    .dl-info { flex: 1; }
+    .dl-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.06em; font-size: 0.88rem; }
+    .dl-size { font-size: 0.68rem; color: #999; }
+    .logo-strip { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+    .logo-box { border: 1px solid rgba(0,0,0,0.12); padding: 11px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.14em; color: #666; }
+
+    /* MERCH */
+    #merch { background: var(--dark); }
+    .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin-top: 40px; }
+    .merch-card { border: 1px solid rgba(200,169,110,0.1); overflow: hidden; transition: border-color 0.2s; position: relative; }
+    .merch-card:hover { border-color: rgba(200,169,110,0.32); }
+    .merch-img { width: 100%; aspect-ratio: 1; background: rgba(200,169,110,0.05); display: flex; align-items: center; justify-content: center; }
+    .merch-img-icon { font-size: 3rem; opacity: 0.28; }
+    .merch-info { padding: 16px 14px; }
+    .merch-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.08em; font-size: 0.92rem; text-transform: uppercase; color: var(--white); }
+    .merch-price { font-size: 0.78rem; color: var(--accent); margin-top: 4px; }
+    .merch-badge { position: absolute; top: 10px; right: 10px; background: var(--accent); color: var(--black); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; padding: 4px 9px; font-family: 'Barlow Condensed', sans-serif; }
+
+    /* NEWSLETTER */
+    #newsletter { background: var(--accent); background-image: linear-gradient(135deg, #c8a96e 0%, #b0893a 100%); padding: clamp(50px,8vw,100px) clamp(24px,6vw,80px); text-align: center; }
+    #newsletter .section-label { color: rgba(0,0,0,0.4); }
+    #newsletter .section-title { color: var(--black); }
+    #newsletter .divider { background: rgba(0,0,0,0.18); margin: 22px auto 18px; }
+    .newsletter-sub { font-size: 1rem; color: rgba(0,0,0,0.58); max-width: 440px; margin: 0 auto 32px; line-height: 1.6; }
+    .newsletter-form { display: flex; gap: 0; max-width: 460px; margin: 0 auto; }
+    .newsletter-input { flex: 1; padding: 15px 18px; background: rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.18); border-right: none; font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: var(--black); outline: none; }
+    .newsletter-input::placeholder { color: rgba(0,0,0,0.38); }
+    .newsletter-btn { padding: 15px 26px; background: var(--black); color: var(--accent); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-btn:hover { background: #1e1e1c; }
+    .newsletter-note { margin-top: 12px; font-size: 0.68rem; color: rgba(0,0,0,0.38); }
+
+    /* CONTACT */
+    #contact { background: var(--dark2); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .contact-intro { font-size: 0.97rem; color: rgba(255,255,255,0.48); line-height: 1.75; }
+    .contact-links { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+    .contact-link { display: flex; gap: 14px; align-items: center; text-decoration: none; color: rgba(255,255,255,0.48); font-size: 0.84rem; transition: color 0.2s; }
     .contact-link:hover { color: var(--accent); }
-    .contact-link-label {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
-      min-width: 60px;
-    }
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-link-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); min-width: 60px; }
+    .contact-form { display: flex; flex-direction: column; gap: 13px; }
     .form-field { display: flex; flex-direction: column; gap: 6px; }
-    .form-field label {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);
-    }
-    .form-field input, .form-field textarea, .form-field select {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-      color: var(--white); padding: 14px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-      outline: none; resize: vertical;
-      transition: border-color 0.2s;
-    }
-    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
-      border-color: var(--accent);
-    }
+    .form-field label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.32); }
+    .form-field input, .form-field textarea, .form-field select { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 13px 15px; font-family: 'Barlow', sans-serif; font-size: 0.9rem; outline: none; resize: vertical; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
     .form-field select option { background: #1a1a18; }
-    .btn-send {
-      background: var(--accent); color: var(--black);
-      border: none; padding: 15px 36px;
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem;
-      letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
-      cursor: pointer; align-self: flex-start; margin-top: 8px;
-      transition: background 0.2s;
-    }
-    .btn-send:hover { background: #d4b97a; }
+    .btn-send { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; cursor: pointer; align-self: flex-start; margin-top: 6px; transition: background 0.2s; }
+    .btn-send:hover { background: var(--accent2); }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black); color: rgba(255,255,255,0.25);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 28px clamp(24px, 6vw, 80px);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
-    }
-    footer span { font-size: 0.72rem; letter-spacing: 0.1em; }
-    .footer-socials { display: flex; gap: 24px; }
-    .footer-socials a {
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s;
-    }
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid rgba(200,169,110,0.1); padding: 28px clamp(24px,6vw,80px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+    .footer-socials { display: flex; gap: 22px; }
+    .footer-socials a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
     .footer-socials a:hover { color: var(--accent); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      nav { padding: 18px 24px; }
+      nav { padding: 16px 20px; }
       .nav-links { display: none; }
       .scroll-hint { display: none; }
       .date-row { grid-template-columns: 70px 1fr; }
       .date-ticket { display: none; }
       .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; height: 200px; }
-      .about-inner { grid-template-columns: 1fr; }
-      .contact-inner { grid-template-columns: 1fr; }
+      .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; height: 160px; }
+      .about-inner,.vip-inner,.press-grid,.contact-inner { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid rgba(0,0,0,0.18); border-bottom: none; }
     }
   </style>
 </head>
@@ -390,43 +277,23 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#"><span style="color:var(--accent)">Pablo</span> X <span style="color:var(--accent)">Evren</span></a>
+  <a class="nav-logo" href="#"><span>Pablo</span> X <span>Evren</span></a>
   <ul class="nav-links">
-    <li><a href="#dates">Tour Dates</a></li>
+    <li><a href="#countdown">Next Show</a></li>
+    <li><a href="#dates">Tour</a></li>
+    <li><a href="#tourmap">Map</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#about">Story</a></li>
     <li><a href="#music">Music</a></li>
+    <li><a href="#vip">VIP</a></li>
+    <li><a href="#merch">Merch</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg">
-    <div class="beam beam-1"></div>
-    <div class="beam beam-2"></div>
-    <div class="beam beam-3"></div>
-    <div class="beam beam-4"></div>
-    <div class="beam beam-5"></div>
-  </div>
-
-  <!--
-    ════════════════════════════════════════════════
-    HOW TO ADD YOUR CONCERT HERO PHOTO
-    ════════════════════════════════════════════════
-    STEP 1 — Upload your photo to your GitHub repo.
-             In GitHub: click "Add file" → "Upload files"
-             Name it something simple, e.g. hero.jpg
-
-    STEP 2 — Delete the entire <div class="hero-bg"> block below.
-
-    STEP 3 — Paste this in its place:
-             <img src="hero.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6">
-
-    STEP 4 — Commit the change. Done!
-    ════════════════════════════════════════════════
-  -->
-
+  <div class="hero-img"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">World Tour 2026</p>
     <h1 class="hero-title"><em>Pablo</em><br>X <em>Evren</em></h1>
@@ -436,190 +303,170 @@
       <a href="#music" class="btn btn-outline">Listen Now</a>
     </div>
   </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
+
+<!-- COUNTDOWN -->
+<div id="countdown">
+  <div class="countdown-inner">
+    <div>
+      <div class="countdown-label">Next Show — Cadiz, Spain</div>
+      <div class="countdown-venue">JP Financial Stadium &nbsp;·&nbsp; Doors 21:00</div>
+    </div>
+    <div class="countdown-timer">
+      <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-text">Days</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-text">Hours</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-text">Min</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-text">Sec</div></div>
+    </div>
+    <div class="countdown-cta"><a href="#" class="btn-cd">Get Tickets</a></div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div id="proof">
+  <div class="proof-grid">
+    <div class="proof-stat"><h3>9+</h3><p>Countries</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><h3>14</h3><p>Shows Planned</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><h3>Live</h3><p>In Europe 2026</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-quote">
+      <blockquote>The energy Pablo and Evren bring is on another level. You leave the show changed.</blockquote>
+      <cite>Basel Fan, April 2026</cite>
+    </div>
+  </div>
+</div>
 
 <!-- TOUR DATES -->
 <section id="dates">
   <p class="section-label">On the Road</p>
-  <h2 class="section-title">Pablo X Evren Concert — World Tour Dates</h2>
+  <h2 class="section-title">Pablo X Evren — World Tour Dates</h2>
   <div class="divider"></div>
-
   <div class="dates-grid">
-
     <div class="date-row">
-      <div>
-        <div class="date-month">Apr–Jul</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Basel, Switzerland</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue St. Jakobpark Stadium</p>
-      </div>
+      <div><div class="date-month">Apr–Jul</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>Basel, Switzerland</h3><p>Doors 21:00 &nbsp;·&nbsp; St. Jakob Stadium</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">Apr–May</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Cadiz, Spain</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue JP Financial Estadio</p>
-      </div>
+      <div><div class="date-month">30thApr–4thMay</div><div class="date-day">30.04-04.05</div></div>
+      <div class="date-info"><h3>Cadiz, Spain</h3><p>JP Financial Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">May</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Vaduz, Liechtenstein</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue Rheinpark Stadium</p>
-      </div>
+      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>Vaduz, Liechtenstein</h3><p>Doors 21:00 &nbsp;·&nbsp; Rheinpark Stadium</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">May</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Bregenz, Austria</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue ImmoAgentur Stadium</p>
-      </div>
+      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>Bregenz, Austria</h3><p>Doors 21:00 &nbsp;·&nbsp; ImmoAgentur Stadium</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">May</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Germany</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
-      </div>
+      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>Germany</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">May</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>France</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
-      </div>
+      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>France</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">Jul</div>
-        <div class="date-day">TBA</div>
-      </div>
-      <div class="date-info">
-        <h3>Egypt</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p>
-      </div>
+      <div><div class="date-month">Jul</div><div class="date-day">TBA</div></div>
+      <div class="date-info"><h3>Cairo, Egypt</h3><p>Doors 21:00 &nbsp;·&nbsp; Cairo International Stadium</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">Jul</div>
-        <div class="date-day">18</div>
-      </div>
-      <div class="date-info">
-        <h3>Reggio Emilia, Italy</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue RCF Arena Campovolo</p>
-      </div>
+      <div><div class="date-month">Jul</div><div class="date-day">11</div></div>
+      <div class="date-info"><h3>Stockholm, Sweden</h3><p>Doors 21:00 &nbsp;·&nbsp; Strawberry Arena</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <div class="date-row">
-      <div>
-        <div class="date-month">Jul</div>
-        <div class="date-day">11</div>
-      </div>
-      <div class="date-info">
-        <h3>Stockholm, Sweden</h3>
-        <p>Doors 21:00 &nbsp;·&nbsp; Venue Strawberry Arena</p>
-      </div>
+      <div><div class="date-month">Jul</div><div class="date-day">18</div></div>
+      <div class="date-info"><h3>Reggio Emilia, Italy</h3><p>18 July 2026 &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; RCF Arena</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
-
     <!-- RUMOURS -->
-    <div class="date-row" style="opacity:0.5;">
-      <div>
-        <div class="date-month" style="color:var(--mid)">Rumour</div>
-        <div class="date-day">?</div>
-      </div>
-      <div class="date-info">
-        <h3>Yerevan, Armenia</h3>
-        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
-      </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">Rumour</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div>
-        <div class="date-month" style="color:var(--mid)">Rumour</div>
-        <div class="date-day">?</div>
-      </div>
-      <div class="date-info">
-        <h3>Almaty, Kazakhstan</h3>
-        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
-      </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">Rumour</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div>
-        <div class="date-month" style="color:var(--mid)">50% ?</div>
-        <div class="date-day">?</div>
-      </div>
-      <div class="date-info">
-        <h3>Lima, Peru</h3>
-        <p>Unconfirmed &nbsp;·&nbsp; Stay tuned</p>
-      </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">50%</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div>
-        <div class="date-month" style="color:var(--mid)">67% ?</div>
-        <div class="date-day">?</div>
-      </div>
-      <div class="date-info">
-        <h3>Istanbul, Turkey</h3>
-        <p>Unconfirmed, Possibly 30th May 2026 &nbsp;·&nbsp; Venue Ataturk Olympik Stadium</p>
-      </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">67%</div><div class="date-day">30</div></div>
+      <div class="date-info"><h3>Istanbul, Turkey</h3><p>30 May 2026 &nbsp;·&nbsp; Unconfirmed — Stay tuned in Ataturk Olympik Stadium</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div>
-        <div class="date-month" style="color:var(--mid)">5% ?</div>
-        <div class="date-day">?</div>
-      </div>
-      <div class="date-info">
-        <h3>Bosnia &amp; Herzegovina</h3>
-        <p>Unconfirmed (Fake Probably) &nbsp;·&nbsp; Stay tuned</p>
-      </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">5%</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Bosnia &amp; Herzegovina</h3><p>Unconfirmed — Stay tuned</p></div>
       <span class="date-ticket sold-out">Rumour</span>
     </div>
+  </div>
+</section>
 
+<!-- TOUR MAP -->
+<section id="tourmap">
+  <p class="section-label">The Route</p>
+  <h2 class="section-title">Tour Map</h2>
+  <div class="divider"></div>
+  <div class="map-wrap">
+    <div class="map-badge"><h4>2026 World Tour</h4><p>9+ countries · 14 shows</p></div>
+    <!--
+      HOW THIS MAP WORKS:
+      It shows all tour cities via Google Maps embed.
+      If it shows a grey/error screen, use the simpler fallback below.
+      FALLBACK (no API key needed — paste this src instead):
+      https://maps.google.com/maps?q=Basel,Cadiz+Spain,Vaduz+Liechtenstein,Bregenz+Austria,Paris+France,Cairo+Egypt,Reggio+Emilia+Italy,Stockholm+Sweden,Istanbul+Turkey&t=&z=3&ie=UTF8&iwloc=&output=embed
+    -->
+    <iframe
+      src="https://maps.google.com/maps?q=Basel,Cadiz+Spain,Vaduz+Liechtenstein,Bregenz+Austria,Paris+France,Cairo+Egypt,Reggio+Emilia+Italy,Stockholm+Sweden,Istanbul+Turkey&t=&z=3&ie=UTF8&iwloc=&output=embed"
+      allowfullscreen loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section id="expect">
+  <p class="section-label">The Experience</p>
+  <h2 class="section-title">What to Expect</h2>
+  <div class="divider"></div>
+  <div class="expect-grid">
+    <div class="expect-card">
+      <div class="expect-icon">🎤</div>
+      <h3>Live Performance</h3>
+      <p>Raw, unfiltered energy on stage. No backing track excuses — Pablo and Evren bring everything live, every single night.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">💡</div>
+      <h3>Special Visuals</h3>
+      <p>A full production with custom lighting, LED displays, and synchronized stage design built specifically for this world tour.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🤝</div>
+      <h3>Fan Moments</h3>
+      <p>They don't just perform at you — they perform with you. Crowd moments, call-and-response, and real connection every night.</p>
+    </div>
+    <div class="expect-card">
+      <div class="expect-icon">🔒</div>
+      <h3>Exclusive Songs</h3>
+      <p>Tour-only tracks and unreleased music dropped live before they hit streaming. You have to be there to hear them first.</p>
+    </div>
   </div>
 </section>
 
@@ -628,67 +475,34 @@
   <p class="section-label">Behind the Lens</p>
   <h2 class="section-title">Gallery</h2>
   <div class="divider"></div>
-
   <div class="gallery-grid">
-    <!--
-      ★ HOW TO ADD YOUR PHOTOS ★
-      Replace the data-label text with your image tags:
-      <img src="concert1.jpg" alt="...">
-      inside each .gallery-item div
-    -->
-    <div class="https://m.media-amazon.com/images/M/MV5BZjFhMmVjMjktYzlkNS00NWJkLTkwYWItMjM0NDc3YTUyOWIwXkEyXkFqcGc@._V1_.jpg" data-label="https://m.media-amazon.com/images/M/MV5BZjFhMmVjMjktYzlkNS00NWJkLTkwYWItMjM0NDc3YTUyOWIwXkEyXkFqcGc@._V1_.jpg">
-      <!-- <img src="photo1.jpg" alt="Pablo & Evren on stage"> -->
-    </div>
-    <div class="https://www.angrybirds.com/wp-content/uploads/2022/05/ABCOM_202203_1000x1000_CharacterDimensio_Terence_Classic.png" data-label="https://www.angrybirds.com/wp-content/uploads/2022/05/ABCOM_202203_1000x1000_CharacterDimensio_Terence_Classic.png">
-      <!-- <img src="photo2.jpg" alt="Crowd shot"> -->
-    </div>
-    <div class="gallery-item g3" data-label="Photo here">
-      <!-- <img src="photo3.jpg" alt="Backstage"> -->
-    </div>
-    <div class="gallery-item g4" data-label="Photo here">
-      <!-- <img src="photo4.jpg" alt="Performance"> -->
-    </div>
-    <div class="gallery-item g5" data-label="Photo here">
-      <!-- <img src="photo5.jpg" alt="Lights"> -->
-    </div>
+    <div class="gallery-item g1" data-label="Upload your concert photo — see instructions in the code"></div>
+    <div class="gallery-item g2" data-label="Upload your concert photo here"></div>
+    <div class="gallery-item g3" data-label="Photo here"></div>
+    <div class="gallery-item g4" data-label="Photo here"></div>
+    <div class="gallery-item g5" data-label="Photo here"></div>
   </div>
-  <p class="gallery-note">★ To add your photos: upload image files to your repo, then replace the comments above with &lt;img src="yourfile.jpg"&gt;</p>
+  <p class="gallery-note">★ To add photos: upload images to your GitHub repo, then inside each div above add: &lt;img src="yourfile.jpg" alt="..."&gt;</p>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="on-light">
   <p class="section-label">The Story</p>
   <h2 class="section-title">About Pablo &amp; Evren</h2>
   <div class="divider"></div>
-
   <div class="about-inner">
     <div class="about-photo">
-      <div class="about-photo-placeholder">
-        <!-- ★ Add your photo:<br><img src="artists.jpg"> -->
-        Upload your artist<br>photo here
-      </div>
+      <div class="about-photo-placeholder">Upload artist photo here<br><br>(&lt;img src="artists.jpg"&gt;)</div>
     </div>
     <div class="about-text">
-      <!--
-        ★ REPLACE this text with your real bio! ★
-      -->
-      <p>Pablo and Evren are two artists whose musical worlds collided in an unexpected collaboration that has since captured audiences across the globe. Their chemistry on stage is undeniable — raw energy meeting refined artistry.</p>
-      <p>From small venues to festival main stages, their journey together has been one of creative risk-taking and genuine connection. Every show is different. Every night is its own story.</p>
-      <p>The World Tour 2026 marks a new chapter — bigger stages, new cities, and music that continues to push boundaries while staying true to what moves people.</p>
-
+      <p>Pablo and Evren first crossed paths at <strong>ZBA</strong> — the Zentrum für Brückenangebot in Basel, Switzerland. They were both there to Study. Pablo, being honest, clocked Evren from across the room and was immediately convinced he was dealing with a full Talahon and probably very Left. The kind of person you don't approach first.</p>
+      <p>He was wrong. Once the walls came down and the conversations started, they found something neither expected — a shared obsession with music that goes all the way to the bone. Big ideas. Big sound. Big D energy in everything they made. They called the project <strong>HOLY OBESITY</strong>, a name that doesn't apologize for taking up space.</p>
+      <p>Their sound draws from the cinematic ambition of <strong>Kanye</strong> — that wall-of-sound philosophy, the willingness to go left when everyone expects right. Huge drums, heavy bass, melodies that hit like punches. Nothing small about it.</p>
+      <p>What started as two guys pushing through Study together became something nobody saw coming. Now they're taking it global — and this World Tour is just the beginning.</p>
       <div class="about-stat">
-        <div class="stat">
-          <h4>40+</h4>
-          <p>Cities</p>
-        </div>
-        <div class="stat">
-          <h4>12</h4>
-          <p>Countries</p>
-        </div>
-        <div class="stat">
-          <h4>200k</h4>
-          <p>Fans Live</p>
-        </div>
+        <div class="stat"><h4>9+</h4><p>Countries</p></div>
+        <div class="stat"><h4>14</h4><p>Shows</p></div>
+        <div class="stat"><h4>1</h4><p>Holy Obesity</p></div>
       </div>
     </div>
   </div>
@@ -699,82 +513,46 @@
   <p class="section-label">The Sound</p>
   <h2 class="section-title">Listen Now</h2>
   <div class="divider"></div>
-
   <!--
-    ════════════════════════════════════════════════
-    HOW TO EDIT YOUR TRACKS
-    ════════════════════════════════════════════════
-    For each track card below, change:
-    - "Track Title Here"  → your real song name
-    - "Album Name"        → your album/EP name
-    - The href="#" on the play button → your song link (Spotify, YouTube, etc.)
+    HOW TO EDIT TRACKS:
+    Change "Track Title Here" → your real song name
+    Change "Album Name" → your album/EP name
+    Add more: copy a full <div class="track-card">...</div> block
+    Remove one: delete its full <div class="track-card">...</div> block
 
-    To ADD more tracks: copy a whole <div class="track-card">...</div> block and paste it.
-    To REMOVE a track: delete the whole <div class="track-card">...</div> block.
-    ════════════════════════════════════════════════
-  -->
-
-  <!--
-    ════════════════════════════════════════════════
-    HOW TO UPDATE YOUR PLATFORM LINKS (Spotify etc.)
-    ════════════════════════════════════════════════
-    Find the buttons near the bottom of this section.
-    Replace href="#" with your actual link, e.g.:
+    HOW TO UPDATE PLATFORM LINKS:
+    Replace href="#" with your real link e.g.:
     href="https://open.spotify.com/artist/YOURID"
-    href="https://music.apple.com/artist/YOURID"
     href="https://www.youtube.com/@YOURCHANNEL"
-    ════════════════════════════════════════════════
   -->
   <div class="music-grid">
     <div class="track-card">
       <div class="track-number">01</div>
-      <h3 class="track-title">River</h3>
-      <p class="track-meta">Vultures 2 · 2024</p>
-      <div class="track-play">
-        <div class="play-icon">
-          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-        </div>
-        Play
-      </div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
       <div class="track-number">02</div>
-      <h3 class="track-title">BOMB</h3>
-      <p class="track-meta">Vultures 2 · 2024</p>
-      <div class="track-play">
-        <div class="play-icon">
-          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-        </div>
-        Play
-      </div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
       <div class="track-number">03</div>
-      <h3 class="track-title">ALL THE LOVE</h3>
-      <p class="track-meta">BULLY · 2026</p>
-      <div class="track-play">
-        <div class="play-icon">
-          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-        </div>
-        Play
-      </div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
     <div class="track-card">
       <div class="track-number">04</div>
-      <h3 class="track-title">Blood On The Leaves</h3>
-      <p class="track-meta">Yeezus · 2013</p>
-      <div class="track-play">
-        <div class="play-icon">
-          <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-        </div>
-        Play
-      </div>
+      <h3 class="track-title">Track Title Here</h3>
+      <p class="track-meta">Album Name · 2026</p>
+      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play</div>
     </div>
   </div>
-
   <div class="music-platforms">
     <span>Listen on</span>
-    <!-- ★ Replace # with your real Spotify/Apple/YouTube links ★ -->
     <a href="#" class="platform-btn">Spotify</a>
     <a href="#" class="platform-btn">Apple Music</a>
     <a href="#" class="platform-btn">YouTube</a>
@@ -782,55 +560,190 @@
   </div>
 </section>
 
+<!-- VIP -->
+<section id="vip">
+  <p class="section-label">Exclusive Access</p>
+  <h2 class="section-title">VIP &amp; Meet &amp; Greet</h2>
+  <div class="divider"></div>
+  <div class="vip-inner">
+    <div class="vip-text">
+      <p>Not just a concert. A full VIP experience that puts you closer to Pablo and Evren than anyone else in the room. Limited spots per city. When they're gone, they're gone.</p>
+      <ul class="vip-perks">
+        <li>Early venue access — skip every queue</li>
+        <li>Meet &amp; Greet with Pablo and Evren personally</li>
+        <li>Exclusive photo opportunity on stage</li>
+        <li>Signed tour merchandise included</li>
+        <li>Premium floor section — front row priority</li>
+        <li>Backstage tour before the show</li>
+        <li>Sound check access — hear them rehearse live</li>
+      </ul>
+    </div>
+    <div class="vip-card">
+      <div class="vip-badge">Limited Availability</div>
+      <h3>VIP Pass</h3>
+      <p>Full meet &amp; greet experience. Available for select tour dates. Register your interest now and be first to know when VIP tickets go live.</p>
+      <button class="vip-notify" onclick="this.textContent='Registered ✓'; this.style.background='#9a742e';">Notify Me When Available</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAN WALL -->
+<section id="fanwall">
+  <p class="section-label">The Crowd Speaks</p>
+  <h2 class="section-title">Fan Wall</h2>
+  <div class="divider"></div>
+  <div class="fanwall-grid">
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote>
+      <div class="fan-author">— Sarah M. <span class="fan-city">/ Basel, CH</span></div>
+    </div>
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote>
+      <div class="fan-author">— Omar K. <span class="fan-city">/ Istanbul</span></div>
+    </div>
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote>
+      <div class="fan-author">— Lena B. <span class="fan-city">/ Germany</span></div>
+    </div>
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"Holy Obesity is the best thing to come out of Basel. These two together are a movement. Cannot wait for the world tour."</blockquote>
+      <div class="fan-author">— Yusuf A. <span class="fan-city">/ Switzerland</span></div>
+    </div>
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote>
+      <div class="fan-author">— Camille D. <span class="fan-city">/ France</span></div>
+    </div>
+    <div class="fan-msg">
+      <div class="fan-stars">★★★★★</div>
+      <blockquote>"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote>
+      <div class="fan-author">— David R. <span class="fan-city">/ Spain</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section id="press" class="on-light">
+  <p class="section-label">For Media</p>
+  <h2 class="section-title">Press &amp; Media</h2>
+  <div class="divider"></div>
+  <div class="press-grid">
+    <div class="press-bio">
+      <p><strong>Pablo and Evren</strong> — collectively known as <strong>HOLY OBESITY</strong> — are a Basel-based musical duo making Kanye-influenced, cinematic, bass-heavy music that refuses to fit a category. Their debut world tour in 2026 spans 9+ countries across Europe, the Middle East, and South America.</p>
+      <p>For interviews, features, accreditation, or press photography access — contact the team. High-resolution press materials are available for download.</p>
+      <p style="font-size:0.82rem;color:#777;">Press inquiries: <a href="mailto:press@pabloevrentour.com" style="color:#9a742e;">press@pabloevrentour.com</a></p>
+      <div style="margin-top:32px;">
+        <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;color:#222;margin-bottom:14px;">Artist Logos</p>
+        <div class="logo-strip">
+          <div class="logo-box">PABLO X EVREN</div>
+          <div class="logo-box">HOLY OBESITY</div>
+          <div class="logo-box">WORLD TOUR 2026</div>
+        </div>
+        <p style="margin-top:12px;font-size:0.7rem;color:#aaa;">★ Upload logo files (logo.png, logo-dark.png) to your repo and link them here as &lt;img&gt; tags.</p>
+      </div>
+    </div>
+    <div class="press-downloads">
+      <h3>Download Press Kit</h3>
+      <div class="download-list">
+        <a href="#" class="download-item">
+          <span class="dl-icon">🖼️</span>
+          <div class="dl-info"><div class="dl-name">Promo Photo — Pablo &amp; Evren (High Res)</div><div class="dl-size">JPG · Upload your photo, then change href="#" to href="yourphoto.jpg"</div></div>
+          <span>↓</span>
+        </a>
+        <a href="#" class="download-item">
+          <span class="dl-icon">🖼️</span>
+          <div class="dl-info"><div class="dl-name">Promo Photo — Live on Stage</div><div class="dl-size">JPG · Same instructions above</div></div>
+          <span>↓</span>
+        </a>
+        <a href="#" class="download-item">
+          <span class="dl-icon">📄</span>
+          <div class="dl-info"><div class="dl-name">Full Press Release / Artist Bio</div><div class="dl-size">PDF · Upload a PDF to your repo</div></div>
+          <span>↓</span>
+        </a>
+        <a href="#" class="download-item">
+          <span class="dl-icon">🎨</span>
+          <div class="dl-info"><div class="dl-name">Logo Pack — PNG + SVG formats</div><div class="dl-size">ZIP · Upload a zip of your logo files</div></div>
+          <span>↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section id="merch">
+  <p class="section-label">The Collection</p>
+  <h2 class="section-title">Merchandise</h2>
+  <div class="divider"></div>
+  <div class="merch-grid">
+    <div class="merch-card">
+      <div class="merch-img"><div class="merch-img-icon">👕</div></div>
+      <div class="merch-info"><div class="merch-name">World Tour Tee</div><div class="merch-price">Coming Soon</div></div>
+      <div class="merch-badge">Soon</div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="merch-img-icon">🧢</div></div>
+      <div class="merch-info"><div class="merch-name">Holy Obesity Cap</div><div class="merch-price">Coming Soon</div></div>
+      <div class="merch-badge">Soon</div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="merch-img-icon">🧥</div></div>
+      <div class="merch-info"><div class="merch-name">Tour Hoodie</div><div class="merch-price">Coming Soon</div></div>
+      <div class="merch-badge">Soon</div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="merch-img-icon">🎽</div></div>
+      <div class="merch-info"><div class="merch-name">Pablo X Evren Crewneck</div><div class="merch-price">Coming Soon</div></div>
+      <div class="merch-badge">Soon</div>
+    </div>
+  </div>
+  <p style="margin-top:22px;font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">★ Sign up to the newsletter below to be first to know when merch drops.</p>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <p class="section-label">Stay Connected</p>
+  <h2 class="section-title">Join the Movement</h2>
+  <div class="divider"></div>
+  <p class="newsletter-sub">New tour dates, VIP drops, merch launches, exclusive content. Be the first to know. No spam — ever.</p>
+  <div class="newsletter-form">
+    <input class="newsletter-input" type="email" placeholder="your@email.com">
+    <button class="newsletter-btn" onclick="this.textContent='Subscribed ✓'; this.style.background='#222';">Subscribe</button>
+  </div>
+  <p class="newsletter-note">Join fans already subscribed. Unsubscribe anytime.</p>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
   <div class="divider"></div>
-
   <div class="contact-inner">
     <div>
-      <p class="contact-intro">For booking inquiries, press, collaborations, or fan messages — we'd love to hear from you.</p>
+      <p class="contact-intro">For booking, press, collaborations, or just to say something — we want to hear from you.</p>
       <div class="contact-links">
-        <!-- ★ Replace with your real email/social handles ★ -->
-        <a href="mailto:booking@pabloevrentour.com" class="contact-link">
-          <span class="contact-link-label">Email</span>
-          booking@pabloevrentour.com
-        </a>
-        <a href="#" class="contact-link">
-          <span class="contact-link-label">Instagram</span>
-          @pabloevrentour
-        </a>
-        <a href="#" class="contact-link">
-          <span class="contact-link-label">TikTok</span>
-          @pabloevrentour
-        </a>
+        <a href="mailto:booking@pabloevrentour.com" class="contact-link"><span class="contact-link-label">Booking</span>booking@pabloevrentour.com</a>
+        <a href="mailto:press@pabloevrentour.com" class="contact-link"><span class="contact-link-label">Press</span>press@pabloevrentour.com</a>
+        <a href="#" class="contact-link"><span class="contact-link-label">Instagram</span>@pabloevrentour</a>
+        <a href="#" class="contact-link"><span class="contact-link-label">TikTok</span>@pabloevrentour</a>
       </div>
     </div>
-
     <div class="contact-form">
-      <div class="form-field">
-        <label>Your Name</label>
-        <input type="text" placeholder="Pablo Evren">
-      </div>
-      <div class="form-field">
-        <label>Email</label>
-        <input type="email" placeholder="you@example.com">
-      </div>
+      <div class="form-field"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="form-field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
       <div class="form-field">
         <label>Subject</label>
         <select>
-          <option>General Inquiry</option>
-          <option>Booking / Booking Agent</option>
-          <option>Press / Media</option>
-          <option>Collaboration</option>
-          <option>Fan Message</option>
+          <option>General Inquiry</option><option>Booking / Agent</option>
+          <option>Press / Media</option><option>Collaboration</option>
+          <option>VIP Inquiry</option><option>Fan Message</option>
         </select>
       </div>
-      <div class="form-field">
-        <label>Message</label>
-        <textarea rows="5" placeholder="Write your message here..."></textarea>
-      </div>
+      <div class="form-field"><label>Message</label><textarea rows="5" placeholder="Write your message..."></textarea></div>
       <button class="btn-send">Send Message</button>
     </div>
   </div>
@@ -838,13 +751,38 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 Bablo X Evren World Tour. All rights reserved.</span>
+  <span>© 2026 Pablo X Evren — Holy Obesity World Tour. All rights reserved.</span>
   <div class="footer-socials">
     <a href="#">Instagram</a>
     <a href="#">Spotify</a>
     <a href="#">YouTube</a>
+    <a href="#">TikTok</a>
   </div>
 </footer>
 
+<script>
+  // ══ LIVE COUNTDOWN ══
+  // Set your exact show date below!
+  // Format: 'YYYY-MM-DDTHH:MM:SS'
+  // Example: new Date('2026-05-10T21:00:00')
+  // For now it counts 25 hours from when the page loads.
+  // ★ TO FIX: replace the line below with: const showDate = new Date('2026-05-10T21:00:00');
+  const showDate = new Date(Date.now() + 25 * 60 * 60 * 1000);
+
+  function tick() {
+    const diff = showDate - new Date();
+    if (diff <= 0) {
+      ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-h').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
 </body>
 </html>
