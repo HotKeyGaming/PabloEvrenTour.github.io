@@ -280,7 +280,7 @@
 <nav>
   <a class="nav-logo" href="#"><span>Pablo</span> X <span>Evren</span></a>
   <ul class="nav-links">
-    <li><a href="#countdown">Next Show</a></li>
+    <li><a href="#countdown">New Date</a></li>
     <li><a href="#dates">Tour</a></li>
     <li><a href="#tourmap">Map</a></li>
     <li><a href="#gallery">Gallery</a></li>
@@ -307,20 +307,20 @@
   <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- COUNTDOWN -->
-<div id="countdown">
-  <div class="countdown-inner">
-    <div>
-      <div class="countdown-label">Next Show — Cadiz, Spain</div>
-      <div class="countdown-venue">JP Financial Stadium &nbsp;·&nbsp; Doors 21:00</div>
+<!-- NEW DATE ANNOUNCEMENT -->
+<div id="countdown" style="background:var(--black);border-top:2px solid var(--accent);border-bottom:2px solid rgba(200,169,110,0.2);padding:28px clamp(24px,6vw,80px);">
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
+      <span style="font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">New Date Announced</span>
     </div>
-    <div class="countdown-timer">
-      <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-text">Days</div></div>
-      <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-text">Hours</div></div>
-      <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-text">Min</div></div>
-      <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-text">Sec</div></div>
+    <div style="flex:1;min-width:260px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,3vw,1.9rem);letter-spacing:0.1em;color:var(--white);line-height:1.1;">
+        23 May 2026 &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Vaduz, Liechtenstein &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Rheinpark Stadium
+      </div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.42);margin-top:5px;letter-spacing:0.06em;">Doors 11:30 &nbsp;·&nbsp; Tickets available now</div>
     </div>
-    <div class="countdown-cta"><a href="#" class="btn-cd">Get Tickets</a></div>
+    <a href="#dates" style="flex-shrink:0;background:var(--accent);color:var(--black);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Get Tickets</a>
   </div>
 </div>
 
@@ -343,106 +343,196 @@
 <!-- TOUR DATES -->
 <section id="dates">
   <p class="section-label">On the Road</p>
-  <h2 class="section-title">Pablo X Evren — World Tour Dates</h2>
+  <h2 class="section-title">Pablo X Evren — World Tour Dates 2026</h2>
   <div class="divider"></div>
   <div class="dates-grid">
-    <div class="date-row">
-      <div><div class="date-month">Apr–Jul</div><div class="date-day">Everyday</div></div>
-      <div class="date-info"><h3>Basel, Switzerland</h3><p>Doors 21:00 &nbsp;·&nbsp;  St. Jakob Park Stadium</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <!-- COMPLETED SHOWS -->
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">Daily</div><div class="date-day" style="font-size:1.6rem;">Ongoing</div></div>
+      <div class="date-info">
+        <h3>Basel, Switzerland <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>St. Jakob Park Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">Apr–May</div><div class="date-day">30May-4April</div></div>
-      <div class="date-info"><h3>Cadiz, Spain</h3><p>JP Financial Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">Feb 2026</div><div class="date-day">13</div></div>
+      <div class="date-info">
+        <h3>Barcelona, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>Spotify Camp Nou &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 13 Feb 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Vaduz, Liechtenstein</h3><p>Doors 21:00 &nbsp;·&nbsp; Rheinpark Stadium</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">Feb 2026</div><div class="date-day">20</div></div>
+      <div class="date-info">
+        <h3>Malta <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>National Stadium, Ta' Qali &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 20 Feb 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Bregenz, Austria</h3><p>Doors 21:00 &nbsp;·&nbsp; ImmoAgentur Stadium</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">Mar 2026</div><div class="date-day">21</div></div>
+      <div class="date-info">
+        <h3>Bern, Switzerland <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>Wankdorf Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 21 Mar 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Germany</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">Apr 2026</div><div class="date-day">01</div></div>
+      <div class="date-info">
+        <h3>Jerez de la Frontera, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>Estadio Municipal de Chapín &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 1 Apr 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">May</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>France</h3><p>Doors 21:00 &nbsp;·&nbsp; Venue TBA</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">May 2026</div><div class="date-day">02</div></div>
+      <div class="date-info">
+        <h3>Cádiz, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>JP Financial Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 2 May 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
-    <div class="date-row">
-      <div><div class="date-month">Jul</div><div class="date-day">TBA</div></div>
-      <div class="date-info"><h3>Cairo, Egypt</h3><p>Doors 21:00 &nbsp;·&nbsp; Cairo International Stadium</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
+
+    <div class="date-row" style="opacity:0.5;">
+      <div><div class="date-month">May 2026</div><div class="date-day">04</div></div>
+      <div class="date-info">
+        <h3>Sevilla, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
+        <p>Ramón Sánchez-Pizjuán Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 4 May 2026</p>
+      </div>
+      <span class="date-ticket sold-out">Unavailable</span>
     </div>
+
+    <!-- UPCOMING SHOWS -->
     <div class="date-row">
-      <div><div class="date-month">May</div><div class="date-day">30</div></div>
-      <div class="date-info"><h3>Istanbul, Turkey</h3><p>Ataturk Olimpik Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
-    </div>
-    <div class="date-row">
-      <div><div class="date-month">Jun</div><div class="date-day">19</div></div>
-      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
-    </div>
-    <div class="date-row">
-      <div><div class="date-month">Jun</div><div class="date-day">21</div></div>
-      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
-    </div>
-    <div class="date-row">
-      <div><div class="date-month">Jul</div><div class="date-day">11</div></div>
-      <div class="date-info"><h3>Stockholm, Sweden</h3><p>Doors 21:00 &nbsp;·&nbsp; Strawberry Arena</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
-    </div>
-    <div class="date-row">
-      <div><div class="date-month">Jul</div><div class="date-day">13</div></div>
-      <div class="date-info"><h3>Copenhagen, Denmark</h3><p>Parken Stadium &nbsp;·&nbsp; Doors 21:00</p></div>
-      <a href="#" class="date-ticket">Tickets</a>
-    </div>
-    <div class="date-row">
-      <div><div class="date-month">Jul</div><div class="date-day">18</div></div>
-      <div class="date-info"><h3>Reggio Emilia, Italy</h3><p>18 July 2026 &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; RCF Arena Campovolo</p></div>
+      <div><div class="date-month">May 2026</div><div class="date-day">23</div></div>
+      <div class="date-info"><h3>Vaduz, Liechtenstein</h3><p>Rheinpark Stadium &nbsp;·&nbsp; Doors 11:30 &nbsp;·&nbsp; 23 May 2026</p></div>
       <a href="#" class="date-ticket">Tickets</a>
     </div>
 
-    <!-- NEW DATES COMING SOON BANNER -->
-    <div style="padding: 28px 0; border-bottom: 1px solid rgba(200,169,110,0.15); border-top: 1px solid rgba(200,169,110,0.15); margin: 8px 0; display:flex; align-items:center; gap: 20px;">
+    <div class="date-row">
+      <div><div class="date-month">May 2026</div><div class="date-day">23</div></div>
+      <div class="date-info"><h3>Feldkirch, Austria</h3><p>Vorarlberghalle &nbsp;·&nbsp; Doors 15:00 &nbsp;·&nbsp; 23 May 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">May 2026</div><div class="date-day">30</div></div>
+      <div class="date-info"><h3>Istanbul, Turkey</h3><p>Atatürk Olympic Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 30 May 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jun 2026</div><div class="date-day">19</div></div>
+      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 19 Jun 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jun 2026</div><div class="date-day">20</div></div>
+      <div class="date-info"><h3>Brescia, Italy</h3><p>Mario Rigamonti Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 20 Jun 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jun 2026</div><div class="date-day">21</div></div>
+      <div class="date-info"><h3>Milan, Italy</h3><p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 21 Jun 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jul 2026</div><div class="date-day">11</div></div>
+      <div class="date-info"><h3>Stockholm, Sweden</h3><p>Strawberry Arena &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 11 Jul 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jul 2026</div><div class="date-day">13</div></div>
+      <div class="date-info"><h3>Copenhagen, Denmark</h3><p>Parken Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 13 Jul 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jul 2026</div><div class="date-day">16</div></div>
+      <div class="date-info"><h3>Rome, Italy</h3><p>Stadio Olimpico &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 16 Jul 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jul 2026</div><div class="date-day">17</div></div>
+      <div class="date-info">
+        <h3>Hurghada, Egypt</h3>
+        <p>Khaled Bichara Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 17 Jul 2026</p>
+        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Evren's First Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo is unable to attend — entry to Egypt not permitted</span></p>
+      </div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <div class="date-row">
+      <div><div class="date-month">Jul 2026</div><div class="date-day">18</div></div>
+      <div class="date-info"><h3>Reggio Emilia, Italy</h3><p>RCF Arena Campovolo &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 18 Jul 2026</p></div>
+      <a href="#" class="date-ticket">Tickets</a>
+    </div>
+
+    <!-- DISCLAIMER BOX -->
+    <div style="margin:16px 0;padding:20px 24px;border:1px solid rgba(200,169,110,0.22);background:rgba(200,169,110,0.04);display:flex;gap:16px;align-items:flex-start;">
+      <div style="color:var(--accent);font-size:1rem;flex-shrink:0;margin-top:1px;">⚠</div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px;">Please Note</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.42);line-height:1.65;">Certain shows — including Brescia, Rome, and Istanbul — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest announcements.</div>
+      </div>
+    </div>
+
+    <!-- MORE DATES COMING SOON -->
+    <div style="padding:28px 0;border-bottom:1px solid rgba(200,169,110,0.15);border-top:1px solid rgba(200,169,110,0.15);margin:8px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
       <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
       <div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">More Dates Coming Soon</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.06em;">New cities and continents being added to the 2026 World Tour. Subscribe to the newsletter to be first to know.</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.06em;">New cities being added to the 2026 World Tour. Subscribe to the newsletter to be first to know.</div>
       </div>
-      <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">Notify Me</a>
+      <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">Notify Me</a>
     </div>
 
-    <!-- RUMOURS -->
+    <!-- UNCONFIRMED -->
     <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">Rumour</div><div class="date-day">?</div></div>
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
       <div class="date-info"><h3>Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Rumour</span>
+      <span class="date-ticket sold-out">Unconfirmed</span>
     </div>
     <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">Rumour</div><div class="date-day">?</div></div>
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
       <div class="date-info"><h3>Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Rumour</span>
+      <span class="date-ticket sold-out">Unconfirmed</span>
     </div>
     <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">50%</div><div class="date-day">?</div></div>
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
       <div class="date-info"><h3>Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Rumour</span>
+      <span class="date-ticket sold-out">Unconfirmed</span>
     </div>
     <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">5%</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Bosnia &amp; Herzegovina</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Rumour</span>
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Tokyo, Japan</h3><p>Unconfirmed — Stay tuned</p></div>
+      <span class="date-ticket sold-out">Unconfirmed</span>
     </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Florida, USA</h3><p>Unconfirmed — Stay tuned</p></div>
+      <span class="date-ticket sold-out">Unconfirmed</span>
+    </div>
+    <div class="date-row" style="opacity:0.42;">
+      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
+      <div class="date-info"><h3>Mexico</h3><p>Unconfirmed — Stay tuned</p></div>
+      <span class="date-ticket sold-out">Unconfirmed</span>
+    </div>
+
   </div>
 </section>
 
