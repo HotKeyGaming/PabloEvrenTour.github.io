@@ -615,304 +615,246 @@
   <div class="divider"></div>
 
   <style>
-    .tpin { cursor:pointer; }
-    .tpin .pulse { transform-origin: center; animation: mapPulse 2s ease-in-out infinite; }
-    @keyframes mapPulse { 0%,100%{opacity:0.35;r:13} 50%{opacity:0.05;r:22} }
-    #maptip {
-      position:absolute; background:rgba(6,6,6,0.97); border:1px solid rgba(200,169,110,0.45);
-      padding:10px 15px; pointer-events:none; opacity:0; transition:opacity 0.15s;
-      font-family:'Barlow Condensed',sans-serif; min-width:180px; z-index:30; white-space:nowrap;
-    }
+    #tourmap-wrap { position:relative; border:1px solid rgba(200,169,110,0.22); overflow:hidden; background:#0a1628; }
+    #maptip { position:absolute; background:rgba(4,6,12,0.97); border:1px solid rgba(200,169,110,0.45); padding:10px 15px; pointer-events:none; opacity:0; transition:opacity 0.15s; font-family:"Barlow Condensed",sans-serif; min-width:190px; z-index:30; }
     #maptip strong { display:block; font-size:0.88rem; letter-spacing:0.1em; color:#c8a96e; text-transform:uppercase; margin-bottom:3px; }
-    #maptip span { font-size:0.72rem; color:rgba(255,255,255,0.48); line-height:1.5; display:block; }
+    #maptip span { font-size:0.72rem; color:rgba(255,255,255,0.5); line-height:1.5; white-space:pre-line; }
+    .mp { cursor:pointer; }
+    @keyframes mpulse { 0%,100%{r:11;opacity:0.3} 50%{r:20;opacity:0.05} }
+    .mp-ring { animation:mpulse 2s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
   </style>
 
-  <div style="position:relative;border:1px solid rgba(200,169,110,0.2);overflow:hidden;background:#06090f;border-radius:2px;">
-    <div id="maptip"><strong id="maptip-city"></strong><span id="maptip-info"></span></div>
-
-    <!-- Badge -->
-    <div style="position:absolute;top:14px;left:14px;z-index:20;background:rgba(6,6,6,0.88);border-left:2px solid #c8a96e;padding:10px 14px;backdrop-filter:blur(6px);">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.12em;color:#c8a96e;">2026 World Tour</div>
-      <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:2px;">14+ shows · 10+ countries</div>
+  <div id="tourmap-wrap">
+    <div id="maptip"><strong id="mt-city"></strong><span id="mt-info"></span></div>
+    <div style="position:absolute;top:14px;left:14px;z-index:20;background:rgba(4,8,20,0.92);border-left:2px solid #c8a96e;padding:10px 14px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.14em;color:#c8a96e;">2026 World Tour</div>
+      <div style="font-size:0.68rem;color:rgba(255,255,255,0.38);margin-top:2px;letter-spacing:0.06em;">14+ shows · 10+ countries</div>
     </div>
 
-    <!--
-      WORLD MAP SVG
-      Proper simplified Mercator world map drawn as paths.
-      Ocean = dark navy, land = dark slate, borders subtle.
-      Pin coordinates tuned to match real geography.
-    -->
-    <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" id="worldsvg">
-      <!-- Ocean -->
-      <rect width="1000" height="500" fill="#06090f"/>
+    <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+      <rect width="1000" height="500" fill="#0a1628"/>
+      <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(255,255,255,0.04)" stroke-width="0.8"/>
+      <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(255,255,255,0.04)" stroke-width="0.8"/>
 
-      <!-- Graticule (subtle grid) -->
-      <line x1="0" y1="166" x2="1000" y2="166" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(200,169,110,0.07)" stroke-width="0.5"/>
-      <line x1="0" y1="333" x2="1000" y2="333" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="250" y1="0" x2="250" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="750" y1="0" x2="750" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
+      <!-- NORTH AMERICA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M50,58 L60,52 L80,48 L105,46 L128,48 L148,52 L162,58 L175,64 L185,72 L192,82 L197,94 L200,108 L202,122 L200,138 L196,150 L190,160 L180,168 L170,172 L160,170 L150,166 L140,164 L132,168 L124,172 L116,170 L108,164 L100,155 L92,142 L84,128 L76,114 L66,100 L58,86 L52,72Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M50,60 L40,58 L28,60 L18,66 L14,74 L20,80 L32,78 L44,72Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M192,30 L208,24 L226,22 L240,26 L246,34 L242,44 L228,50 L212,50 L198,44 L190,36Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M190,164 L196,160 L200,168 L200,178 L194,186 L186,186 L180,178 L182,170Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M168,174 L178,172 L185,178 L186,188 L182,196 L172,200 L164,196 L160,186 L162,178Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M196,176 L210,174 L218,178 L214,184 L200,184Z"/>
 
-      <!-- ══ LAND MASSES ══ -->
-      <!-- North America -->
-      <path d="M55,60 L75,55 L100,52 L125,55 L150,58 L170,62 L185,70 L195,80 L200,95 L205,110 L210,125 L208,140 L200,155 L190,165 L180,170 L170,168 L158,162 L148,158 L138,155 L125,158 L115,162 L105,165 L95,160 L88,150 L80,138 L72,125 L65,110 L58,95 L52,80 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- Greenland -->
-      <path d="M185,25 L205,20 L225,22 L235,30 L230,42 L215,48 L200,45 L188,38 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Central America -->
-      <path d="M158,168 L170,168 L178,175 L180,185 L175,192 L165,195 L155,190 L150,180 L152,172 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Caribbean -->
-      <path d="M185,168 L192,165 L196,170 L192,175 L186,173 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- South America -->
-      <path d="M170,198 L185,192 L200,190 L215,192 L228,198 L238,210 L242,225 L240,245 L235,265 L225,285 L210,300 L195,308 L180,305 L168,292 L160,275 L155,255 L155,235 L158,215 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
+      <!-- SOUTH AMERICA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M165,202 L180,196 L198,194 L214,196 L228,202 L238,212 L244,226 L246,242 L244,260 L238,278 L228,296 L214,312 L200,322 L186,322 L172,314 L160,300 L154,282 L152,262 L154,242 L158,224 L162,210Z"/>
 
-      <!-- Europe -->
-      <!-- Iberian Peninsula -->
-      <path d="M422,130 L440,125 L452,128 L458,138 L455,150 L445,158 L432,155 L422,148 L418,138 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- France + Central Europe -->
-      <path d="M440,118 L465,112 L490,110 L510,112 L520,120 L518,132 L508,140 L495,145 L478,148 L462,145 L448,140 L438,130 L436,120 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- UK -->
-      <path d="M428,100 L438,96 L444,102 L440,112 L430,114 L424,108 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Ireland -->
-      <path d="M418,102 L425,100 L427,106 L422,110 L416,107 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Scandinavia -->
-      <path d="M462,72 L478,65 L495,62 L508,68 L514,80 L510,94 L500,102 L488,106 L474,102 L463,92 L458,80 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Italy -->
-      <path d="M472,138 L480,132 L488,135 L492,145 L490,158 L484,168 L476,162 L472,150 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Greece + Balkans -->
-      <path d="M498,138 L512,132 L522,136 L524,148 L518,155 L506,155 L498,148 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Iceland -->
-      <path d="M390,68 L405,64 L415,68 L412,76 L400,78 L390,74 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
+      <!-- EUROPE -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M428,90 L445,84 L462,80 L480,76 L498,74 L514,76 L524,82 L526,90 L520,100 L512,108 L500,114 L490,120 L480,126 L470,130 L460,132 L448,130 L438,126 L428,120 L420,112 L418,102 L422,94Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M420,124 L438,118 L452,118 L462,122 L466,132 L464,144 L456,154 L444,158 L430,156 L420,148 L414,138 L414,128Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M430,94 L440,90 L446,94 L444,104 L436,110 L428,108 L424,100Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M418,98 L426,96 L428,102 L422,108 L414,106Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M464,62 L480,56 L498,52 L514,54 L524,62 L526,74 L520,84 L508,90 L494,94 L478,92 L466,84 L460,74Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M498,96 L506,92 L510,98 L506,106 L498,106Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M480,126 L490,122 L498,124 L502,132 L500,144 L496,156 L488,166 L480,162 L476,150 L476,138Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M482,168 L492,166 L496,172 L490,176 L482,174Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M520,114 L534,110 L546,114 L548,124 L542,132 L530,134 L520,130Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M530,132 L538,130 L542,138 L538,146 L530,148 L526,142Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M392,64 L406,58 L420,60 L424,68 L416,76 L402,78 L390,72Z"/>
 
-      <!-- North Africa -->
-      <path d="M418,170 L450,165 L490,162 L530,162 L560,165 L575,172 L578,188 L572,205 L555,215 L530,220 L505,222 L478,220 L452,215 L430,205 L418,192 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- East Africa + Horn -->
-      <path d="M555,218 L578,210 L595,215 L605,228 L608,245 L600,262 L585,272 L568,268 L555,255 L548,238 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Sub-Saharan / Central Africa -->
-      <path d="M452,225 L530,222 L558,230 L568,248 L565,270 L552,290 L535,305 L515,315 L495,318 L475,314 L458,300 L448,280 L445,258 L448,238 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- Southern Africa -->
-      <path d="M458,305 L515,315 L535,310 L545,320 L540,340 L528,355 L510,362 L490,360 L472,350 L460,335 L452,318 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Madagascar -->
-      <path d="M568,298 L575,290 L580,298 L578,312 L572,316 L566,310 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
+      <!-- AFRICA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M414,162 L440,158 L475,155 L510,154 L540,154 L562,156 L578,162 L588,172 L590,186 L585,200 L572,210 L554,218 L530,222 L505,224 L478,222 L452,218 L428,210 L412,198 L408,184 L410,170Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M414,202 L452,218 L505,224 L554,218 L576,222 L590,234 L596,250 L594,268 L584,286 L568,302 L548,314 L524,322 L500,326 L476,322 L454,312 L436,298 L422,280 L412,260 L408,238 L410,218Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M578,216 L598,208 L616,212 L624,226 L620,242 L608,252 L592,250 L582,238Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M576,288 L582,278 L588,282 L588,300 L582,312 L574,308 L572,296Z"/>
 
-      <!-- Middle East / Turkey / Arabia -->
-      <path d="M522,140 L560,135 L580,138 L590,148 L588,162 L575,170 L558,172 L540,168 L525,158 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Arabia -->
-      <path d="M560,168 L590,162 L610,165 L618,178 L615,198 L605,212 L588,218 L570,215 L558,202 L555,185 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Iran/Iraq -->
-      <path d="M585,138 L618,132 L638,138 L645,150 L638,165 L620,170 L600,168 L585,160 L582,148 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
+      <!-- MIDDLE EAST / TURKEY -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M548,128 L572,122 L598,120 L620,122 L634,128 L638,138 L630,148 L614,154 L594,156 L572,152 L552,146 L544,138Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M600,118 L620,114 L638,116 L644,122 L634,128 L620,122 L600,120Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M572,152 L614,150 L644,148 L670,148 L690,154 L696,166 L690,178 L672,186 L648,190 L620,188 L596,184 L574,176 L564,164Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M580,180 L614,176 L646,174 L660,182 L668,196 L664,216 L650,232 L630,244 L608,248 L588,244 L574,230 L568,212 L568,196Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M554,158 L578,158 L584,170 L582,186 L570,200 L552,204 L536,198 L528,184 L530,168 L542,160Z"/>
 
-      <!-- Central Asia -->
-      <path d="M620,105 L665,98 L700,100 L720,108 L722,122 L710,132 L685,138 L655,138 L635,132 L620,120 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Russia / Siberia -->
-      <path d="M500,30 L580,22 L660,20 L740,24 L800,30 L840,42 L850,58 L840,72 L815,80 L780,85 L745,88 L710,86 L675,82 L640,80 L605,82 L570,85 L540,82 L515,75 L498,65 L495,48 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- China/East Asia -->
-      <path d="M700,100 L740,95 L775,98 L800,108 L808,122 L800,138 L782,148 L758,152 L730,150 L705,145 L688,135 L685,120 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- India -->
-      <path d="M640,148 L665,142 L682,148 L685,162 L678,178 L665,188 L650,185 L638,172 L635,158 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Southeast Asia -->
-      <path d="M740,155 L765,148 L782,152 L785,165 L775,175 L755,178 L740,170 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Japan -->
-      <path d="M808,100 L818,96 L824,102 L820,112 L812,115 L806,108 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
-      <!-- Korea -->
-      <path d="M790,108 L800,104 L806,110 L802,118 L794,118 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
-      <!-- Indonesia -->
-      <path d="M748,195 L762,190 L775,192 L780,200 L772,206 L758,205 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
-      <path d="M782,192 L795,188 L805,192 L802,200 L790,200 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
+      <!-- RUSSIA / CENTRAL ASIA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M524,40 L570,32 L630,26 L700,22 L770,22 L830,26 L880,34 L910,44 L920,58 L910,72 L885,82 L850,88 L808,92 L765,92 L722,90 L680,88 L640,86 L602,86 L568,88 L540,84 L520,76 L512,62 L516,50Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M630,90 L680,88 L730,90 L770,94 L790,104 L792,118 L778,130 L748,138 L714,142 L678,140 L648,136 L626,128 L618,116 L622,102Z"/>
 
-      <!-- Australia -->
-      <path d="M758,295 L795,285 L828,288 L848,300 L855,318 L848,338 L832,350 L808,355 L782,350 L762,338 L752,320 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- New Zealand -->
-      <path d="M878,330 L885,325 L890,332 L886,342 L878,340 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.4"/>
+      <!-- CHINA / ASIA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M730,90 L775,92 L815,96 L848,106 L862,118 L858,134 L840,146 L812,154 L778,158 L744,158 L714,154 L694,146 L684,134 L682,120 L692,108 L710,98Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M648,148 L675,142 L698,148 L706,162 L700,180 L686,196 L668,204 L650,200 L636,186 L630,168 L634,154Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M820,116 L832,112 L840,118 L836,128 L822,130Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M850,110 L862,104 L870,108 L868,120 L858,126 L848,122Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M868,126 L876,122 L882,128 L878,138 L868,138Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M764,152 L790,148 L810,154 L812,168 L800,178 L780,180 L762,172 L758,160Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M788,178 L796,182 L800,196 L796,208 L788,210 L782,200 L782,188Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M744,196 L778,186 L800,192 L802,204 L782,212 L754,210 L740,204Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M792,208 L830,202 L850,206 L848,216 L820,218 L792,216Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M826,188 L860,184 L876,190 L874,202 L850,206 L826,202Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M840,160 L852,156 L858,164 L852,174 L840,172Z"/>
 
-      <!-- Antarctica (partial) -->
-      <path d="M200,480 L400,472 L600,470 L800,472 L950,478 L1000,490 L1000,500 L0,500 L0,490 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
+      <!-- AUSTRALIA -->
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M778,298 L812,286 L848,284 L878,290 L900,302 L910,318 L906,338 L892,352 L868,360 L840,362 L812,356 L790,342 L776,324 L772,308Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M848,364 L858,360 L864,368 L856,374 L846,370Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M912,328 L920,322 L926,330 L920,342 L910,338Z"/>
+      <path fill="#152238" stroke="#1e3352" stroke-width="0.5" d="M916,346 L922,342 L926,352 L918,360 L912,354Z"/>
 
-      <!-- ══ PINS ══ -->
-      <!-- Coordinates: x = (longitude+180)/360*1000, y = (90-latitude)/180*500 approx Mercator -->
+      <rect x="0" y="468" width="1000" height="32" fill="#152238" stroke="#1e3352" stroke-width="0.5"/>
 
-      <!-- COMPLETED — bronze -->
-      <!-- Basel lon=7.6, lat=47.6 → x=521, y=118 -->
-      <g class="tpin" data-city="Basel, Switzerland" data-info="St. Jakob Park · Ongoing 2026 · Pablo Only">
-        <circle cx="521" cy="118" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="527" y="115" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8" text-anchor="start">BASEL</text>
+      <!-- COMPLETED — green pins -->
+      <g class="mp" data-city="Basel, Switzerland" data-info="St. Jakob Park Stadium&#10;Ongoing 2026 · Pablo Only">
+        <circle cx="521" cy="118" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="527" y="115" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">BASEL</text>
       </g>
-      <!-- Bern lon=7.4, lat=46.9 → x=521, y=120 -->
-      <g class="tpin" data-city="Bern, Switzerland" data-info="Wankdorf Stadium · 21 Mar 2026 ✓ · Pablo Only">
-        <circle cx="519" cy="120" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="510" y="128" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">BERN</text>
+      <g class="mp" data-city="Bern, Switzerland" data-info="Wankdorf Stadium&#10;21 Mar 2026 ✓ · Pablo Only">
+        <circle cx="519" cy="121" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="510" y="130" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">BERN</text>
       </g>
-      <!-- Barcelona lon=2.1, lat=41.4 → x=505, y=137 -->
-      <g class="tpin" data-city="Barcelona, Spain" data-info="Spotify Camp Nou · 13 Feb 2026 ✓ · Pablo Only">
-        <circle cx="505" cy="137" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="511" y="134" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">BARCELONA</text>
+      <g class="mp" data-city="Barcelona, Spain" data-info="Spotify Camp Nou&#10;13 Feb 2026 ✓ · Pablo Only">
+        <circle cx="506" cy="135" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="512" y="132" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">BARCELONA</text>
       </g>
-      <!-- Jerez lon=-6.1, lat=36.7 → x=482, y=148 -->
-      <g class="tpin" data-city="Jerez de la Frontera, Spain" data-info="Estadio Chapín · 1 May 2026 ✓ · Pablo Only">
-        <circle cx="482" cy="148" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="470" y="157" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">JEREZ</text>
+      <g class="mp" data-city="Jerez de la Frontera, Spain" data-info="Estadio Chapin · 1 May 2026 ✓&#10;Pablo Only">
+        <circle cx="483" cy="148" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="472" y="158" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">JEREZ</text>
       </g>
-      <!-- Cadiz lon=-6.3, lat=36.5 → x=482, y=149 -->
-      <g class="tpin" data-city="Cádiz, Spain" data-info="JP Financial Stadium · 2 May 2026 ✓ · Pablo Only">
-        <circle cx="480" cy="150" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="468" y="144" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">CÁDIZ</text>
+      <g class="mp" data-city="Cadiz, Spain" data-info="JP Financial Stadium · 2 May 2026 ✓&#10;Pablo Only">
+        <circle cx="480" cy="150" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="469" y="145" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">CADIZ</text>
       </g>
-      <!-- Sevilla lon=-5.9, lat=37.4 → x=483, y=147 -->
-      <g class="tpin" data-city="Sevilla, Spain" data-info="Ramón S-P Stadium · 4 May 2026 ✓ · Pablo Only">
-        <circle cx="483" cy="146" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="488" y="143" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">SEVILLA</text>
+      <g class="mp" data-city="Sevilla, Spain" data-info="Ramon S-P Stadium · 4 May 2026 ✓&#10;Pablo Only">
+        <circle cx="485" cy="146" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="490" y="142" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">SEVILLA</text>
       </g>
-      <!-- Malta lon=14.4, lat=35.9 → x=540, y=149 -->
-      <g class="tpin" data-city="Malta" data-info="National Stadium Ta'Qali · 20 Feb 2026 ✓ · Pablo Only">
-        <circle cx="540" cy="149" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="546" y="146" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">MALTA</text>
+      <g class="mp" data-city="Malta" data-info="National Stadium Ta Qali · 20 Feb 2026 ✓&#10;Pablo Only">
+        <circle cx="540" cy="151" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="546" y="148" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">MALTA</text>
       </g>
-      <!-- Erzincan lon=39.5, lat=39.7 → x=610, y=139 -->
-      <g class="tpin" data-city="Erzincan, Turkey" data-info="13 Şubat City Stadium · 25 Apr 2026 ✓ · Evren Solo">
-        <circle cx="610" cy="139" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="616" y="136" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">ERZINCAN</text>
+      <g class="mp" data-city="Erzincan, Turkey" data-info="13 Subat City Stadium · 25 Apr 2026 ✓&#10;Evren Solo">
+        <circle cx="610" cy="140" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="616" y="137" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">ERZINCAN</text>
       </g>
-      <!-- Istanbul past lon=29.0, lat=41.0 → x=580, y=136 -->
-      <g class="tpin" data-city="Istanbul (Past Show)" data-info="Beşiktaş Stadium · 1 May 2026 ✓ · Evren Solo">
-        <circle cx="581" cy="136" r="5" fill="#7a5820" opacity="0.9"/>
-        <text x="565" y="132" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#9a7840" letter-spacing="0.8">ISTANBUL ✓</text>
+      <g class="mp" data-city="Istanbul — Past Show" data-info="Besiktas Stadium · 1 May 2026 ✓&#10;Evren Solo">
+        <circle cx="580" cy="137" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.2"/>
+        <text x="560" y="133" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#4caf50" letter-spacing="0.8">ISTANBUL ✓</text>
       </g>
 
       <!-- UPCOMING — bright gold pulsing -->
-      <!-- Vaduz lon=9.5, lat=47.1 → x=526, y=119 -->
-      <g class="tpin" data-city="Vaduz, Liechtenstein" data-info="Rheinpark Stadium · 16 May 2026 · Doors 12:00 · Pablo &amp; Evren">
-        <circle cx="526" cy="119" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2s"/>
-        <circle cx="526" cy="119" r="6" fill="#e2c688"/>
+      <g class="mp" data-city="Vaduz, Liechtenstein" data-info="Rheinpark Stadium · 16 May 2026&#10;Doors 12:00 · Pablo and Evren">
+        <circle class="mp-ring" cx="526" cy="119" r="11" fill="rgba(226,198,136,0.2)"/>
+        <circle cx="526" cy="119" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
         <text x="532" y="113" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">VADUZ</text>
       </g>
-      <!-- Feldkirch lon=9.6, lat=47.2 → x=527, y=119 -->
-      <g class="tpin" data-city="Feldkirch, Austria" data-info="Vorarlberghalle · 16 May 2026 · Doors 15:00 · Pablo &amp; Evren">
-        <circle cx="527" cy="122" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.3s"/>
-        <circle cx="527" cy="122" r="6" fill="#e2c688"/>
-        <text x="533" y="129" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">FELDKIRCH</text>
+      <g class="mp" data-city="Feldkirch, Austria" data-info="Vorarlberghalle · 16 May 2026&#10;Doors 15:00 · Pablo and Evren">
+        <circle class="mp-ring" cx="527" cy="123" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.3s"/>
+        <circle cx="527" cy="123" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="533" y="130" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">FELDKIRCH</text>
       </g>
-      <!-- Istanbul upcoming lon=29.0, lat=41.0 → x=580, y=136 -->
-      <g class="tpin" data-city="Istanbul, Turkey" data-info="Atatürk Olympic Stadium · 30 May 2026 · Pablo Only">
-        <circle cx="581" cy="133" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:1.9s"/>
-        <circle cx="581" cy="133" r="6" fill="#e2c688"/>
-        <text x="587" y="129" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">ISTANBUL</text>
+      <g class="mp" data-city="Istanbul, Turkey" data-info="Ataturk Olympic Stadium · 30 May 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="581" cy="132" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:1.9s"/>
+        <circle cx="581" cy="132" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="587" y="128" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">ISTANBUL</text>
       </g>
-      <!-- Milan lon=9.2, lat=45.5 → x=525, y=123 -->
-      <g class="tpin" data-city="Milan, Italy" data-info="Mind Live Theatre · 19 &amp; 21 Jun 2026 · Pablo Only">
-        <circle cx="525" cy="126" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.4s"/>
-        <circle cx="525" cy="126" r="6" fill="#e2c688"/>
-        <text x="531" y="134" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">MILAN</text>
+      <g class="mp" data-city="Milan, Italy" data-info="Mind Live Theatre · 19 and 21 Jun 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="526" cy="127" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.4s"/>
+        <circle cx="526" cy="127" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="532" y="135" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">MILAN</text>
       </g>
-      <!-- Brescia lon=10.2, lat=45.5 → x=528, y=123 -->
-      <g class="tpin" data-city="Brescia, Italy" data-info="Mario Rigamonti Stadium · 20 Jun 2026 · Pablo Only">
-        <circle cx="528" cy="123" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.1s"/>
-        <circle cx="528" cy="123" r="6" fill="#e2c688"/>
+      <g class="mp" data-city="Brescia, Italy" data-info="Mario Rigamonti Stadium · 20 Jun 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="530" cy="124" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.1s"/>
+        <circle cx="530" cy="124" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
       </g>
-      <!-- Stockholm lon=18.1, lat=59.3 → x=550, y=91 -->
-      <g class="tpin" data-city="Stockholm, Sweden" data-info="Strawberry Arena · 11 Jul 2026 · Pablo Only">
-        <circle cx="550" cy="91" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.2s"/>
-        <circle cx="550" cy="91" r="6" fill="#e2c688"/>
-        <text x="557" y="88" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">STOCKHOLM</text>
+      <g class="mp" data-city="Stockholm, Sweden" data-info="Strawberry Arena · 11 Jul 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="550" cy="85" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.2s"/>
+        <circle cx="550" cy="85" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="557" y="82" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">STOCKHOLM</text>
       </g>
-      <!-- Copenhagen lon=12.6, lat=55.7 → x=535, y=100 -->
-      <g class="tpin" data-city="Copenhagen, Denmark" data-info="Parken Stadium · 13 Jul 2026 · Pablo Only">
-        <circle cx="535" cy="100" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.5s"/>
-        <circle cx="535" cy="100" r="6" fill="#e2c688"/>
-        <text x="516" y="97" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#e2c688" font-weight="700" letter-spacing="0.8">CPH</text>
+      <g class="mp" data-city="Copenhagen, Denmark" data-info="Parken Stadium · 13 Jul 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="535" cy="95" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.5s"/>
+        <circle cx="535" cy="95" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="514" y="92" font-family="Barlow Condensed,sans-serif" font-size="7" fill="#e2c688" font-weight="700" letter-spacing="0.8">CPH</text>
       </g>
-      <!-- Rome lon=12.5, lat=41.9 → x=535, y=135 -->
-      <g class="tpin" data-city="Rome, Italy" data-info="Stadio Olimpico · 16 Jul 2026 · Pablo Only">
-        <circle cx="535" cy="135" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2s"/>
-        <circle cx="535" cy="135" r="6" fill="#e2c688"/>
-        <text x="541" y="142" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">ROME</text>
+      <g class="mp" data-city="Rome, Italy" data-info="Stadio Olimpico · 16 Jul 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="535" cy="135" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2s"/>
+        <circle cx="535" cy="135" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="541" y="143" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">ROME</text>
       </g>
-      <!-- Hurghada lon=33.8, lat=27.3 → x=594, y=163 -->
-      <g class="tpin" data-city="Hurghada, Egypt" data-info="Khaled Bichara Stadium · 17 Jul 2026 · Evren Solo">
-        <circle cx="594" cy="163" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:1.8s"/>
-        <circle cx="594" cy="163" r="6" fill="#e2c688"/>
-        <text x="600" y="160" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">HURGHADA</text>
+      <g class="mp" data-city="Hurghada, Egypt" data-info="Khaled Bichara Stadium · 17 Jul 2026&#10;Evren Solo Performance">
+        <circle class="mp-ring" cx="594" cy="174" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:1.8s"/>
+        <circle cx="594" cy="174" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="600" y="171" font-family="Barlow Condensed,sans-serif" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">HURGHADA</text>
       </g>
-      <!-- Reggio Emilia lon=10.6, lat=44.7 → x=529, y=125 -->
-      <g class="tpin" data-city="Reggio Emilia, Italy" data-info="RCF Arena Campovolo · 18 Jul 2026 · Pablo Only">
-        <circle cx="529" cy="125" r="13" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.6s"/>
-        <circle cx="529" cy="125" r="6" fill="#e2c688"/>
-        <text x="512" y="132" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">REGGIO E.</text>
+      <g class="mp" data-city="Reggio Emilia, Italy" data-info="RCF Arena Campovolo · 18 Jul 2026&#10;Pablo Only">
+        <circle class="mp-ring" cx="529" cy="128" r="11" fill="rgba(226,198,136,0.2)" style="animation-duration:2.6s"/>
+        <circle cx="529" cy="128" r="6" fill="#e2c688" stroke="#fff8e0" stroke-width="0.8"/>
+        <text x="512" y="136" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">REGGIO E.</text>
       </g>
 
       <!-- UNCONFIRMED — grey -->
-      <!-- Yerevan lon=44.5, lat=40.2 → x=624, y=138 -->
-      <g class="tpin" data-city="Yerevan, Armenia" data-info="Unconfirmed">
-        <circle cx="624" cy="138" r="4" fill="#2e2e2e"/>
-        <text x="630" y="136" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">YEREVAN</text>
+      <g class="mp" data-city="Yerevan, Armenia" data-info="Unconfirmed">
+        <circle cx="624" cy="138" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="630" y="136" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">YEREVAN</text>
       </g>
-      <!-- Almaty lon=76.9, lat=43.3 → x=713, y=130 -->
-      <g class="tpin" data-city="Almaty, Kazakhstan" data-info="Unconfirmed">
-        <circle cx="713" cy="130" r="4" fill="#2e2e2e"/>
-        <text x="719" y="128" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">ALMATY</text>
+      <g class="mp" data-city="Almaty, Kazakhstan" data-info="Unconfirmed">
+        <circle cx="714" cy="130" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="720" y="128" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">ALMATY</text>
       </g>
-      <!-- Lima lon=-77.0, lat=-12.1 → x=285, y=284 -->
-      <g class="tpin" data-city="Lima, Peru" data-info="Unconfirmed">
-        <circle cx="285" cy="284" r="4" fill="#2e2e2e"/>
-        <text x="291" y="282" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">LIMA</text>
+      <g class="mp" data-city="Lima, Peru" data-info="Unconfirmed">
+        <circle cx="286" cy="284" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="292" y="282" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">LIMA</text>
       </g>
-      <!-- Tokyo lon=139.7, lat=35.7 → x=888, y=149 -->
-      <g class="tpin" data-city="Tokyo, Japan" data-info="Unconfirmed">
-        <circle cx="888" cy="149" r="4" fill="#2e2e2e"/>
-        <text x="876" y="145" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">TOKYO</text>
+      <g class="mp" data-city="Tokyo, Japan" data-info="Unconfirmed">
+        <circle cx="888" cy="151" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="876" y="148" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">TOKYO</text>
       </g>
-      <!-- Miami/Florida lon=-80.2, lat=25.8 → x=222, y=166 -->
-      <g class="tpin" data-city="Florida, USA" data-info="Unconfirmed">
-        <circle cx="222" cy="166" r="4" fill="#2e2e2e"/>
-        <text x="228" y="164" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">FLORIDA</text>
+      <g class="mp" data-city="Florida, USA" data-info="Unconfirmed">
+        <circle cx="200" cy="172" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="206" y="170" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">FLORIDA</text>
       </g>
-      <!-- Mexico City lon=-99.1, lat=19.4 → x=196, y=186 -->
-      <g class="tpin" data-city="Mexico" data-info="Unconfirmed">
-        <circle cx="196" cy="186" r="4" fill="#2e2e2e"/>
-        <text x="202" y="184" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#3a3a3a" letter-spacing="0.8">MEXICO</text>
+      <g class="mp" data-city="Mexico" data-info="Unconfirmed">
+        <circle cx="175" cy="188" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="181" y="186" font-family="Barlow Condensed,sans-serif" font-size="6.5" fill="#444" letter-spacing="0.8">MEXICO</text>
       </g>
 
-      <!-- Legend bottom left -->
-      <g transform="translate(12,482)">
+      <!-- Legend -->
+      <g transform="translate(12,486)">
         <circle cx="5" cy="0" r="5" fill="#e2c688"/>
-        <text x="13" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.35)" letter-spacing="1">UPCOMING</text>
-        <circle cx="82" cy="0" r="5" fill="#7a5820"/>
-        <text x="90" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.35)" letter-spacing="1">COMPLETED</text>
-        <circle cx="168" cy="0" r="4" fill="#2e2e2e"/>
-        <text x="176" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.35)" letter-spacing="1">UNCONFIRMED</text>
+        <text x="13" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.38)" letter-spacing="1">UPCOMING</text>
+        <circle cx="92" cy="0" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1"/>
+        <text x="100" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.38)" letter-spacing="1">COMPLETED</text>
+        <circle cx="186" cy="0" r="4" fill="#222" stroke="#444" stroke-width="0.8"/>
+        <text x="194" y="4" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(255,255,255,0.38)" letter-spacing="1">UNCONFIRMED</text>
       </g>
     </svg>
-
-    <p style="padding:8px 14px 12px;font-size:0.68rem;color:rgba(255,255,255,0.18);letter-spacing:0.06em;">Hover over a pin for details</p>
+    <p style="padding:8px 14px 12px;font-size:0.68rem;color:rgba(255,255,255,0.18);letter-spacing:0.06em;">Hover over a pin for show details</p>
   </div>
 
   <script>
   (function(){
-    var tip = document.getElementById('maptip');
-    var tc  = document.getElementById('maptip-city');
-    var ti  = document.getElementById('maptip-info');
-    var wrap = document.getElementById('worldsvg').closest('div[style]');
-    document.querySelectorAll('.tpin').forEach(function(pin){
-      pin.addEventListener('mouseenter', function(){
+    var tip = document.getElementById("maptip");
+    var tc = document.getElementById("mt-city");
+    var ti = document.getElementById("mt-info");
+    var wrap = document.getElementById("tourmap-wrap");
+    document.querySelectorAll(".mp").forEach(function(p){
+      p.addEventListener("mouseenter", function(){
         tc.textContent = this.dataset.city;
         ti.textContent = this.dataset.info;
-        tip.style.opacity = '1';
+        tip.style.opacity = "1";
       });
-      pin.addEventListener('mousemove', function(e){
+      p.addEventListener("mousemove", function(e){
         var r = wrap.getBoundingClientRect();
         var x = e.clientX - r.left + 14;
         var y = e.clientY - r.top - 10;
-        if(x + 210 > r.width) x -= 220;
+        if(x + 215 > r.width) x -= 225;
         if(y < 0) y = 4;
-        tip.style.left = x + 'px';
-        tip.style.top  = y + 'px';
+        tip.style.left = x+"px";
+        tip.style.top = y+"px";
       });
-      pin.addEventListener('mouseleave', function(){
-        tip.style.opacity = '0';
+      p.addEventListener("mouseleave", function(){
+        tip.style.opacity = "0";
       });
     });
   })();
   </script>
 </section>
+
 
 
 <!-- WHAT TO EXPECT -->
