@@ -613,21 +613,250 @@
   <p class="section-label">The Route</p>
   <h2 class="section-title">Tour Map</h2>
   <div class="divider"></div>
-  <div class="map-wrap">
-    <div class="map-badge"><h4>2026 World Tour</h4><p>9+ countries · 14 shows</p></div>
-    <!--
-      HOW THIS MAP WORKS:
-      It shows all tour cities via Google Maps embed.
-      If it shows a grey/error screen, use the simpler fallback below.
-      FALLBACK (no API key needed — paste this src instead):
-      https://maps.google.com/maps?q=Basel,Cadiz+Spain,Vaduz+Liechtenstein,Bregenz+Austria,Paris+France,Cairo+Egypt,Reggio+Emilia+Italy,Stockholm+Sweden,Istanbul+Turkey&t=&z=3&ie=UTF8&iwloc=&output=embed
-    -->
-    <iframe
-      src="https://maps.google.com/maps?q=Basel+Switzerland,Cadiz+Spain,Vaduz+Liechtenstein,Bregenz+Austria,Paris+France,Cairo+Egypt,Reggio+Emilia+Italy,Stockholm+Sweden,Istanbul+Turkey&t=&z=3&ie=UTF8&iwloc=&output=embed"
-      allowfullscreen loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+  <div style="position:relative;border:1px solid rgba(200,169,110,0.2);overflow:hidden;background:#080808;">
+    <div class="map-badge"><h4>2026 World Tour</h4><p>14+ shows · 10+ countries</p></div>
+
+    <style>
+      .tour-pin { cursor:pointer; }
+      #map-tooltip2 {
+        position:absolute; background:rgba(6,6,6,0.97); border:1px solid rgba(200,169,110,0.4);
+        padding:11px 16px; pointer-events:none; opacity:0; transition:opacity 0.15s;
+        font-family:'Barlow Condensed',sans-serif; min-width:175px; z-index:30;
+      }
+      #map-tooltip2 h5 { font-size:0.9rem; letter-spacing:0.1em; color:#c8a96e; text-transform:uppercase; margin-bottom:3px; }
+      #map-tooltip2 p { font-size:0.72rem; color:rgba(255,255,255,0.48); line-height:1.45; }
+    </style>
+
+    <div id="map-tooltip2"><h5 id="tt2-city"></h5><p id="tt2-info"></p></div>
+
+    <div style="position:relative;width:100%;line-height:0;">
+      <!-- Real world map -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/2560px-World_map_-_low_resolution.svg.png"
+        alt="World Map"
+        style="width:100%;display:block;opacity:0.2;filter:sepia(0.4) brightness(0.7);"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/World_map_blank_without_borders.svg/2560px-World_map_blank_without_borders.svg.png'"
+      >
+
+      <!-- Pins overlay — viewBox matches the image aspect ratio 2560x1280 -->
+      <svg viewBox="0 0 2560 1280" xmlns="http://www.w3.org/2000/svg"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;">
+
+        <!-- ══ COMPLETED — bronze/dark gold ══ -->
+        <!-- Basel -->
+        <g class="tour-pin" data-city="Basel, Switzerland" data-info="St. Jakob Park · Ongoing 2026&#10;Pablo Only Performance">
+          <circle cx="1268" cy="430" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1268" cy="430" r="7" fill="#9a7440"/>
+          <text x="1280" y="427" font-family="Barlow Condensed,sans-serif" font-size="24" fill="#9a7440" letter-spacing="1.5">BASEL</text>
+        </g>
+        <!-- Bern -->
+        <g class="tour-pin" data-city="Bern, Switzerland" data-info="Wankdorf Stadium · 21 Mar 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1262" cy="436" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1262" cy="436" r="7" fill="#9a7440"/>
+          <text x="1240" y="450" font-family="Barlow Condensed,sans-serif" font-size="24" fill="#9a7440" letter-spacing="1.5">BERN</text>
+        </g>
+        <!-- Barcelona -->
+        <g class="tour-pin" data-city="Barcelona, Spain" data-info="Spotify Camp Nou · 13 Feb 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1218" cy="458" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1218" cy="458" r="7" fill="#9a7440"/>
+          <text x="1230" y="455" font-family="Barlow Condensed,sans-serif" font-size="24" fill="#9a7440" letter-spacing="1.5">BARCELONA</text>
+        </g>
+        <!-- Jerez -->
+        <g class="tour-pin" data-city="Jerez de la Frontera, Spain" data-info="Estadio Chapín · 1 May 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1200" cy="476" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1200" cy="476" r="7" fill="#9a7440"/>
+          <text x="1212" y="473" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">JEREZ</text>
+        </g>
+        <!-- Cadiz -->
+        <g class="tour-pin" data-city="Cádiz, Spain" data-info="JP Financial Stadium · 2 May 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1196" cy="484" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1196" cy="484" r="7" fill="#9a7440"/>
+          <text x="1208" y="496" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">CÁDIZ</text>
+        </g>
+        <!-- Sevilla -->
+        <g class="tour-pin" data-city="Sevilla, Spain" data-info="Ramón S-P Stadium · 4 May 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1204" cy="472" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1204" cy="472" r="7" fill="#9a7440"/>
+          <text x="1185" y="466" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">SEVILLA</text>
+        </g>
+        <!-- Malta -->
+        <g class="tour-pin" data-city="Malta" data-info="National Stadium, Ta' Qali · 20 Feb 2026 ✓&#10;Pablo Only Performance">
+          <circle cx="1290" cy="494" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1290" cy="494" r="7" fill="#9a7440"/>
+          <text x="1302" y="491" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">MALTA</text>
+        </g>
+        <!-- Erzincan -->
+        <g class="tour-pin" data-city="Erzincan, Turkey" data-info="13 Şubat City Stadium · 25 Apr 2026 ✓&#10;Evren Solo Performance">
+          <circle cx="1448" cy="432" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1448" cy="432" r="7" fill="#9a7440"/>
+          <text x="1460" y="429" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">ERZINCAN</text>
+        </g>
+        <!-- Istanbul past -->
+        <g class="tour-pin" data-city="Istanbul, Turkey (Past)" data-info="Beşiktaş Stadium · 1 May 2026 ✓&#10;Evren Solo Performance">
+          <circle cx="1376" cy="430" r="12" fill="rgba(160,120,64,0.2)"/>
+          <circle cx="1376" cy="430" r="7" fill="#9a7440"/>
+          <text x="1356" y="445" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#9a7440" letter-spacing="1.5">ISTANBUL</text>
+        </g>
+
+        <!-- ══ UPCOMING — bright gold pulsing ══ -->
+        <!-- Vaduz -->
+        <g class="tour-pin" data-city="Vaduz, Liechtenstein" data-info="Rheinpark Stadium · 16 May 2026&#10;Doors 12:00 · Pablo &amp; Evren">
+          <circle cx="1272" cy="426" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1272" cy="426" r="9" fill="#e2c688"/>
+          <text x="1284" y="418" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">VADUZ</text>
+        </g>
+        <!-- Feldkirch -->
+        <g class="tour-pin" data-city="Feldkirch, Austria" data-info="Vorarlberghalle · 16 May 2026&#10;Doors 15:00 · Pablo &amp; Evren">
+          <circle cx="1275" cy="434" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1275" cy="434" r="9" fill="#e2c688"/>
+          <text x="1287" y="448" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">FELDKIRCH</text>
+        </g>
+        <!-- Istanbul upcoming -->
+        <g class="tour-pin" data-city="Istanbul, Turkey" data-info="Atatürk Olympic Stadium · 30 May 2026&#10;Pablo Only Performance">
+          <circle cx="1380" cy="426" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="1.9s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="1.9s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1380" cy="426" r="9" fill="#e2c688"/>
+        </g>
+        <!-- Milan -->
+        <g class="tour-pin" data-city="Milan, Italy" data-info="Mind Live Theatre · 19 &amp; 21 Jun 2026&#10;Pablo Only Performance">
+          <circle cx="1278" cy="450" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1278" cy="450" r="9" fill="#e2c688"/>
+          <text x="1290" y="447" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">MILAN</text>
+        </g>
+        <!-- Brescia -->
+        <g class="tour-pin" data-city="Brescia, Italy" data-info="Mario Rigamonti Stadium · 20 Jun 2026&#10;Pablo Only Performance">
+          <circle cx="1282" cy="446" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.1s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.1s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1282" cy="446" r="9" fill="#e2c688"/>
+          <text x="1294" y="460" font-family="Barlow Condensed,sans-serif" font-size="24" fill="#e2c688" font-weight="700" letter-spacing="2">BRESCIA</text>
+        </g>
+        <!-- Stockholm -->
+        <g class="tour-pin" data-city="Stockholm, Sweden" data-info="Strawberry Arena · 11 Jul 2026&#10;Pablo Only Performance">
+          <circle cx="1298" cy="342" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1298" cy="342" r="9" fill="#e2c688"/>
+          <text x="1310" y="339" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">STOCKHOLM</text>
+        </g>
+        <!-- Copenhagen -->
+        <g class="tour-pin" data-city="Copenhagen, Denmark" data-info="Parken Stadium · 13 Jul 2026&#10;Pablo Only Performance">
+          <circle cx="1278" cy="366" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1278" cy="366" r="9" fill="#e2c688"/>
+          <text x="1248" y="358" font-family="Barlow Condensed,sans-serif" font-size="24" fill="#e2c688" font-weight="700" letter-spacing="2">COPENHAGEN</text>
+        </g>
+        <!-- Rome -->
+        <g class="tour-pin" data-city="Rome, Italy" data-info="Stadio Olimpico · 16 Jul 2026&#10;Pablo Only Performance">
+          <circle cx="1286" cy="466" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1286" cy="466" r="9" fill="#e2c688"/>
+          <text x="1298" y="478" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">ROME</text>
+        </g>
+        <!-- Hurghada -->
+        <g class="tour-pin" data-city="Hurghada, Egypt" data-info="Khaled Bichara Stadium · 17 Jul 2026&#10;Evren Solo Performance">
+          <circle cx="1390" cy="556" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="1.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1390" cy="556" r="9" fill="#e2c688"/>
+          <text x="1402" y="553" font-family="Barlow Condensed,sans-serif" font-size="26" fill="#e2c688" font-weight="700" letter-spacing="2">HURGHADA</text>
+        </g>
+        <!-- Reggio Emilia -->
+        <g class="tour-pin" data-city="Reggio Emilia, Italy" data-info="RCF Arena Campovolo · 18 Jul 2026&#10;Pablo Only Performance">
+          <circle cx="1280" cy="454" r="0" fill="rgba(226,198,136,0.15)">
+            <animate attributeName="r" values="10;20;10" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.05;0.4" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="1280" cy="454" r="9" fill="#e2c688"/>
+          <text x="1248" y="466" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#e2c688" font-weight="700" letter-spacing="2">REGGIO E.</text>
+        </g>
+
+        <!-- ══ UNCONFIRMED — grey ══ -->
+        <g class="tour-pin" data-city="Yerevan, Armenia" data-info="Unconfirmed">
+          <circle cx="1470" cy="428" r="7" fill="#3a3a3a"/>
+          <text x="1480" y="425" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">YEREVAN</text>
+        </g>
+        <g class="tour-pin" data-city="Almaty, Kazakhstan" data-info="Unconfirmed">
+          <circle cx="1628" cy="402" r="7" fill="#3a3a3a"/>
+          <text x="1638" y="399" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">ALMATY</text>
+        </g>
+        <g class="tour-pin" data-city="Lima, Peru" data-info="Unconfirmed">
+          <circle cx="618" cy="700" r="7" fill="#3a3a3a"/>
+          <text x="628" y="697" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">LIMA</text>
+        </g>
+        <g class="tour-pin" data-city="Tokyo, Japan" data-info="Unconfirmed">
+          <circle cx="1990" cy="414" r="7" fill="#3a3a3a"/>
+          <text x="2000" y="411" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">TOKYO</text>
+        </g>
+        <g class="tour-pin" data-city="Florida, USA" data-info="Unconfirmed">
+          <circle cx="462" cy="470" r="7" fill="#3a3a3a"/>
+          <text x="472" y="467" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">FLORIDA</text>
+        </g>
+        <g class="tour-pin" data-city="Mexico" data-info="Unconfirmed">
+          <circle cx="376" cy="522" r="7" fill="#3a3a3a"/>
+          <text x="386" y="519" font-family="Barlow Condensed,sans-serif" font-size="22" fill="#444" letter-spacing="1.5">MEXICO</text>
+        </g>
+
+        <!-- Legend -->
+        <g transform="translate(40,1230)">
+          <circle cx="10" cy="0" r="9" fill="#e2c688"/>
+          <text x="25" y="5" font-family="Barlow Condensed,sans-serif" font-size="24" fill="rgba(255,255,255,0.4)" letter-spacing="2">UPCOMING</text>
+          <circle cx="200" cy="0" r="9" fill="#9a7440"/>
+          <text x="215" y="5" font-family="Barlow Condensed,sans-serif" font-size="24" fill="rgba(255,255,255,0.4)" letter-spacing="2">COMPLETED</text>
+          <circle cx="400" cy="0" r="7" fill="#3a3a3a"/>
+          <text x="415" y="5" font-family="Barlow Condensed,sans-serif" font-size="24" fill="rgba(255,255,255,0.4)" letter-spacing="2">UNCONFIRMED</text>
+        </g>
+      </svg>
+    </div>
+
+    <p style="padding:10px 18px 14px;font-size:0.7rem;color:rgba(255,255,255,0.18);letter-spacing:0.06em;">Hover over a pin for show details</p>
   </div>
+
+  <script>
+    (function(){
+      const tip = document.getElementById('map-tooltip2');
+      const tc = document.getElementById('tt2-city');
+      const ti = document.getElementById('tt2-info');
+      const wrap = tip.closest('div[style]');
+      document.querySelectorAll('.tour-pin').forEach(pin => {
+        pin.addEventListener('mouseenter', function() {
+          tc.textContent = this.dataset.city;
+          ti.textContent = this.dataset.info;
+          tip.style.opacity = '1';
+        });
+        pin.addEventListener('mousemove', function(e) {
+          const rect = wrap.getBoundingClientRect();
+          let x = e.clientX - rect.left + 14;
+          let y = e.clientY - rect.top - 10;
+          if (x + 210 > rect.width) x -= 225;
+          if (y < 0) y = 5;
+          tip.style.left = x + 'px';
+          tip.style.top = y + 'px';
+        });
+        pin.addEventListener('mouseleave', function() {
+          tip.style.opacity = '0';
+        });
+      });
+    })();
+  </script>
 </section>
 
 <!-- WHAT TO EXPECT -->
