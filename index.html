@@ -277,6 +277,58 @@
 </head>
 <body>
 
+<!-- GOLD CURSOR -->
+<div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;mix-blend-mode:difference;box-shadow:0 0 8px rgba(200,169,110,0.8);"></div>
+<div id="cursor-ring" style="position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(200,169,110,0.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;"></div>
+<style>
+  * { cursor: none !important; }
+  @media (hover: none) { * { cursor: auto !important; } #cursor-dot, #cursor-ring { display:none; } }
+</style>
+<script>
+var dot = document.getElementById('cursor-dot');
+var ring = document.getElementById('cursor-ring');
+var mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', function(e){
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+// Ring follows with slight lag
+(function animRing(){
+  rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+})();
+// Click ripple
+document.addEventListener('click', function(e){
+  var ripple = document.createElement('div');
+  ripple.style.cssText = 'position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:rippleOut 0.6s ease-out forwards;';
+  document.body.appendChild(ripple);
+  setTimeout(function(){ripple.remove();},600);
+});
+// Hover on links/buttons
+document.addEventListener('mouseover', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(2.5)';
+    ring.style.transform='translate(-50%,-50%) scale(1.5)';
+    ring.style.borderColor='rgba(200,169,110,0.9)';
+  }
+});
+document.addEventListener('mouseout', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.borderColor='rgba(200,169,110,0.5)';
+  }
+});
+</script>
+<style>
+@keyframes rippleOut {
+  0%{width:6px;height:6px;opacity:1;}
+  100%{width:80px;height:80px;opacity:0;margin-left:-37px;margin-top:-37px;}
+}
+</style>
+
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#"><span>Pablo</span> X <span>Evren</span> <span style="font-size:0.75rem;letter-spacing:0.12em;color:rgba(255,255,255,0.45);margin-left:6px;">World Tour 2026</span></a>
