@@ -379,6 +379,8 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#diary">Diary</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#memes">Memes</a></li>
+    <li><a href="#songs">Songs</a></li>
     <li><a href="#alphabet">Glossary</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -645,6 +647,9 @@ setInterval(updateCountdown, 1000);
   .dr-day { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; letter-spacing:0.04em; color:var(--white); }
 
   .dr-info h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .dr.upcoming .dr-info h3 { font-size:1.55rem; }
+  .dr.upcoming .dr-day { font-size:2.8rem; }
+  .dr.upcoming .dr-month { font-size:0.72rem; }
   .dr-info h3 .flag { font-size:1.1rem; }
   .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
   .dr-info p { font-size:0.76rem; color:rgba(255,255,255,0.38); margin-top:3px; }
@@ -797,7 +802,7 @@ setInterval(updateCountdown, 1000);
   </div>
 
   <!-- ══ UPCOMING ══ -->
-  <div class="dates-divider" style="color:var(--accent);">↓ Upcoming Shows</div>
+  <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
 
   <!-- Vaduz -->
   <div class="dr upcoming">
@@ -1254,72 +1259,82 @@ function toggleSetlist(){
   <div class="divider"></div>
   <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:0.04em;">Behind the scenes. Real moments. The actual story.</p>
 
-  <div style="position:relative;">
-    <!-- Left/Right arrows -->
-    <button onclick="diaryScroll(-1)" style="position:absolute;left:-16px;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.3)'" onmouseout="this.style.background='rgba(200,169,110,0.15)'">‹</button>
-    <button onclick="diaryScroll(1)" style="position:absolute;right:-16px;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.3)'" onmouseout="this.style.background='rgba(200,169,110,0.15)'">›</button>
+  <style>
+    .diary-wrap { position:relative; overflow:hidden; }
+    .diary-track { display:flex; transition:transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+    .diary-slide { min-width:100%; flex-shrink:0; display:grid; grid-template-columns:1fr 1fr; min-height:380px; }
+    .diary-img { overflow:hidden; background:#111; }
+    .diary-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .diary-text { background:var(--dark); padding:clamp(24px,4vw,48px); display:flex; flex-direction:column; justify-content:center; border-left:1px solid rgba(200,169,110,0.1); }
+    .diary-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border-radius:50%; background:rgba(10,10,10,0.75); border:1px solid rgba(200,169,110,0.35); color:var(--accent); font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; backdrop-filter:blur(6px); }
+    .diary-arrow:hover { background:rgba(200,169,110,0.2); border-color:var(--accent); }
+    @media(max-width:640px){ .diary-slide{ grid-template-columns:1fr; } .diary-img{ min-height:220px; } }
+  </style>
 
-    <!-- Slider -->
-    <div id="diary-slider" style="display:flex;gap:0;overflow:hidden;transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);">
+  <div class="diary-wrap">
+    <button class="diary-arrow" style="left:12px;" onclick="diaryNav(-1)">‹</button>
+    <button class="diary-arrow" style="right:12px;" onclick="diaryNav(1)">›</button>
 
-      <!-- Entry 1: Latest -->
-      <div class="diary-card" style="min-width:100%;display:flex;flex-direction:column;gap:0;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
-          <div style="background:#1a1a18;aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-            <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Jerez Cadiz Sevilla" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#222';this.style.display='none'">
-          </div>
-          <div style="background:var(--dark);padding:32px;display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">1–4 May 2026</div>
-            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;">Spain Shows: Done ✓</h3>
-            <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:16px;">Jerez de la Frontera, Cádiz and Sevilla shows completed. <span style="color:#7ec87e;font-weight:600;">✓</span> Three cities in three days. Energy was unreal. Liechtenstein and Austria are next — 16 May.</p>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:#7ec87e;"></div>
-              <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">Liechtenstein & Austria → Next</span>
-            </div>
+    <div class="diary-track" id="diary-track">
+
+      <!-- Slide 1 -->
+      <div class="diary-slide">
+        <div class="diary-img">
+          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Spain Shows">
+        </div>
+        <div class="diary-text">
+          <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">1–4 May 2026</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:14px;line-height:1;">Spain Shows:<br>Done ✓</h3>
+          <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:18px;">Jerez de la Frontera, Cádiz and Sevilla shows completed. Three cities in days. Energy was unreal. Liechtenstein and Austria are next — 16 May.</p>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#7ec87e;flex-shrink:0;"></div>
+            <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">Liechtenstein &amp; Austria → Next</span>
           </div>
         </div>
       </div>
 
-      <!-- Entry 2: Tour Announcement -->
-      <div class="diary-card" style="min-width:100%;flex-shrink:0;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:340px;">
-          <div style="background:#1a1a18;overflow:hidden;position:relative;">
-            <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-          <div style="background:var(--dark);padding:40px 36px;display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
-            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:16px;line-height:1;">World Tour<br>Announced</h3>
-            <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
-            <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:20px;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
-            <div style="display:flex;gap:24px;flex-wrap:wrap;">
-              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">14+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Shows</div></div>
-              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">9+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Countries</div></div>
-              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">2026</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Year</div></div>
-            </div>
+      <!-- Slide 2 -->
+      <div class="diary-slide">
+        <div class="diary-img">
+          <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement">
+        </div>
+        <div class="diary-text">
+          <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:14px;line-height:1;">World Tour<br>Announced</h3>
+          <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
+          <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:20px;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
+          <div style="display:flex;gap:28px;flex-wrap:wrap;">
+            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">14+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Shows</div></div>
+            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">9+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Countries</div></div>
+            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">2026</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Year</div></div>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Dots indicator -->
-    <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;" id="diary-dots">
-      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);transition:all 0.2s;"></div>
-      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.2s;"></div>
+    <!-- Dots -->
+    <div style="display:flex;gap:8px;justify-content:center;padding:14px 0 4px;" id="diary-dots">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);cursor:pointer;" onclick="diaryGoTo(0)"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;" onclick="diaryGoTo(1)"></div>
     </div>
   </div>
 </section>
 
 <script>
-var diaryIndex = 0;
-var diaryCards = document.querySelectorAll('.diary-card');
-var diaryDots = document.querySelectorAll('#diary-dots div');
-function diaryScroll(dir){
-  diaryIndex = Math.max(0, Math.min(diaryCards.length-1, diaryIndex+dir));
-  document.getElementById('diary-slider').style.transform = 'translateX(-'+diaryIndex*100+'%)';
-  diaryDots.forEach(function(d,i){ d.style.background = i===diaryIndex ? 'var(--accent)' : 'rgba(255,255,255,0.2)'; });
+var dIdx = 0;
+var dTotal = 2;
+function diaryGoTo(n){
+  dIdx = Math.max(0, Math.min(dTotal-1, n));
+  document.getElementById('diary-track').style.transform = 'translateX(-'+dIdx*100+'%)';
+  document.querySelectorAll('#diary-dots div').forEach(function(d,i){
+    d.style.background = i===dIdx ? 'var(--accent)' : 'rgba(255,255,255,0.2)';
+  });
 }
+function diaryNav(dir){ diaryGoTo(dIdx+dir); }
 </script>
+
 
 <!-- MERCH -->
 <section id="merch">
@@ -1521,6 +1536,151 @@ function diaryScroll(dir){
 </section>
 
 
+
+<!-- THE FIRST 4 MEMES -->
+<section id="memes" style="background:var(--dark2);">
+  <p class="section-label">Foundational Lore</p>
+  <h2 class="section-title">The First 4 Memes</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:36px;line-height:1.7;">Before anything else, there were four. Sacred. Immovable. Eternal. The cultural bedrock of the Terence Files universe.</p>
+
+  <style>
+    .meme-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:3px; }
+    .meme-card { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); padding:32px 28px; position:relative; overflow:hidden; transition:all 0.25s; cursor:default; }
+    .meme-card:hover { background:rgba(200,169,110,0.07); border-color:rgba(200,169,110,0.35); }
+    .meme-card:hover .meme-num { opacity:0.12; }
+    .meme-num { position:absolute; top:-10px; right:10px; font-family:'Bebas Neue',sans-serif; font-size:7rem; color:var(--accent); opacity:0.05; line-height:1; pointer-events:none; transition:opacity 0.25s; }
+    .meme-tag { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(200,169,110,0.5); font-family:'Barlow Condensed',sans-serif; font-weight:700; margin-bottom:16px; }
+    .meme-icon { font-size:2.2rem; margin-bottom:18px; }
+    .meme-name { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.1em; color:var(--accent); margin-bottom:14px; }
+    .meme-desc { font-size:0.83rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:16px; }
+    .meme-badge { display:inline-block; font-size:0.56rem; letter-spacing:0.2em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:4px 12px; border:1px solid rgba(200,169,110,0.3); color:rgba(200,169,110,0.65); }
+  </style>
+
+  <div class="meme-grid">
+    <div class="meme-card">
+      <div class="meme-num">01</div>
+      <div class="meme-tag">Meme #01 — Founding Pillar</div>
+      <div class="meme-icon">⬅️</div>
+      <div class="meme-name">Left</div>
+      <p class="meme-desc">Just Left. That's it. Left. Always left. The direction. The calling. The police enforce it. You are left or you are wrong.</p>
+      <div class="meme-badge">Canonical</div>
+    </div>
+    <div class="meme-card">
+      <div class="meme-num">02</div>
+      <div class="meme-tag">Meme #02 — Founding Pillar</div>
+      <div class="meme-icon">📚</div>
+      <div class="meme-name">Study</div>
+      <p class="meme-desc">We have to study for FMS. That is the lore. Study is the burden we carry. Left Study Big (LSB). Probably not Terence doing the studying though.</p>
+      <div class="meme-badge">Canonical</div>
+    </div>
+    <div class="meme-card">
+      <div class="meme-num">03</div>
+      <div class="meme-tag">Meme #03 — Founding Pillar</div>
+      <div class="meme-icon">💪</div>
+      <div class="meme-name">Big</div>
+      <p class="meme-desc">Big like Terence. Big like Big D. LTB — Left Terence Big. LSB — Left Study Big. Big is the physical and spiritual magnitude of the Files. If you're big, you're canonized.</p>
+      <div class="meme-badge">Canonical</div>
+    </div>
+    <div class="meme-card">
+      <div class="meme-num">04</div>
+      <div class="meme-tag">Meme #04 — Founding Pillar</div>
+      <div class="meme-icon">🐦</div>
+      <div class="meme-name">Terence</div>
+      <p class="meme-desc">Terence IS Big D. Holy Obesity. The fat bird from Angry Birds. The deity. The HOLY OBESITY maximum tier personified. He is the reason the Files exist. He is the Files.</p>
+      <div class="meme-badge">Canonical</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SONG LEGISLATION -->
+<section id="songs" style="background:var(--black);">
+  <p class="section-label">Sonic Policy</p>
+  <h2 class="section-title">Song Legislation</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:36px;line-height:1.7;">Not all songs are created equal. The Terence Files has strict rules about what can and cannot be spammed — and which songs are played at concerts. Violations are handled by the TLP and fined in McChickens.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px;">
+
+    <!-- FORBIDDEN -->
+    <div style="border:1px solid rgba(200,30,30,0.4);background:rgba(80,0,0,0.25);">
+      <div style="padding:18px 24px;border-bottom:1px solid rgba(200,30,30,0.2);display:flex;align-items:center;gap:12px;background:rgba(120,0,0,0.3);">
+        <span style="font-size:1.3rem;">🚫</span>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:#e84141;">Forbidden</div>
+          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(232,65,65,0.6);font-family:'Barlow Condensed',sans-serif;">Do Not Spam — Ever — Violation = McChicken Fine</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Good Night</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Worst song of all time. Absolutely chopped. This is canon.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Worst OAT</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Fried</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden. Do not spam under any circumstances.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">CARNIVAL</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden. All caps. All banned.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Bomb</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden to spam. But <span style="color:var(--accent);">performed live at concerts</span> — it's in the setlist.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
+        </div>
+        <div style="padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">TALKING</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden to spam. But <span style="color:var(--accent);">performed live at concerts</span> — it's in the setlist.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLESSED -->
+    <div style="border:1px solid rgba(30,160,80,0.4);background:rgba(0,60,20,0.25);">
+      <div style="padding:18px 24px;border-bottom:1px solid rgba(30,160,80,0.2);display:flex;align-items:center;gap:12px;background:rgba(0,80,30,0.3);">
+        <span style="font-size:1.3rem;">✅</span>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:#4caf50;">Blessed</div>
+          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(76,175,80,0.6);font-family:'Barlow Condensed',sans-serif;">Spam Freely — Encouraged — These Are Goated — Played At Every Concert</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Moon</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Certified banger. Spam away.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Diamonds From Sierra Leone</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">A classic. Blessed. Spam with pride.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">No Child Left Behind</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">The name alone. Spiritually aligned with Left meme.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
+        </div>
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">This One Here</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">This one here. You know it. Blessed.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
+        </div>
+        <div style="padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Sky City</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Elevated. Literally. Celestial banger.</div></div>
+          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Concert rule box -->
+  <div style="padding:18px 24px;border:1px solid rgba(200,169,110,0.25);background:rgba(200,169,110,0.05);display:flex;gap:14px;align-items:flex-start;">
+    <span style="font-size:1.1rem;flex-shrink:0;">🎤</span>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;">Concert Policy</div>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.48);line-height:1.65;"><span style="color:#e84141;">Forbidden songs</span> may not be spammed — but <span style="color:var(--accent);font-weight:600;">Bomb and Talking are performed live at every concert</span> (they are in the official setlist). <span style="color:#4caf50;">All Blessed songs</span> are played at every concert. No exceptions. The TLP will be present.</p>
+    </div>
+  </div>
+</section>
+
 <!-- HOLY OBESITY ALPHABET -->
 <section id="alphabet" style="background:var(--black);">
   <p class="section-label">The Official Lexicon</p>
@@ -1548,7 +1708,32 @@ function diaryScroll(dir){
     .gls-tag { display:inline-block; font-size:0.56rem; letter-spacing:0.18em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:2px 8px; border:1px solid rgba(200,169,110,0.3); color:rgba(200,169,110,0.7); margin-top:10px; }
   </style>
 
-  <div class="gls-grid">
+  <style>
+    @media(max-width:768px){
+      #gls-preview .gls-card:nth-child(n+7) { display:none; }
+      #gls-preview.expanded .gls-card { display:block !important; }
+    }
+    @media(min-width:769px){ #gls-more-btn { display:none !important; } }
+  </style>
+  <script>
+  function toggleGlossary(){
+    var grid = document.getElementById('gls-preview');
+    var btn = document.getElementById('gls-btn-text');
+    var arrow = document.getElementById('gls-arrow');
+    var open = grid.classList.contains('expanded');
+    if(open){
+      grid.classList.remove('expanded');
+      btn.textContent = 'Show All Terms';
+      arrow.style.transform = 'rotate(0deg)';
+      grid.scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      grid.classList.add('expanded');
+      btn.textContent = 'Hide Terms';
+      arrow.style.transform = 'rotate(180deg)';
+    }
+  }
+  </script>
+  <div id="gls-preview" class="gls-grid">
 
     <div class="gls-card">
       <div class="gls-term">Holy Obesity</div>
@@ -1699,7 +1884,16 @@ function diaryScroll(dir){
 
   </div>
 
-  <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(200,169,110,0.15);background:rgba(200,169,110,0.03);font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">
+  <!-- Show more button -->
+  <button id="gls-more-btn" onclick="toggleGlossary()" style="margin-top:16px;width:100%;background:transparent;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:13px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.2s;">
+    <span id="gls-btn-text">Show All Terms</span>
+    <svg id="gls-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+
+  <div id="gls-extra" style="display:none;">
+  </div>
+
+  <div style="margin-top:16px;padding:16px 20px;border:1px solid rgba(200,169,110,0.15);background:rgba(200,169,110,0.03);font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">
     ★ Licensed under the Morhaldenstrasse 67 Public License (MH67-PL). Enforced by The Left Police (TLP). Fines issued in 🍗 McChickens. Do NOT spam Good Night.
   </div>
 
