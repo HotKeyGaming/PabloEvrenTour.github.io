@@ -322,7 +322,11 @@ function spawnRipple(x, y) {
 }
 
 document.addEventListener('click', function(e){ spawnRipple(e.clientX, e.clientY); });
+var lastTouch = 0;
 document.addEventListener('touchstart', function(e){
+  var now = Date.now();
+  if(now - lastTouch < 400) return; // prevent spam
+  lastTouch = now;
   var t = e.touches[0];
   spawnRipple(t.clientX, t.clientY);
 }, {passive:true});
@@ -369,6 +373,7 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#diary">Diary</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#alphabet">Alphabet</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -921,19 +926,24 @@ setInterval(updateCountdown, 1000);
   </div>
 
   <!-- Disclaimer -->
-  <div class="dates-disclaimer">
-    <div style="color:var(--accent);font-size:1rem;flex-shrink:0;">⚠</div>
-    <p>Certain shows — including Brescia, Rome, Istanbul, and Copenhagen — are subject to change. Dates, venues, and availability may be updated at any time.</p>
+  <div style="margin:20px clamp(24px,6vw,80px);padding:20px 28px;border:1px solid rgba(200,169,110,0.35);background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(200,169,110,0.03));display:flex;gap:16px;align-items:flex-start;">
+    <div style="color:var(--accent);font-size:1.3rem;flex-shrink:0;margin-top:2px;">⚠</div>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Please Note</div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65;">Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome, Istanbul,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
+    </div>
   </div>
 
   <!-- More Dates Coming Soon -->
-  <div class="dates-coming">
-    <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
-    <div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">More Dates Coming Soon</div>
-      <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">New cities being added to the 2026 World Tour.</div>
+  <div style="margin:4px clamp(24px,6vw,80px) 0;padding:28px 32px;background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(200,169,110,0.04));border:1px solid rgba(200,169,110,0.4);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:200px;">
+      <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(200,169,110,0.6);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:var(--accent);line-height:1;">More Dates Coming Soon</div>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.06em;">New cities being added to the 2026 World Tour. Be the first to know.</div>
+      </div>
     </div>
-    <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Notify Me</a>
+    <a href="#newsletter" style="font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--accent);color:var(--black);padding:13px 28px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Notify Me →</a>
   </div>
 
   <!-- ══ UNCONFIRMED ══ -->
@@ -1211,6 +1221,7 @@ setInterval(updateCountdown, 1000);
       <div class="sl-row"><div class="sl-num">23</div><div class="sl-info"><h4>Day N' Nite</h4><div class="sl-guests"><span>Special Guests:</span> Evren1903, Kid Cudi</div></div></div>
       <div class="sl-row"><div class="sl-num">24</div><div class="sl-info"><h4>All Day</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Theophilus London, forgor</div></div></div>
       <div class="sl-row"><div class="sl-num">25</div><div class="sl-info"><h4>Say You Will</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.4);font-style:italic;">HEY HEY HEY 💔</span></div></div></div>
+      <div class="sl-row"><div class="sl-num">26</div><div class="sl-info"><h4>Runaway</h4><div class="sl-guests" style="color:rgba(200,169,110,0.5);font-style:italic;">Goodbye Time &nbsp;·&nbsp; yea im crying 💔😭🥀</div></div></div>
 
       <p style="margin-top:20px;font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">★ More songs and special guests could appear in random concerts. Setlist subject to change.</p>
     </div>
@@ -1243,7 +1254,7 @@ function toggleSetlist(){
     <button onclick="diaryScroll(1)" style="position:absolute;right:-16px;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.3)'" onmouseout="this.style.background='rgba(200,169,110,0.15)'">›</button>
 
     <!-- Slider -->
-    <div id="diary-slider" style="display:flex;gap:0;overflow:hidden;">
+    <div id="diary-slider" style="display:flex;gap:0;overflow:hidden;transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);">
 
       <!-- Entry 1: Latest -->
       <div class="diary-card" style="min-width:100%;display:flex;flex-direction:column;gap:0;">
@@ -1252,7 +1263,7 @@ function toggleSetlist(){
             <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Jerez Cadiz Sevilla" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#222';this.style.display='none'">
           </div>
           <div style="background:var(--dark);padding:32px;display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">4–5 May 2026</div>
+            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">1–4 May 2026</div>
             <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;">Spain Shows: Done ✓</h3>
             <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:16px;">Jerez de la Frontera, Cádiz and Sevilla shows completed. <span style="color:#7ec87e;font-weight:600;">✓</span> Three cities in three days. Energy was unreal. Liechtenstein and Austria are next — 16 May.</p>
             <div style="display:flex;align-items:center;gap:8px;">
@@ -1294,7 +1305,6 @@ var diaryDots = document.querySelectorAll('#diary-dots div');
 function diaryScroll(dir){
   diaryIndex = Math.max(0, Math.min(diaryCards.length-1, diaryIndex+dir));
   document.getElementById('diary-slider').style.transform = 'translateX(-'+diaryIndex*100+'%)';
-  document.getElementById('diary-slider').style.transition = 'transform 0.4s cubic-bezier(0.22,1,0.36,1)';
   diaryDots.forEach(function(d,i){ d.style.background = i===diaryIndex ? 'var(--accent)' : 'rgba(255,255,255,0.2)'; });
 }
 </script>
@@ -1496,6 +1506,190 @@ function diaryScroll(dir){
 
   initQuiz();
   </script>
+</section>
+
+
+<!-- HOLY OBESITY ALPHABET -->
+<section id="alphabet" style="background:var(--black);">
+  <p class="section-label">The Official Lexicon</p>
+  <h2 class="section-title">Holy Obesity Alphabet</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:36px;letter-spacing:0.04em;">The Terence Files operate in their own linguistic universe. Memorize these. You will be tested. Licensed at Morhaldenstrasse 67.</p>
+
+  <style>
+    .gls-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:3px; }
+    .gls-card {
+      padding:24px 22px; border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02); transition:all 0.25s; cursor:default;
+      border-left:3px solid transparent;
+    }
+    .gls-card:hover {
+      background:rgba(200,169,110,0.08);
+      border-color:rgba(200,169,110,0.5);
+      border-left-color:var(--accent);
+      transform:translateX(4px);
+    }
+    .gls-card:hover .gls-term { color:var(--accent); }
+    .gls-term { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.1em; color:var(--white); margin-bottom:4px; transition:color 0.2s; }
+    .gls-phonetic { font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.06em; font-style:italic; margin-bottom:10px; }
+    .gls-def { font-size:0.83rem; color:rgba(255,255,255,0.55); line-height:1.65; }
+    .gls-tag { display:inline-block; font-size:0.56rem; letter-spacing:0.18em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:2px 8px; border:1px solid rgba(200,169,110,0.3); color:rgba(200,169,110,0.7); margin-top:10px; }
+  </style>
+
+  <div class="gls-grid">
+
+    <div class="gls-card">
+      <div class="gls-term">Holy Obesity</div>
+      <div class="gls-phonetic">hoh · lee · oh · bee · si · tee</div>
+      <div class="gls-def">Official classification for an extreme fat person. The maximum tier of the Holy Taxonomy. Spiritually adjacent to Terence himself.</div>
+      <div class="gls-tag">Tier II — Maximum</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Holy Obese</div>
+      <div class="gls-phonetic">hoh · lee · oh · bees</div>
+      <div class="gls-def">Official classification for a fat person. The "Holy" prefix conveys reverence. One tier below Holy Obesity.</div>
+      <div class="gls-tag">Tier I</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">TBD</div>
+      <div class="gls-phonetic">tee · bee · dee</div>
+      <div class="gls-def">The Big Deniz. Not to be confused with "To Be Determined," though arguably both definitions apply equally to Deniz.</div>
+      <div class="gls-tag">Acronym</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">LTB</div>
+      <div class="gls-phonetic">el · tee · bee</div>
+      <div class="gls-def">Left Terence Big. A holy trinity of founding forces compressed into a single acronym of profound cultural significance.</div>
+      <div class="gls-tag">Holy Trinity</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">TLP</div>
+      <div class="gls-phonetic">tee · el · pee</div>
+      <div class="gls-def">The Left Police. The judicial enforcement arm of the Terence Files. They uphold leftward direction and dispense McChicken fines.</div>
+      <div class="gls-tag">Enforcement</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">LSB</div>
+      <div class="gls-phonetic">el · es · bee</div>
+      <div class="gls-def">Left Study Big. A scholarly-physical-directional hybrid acronym. Represents intellectual magnitude and committed leftism.</div>
+      <div class="gls-tag">Acronym</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">DISFO</div>
+      <div class="gls-phonetic">dis · foh</div>
+      <div class="gls-def">Primary classified domain of the TF. Full nature is ITF-only. Partial information: OTF. No information: TFA. Handle with care.</div>
+      <div class="gls-tag">Classified — ITF Only</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">WIDSFO</div>
+      <div class="gls-phonetic">wid · sfoh</div>
+      <div class="gls-def">Classified sub-domain of the TF. Closely related to DISFO. Access restricted to OTF and above. ITF has full context.</div>
+      <div class="gls-tag">Classified</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">DA</div>
+      <div class="gls-phonetic">dee · ay</div>
+      <div class="gls-def">Domain Alpha. Cross-referenced throughout the Files. An anchor concept that connects multiple classified domains.</div>
+      <div class="gls-tag">Domain</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Dogmog</div>
+      <div class="gls-phonetic">dog · mog</div>
+      <div class="gls-def">A dog. Simply a dog. Do not overthink it. The word is Dogmog. It means dog. That is all it means. Stop asking questions.</div>
+      <div class="gls-tag">Core Vocabulary</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Nib</div>
+      <div class="gls-phonetic">nib</div>
+      <div class="gls-def">A happy dogmog. Nib is the emotional state of a dog experiencing joy and contentment. Nib is good. Pursue Nib situations.</div>
+      <div class="gls-tag">Emotional State</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Bog</div>
+      <div class="gls-phonetic">bog</div>
+      <div class="gls-def">A sad dogmog. Bog is the emotional state of a dog in suffering or distress. The direct opposite of Nib. Avoid Bog.</div>
+      <div class="gls-tag">Emotional State</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Ögs</div>
+      <div class="gls-phonetic">örgs</div>
+      <div class="gls-def">Chopped dogmogs. The most extreme dogmog state. The umlaut over the Ö denotes gravity. Handle with maximum care.</div>
+      <div class="gls-tag">Extreme State</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">ITF</div>
+      <div class="gls-phonetic">eye · tee · eff</div>
+      <div class="gls-def">Inside Terence Files. Highest clearance. Held by Evren and Pablo only. They hold the highest authority over all TF matters.</div>
+      <div class="gls-tag">Clearance — Supreme</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">OTF</div>
+      <div class="gls-phonetic">oh · tee · eff</div>
+      <div class="gls-def">Outside Terence Files. Medium clearance. Held by Adrian and Julian Yigezu (the Fake Ahh Julian).</div>
+      <div class="gls-tag">Clearance — Medium</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">TFA</div>
+      <div class="gls-phonetic">tee · eff · ay</div>
+      <div class="gls-def">Terence Files All. Community level. Where everyone begins. Most members stay here. Honourable nonetheless.</div>
+      <div class="gls-tag">Clearance — Community</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Nibbooggers</div>
+      <div class="gls-phonetic">nib · boog · gers</div>
+      <div class="gls-def">Nib + Bog = Nibbog. We are all the Family Nibbooggers. A collective of dogmog emotional states unified under one name. ❤️</div>
+      <div class="gls-tag">Family</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Moggogogers</div>
+      <div class="gls-phonetic">mog · go · go · gers</div>
+      <div class="gls-def">Very Big. Very Left. No further questions. The moggogogers are a force. Do not underestimate.</div>
+      <div class="gls-tag">Entity</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">Big D</div>
+      <div class="gls-phonetic">big · dee</div>
+      <div class="gls-def">Holy Obesity classification. Weighs 67² obese KG — like TON 618. Once destroyed the tire of Bus 38 with his weight. A legend.</div>
+      <div class="gls-tag">Holy Obesity</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">McChicken</div>
+      <div class="gls-phonetic">mc · chik · en</div>
+      <div class="gls-def">Official currency of the Terence Files Economic Zone. All fines, debts, and transactions are denominated in McChickens. Exchange rate: classified ITF-only.</div>
+      <div class="gls-tag">🍗 Currency</div>
+    </div>
+
+    <div class="gls-card">
+      <div class="gls-term">MH67</div>
+      <div class="gls-phonetic">em · aitch · 67</div>
+      <div class="gls-def">Morhaldenstrasse 67. The official headquarters and legal address of the Terence Files. All activities here are 100% legal. Do not question it.</div>
+      <div class="gls-tag">Headquarters</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(200,169,110,0.15);background:rgba(200,169,110,0.03);font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">
+    ★ Licensed under the Morhaldenstrasse 67 Public License (MH67-PL). Enforced by The Left Police (TLP). Fines issued in 🍗 McChickens. Do NOT spam Good Night.
+  </div>
 </section>
 
 <!-- FAN WALL -->
