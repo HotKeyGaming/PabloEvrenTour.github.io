@@ -314,12 +314,12 @@
   <div style="display:flex;align-items:center;gap:clamp(20px,3vw,48px);flex-wrap:wrap;justify-content:center;">
     <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.25);white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;flex-shrink:0;">Supported By</span>
     <img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="http://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
+    <img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
     <img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="Sponsor" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
     <img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi" style="height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
     <img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
     <img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://help.ticketmaster.it/hc/article_attachments/43945805801873" alt="Hellwatt" style="height:24px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
+    <img src="https://w7.pngwing.com/pngs/120/591/png-transparent-europe-world-map-map-europe-places-blue-text-logo.png" alt="Hellwatt" style="height:24px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
   </div>
 </div>
 
@@ -1002,18 +1002,16 @@
   // Strategy 1: try on load
   window.addEventListener('load', startMusic);
 
-  // Strategy 2: try on any first interaction anywhere on page
+  // Strategy 2: try on ANY interaction — including hovering sponsor logos
   function onFirstInteraction() {
     if (!isPlaying) startMusic();
-    document.removeEventListener('click', onFirstInteraction);
-    document.removeEventListener('scroll', onFirstInteraction);
-    document.removeEventListener('keydown', onFirstInteraction);
-    document.removeEventListener('touchstart', onFirstInteraction);
+    ['click','scroll','keydown','touchstart','mousemove'].forEach(function(e){
+      document.removeEventListener(e, onFirstInteraction);
+    });
   }
-  document.addEventListener('click', onFirstInteraction);
-  document.addEventListener('scroll', onFirstInteraction);
-  document.addEventListener('keydown', onFirstInteraction);
-  document.addEventListener('touchstart', onFirstInteraction);
+  ['click','scroll','keydown','touchstart','mousemove'].forEach(function(e){
+    document.addEventListener(e, onFirstInteraction);
+  });
 </script>
 <footer>
   <span>© 2026 Pablo X Evren — Holy Obesity World Tour. All rights reserved.</span>
