@@ -101,9 +101,11 @@
     /* TOUR DATES */
     #dates { background: var(--dark); background-image: radial-gradient(ellipse at 80% 50%, rgba(200,169,110,0.04) 0%, transparent 70%); }
     .dates-grid { display: flex; flex-direction: column; }
-    .date-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; }
+    .date-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; position: relative; }
+    .date-row::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:center; transition:transform 0.25s cubic-bezier(0.22,1,0.36,1); border-radius:2px; }
+    .date-row:hover::before { transform:scaleY(1); }
     .date-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-    .date-row:hover { background: rgba(200,169,110,0.05); padding-left: 10px; }
+    .date-row:hover { background: rgba(200,169,110,0.05); padding-left: 16px; }
     .date-month { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
     .date-day { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; letter-spacing: 0.04em; color: var(--white); }
     .date-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); }
@@ -278,34 +280,54 @@
 <body>
 
 <!-- GOLD CURSOR -->
-<div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;mix-blend-mode:difference;box-shadow:0 0 8px rgba(200,169,110,0.8);"></div>
-<div id="cursor-ring" style="position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(200,169,110,0.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;"></div>
+<div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;box-shadow:0 0 8px rgba(200,169,110,0.8);display:none;"></div>
+<div id="cursor-ring" style="position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(200,169,110,0.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;display:none;"></div>
 <style>
-  * { cursor: none !important; }
-  @media (hover: none) { * { cursor: auto !important; } #cursor-dot, #cursor-ring { display:none; } }
+  @media (hover: hover) { * { cursor: none !important; } }
 </style>
 <script>
 var dot = document.getElementById('cursor-dot');
 var ring = document.getElementById('cursor-ring');
 var mx = 0, my = 0, rx = 0, ry = 0;
+var hasTouch = ('ontouchstart' in window);
+
+// Show cursor elements on mouse move (desktop)
 document.addEventListener('mousemove', function(e){
+  dot.style.display = 'block';
+  ring.style.display = 'block';
   mx = e.clientX; my = e.clientY;
   dot.style.left = mx+'px'; dot.style.top = my+'px';
 });
-// Ring follows with slight lag
+
+// Ring follows with lag
 (function animRing(){
   rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
   ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(animRing);
 })();
-// Click ripple
-document.addEventListener('click', function(e){
+
+// Click/touch ripple — works on BOTH desktop and mobile
+function spawnRipple(x, y) {
   var ripple = document.createElement('div');
-  ripple.style.cssText = 'position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:rippleOut 0.6s ease-out forwards;';
+  ripple.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:rippleOut 0.6s ease-out forwards;';
   document.body.appendChild(ripple);
+  // Also spawn a touch-dot on mobile
+  if(hasTouch) {
+    var tdot = document.createElement('div');
+    tdot.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:14px;height:14px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(200,169,110,0.9);animation:touchDotFade 0.5s ease-out forwards;';
+    document.body.appendChild(tdot);
+    setTimeout(function(){tdot.remove();},500);
+  }
   setTimeout(function(){ripple.remove();},600);
-});
-// Hover on links/buttons
+}
+
+document.addEventListener('click', function(e){ spawnRipple(e.clientX, e.clientY); });
+document.addEventListener('touchstart', function(e){
+  var t = e.touches[0];
+  spawnRipple(t.clientX, t.clientY);
+}, {passive:true});
+
+// Hover enlarge on desktop
 document.addEventListener('mouseover', function(e){
   if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
     dot.style.transform='translate(-50%,-50%) scale(2.5)';
@@ -326,6 +348,10 @@ document.addEventListener('mouseout', function(e){
   0%{width:6px;height:6px;opacity:1;}
   100%{width:80px;height:80px;opacity:0;margin-left:-37px;margin-top:-37px;}
 }
+@keyframes touchDotFade {
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(2.5);}
+}
 </style>
 
 
@@ -339,6 +365,8 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">Story</a></li>
     <li><a href="#music">Music</a></li>
+    <li><a href="#setlist">Setlist</a></li>
+    <li><a href="#diary">Diary</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#quiz">Quiz</a></li>
     <li><a href="#news">News</a></li>
@@ -468,25 +496,98 @@ document.addEventListener('mouseout', function(e){
   </div>
 </div>
 
-<!-- NEW DATE ANNOUNCEMENT -->
-<div id="countdown" style="background:var(--black);border-top:2px solid var(--accent);border-bottom:2px solid rgba(200,169,110,0.2);padding:28px clamp(24px,6vw,80px);">
-  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
-      <span style="font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">New Dates Announced</span>
-    </div>
-    <div style="flex:1;min-width:260px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,2.6vw,1.75rem);letter-spacing:0.08em;color:var(--white);line-height:1.25;">
-        16 May 2026 &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Vaduz, Liechtenstein &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Rheinpark Stadium
+<!-- COUNTDOWN -->
+<div id="countdown" style="position:relative;overflow:hidden;min-height:200px;">
+  <!-- City background image changes per show -->
+  <div id="cd-bg" style="position:absolute;inset:0;background-size:cover;background-position:center;transition:all 1s ease;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.7) 60%,rgba(0,0,0,0.4) 100%);"></div>
+  <div style="position:relative;z-index:2;padding:36px clamp(24px,6vw,80px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
+        <span id="cd-label" style="font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">Next Show</span>
       </div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,2.6vw,1.75rem);letter-spacing:0.08em;color:rgba(255,255,255,0.55);line-height:1.25;margin-top:4px;">
-        16 May 2026 &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Feldkirch, Austria &nbsp;<span style="color:var(--accent);">·</span>&nbsp; Vorarlberghalle
-      </div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:6px;letter-spacing:0.06em;">Two shows · One day · Tickets available now</div>
+      <div id="cd-city" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:0.06em;color:var(--white);line-height:1;"></div>
+      <div id="cd-venue" style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.06em;"></div>
     </div>
-    <a href="#dates" style="flex-shrink:0;background:var(--accent);color:var(--black);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Get Tickets</a>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+      <div style="display:flex;gap:16px;">
+        <div style="text-align:center;">
+          <div id="cd-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
+          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Days</div>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
+        <div style="text-align:center;">
+          <div id="cd-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
+          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Hours</div>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
+        <div style="text-align:center;">
+          <div id="cd-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
+          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Min</div>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
+        <div style="text-align:center;">
+          <div id="cd-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
+          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Sec</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:var(--accent);color:var(--black);padding:14px 32px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;display:inline-block;">Get Tickets</a>
+    </div>
   </div>
 </div>
+
+<script>
+// ══ PROPER AUTO-COUNTDOWN — finds next upcoming show automatically ══
+var shows = [
+  { city:"Vaduz, Liechtenstein", venue:"Rheinpark Stadium · Doors 12:00", date:new Date("2026-05-16T12:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vaduz_-_Rheinpark_Stadion.jpg/1280px-Vaduz_-_Rheinpark_Stadion.jpg" },
+  { city:"Feldkirch, Austria", venue:"Vorarlberghalle · Doors 15:00", date:new Date("2026-05-16T15:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Feldkirch_Montfortgasse.jpg/1280px-Feldkirch_Montfortgasse.jpg" },
+  { city:"Istanbul, Turkey", venue:"Atatürk Olympic Stadium · Doors 21:00", date:new Date("2026-05-30T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg" },
+  { city:"Milan, Italy", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg" },
+  { city:"Brescia, Italy", venue:"Mario Rigamonti Stadium · Doors 21:00", date:new Date("2026-06-20T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Brescia_-_Piazza_della_Loggia.jpg/1280px-Brescia_-_Piazza_della_Loggia.jpg" },
+  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg" },
+  { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg/1280px-Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg" },
+  { city:"Copenhagen, Denmark", venue:"Parken Stadium · Doors 21:00", date:new Date("2026-07-13T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Copenhagen_-_Nyhavn.jpg/1280px-Copenhagen_-_Nyhavn.jpg" },
+  { city:"Rome, Italy", venue:"Stadio Olimpico · Doors 21:00", date:new Date("2026-07-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Rome_Colosseum_inside.jpg/1280px-Rome_Colosseum_inside.jpg" },
+  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hurghada_Red_Sea.jpg/1280px-Hurghada_Red_Sea.jpg" },
+  { city:"Reggio Emilia, Italy", venue:"RCF Arena Campovolo · Doors 21:00", date:new Date("2026-07-18T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/RCF_Arena_Campovolo.jpg/1280px-RCF_Arena_Campovolo.jpg" }
+];
+
+function getNextShow() {
+  var now = new Date();
+  for(var i=0;i<shows.length;i++){
+    if(shows[i].date > now) return shows[i];
+  }
+  return null;
+}
+
+function updateCountdown(){
+  var show = getNextShow();
+  if(!show){
+    document.getElementById("cd-label").textContent = "Tour Complete";
+    document.getElementById("cd-city").textContent = "See You Next Time";
+    document.getElementById("cd-venue").textContent = "Thank you for an incredible 2026 World Tour";
+    ["cd-d","cd-h","cd-m","cd-s"].forEach(function(id){document.getElementById(id).textContent="00";});
+    return;
+  }
+  // Update city info
+  document.getElementById("cd-city").textContent = show.city;
+  document.getElementById("cd-venue").textContent = show.venue;
+  document.getElementById("cd-bg").style.backgroundImage = "url('"+show.img+"')";
+
+  // Countdown
+  var diff = show.date - new Date();
+  if(diff < 0) diff = 0;
+  var pad = function(n){return String(Math.floor(n)).padStart(2,"0");};
+  document.getElementById("cd-d").textContent = pad(diff/86400000);
+  document.getElementById("cd-h").textContent = pad((diff%86400000)/3600000);
+  document.getElementById("cd-m").textContent = pad((diff%3600000)/60000);
+  document.getElementById("cd-s").textContent = pad((diff%60000)/1000);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
 
 <!-- SOCIAL PROOF -->
 <div id="proof">
@@ -505,266 +606,348 @@ document.addEventListener('mouseout', function(e){
 </div>
 
 <!-- TOUR DATES -->
-<section id="dates">
+<section id="dates" style="background:var(--dark);padding:0;">
+
+<style>
+  .dates-header { padding:var(--gap) clamp(24px,6vw,80px) 40px; }
+  /* Timeline line */
+  .timeline-wrap { position:relative; padding:0 clamp(24px,6vw,80px); }
+  .timeline-line { position:absolute; left:clamp(24px,6vw,80px); top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); pointer-events:none; }
+
+  /* Date row — full width with bg image */
+  .dr { position:relative; overflow:hidden; margin-bottom:3px; min-height:100px; display:flex; align-items:stretch; }
+  .dr-bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.08; transition:opacity 0.35s; }
+  .dr:hover .dr-bg { opacity:0.18; }
+  .dr-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.75) 60%,rgba(10,10,10,0.4) 100%); }
+  .dr-inner { position:relative; z-index:2; display:grid; grid-template-columns:28px 90px 1fr auto; align-items:center; gap:20px; padding:20px 0 20px 32px; width:100%; transition:padding-left 0.25s; }
+  .dr:hover .dr-inner { padding-left:44px; }
+
+  /* Timeline dot */
+  .dr-dot { width:12px; height:12px; border-radius:50%; background:var(--dark); border:2px solid rgba(200,169,110,0.35); flex-shrink:0; transition:all 0.2s; margin-left:-5px; }
+  .dr:hover .dr-dot { border-color:var(--accent); background:var(--accent); box-shadow:0 0 12px rgba(200,169,110,0.5); }
+  .dr.upcoming .dr-dot { border-color:var(--accent); animation:dotPulse 2s ease-in-out infinite; }
+  .dr.completed .dr-dot { background:#2d6a2d; border-color:#4caf50; }
+  @keyframes dotPulse { 0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,0.5)} 50%{box-shadow:0 0 0 6px rgba(200,169,110,0)} }
+
+  .dr-date { }
+  .dr-month { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); font-weight:600; }
+  .dr-day { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; letter-spacing:0.04em; color:var(--white); }
+
+  .dr-info h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .dr-info h3 .flag { font-size:1.1rem; }
+  .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
+  .dr-info p { font-size:0.76rem; color:rgba(255,255,255,0.38); margin-top:3px; }
+  .dr-info .dr-note { font-size:0.72rem; color:var(--accent); margin-top:5px; letter-spacing:0.03em; }
+
+  .dr-action a, .dr-action span { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; border:1px solid rgba(200,169,110,0.45); padding:9px 18px; text-decoration:none; color:var(--accent); transition:all 0.2s; white-space:nowrap; font-family:'Barlow Condensed',sans-serif; font-weight:600; display:inline-block; }
+  .dr-action a:hover { background:var(--accent); color:var(--black); }
+  .dr-action .unavail { border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.2); cursor:default; }
+
+  /* Section dividers */
+  .dates-divider { padding:12px clamp(24px,6vw,80px) 12px calc(clamp(24px,6vw,80px) + 60px); font-size:0.62rem; letter-spacing:0.26em; text-transform:uppercase; color:rgba(255,255,255,0.22); font-family:'Barlow Condensed',sans-serif; background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+
+  /* Unconfirmed */
+  .dr.unconfirmed { opacity:0.38; }
+  .dr.unconfirmed .dr-dot { border-color:rgba(255,255,255,0.2); background:transparent; animation:none; }
+
+  /* Disclaimer box */
+  .dates-disclaimer { margin:16px clamp(24px,6vw,80px); padding:16px 20px; border:1px solid rgba(200,169,110,0.2); background:rgba(200,169,110,0.03); display:flex; gap:14px; align-items:flex-start; }
+  .dates-disclaimer p { font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.6; }
+
+  /* Coming soon banner */
+  .dates-coming { margin:0 clamp(24px,6vw,80px); padding:22px 0; border-top:1px solid rgba(200,169,110,0.12); border-bottom:1px solid rgba(200,169,110,0.12); display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+
+  @media(max-width:768px){
+    .dr-inner { grid-template-columns:20px 70px 1fr; gap:12px; }
+    .dr-action { display:none; }
+    .timeline-line { left:20px; }
+  }
+</style>
+
+<!-- Section header -->
+<div class="dates-header">
   <p class="section-label">On the Road</p>
   <h2 class="section-title">Pablo X Evren — World Tour Dates 2026</h2>
   <div class="divider"></div>
-  <div class="dates-grid">
+</div>
 
-    <!-- COMPLETED SHOWS -->
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">Daily</div><div class="date-day" style="font-size:1.6rem;">Ongoing</div></div>
-      <div class="date-info">
-        <h3>Basel, Switzerland <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>St. Jakob Park Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
+<div class="timeline-wrap">
+  <div class="timeline-line"></div>
 
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">Feb 2026</div><div class="date-day">13</div></div>
-      <div class="date-info">
-        <h3>Barcelona, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Spotify Camp Nou &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 13 Feb 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
+  <!-- ══ COMPLETED ══ -->
+  <div class="dates-divider">✓ Completed Shows</div>
 
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">Feb 2026</div><div class="date-day">20</div></div>
-      <div class="date-info">
-        <h3>Malta <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>National Stadium, Ta' Qali &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 20 Feb 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
+  <!-- Basel -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Basel_-_Mittlere_Bruecke1.jpg/1280px-Basel_-_Mittlere_Bruecke1.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day" style="font-size:1.4rem;">Ongoing</div></div>
+      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span class="badge-done">✓ Completed</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
     </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">Mar 2026</div><div class="date-day">21</div></div>
-      <div class="date-info">
-        <h3>Bern, Switzerland <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Wankdorf Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 21 Mar 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">Apr 2026</div><div class="date-day">25</div></div>
-      <div class="date-info">
-        <h3>Erzincan, Turkey <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Erzincan 13 Şubat City Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 25 Apr 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo is unable to attend — entry to Erzincan not permitted</span></p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">May 2026</div><div class="date-day">01</div></div>
-      <div class="date-info">
-        <h3>Jerez de la Frontera, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Estadio Municipal de Chapín &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 1 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">May 2026</div><div class="date-day">01</div></div>
-      <div class="date-info">
-        <h3>Istanbul, Turkey <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Beşiktaş Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 1 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo is unable to attend — entry to Istanbul not permitted</span></p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">May 2026</div><div class="date-day">02</div></div>
-      <div class="date-info">
-        <h3>Cádiz, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>JP Financial Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 2 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <div class="date-row" style="opacity:0.5;">
-      <div><div class="date-month">May 2026</div><div class="date-day">04</div></div>
-      <div class="date-info">
-        <h3>Sevilla, Spain <span style="display:inline-block;background:rgba(100,180,100,0.15);border:1px solid rgba(100,180,100,0.35);color:#7ec87e;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✓ Completed</span></h3>
-        <p>Ramón Sánchez-Pizjuán Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 4 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <span class="date-ticket sold-out">Unavailable</span>
-    </div>
-
-    <!-- UPCOMING SHOWS -->
-    <div class="date-row">
-      <div><div class="date-month">May 2026</div><div class="date-day">16</div></div>
-      <div class="date-info">
-        <h3>Vaduz, Liechtenstein</h3>
-        <p>Rheinpark Stadium &nbsp;·&nbsp; Doors 12:00 &nbsp;·&nbsp; 16 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo &amp; Evren Both Performing</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">May 2026</div><div class="date-day">16</div></div>
-      <div class="date-info">
-        <h3>Feldkirch, Austria</h3>
-        <p>Vorarlberghalle &nbsp;·&nbsp; Doors 15:00 &nbsp;·&nbsp; 16 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo &amp; Evren Both Performing</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">May 2026</div><div class="date-day">30</div></div>
-      <div class="date-info">
-        <h3>Istanbul, Turkey</h3>
-        <p>Atatürk Olympic Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 30 May 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jun 2026</div><div class="date-day">19</div></div>
-      <div class="date-info">
-        <h3>Milan, Italy</h3>
-        <p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 19 Jun 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jun 2026</div><div class="date-day">20</div></div>
-      <div class="date-info">
-        <h3>Brescia, Italy</h3>
-        <p>Mario Rigamonti Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 20 Jun 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jun 2026</div><div class="date-day">21</div></div>
-      <div class="date-info">
-        <h3>Milan, Italy</h3>
-        <p>Mind Live Theatre &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 21 Jun 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jul 2026</div><div class="date-day">11</div></div>
-      <div class="date-info">
-        <h3>Stockholm, Sweden</h3>
-        <p>Strawberry Arena &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 11 Jul 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jul 2026</div><div class="date-day">13</div></div>
-      <div class="date-info">
-        <h3>Copenhagen, Denmark</h3>
-        <p>Parken Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 13 Jul 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jul 2026</div><div class="date-day">16</div></div>
-      <div class="date-info">
-        <h3>Rome, Italy</h3>
-        <p>Stadio Olimpico &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 16 Jul 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jul 2026</div><div class="date-day">17</div></div>
-      <div class="date-info">
-        <h3>Hurghada, Egypt</h3>
-        <p>Khaled Bichara Stadium &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 17 Jul 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Evren's First Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo is unable to attend — entry to Egypt not permitted</span></p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <div class="date-row">
-      <div><div class="date-month">Jul 2026</div><div class="date-day">18</div></div>
-      <div class="date-info">
-        <h3>Reggio Emilia, Italy</h3>
-        <p>RCF Arena Campovolo &nbsp;·&nbsp; Doors 21:00 &nbsp;·&nbsp; 18 Jul 2026</p>
-        <p style="margin-top:6px;font-size:0.75rem;color:var(--accent);letter-spacing:0.04em;">★ Pablo Only Performance</p>
-      </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" class="date-ticket">Tickets</a>
-    </div>
-
-    <!-- DISCLAIMER BOX -->
-    <div style="margin:16px 0;padding:20px 24px;border:1px solid rgba(200,169,110,0.22);background:rgba(200,169,110,0.04);display:flex;gap:16px;align-items:flex-start;">
-      <div style="color:var(--accent);font-size:1rem;flex-shrink:0;margin-top:1px;">⚠</div>
-      <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px;">Please Note</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.42);line-height:1.65;">Certain shows — including Brescia, Rome, Istanbul, and Copenhagen — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest announcements.</div>
-      </div>
-    </div>
-
-    <!-- MORE DATES COMING SOON -->
-    <div style="padding:28px 0;border-bottom:1px solid rgba(200,169,110,0.15);border-top:1px solid rgba(200,169,110,0.15);margin:8px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">More Dates Coming Soon</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.06em;">New cities being added to the 2026 World Tour. Subscribe to the newsletter to be first to know.</div>
-      </div>
-      <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">Notify Me</a>
-    </div>
-
-    <!-- UNCONFIRMED -->
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Tokyo, Japan</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Florida, USA</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-    <div class="date-row" style="opacity:0.42;">
-      <div><div class="date-month" style="color:var(--mid)">TBC</div><div class="date-day">?</div></div>
-      <div class="date-info"><h3>Mexico</h3><p>Unconfirmed — Stay tuned</p></div>
-      <span class="date-ticket sold-out">Unconfirmed</span>
-    </div>
-
   </div>
+
+  <!-- Barcelona -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Camp_Nou_-_FC_Barcelona_-_Aerial_view.jpg/1280px-Camp_Nou_-_FC_Barcelona_-_Aerial_view.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Feb 2026</div><div class="dr-day">13</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Barcelona, Spain <span class="badge-done">✓ Completed</span></h3><p>Spotify Camp Nou · Doors 21:00 · 13 Feb 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Malta -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Malta_3_Harbours_from_Valletta.jpg/1280px-Malta_3_Harbours_from_Valletta.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Feb 2026</div><div class="dr-day">20</div></div>
+      <div class="dr-info"><h3><span class="flag">🇲🇹</span> Malta <span class="badge-done">✓ Completed</span></h3><p>National Stadium, Ta' Qali · Doors 21:00 · 20 Feb 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Bern -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Bundeshaus_Bern.jpg/1280px-Bundeshaus_Bern.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Mar 2026</div><div class="dr-day">21</div></div>
+      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Bern, Switzerland <span class="badge-done">✓ Completed</span></h3><p>Wankdorf Stadium · Doors 21:00 · 21 Mar 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Erzincan -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Apr 2026</div><div class="dr-day">25</div></div>
+      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Erzincan, Turkey <span class="badge-done">✓ Completed</span></h3><p>Erzincan 13 Şubat City Stadium · Doors 21:00 · 25 Apr 2026</p><p class="dr-note">★ Evren Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry not permitted</span></p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Jerez -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Jerez_de_la_Frontera_-_panoramio.jpg/1280px-Jerez_de_la_Frontera_-_panoramio.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Jerez de la Frontera, Spain <span class="badge-done">✓ Completed</span></h3><p>Estadio Municipal de Chapín · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Istanbul past -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
+      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Istanbul, Turkey <span class="badge-done">✓ Completed</span></h3><p>Beşiktaş Stadium · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Evren Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry not permitted</span></p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Cadiz -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Cadiz_from_above.jpg/1280px-Cadiz_from_above.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">02</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Cádiz, Spain <span class="badge-done">✓ Completed</span></h3><p>JP Financial Stadium · Doors 21:00 · 2 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Sevilla -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sevilla_-_Panorama_desde_la_Giralda.jpg/1280px-Sevilla_-_Panorama_desde_la_Giralda.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">04</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Sevilla, Spain <span class="badge-done">✓ Completed</span></h3><p>Ramón Sánchez-Pizjuán Stadium · Doors 21:00 · 4 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- ══ UPCOMING ══ -->
+  <div class="dates-divider" style="color:var(--accent);">↓ Upcoming Shows</div>
+
+  <!-- Vaduz -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Vaduz_-_panoramio.jpg/1280px-Vaduz_-_panoramio.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
+      <div class="dr-info"><h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein</h3><p>Rheinpark Stadium · Doors 12:00 · 16 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Feldkirch -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Feldkirch_Montfortgasse.jpg/1280px-Feldkirch_Montfortgasse.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
+      <div class="dr-info"><h3><span class="flag">🇦🇹</span> Feldkirch, Austria</h3><p>Vorarlberghalle · Doors 15:00 · 16 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Istanbul upcoming -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">30</div></div>
+      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Istanbul, Turkey</h3><p>Atatürk Olympic Stadium · Doors 21:00 · 30 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Milan 19 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">19</div></div>
+      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Milan, Italy</h3><p>Mind Live Theatre · Doors 21:00 · 19 Jun 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Brescia -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Brescia_-_Piazza_della_Loggia.jpg/1280px-Brescia_-_Piazza_della_Loggia.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">20</div></div>
+      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Brescia, Italy</h3><p>Mario Rigamonti Stadium · Doors 21:00 · 20 Jun 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Milan 21 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">21</div></div>
+      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Milan, Italy</h3><p>Mind Live Theatre · Doors 21:00 · 21 Jun 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Stockholm -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg/1280px-Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
+      <div class="dr-info"><h3><span class="flag">🇸🇪</span> Stockholm, Sweden</h3><p>Strawberry Arena · Doors 21:00 · 11 Jul 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Copenhagen -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Copenhagen_-_Nyhavn.jpg/1280px-Copenhagen_-_Nyhavn.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">13</div></div>
+      <div class="dr-info"><h3><span class="flag">🇩🇰</span> Copenhagen, Denmark</h3><p>Parken Stadium · Doors 21:00 · 13 Jul 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Rome -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Rome_Colosseum_inside.jpg/1280px-Rome_Colosseum_inside.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">16</div></div>
+      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Rome, Italy</h3><p>Stadio Olimpico · Doors 21:00 · 16 Jul 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Hurghada -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hurghada_Red_Sea.jpg/1280px-Hurghada_Red_Sea.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">17</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Reggio Emilia -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Reggio_nell%27Emilia_-_Fotografia_aerea_01.jpg/1280px-Reggio_nell%27Emilia_-_Fotografia_aerea_01.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">18</div></div>
+      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Reggio Emilia, Italy</h3><p>RCF Arena Campovolo · Doors 21:00 · 18 Jul 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="dates-disclaimer">
+    <div style="color:var(--accent);font-size:1rem;flex-shrink:0;">⚠</div>
+    <p>Certain shows — including Brescia, Rome, Istanbul, and Copenhagen — are subject to change. Dates, venues, and availability may be updated at any time.</p>
+  </div>
+
+  <!-- More Dates Coming Soon -->
+  <div class="dates-coming">
+    <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">More Dates Coming Soon</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">New cities being added to the 2026 World Tour.</div>
+    </div>
+    <a href="#newsletter" style="margin-left:auto;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.4);padding:9px 18px;text-decoration:none;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Notify Me</a>
+  </div>
+
+  <!-- ══ UNCONFIRMED ══ -->
+  <div class="dates-divider">? Unconfirmed</div>
+
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇦🇲</span> Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇰🇿</span> Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇵🇪</span> Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇯🇵</span> Tokyo, Japan</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇺🇸</span> Florida, USA</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇲🇽</span> Mexico</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+
+</div><!-- end timeline-wrap -->
+<div style="padding-bottom:var(--gap);"></div>
 </section>
 
 <!-- TOUR MAP -->
@@ -974,6 +1157,147 @@ document.addEventListener('mouseout', function(e){
     <a href="#" class="platform-btn">SoundCloud</a>
   </div>
 </section>
+
+
+<!-- SETLIST -->
+<section id="setlist" style="position:relative;overflow:hidden;">
+  <!-- Background image with dark overlay -->
+  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202605/07/XscDg9PZyKCs6PuAPbUq/image.png');background-size:cover;background-position:center;opacity:0.12;"></div>
+  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.88);"></div>
+  <div style="position:relative;z-index:2;padding:var(--gap) clamp(24px,6vw,80px);">
+    <p class="section-label">On Stage Every Night</p>
+    <h2 class="section-title">The Setlist</h2>
+    <div class="divider"></div>
+    <p style="font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:24px;letter-spacing:0.04em;">★ Additional songs and special guests may appear at random concerts.</p>
+
+    <!-- Toggle button -->
+    <button id="setlist-toggle" onclick="toggleSetlist()" style="background:transparent;border:1px solid rgba(200,169,110,0.4);color:var(--accent);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;margin-bottom:28px;">
+      <span id="setlist-toggle-text">View Full Setlist (25 Songs)</span>
+      <svg id="setlist-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div id="setlist-content" style="display:none;">
+      <style>
+        .sl-row { display:flex; align-items:flex-start; gap:16px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+        .sl-row:first-child { border-top:1px solid rgba(255,255,255,0.05); }
+        .sl-num { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(200,169,110,0.35); min-width:36px; line-height:1.2; }
+        .sl-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); margin-bottom:4px; }
+        .sl-guests { font-size:0.72rem; color:rgba(255,255,255,0.38); letter-spacing:0.04em; }
+        .sl-guests span { color:rgba(200,169,110,0.7); }
+      </style>
+
+      <div class="sl-row"><div class="sl-num">01</div><div class="sl-info"><h4>POWER</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">02</div><div class="sl-info"><h4>Wolves</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">03</div><div class="sl-info"><h4>Can't Tell Me Nothing</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Big Bork</div></div></div>
+      <div class="sl-row"><div class="sl-num">04</div><div class="sl-info"><h4>Sky City</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Ty Dolla Sign</div></div></div>
+      <div class="sl-row"><div class="sl-num">05</div><div class="sl-info"><h4>River</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Ty Dolla Sign, Family Nibbooggers</div></div></div>
+      <div class="sl-row"><div class="sl-num">06</div><div class="sl-info"><h4>Bad News</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Big D</div></div></div>
+      <div class="sl-row"><div class="sl-num">07</div><div class="sl-info"><h4>Diamonds From Sierra Leone (Remix)</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Jay Z, Zestyness</div></div></div>
+      <div class="sl-row"><div class="sl-num">08</div><div class="sl-info"><h4>Saint Pablo</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Pablo</div></div></div>
+      <div class="sl-row"><div class="sl-num">09</div><div class="sl-info"><h4>BOMB</h4><div class="sl-guests"><span>Special MASSIVE Guests:</span> Kanye West, Yuno Miles, North West, South West, East West, West West, Chicago West, Atlanta West, Basel West, Big West</div></div></div>
+      <div class="sl-row"><div class="sl-num">10</div><div class="sl-info"><h4>Blood On The Leaves</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">11</div><div class="sl-info"><h4>ALL THE LOVE</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Andre Troutman</div></div></div>
+      <div class="sl-row"><div class="sl-num">12</div><div class="sl-info"><h4>I Wonder</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">13</div><div class="sl-info"><h4>Moon</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Don Toliver</div></div></div>
+      <div class="sl-row"><div class="sl-num">14</div><div class="sl-info"><h4>No Child Left Behind</h4><div class="sl-guests" style="color:rgba(200,169,110,0.5);font-style:italic;">aka yea im crying 💔 time</div></div></div>
+      <div class="sl-row"><div class="sl-num">15</div><div class="sl-info"><h4>Ok Ok Pt.2</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">16</div><div class="sl-info"><h4>Don't Like</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Pablo, Chief Keef, Pusha T</div></div></div>
+      <div class="sl-row"><div class="sl-num">17</div><div class="sl-info"><h4>TALKING</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Ty Dolla Sign, North West, South West, Southwest Airlines West, East West, West West</div></div></div>
+      <div class="sl-row"><div class="sl-num">18</div><div class="sl-info"><h4>Only One</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">19</div><div class="sl-info"><h4>VULTURES</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Ty Dolla Sign, Bump J</div></div></div>
+      <div class="sl-row"><div class="sl-num">20</div><div class="sl-info"><h4>M3tamorphosis</h4><div class="sl-guests"><span>Special Guests:</span> Playboi Carti, Kid Cudi</div></div></div>
+      <div class="sl-row"><div class="sl-num">21</div><div class="sl-info"><h4>STARS</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Ty Dolla Sign</div></div></div>
+      <div class="sl-row"><div class="sl-num">22</div><div class="sl-info"><h4>Hell Of A Life <span style="font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:400;">(ending only)</span></h4><div class="sl-guests"><span>Special Guest:</span> Kanye West</div></div></div>
+      <div class="sl-row"><div class="sl-num">23</div><div class="sl-info"><h4>Day N' Nite</h4><div class="sl-guests"><span>Special Guests:</span> Evren1903, Kid Cudi</div></div></div>
+      <div class="sl-row"><div class="sl-num">24</div><div class="sl-info"><h4>All Day</h4><div class="sl-guests"><span>Special Guests:</span> Kanye West, Theophilus London, forgor</div></div></div>
+      <div class="sl-row"><div class="sl-num">25</div><div class="sl-info"><h4>Say You Will</h4><div class="sl-guests"><span>Special Guest:</span> Kanye West &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.4);font-style:italic;">HEY HEY HEY 💔</span></div></div></div>
+
+      <p style="margin-top:20px;font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">★ More songs and special guests could appear in random concerts. Setlist subject to change.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleSetlist(){
+  var content = document.getElementById('setlist-content');
+  var arrow = document.getElementById('setlist-arrow');
+  var text = document.getElementById('setlist-toggle-text');
+  var open = content.style.display !== 'none';
+  content.style.display = open ? 'none' : 'block';
+  arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+  text.textContent = open ? 'View Full Setlist (25 Songs)' : 'Collapse Setlist';
+}
+</script>
+
+
+<!-- TOUR DIARY -->
+<section id="diary" style="background:var(--dark2);">
+  <p class="section-label">On The Road</p>
+  <h2 class="section-title">Tour Diary</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:0.04em;">Behind the scenes. Real moments. The actual story.</p>
+
+  <div style="position:relative;">
+    <!-- Left/Right arrows -->
+    <button onclick="diaryScroll(-1)" style="position:absolute;left:-16px;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.3)'" onmouseout="this.style.background='rgba(200,169,110,0.15)'">‹</button>
+    <button onclick="diaryScroll(1)" style="position:absolute;right:-16px;top:50%;transform:translateY(-50%);z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);color:var(--accent);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.3)'" onmouseout="this.style.background='rgba(200,169,110,0.15)'">›</button>
+
+    <!-- Slider -->
+    <div id="diary-slider" style="display:flex;gap:0;overflow:hidden;">
+
+      <!-- Entry 1: Latest -->
+      <div class="diary-card" style="min-width:100%;display:flex;flex-direction:column;gap:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="background:#1a1a18;aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+            <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Jerez Cadiz Sevilla" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#222';this.style.display='none'">
+          </div>
+          <div style="background:var(--dark);padding:32px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">4–5 May 2026</div>
+            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;">Spain Shows: Done ✓</h3>
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:16px;">Jerez de la Frontera, Cádiz and Sevilla shows completed. <span style="color:#7ec87e;font-weight:600;">✓</span> Three cities in three days. Energy was unreal. Liechtenstein and Austria are next — 16 May.</p>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#7ec87e;"></div>
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">Liechtenstein & Austria → Next</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 2: Tour Announcement -->
+      <div class="diary-card" style="min-width:100%;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+          <div style="background:#1a1a18;aspect-ratio:1;overflow:hidden;">
+            <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="background:var(--dark);padding:32px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
+            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;">World Tour Announced</h3>
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots indicator -->
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;" id="diary-dots">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);transition:all 0.2s;"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.2s;"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+var diaryIndex = 0;
+var diaryCards = document.querySelectorAll('.diary-card');
+var diaryDots = document.querySelectorAll('#diary-dots div');
+function diaryScroll(dir){
+  diaryIndex = Math.max(0, Math.min(diaryCards.length-1, diaryIndex+dir));
+  document.getElementById('diary-slider').style.transform = 'translateX(-'+diaryIndex*100+'%)';
+  document.getElementById('diary-slider').style.transition = 'transform 0.4s cubic-bezier(0.22,1,0.36,1)';
+  diaryDots.forEach(function(d,i){ d.style.background = i===diaryIndex ? 'var(--accent)' : 'rgba(255,255,255,0.2)'; });
+}
+</script>
 
 <!-- MERCH -->
 <section id="merch">
