@@ -321,15 +321,21 @@ function spawnRipple(x, y) {
   setTimeout(function(){ripple.remove();},600);
 }
 
-document.addEventListener('click', function(e){ spawnRipple(e.clientX, e.clientY); });
+document.addEventListener('click', function(e){
+  if(('ontouchstart' in window)) return; // mobile handles via touchstart only
+  spawnRipple(e.clientX, e.clientY);
+});
 var lastTouch = 0;
+var touchMoved = false;
 document.addEventListener('touchstart', function(e){
+  touchMoved = false;
   var now = Date.now();
-  if(now - lastTouch < 400) return; // prevent spam
+  if(now - lastTouch < 800) return;
   lastTouch = now;
   var t = e.touches[0];
   spawnRipple(t.clientX, t.clientY);
 }, {passive:true});
+document.addEventListener('touchmove', function(){ touchMoved = true; }, {passive:true});
 
 // Hover enlarge on desktop
 document.addEventListener('mouseover', function(e){
@@ -373,7 +379,7 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#diary">Diary</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#quiz">Quiz</a></li>
-    <li><a href="#alphabet">Alphabet</a></li>
+    <li><a href="#alphabet">Glossary</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -621,8 +627,8 @@ setInterval(updateCountdown, 1000);
 
   /* Date row — full width with bg image */
   .dr { position:relative; overflow:hidden; margin-bottom:3px; min-height:100px; display:flex; align-items:stretch; }
-  .dr-bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.08; transition:opacity 0.35s; }
-  .dr:hover .dr-bg { opacity:0.18; }
+  .dr-bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.15; transition:opacity 0.35s; }
+  .dr:hover .dr-bg { opacity:0.4; }
   .dr-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.75) 60%,rgba(10,10,10,0.4) 100%); }
   .dr-inner { position:relative; z-index:2; display:grid; grid-template-columns:28px 90px 1fr auto; align-items:center; gap:20px; padding:20px 0 20px 32px; width:100%; transition:padding-left 0.25s; }
   .dr:hover .dr-inner { padding-left:44px; }
@@ -684,7 +690,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Basel -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Basel_-_Mittlere_Bruecke1.jpg/1280px-Basel_-_Mittlere_Bruecke1.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -696,7 +702,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Barcelona -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Camp_Nou_-_FC_Barcelona_-_Aerial_view.jpg/1280px-Camp_Nou_-_FC_Barcelona_-_Aerial_view.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -708,7 +714,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Malta -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Malta_3_Harbours_from_Valletta.jpg/1280px-Malta_3_Harbours_from_Valletta.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -720,7 +726,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Bern -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Bundeshaus_Bern.jpg/1280px-Bundeshaus_Bern.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://dynamicmedia.livenationinternational.com/Media/k/m/w/b07edc72-53cf-4f60-a6a9-e339a3ed7c9e.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -732,7 +738,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Erzincan -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -744,7 +750,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Jerez -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Jerez_de_la_Frontera_-_panoramio.jpg/1280px-Jerez_de_la_Frontera_-_panoramio.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -756,7 +762,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Istanbul past -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -768,7 +774,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Cadiz -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Cadiz_from_above.jpg/1280px-Cadiz_from_above.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -780,7 +786,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Sevilla -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sevilla_-_Panorama_desde_la_Giralda.jpg/1280px-Sevilla_-_Panorama_desde_la_Giralda.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -795,7 +801,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Vaduz -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Vaduz_-_panoramio.jpg/1280px-Vaduz_-_panoramio.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -807,7 +813,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Feldkirch -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Feldkirch_Montfortgasse.jpg/1280px-Feldkirch_Montfortgasse.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://files.eliteprospects.com/layout/arenas/267006_466x349.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -819,7 +825,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Istanbul upcoming -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg');"></div>
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/61/20220606-L1000240.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -831,7 +837,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Milan 19 -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg');"></div>
+    <div class="dr-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -843,7 +849,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Brescia -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Brescia_-_Piazza_della_Loggia.jpg/1280px-Brescia_-_Piazza_della_Loggia.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -855,7 +861,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Milan 21 -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg');"></div>
+    <div class="dr-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -867,7 +873,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Stockholm -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg/1280px-Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -879,7 +885,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Copenhagen -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Copenhagen_-_Nyhavn.jpg/1280px-Copenhagen_-_Nyhavn.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -891,7 +897,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Rome -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Rome_Colosseum_inside.jpg/1280px-Rome_Colosseum_inside.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -903,7 +909,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Hurghada -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hurghada_Red_Sea.jpg/1280px-Hurghada_Red_Sea.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://imgs.ysscores.com/stadium/600/5711727168786.jpg);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -915,7 +921,7 @@ setInterval(updateCountdown, 1000);
 
   <!-- Reggio Emilia -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Reggio_nell%27Emilia_-_Fotografia_aerea_01.jpg/1280px-Reggio_nell%27Emilia_-_Fotografia_aerea_01.jpg');"></div>
+    <div class="dr-bg" style="background-image:url(https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1275,15 +1281,21 @@ function toggleSetlist(){
       </div>
 
       <!-- Entry 2: Tour Announcement -->
-      <div class="diary-card" style="min-width:100%;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
-          <div style="background:#1a1a18;aspect-ratio:1;overflow:hidden;">
-            <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement" style="width:100%;height:100%;object-fit:cover;">
+      <div class="diary-card" style="min-width:100%;flex-shrink:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:340px;">
+          <div style="background:#1a1a18;overflow:hidden;position:relative;">
+            <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
-          <div style="background:var(--dark);padding:32px;display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
-            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.06em;color:var(--white);margin-bottom:12px;">World Tour Announced</h3>
-            <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.7;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
+          <div style="background:var(--dark);padding:40px 36px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
+            <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:16px;line-height:1;">World Tour<br>Announced</h3>
+            <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
+            <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:20px;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
+            <div style="display:flex;gap:24px;flex-wrap:wrap;">
+              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">14+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Shows</div></div>
+              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">9+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Countries</div></div>
+              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--accent);">2026</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Year</div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1512,7 +1524,7 @@ function diaryScroll(dir){
 <!-- HOLY OBESITY ALPHABET -->
 <section id="alphabet" style="background:var(--black);">
   <p class="section-label">The Official Lexicon</p>
-  <h2 class="section-title">Holy Obesity Alphabet</h2>
+  <h2 class="section-title">Holy Obesity Glossary</h2>
   <div class="divider"></div>
   <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:36px;letter-spacing:0.04em;">The Terence Files operate in their own linguistic universe. Memorize these. You will be tested. Licensed at Morhaldenstrasse 67.</p>
 
@@ -1713,16 +1725,16 @@ function diaryScroll(dir){
       </div>
 
       <!-- Tier II -->
-      <div style="padding:40px 36px;border:1px solid rgba(200,169,110,0.3);background:rgba(200,169,110,0.05);position:relative;overflow:hidden;transition:all 0.3s;cursor:default;"
-        onmouseover="this.style.background='rgba(200,169,110,0.12)';this.style.borderColor='rgba(200,169,110,0.7)';"
-        onmouseout="this.style.background='rgba(200,169,110,0.05)';this.style.borderColor='rgba(200,169,110,0.3)';">
+      <div style="padding:40px 36px;border:1px solid rgba(180,30,30,0.5);background:rgba(120,10,10,0.25);position:relative;overflow:hidden;transition:all 0.3s;cursor:default;"
+        onmouseover="this.style.background='rgba(160,20,20,0.45)';this.style.borderColor='rgba(220,50,50,0.8)';"
+        onmouseout="this.style.background='rgba(120,10,10,0.25)';this.style.borderColor='rgba(180,30,30,0.5)';">
         <div style="position:absolute;top:-20px;right:-10px;font-size:8rem;opacity:0.06;pointer-events:none;line-height:1;color:var(--accent);">II</div>
-        <div style="position:absolute;top:12px;right:14px;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:4px 10px;background:var(--accent);color:var(--black);">Maximum</div>
+        <div style="position:absolute;top:12px;right:14px;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:4px 10px;background:#c81c1c;color:#fff;">Maximum</div>
         <div style="font-size:3rem;margin-bottom:20px;">😱</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:12px;">Holy Obesity</div>
-        <div style="font-size:0.7rem;letter-spacing:0.18em;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:16px;">hoh · lee · oh · bee · si · tee</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:#e84141;margin-bottom:12px;">Holy Obesity</div>
+        <div style="font-size:0.7rem;letter-spacing:0.18em;color:rgba(232,65,65,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:16px;">hoh · lee · oh · bee · si · tee</div>
         <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;">Tier II classification. The maximum tier. Reserved exclusively for an extreme fat person — one of truly staggering physical presence. At this level, the "Holy" prefix takes on near-religious significance. The subject exists in Terence's spiritual territory. An Absolute Unit in the most profound sense.</p>
-        <div style="margin-top:20px;display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:5px 14px;border:1px solid var(--accent);color:var(--accent);">Tier II — Holy Obesity (Maximum)</div>
+        <div style="margin-top:20px;display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:5px 14px;border:1px solid #c81c1c;color:#e84141;">Tier II — Holy Obesity (Maximum)</div>
       </div>
 
     </div>
