@@ -20,7 +20,8 @@
       --gap: clamp(50px, 8vw, 100px);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; max-width: 100vw; }
+    html { overflow-x: hidden; max-width: 100vw; }
 
     /* NAV */
     nav {
@@ -286,9 +287,9 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">Story</a></li>
     <li><a href="#music">Music</a></li>
-    <li><a href="#news">News</a></li>
-    <li><a href="#vip">VIP</a></li>
     <li><a href="#merch">Merch</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -306,7 +307,35 @@
       <a href="#gallery" class="btn" style="background:rgba(200,169,110,0.1);color:#c8a96e;border:1px solid rgba(200,169,110,0.3);padding:14px 36px;font-size:0.8rem;">Gallery</a>
       <a href="#merch" class="btn" style="background:rgba(40,35,28,0.9);color:#a89070;border:1px solid rgba(140,110,70,0.35);padding:14px 36px;font-size:0.8rem;">Merch</a>
       <a href="#news" class="btn" style="background:rgba(20,20,20,0.85);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1);padding:14px 36px;font-size:0.8rem;">News</a>
+      <a href="#quiz" class="btn" id="quiz-hero-btn" style="background:linear-gradient(135deg,#c8a96e,#e2c688,#c8a96e);background-size:200% 200%;color:var(--black);border:none;padding:14px 36px;font-size:0.8rem;animation:quizBtnShine 2s ease-in-out infinite,quizBtnPulse 1.5s ease-in-out infinite;font-weight:700;position:relative;overflow:hidden;" onmouseover="launchConfetti()" >🎉 Quiz</a>
     </div>
+
+  <style>
+    @keyframes quizBtnShine { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    @keyframes quizBtnPulse { 0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,0.6)} 50%{box-shadow:0 0 0 10px rgba(200,169,110,0)} }
+  </style>
+  <script>
+  function launchConfetti() {
+    var colors = ['#c8a96e','#e2c688','#fff','#ffd700','#ff6b6b','#4ecdc4'];
+    for(var i=0;i<40;i++){
+      (function(i){
+        setTimeout(function(){
+          var el = document.createElement('div');
+          var size = Math.random()*8+4;
+          el.style.cssText = 'position:fixed;top:'+Math.random()*60+'%;left:'+Math.random()*100+'%;width:'+size+'px;height:'+size+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:'+(Math.random()>0.5?'50%':'2px')+';pointer-events:none;z-index:9998;animation:confettiFall 1.5s ease-in forwards;';
+          document.body.appendChild(el);
+          setTimeout(function(){el.remove();},1500);
+        }, i*30);
+      })(i);
+    }
+  }
+  </script>
+  <style>
+    @keyframes confettiFall {
+      0%{transform:translateY(0) rotate(0deg);opacity:1;}
+      100%{transform:translateY(200px) rotate(720deg);opacity:0;}
+    }
+  </style>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
@@ -326,10 +355,14 @@
     .tkr-lbl { font-size:0.58rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.22);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;flex-shrink:0; }
   </style>
   <div class="tkr">
-    <span class="tkr-lbl">Supported &amp; Sponsored By</span>
+    <span class="tkr-lbl" style="color:rgba(200,169,110,0.7);font-size:0.65rem;">✦ Supported &amp; Sponsored By ✦</span>
     <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.liblogo.com/img-logo/st7378ide5-stubhub-logo-is-stubhub-reliable-the-most-comprehensive-review-online-ticket.png" alt="StubHub"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2023/11/Viagogo-Logo.png" alt="Viagogo"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
     <div class="tkr-dot"></div>
@@ -338,13 +371,27 @@
     <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2022/07/EasyJet-Logo.png" alt="EasyJet"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/06/Lufthansa-Cargo-Logo.jpg" alt="Lufthansa"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logospng.org/download/dhl/logo-dhl-2048.png" alt="DHL"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2024/01/Roche-Emblem.png" alt="Roche"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/02/Novartis-Emblem.png" alt="Novartis"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
     <div class="tkr-dot"></div>
-    <span class="tkr-lbl">Supported &amp; Sponsored By</span>
+    <span class="tkr-lbl" style="color:rgba(200,169,110,0.7);font-size:0.65rem;">✦ Supported &amp; Sponsored By ✦</span>
     <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.liblogo.com/img-logo/st7378ide5-stubhub-logo-is-stubhub-reliable-the-most-comprehensive-review-online-ticket.png" alt="StubHub"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2023/11/Viagogo-Logo.png" alt="Viagogo"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
     <div class="tkr-dot"></div>
@@ -353,6 +400,16 @@
     <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2022/07/EasyJet-Logo.png" alt="EasyJet"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/06/Lufthansa-Cargo-Logo.jpg" alt="Lufthansa"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logospng.org/download/dhl/logo-dhl-2048.png" alt="DHL"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2024/01/Roche-Emblem.png" alt="Roche"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/02/Novartis-Emblem.png" alt="Novartis"></div>
     <div class="tkr-dot"></div>
     <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
     <div class="tkr-dot"></div>
@@ -896,31 +953,173 @@
   <p style="margin-top:22px;font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">★ Sign up to the newsletter below to be first to know when merch drops.</p>
 </section>
 
-<!-- VIP -->
-<section id="vip">
-  <p class="section-label">Exclusive Access</p>
-  <h2 class="section-title">VIP &amp; Meet &amp; Greet</h2>
+<!-- QUIZ -->
+<section id="quiz" style="background:var(--dark);">
+  <p class="section-label">The Terence Files</p>
+  <h2 class="section-title">Terence Files Quiz</h2>
   <div class="divider"></div>
-  <div class="vip-inner">
-    <div class="vip-text">
-      <p>Not just a concert. A full VIP experience that puts you closer to Pablo and Evren than anyone else in the room. Limited spots per city. When they're gone, they're gone.</p>
-      <ul class="vip-perks">
-        <li>Early venue access — skip every queue</li>
-        <li>Meet &amp; Greet with Pablo and Evren personally</li>
-        <li>Exclusive photo opportunity on stage</li>
-        <li>Signed tour merchandise included</li>
-        <li>Premium floor section — front row priority</li>
-        <li>Backstage tour before the show</li>
-        <li>Sound check access — hear them rehearse live</li>
-      </ul>
-    </div>
-    <div class="vip-card">
-      <div class="vip-badge">Limited Availability</div>
-      <h3>VIP Pass</h3>
-      <p>Full meet &amp; greet experience. Available for select tour dates. Register your interest now and be first to know when VIP tickets go live.</p>
-      <button class="vip-notify" onclick="this.textContent='Registered ✓'; this.style.background='#9a742e';">Notify Me When Available</button>
+  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:0.04em;">Think you know the lore? Prove it. Questions are randomized every time.</p>
+
+  <style>
+    .quiz-card { border:1px solid rgba(200,169,110,0.15); background:rgba(255,255,255,0.02); padding:32px; margin-bottom:3px; }
+    .quiz-q { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; letter-spacing:0.06em; color:var(--white); margin-bottom:20px; text-transform:uppercase; }
+    .quiz-opts { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .quiz-opt {
+      padding:13px 18px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);
+      color:rgba(255,255,255,0.7); font-family:'Barlow Condensed',sans-serif; font-size:0.9rem;
+      font-weight:500; letter-spacing:0.04em; cursor:pointer; text-align:left;
+      transition:all 0.2s; border-radius:2px;
+    }
+    .quiz-opt:hover:not(.answered) { border-color:rgba(200,169,110,0.5); background:rgba(200,169,110,0.08); color:var(--white); }
+    .quiz-opt.correct { background:rgba(50,180,80,0.2); border-color:#4caf50; color:#7ec87e; }
+    .quiz-opt.wrong { background:rgba(220,50,50,0.15); border-color:#e84141; color:#e88080; }
+    .quiz-opt.answered { cursor:default; }
+    .quiz-fact { margin-top:14px; font-size:0.8rem; color:var(--accent); letter-spacing:0.04em; line-height:1.6; display:none; padding:12px 16px; border-left:2px solid var(--accent); background:rgba(200,169,110,0.05); }
+    .quiz-score-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+    .quiz-score { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--accent); letter-spacing:0.1em; }
+    .quiz-score span { color:rgba(255,255,255,0.35); font-size:1rem; }
+    .quiz-next-btn { background:var(--accent); color:var(--black); border:none; padding:11px 28px; font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; display:none; transition:background 0.2s; }
+    .quiz-next-btn:hover { background:var(--accent2); }
+    .quiz-shuffle-btn { background:transparent; color:var(--accent); border:1px solid rgba(200,169,110,0.4); padding:11px 24px; font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
+    .quiz-shuffle-btn:hover { background:rgba(200,169,110,0.1); }
+  </style>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score">Score: <span id="qscore">0</span> / <span id="qtotal">7</span></div>
+    <div style="display:flex;gap:10px;">
+      <button class="quiz-next-btn" id="qnext" onclick="nextQuestion()">Next Question →</button>
+      <button class="quiz-shuffle-btn" onclick="initQuiz()">🔀 Shuffle & Restart</button>
     </div>
   </div>
+
+  <div id="quiz-container"></div>
+
+  <script>
+  var quizData = [
+    {
+      q: "Who is HOLY OBESITY?",
+      opts: ["Big D", "Disfo", "Holy Obese", "Evren"],
+      correct: [0,3],
+      fact: "HOLY OBESITY = Big D + Evren. He weighs 67² obese KG — like TON 618. The name doesn't apologize for taking up space."
+    },
+    {
+      q: "Where is Evren NOT allowed to go?",
+      opts: ["Hurghada", "Istanbul", "Reggio Emilia", "Stockholm"],
+      correct: [0,1],
+      fact: "Evren is banned from both Hurghada (Egypt) and Istanbul. He is very sad about it. Pablo performed solo there."
+    },
+    {
+      q: "Which song is so chopped it can never be performed?",
+      opts: ["Good Morning", "Good Night", "Talking", "I Wonder"],
+      correct: [1],
+      fact: "Good Night is the worst song OAT — so chopped it can never be performed live. Holy chopped."
+    },
+    {
+      q: "Which of these dogs are in the Terence Files?",
+      opts: ["Happy Dogmog", "Sad Dogmog", "Chopped Dogmog", "Ugly Dogmog"],
+      correct: [0,1,2],
+      fact: "Happy Dogmog, Sad Dogmog and Chopped Dogmog are all in the Terence Files. Ugly Dogmog is not a real dog."
+    },
+    {
+      q: "Nib + Bog is?",
+      opts: ["Nibbooggers", "Nibs", "Ögs", "Nibbog"],
+      correct: [3],
+      fact: "Nib + Bog = Nibbog. We are all the Family Nibbooggers ❤️"
+    },
+    {
+      q: "Bus Line agreement — which are the best buses?",
+      opts: ["35", "45", "32", "38"],
+      correct: [1,2],
+      fact: "Bus 45 and Bus 32 are the best — in North and South side Riehen. Fun fact: Big D once destroyed the tire of the 38 bus with his weight."
+    },
+    {
+      q: "Who's very very Big and Left?",
+      opts: ["Moggogogers", "Big D", "Terence", "Yuh Lieng"],
+      correct: [0],
+      fact: "Moggogogers. Very Big. Very Left. No further questions."
+    }
+  ];
+
+  var shuffled = [];
+  var currentQ = 0;
+  var score = 0;
+  var answered = false;
+
+  function shuffle(arr) {
+    var a = arr.slice();
+    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+    return a;
+  }
+
+  function initQuiz() {
+    shuffled = shuffle(quizData);
+    currentQ = 0;
+    score = 0;
+    document.getElementById('qscore').textContent = '0';
+    document.getElementById('qtotal').textContent = shuffled.length;
+    document.getElementById('qnext').style.display = 'none';
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    answered = false;
+    var q = shuffled[currentQ];
+    var html = '<div class="quiz-card">';
+    html += '<div style="font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-family:\'Barlow Condensed\',sans-serif;">Question ' + (currentQ+1) + ' of ' + shuffled.length + '</div>';
+    html += '<div class="quiz-q">' + q.q + '</div>';
+    html += '<div class="quiz-opts">';
+    q.opts.forEach(function(opt, i) {
+      html += '<button class="quiz-opt" data-idx="'+i+'" onclick="selectAnswer('+i+')">' + (i+1) + '. ' + opt + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="quiz-fact" id="qfact">'+q.fact+'</div>';
+    html += '</div>';
+    document.getElementById('quiz-container').innerHTML = html;
+  }
+
+  function selectAnswer(idx) {
+    if(answered) return;
+    answered = true;
+    var q = shuffled[currentQ];
+    var opts = document.querySelectorAll('.quiz-opt');
+    var userCorrect = q.correct.indexOf(idx) !== -1;
+
+    opts.forEach(function(btn) {
+      btn.classList.add('answered');
+      var i = parseInt(btn.dataset.idx);
+      if(q.correct.indexOf(i) !== -1) btn.classList.add('correct');
+      else if(i === idx) btn.classList.add('wrong');
+    });
+
+    if(userCorrect) {
+      score++;
+      document.getElementById('qscore').textContent = score;
+    }
+
+    document.getElementById('qfact').style.display = 'block';
+    if(currentQ < shuffled.length - 1) {
+      document.getElementById('qnext').style.display = 'inline-block';
+    } else {
+      document.getElementById('qnext').style.display = 'none';
+      setTimeout(function(){
+        var container = document.getElementById('quiz-container');
+        var finalMsg = score === shuffled.length ? '🏆 Perfect score! You are a true Terence Files scholar.' :
+                       score >= 5 ? '🔥 Solid. You know the lore.' :
+                       score >= 3 ? '😐 Mid. Study the Terence Files more carefully.' :
+                       '💀 You know nothing. Go watch the files again.';
+        container.innerHTML += '<div style="margin-top:16px;padding:24px;border:1px solid rgba(200,169,110,0.3);background:rgba(200,169,110,0.06);font-family:\'Bebas Neue\',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:var(--accent);">' + finalMsg + '</div>';
+      }, 300);
+    }
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    document.getElementById('qnext').style.display = 'none';
+    renderQuestion();
+  }
+
+  initQuiz();
+  </script>
 </section>
 
 <!-- FAN WALL -->
@@ -1174,73 +1373,81 @@
 <script>
 var translations = {
   en: {
-    'nav-newdate': 'New Date', 'nav-tour': 'Tour', 'nav-map': 'Map',
-    'nav-gallery': 'Gallery', 'nav-story': 'Story', 'nav-music': 'Music',
-    'nav-vip': 'VIP', 'nav-merch': 'Merch', 'nav-contact': 'Contact',
-    'hero-eyebrow': 'World Tour 2026',
-    'hero-sub': 'An unforgettable journey across stages, cities, and continents. Experience the music live.',
-    'btn-tickets': 'Get Tickets', 'btn-listen': 'Listen Now', 'btn-gallery': 'Gallery', 'btn-merch': 'Merch',
-    'section-route': 'The Route', 'section-tourmap': 'Tour Map',
-    'section-experience': 'The Experience', 'section-expect': 'What to Expect',
-    'section-gallery-label': 'Behind the Lens', 'section-gallery': 'Gallery',
-    'section-story': 'The Story', 'section-about': 'About Pablo & Evren',
-    'section-sound': 'The Sound', 'section-music': 'Listen Now',
-    'section-collection': 'The Collection', 'section-merch': 'Merchandise',
-    'section-vip-label': 'Exclusive Access', 'section-vip': 'VIP & Meet & Greet',
-    'section-crowd': 'The Crowd Speaks', 'section-fanwall': 'Fan Wall',
-    'section-booking-label': 'For Promoters & Venues', 'section-booking': 'Book Pablo & Evren',
-    'section-newsletter-label': 'Stay Connected', 'section-newsletter': 'Join the Movement',
-    'section-contact-label': 'Get in Touch', 'section-contact': 'Contact',
-    'scroll': 'Scroll'
+    'nav-newdate':'New Date','nav-tour':'Tour','nav-map':'Map','nav-gallery':'Gallery',
+    'nav-story':'Story','nav-music':'Music','nav-merch':'Merch','nav-quiz':'Quiz',
+    'nav-news':'News','nav-contact':'Contact',
+    'hero-eyebrow':'World Tour 2026',
+    'hero-sub':'An unforgettable journey across stages, cities, and continents. Experience the music live.',
+    'btn-tickets':'Get Tickets','btn-listen':'Listen Now','btn-gallery':'Gallery','btn-merch':'Merch','btn-news':'News','btn-quiz':'🎉 Quiz',
+    'section-dates-label':'On the Road','section-dates':'World Tour Dates 2026',
+    'section-route':'The Route','section-tourmap':'Tour Map',
+    'section-socials-label':'Follow The Journey','section-socials':'Find Us Online',
+    'section-experience':'The Experience','section-expect':'What to Expect',
+    'section-gallery-label':'Behind the Lens','section-gallery':'Gallery',
+    'section-story':'The Story','section-about':'About Pablo & Evren',
+    'section-sound':'The Sound','section-music':'Listen Now',
+    'section-collection':'The Collection','section-merch':'Merchandise',
+    'section-quiz-label':'The Terence Files','section-quiz':'Terence Files Quiz',
+    'section-crowd':'The Crowd Speaks','section-fanwall':'Fan Wall',
+    'section-news-label':'Updates','section-news':'Latest News',
+    'section-booking-label':'For Promoters & Venues','section-booking':'Book Pablo & Evren',
+    'section-newsletter-label':'Stay Connected','section-newsletter':'Join the Movement',
+    'section-contact-label':'Get in Touch','section-contact':'Contact',
+    'scroll':'Scroll'
   },
   de: {
-    'nav-newdate': 'Neues Datum', 'nav-tour': 'Tour', 'nav-map': 'Karte',
-    'nav-gallery': 'Galerie', 'nav-story': 'Geschichte', 'nav-music': 'Musik',
-    'nav-vip': 'VIP', 'nav-merch': 'Merch', 'nav-contact': 'Kontakt',
-    'hero-eyebrow': 'Welttournee 2026',
-    'hero-sub': 'Eine unvergessliche Reise über Bühnen, Städte und Kontinente. Erlebe die Musik live.',
-    'btn-tickets': 'Tickets kaufen', 'btn-listen': 'Jetzt hören', 'btn-gallery': 'Galerie', 'btn-merch': 'Merch',
-    'section-route': 'Die Route', 'section-tourmap': 'Tourplan',
-    'section-experience': 'Das Erlebnis', 'section-expect': 'Was dich erwartet',
-    'section-gallery-label': 'Hinter der Linse', 'section-gallery': 'Galerie',
-    'section-story': 'Die Geschichte', 'section-about': 'Über Pablo & Evren',
-    'section-sound': 'Der Sound', 'section-music': 'Jetzt hören',
-    'section-collection': 'Die Kollektion', 'section-merch': 'Merchandise',
-    'section-vip-label': 'Exklusiver Zugang', 'section-vip': 'VIP & Meet & Greet',
-    'section-crowd': 'Das Publikum spricht', 'section-fanwall': 'Fan Wall',
-    'section-booking-label': 'Für Veranstalter', 'section-booking': 'Pablo & Evren buchen',
-    'section-newsletter-label': 'Bleib verbunden', 'section-newsletter': 'Werde Teil der Bewegung',
-    'section-contact-label': 'Kontakt aufnehmen', 'section-contact': 'Kontakt',
-    'scroll': 'Scrollen'
+    'nav-newdate':'Neues Datum','nav-tour':'Tour','nav-map':'Karte','nav-gallery':'Galerie',
+    'nav-story':'Geschichte','nav-music':'Musik','nav-merch':'Merch','nav-quiz':'Quiz',
+    'nav-news':'Neuigkeiten','nav-contact':'Kontakt',
+    'hero-eyebrow':'Welttournee 2026',
+    'hero-sub':'Eine unvergessliche Reise über Bühnen, Städte und Kontinente. Erlebe die Musik live.',
+    'btn-tickets':'Tickets kaufen','btn-listen':'Jetzt hören','btn-gallery':'Galerie','btn-merch':'Merch','btn-news':'Neuigkeiten','btn-quiz':'🎉 Quiz',
+    'section-dates-label':'Auf der Straße','section-dates':'Tourtermine 2026',
+    'section-route':'Die Route','section-tourmap':'Tourplan',
+    'section-socials-label':'Folg uns','section-socials':'Online finden',
+    'section-experience':'Das Erlebnis','section-expect':'Was dich erwartet',
+    'section-gallery-label':'Hinter der Linse','section-gallery':'Galerie',
+    'section-story':'Die Geschichte','section-about':'Über Pablo & Evren',
+    'section-sound':'Der Sound','section-music':'Jetzt hören',
+    'section-collection':'Die Kollektion','section-merch':'Merchandise',
+    'section-quiz-label':'Die Terence Akten','section-quiz':'Terence Akten Quiz',
+    'section-crowd':'Das Publikum spricht','section-fanwall':'Fan-Wand',
+    'section-news-label':'Aktuelles','section-news':'Neuigkeiten',
+    'section-booking-label':'Für Veranstalter','section-booking':'Pablo & Evren buchen',
+    'section-newsletter-label':'Bleib verbunden','section-newsletter':'Werde Teil der Bewegung',
+    'section-contact-label':'Kontakt aufnehmen','section-contact':'Kontakt',
+    'scroll':'Scrollen'
   },
   es: {
-    'nav-newdate': 'Nueva Fecha', 'nav-tour': 'Tour', 'nav-map': 'Mapa',
-    'nav-gallery': 'Galería', 'nav-story': 'Historia', 'nav-music': 'Música',
-    'nav-vip': 'VIP', 'nav-merch': 'Merch', 'nav-contact': 'Contacto',
-    'hero-eyebrow': 'Gira Mundial 2026',
-    'hero-sub': 'Un viaje inolvidable por escenarios, ciudades y continentes. Vive la música en directo.',
-    'btn-tickets': 'Comprar Entradas', 'btn-listen': 'Escuchar Ahora', 'btn-gallery': 'Galería', 'btn-merch': 'Merch',
-    'section-route': 'La Ruta', 'section-tourmap': 'Mapa de la Gira',
-    'section-experience': 'La Experiencia', 'section-expect': 'Qué esperar',
-    'section-gallery-label': 'Detrás del Objetivo', 'section-gallery': 'Galería',
-    'section-story': 'La Historia', 'section-about': 'Sobre Pablo & Evren',
-    'section-sound': 'El Sonido', 'section-music': 'Escuchar Ahora',
-    'section-collection': 'La Colección', 'section-merch': 'Merchandising',
-    'section-vip-label': 'Acceso Exclusivo', 'section-vip': 'VIP & Meet & Greet',
-    'section-crowd': 'El Público Habla', 'section-fanwall': 'Muro de Fans',
-    'section-booking-label': 'Para Promotores', 'section-booking': 'Contratar a Pablo & Evren',
-    'section-newsletter-label': 'Mantente Conectado', 'section-newsletter': 'Únete al Movimiento',
-    'section-contact-label': 'Ponte en Contacto', 'section-contact': 'Contacto',
-    'scroll': 'Desplazar'
+    'nav-newdate':'Nueva Fecha','nav-tour':'Tour','nav-map':'Mapa','nav-gallery':'Galería',
+    'nav-story':'Historia','nav-music':'Música','nav-merch':'Merch','nav-quiz':'Quiz',
+    'nav-news':'Noticias','nav-contact':'Contacto',
+    'hero-eyebrow':'Gira Mundial 2026',
+    'hero-sub':'Un viaje inolvidable por escenarios, ciudades y continentes. Vive la música en directo.',
+    'btn-tickets':'Comprar Entradas','btn-listen':'Escuchar Ahora','btn-gallery':'Galería','btn-merch':'Merch','btn-news':'Noticias','btn-quiz':'🎉 Quiz',
+    'section-dates-label':'En la Carretera','section-dates':'Fechas de la Gira 2026',
+    'section-route':'La Ruta','section-tourmap':'Mapa de la Gira',
+    'section-socials-label':'Síguenos','section-socials':'Encuéntranos Online',
+    'section-experience':'La Experiencia','section-expect':'Qué esperar',
+    'section-gallery-label':'Detrás del Objetivo','section-gallery':'Galería',
+    'section-story':'La Historia','section-about':'Sobre Pablo & Evren',
+    'section-sound':'El Sonido','section-music':'Escuchar Ahora',
+    'section-collection':'La Colección','section-merch':'Merchandising',
+    'section-quiz-label':'Los Archivos Terence','section-quiz':'Quiz de los Archivos Terence',
+    'section-crowd':'El Público Habla','section-fanwall':'Muro de Fans',
+    'section-news-label':'Actualizaciones','section-news':'Últimas Noticias',
+    'section-booking-label':'Para Promotores','section-booking':'Contratar a Pablo & Evren',
+    'section-newsletter-label':'Mantente Conectado','section-newsletter':'Únete al Movimiento',
+    'section-contact-label':'Ponte en Contacto','section-contact':'Contacto',
+    'scroll':'Desplazar'
   }
 };
 
 function setLang(lang) {
   var t = translations[lang];
-  // Nav links
-  var navLinks = document.querySelectorAll('.nav-links a');
-  var keys = ['nav-newdate','nav-tour','nav-map','nav-gallery','nav-story','nav-music','nav-vip','nav-merch','nav-contact'];
-  navLinks.forEach(function(a, i){ if(keys[i]) a.textContent = t[keys[i]]; });
+  // Nav links - match actual order in DOM
+  var navKeys = ['nav-newdate','nav-tour','nav-map','nav-gallery','nav-story','nav-music','nav-merch','nav-quiz','nav-news','nav-contact'];
+  document.querySelectorAll('.nav-links a').forEach(function(a,i){ if(navKeys[i] && t[navKeys[i]]) a.textContent = t[navKeys[i]]; });
   // Hero
   var eyebrow = document.querySelector('.hero-eyebrow');
   if(eyebrow) eyebrow.textContent = t['hero-eyebrow'];
@@ -1248,13 +1455,13 @@ function setLang(lang) {
   if(sub) sub.textContent = t['hero-sub'];
   // Hero buttons
   var heroBtns = document.querySelectorAll('.hero-cta .btn');
-  var btnKeys = ['btn-tickets','btn-listen','btn-gallery','btn-merch'];
-  heroBtns.forEach(function(b,i){ if(btnKeys[i]) b.textContent = t[btnKeys[i]]; });
+  var btnKeys = ['btn-tickets','btn-listen','btn-gallery','btn-merch','btn-news','btn-quiz'];
+  heroBtns.forEach(function(b,i){ if(btnKeys[i] && t[btnKeys[i]]) b.textContent = t[btnKeys[i]]; });
   // Section labels and titles
   var labels = document.querySelectorAll('.section-label');
   var titles = document.querySelectorAll('.section-title');
-  var labelKeys = ['section-dates-label','section-route','section-socials-label','section-experience','section-gallery-label','section-story','section-sound','section-collection','section-vip-label','section-crowd','section-news-label','section-booking-label','section-newsletter-label','section-contact-label'];
-  var titleKeys = ['section-dates','section-tourmap','section-socials','section-expect','section-gallery','section-about','section-music','section-merch','section-vip','section-fanwall','section-news','section-booking','section-newsletter','section-contact'];
+  var labelKeys = ['section-dates-label','section-route','section-socials-label','section-experience','section-gallery-label','section-story','section-sound','section-collection','section-quiz-label','section-crowd','section-news-label','section-booking-label','section-newsletter-label','section-contact-label'];
+  var titleKeys = ['section-dates','section-tourmap','section-socials','section-expect','section-gallery','section-about','section-music','section-merch','section-quiz','section-fanwall','section-news','section-booking','section-newsletter','section-contact'];
   labels.forEach(function(l,i){ if(labelKeys[i] && t[labelKeys[i]]) l.textContent = t[labelKeys[i]]; });
   titles.forEach(function(t2,i){ if(titleKeys[i] && t[titleKeys[i]]) t2.textContent = t[titleKeys[i]]; });
   // Scroll hint
