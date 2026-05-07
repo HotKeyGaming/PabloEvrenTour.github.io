@@ -311,17 +311,51 @@
   <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- SPONSORS -->
-<div style="background:var(--dark2);border-top:1px solid rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.1);padding:22px clamp(24px,6vw,80px);">
-  <div style="display:flex;align-items:center;gap:clamp(20px,3vw,48px);flex-wrap:wrap;justify-content:center;">
-    <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.25);white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;flex-shrink:0;">Supported / Sponsored By:</span>
-    <img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision" style="height:32px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi" style="height:30px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air" style="height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
-    <img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC" style="height:30px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.45'">
+<!-- SPONSORS TICKER -->
+<div style="background:var(--dark2);border-top:1px solid rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.1);padding:20px 0;overflow:hidden;position:relative;">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,var(--dark2),transparent);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,var(--dark2),transparent);z-index:2;pointer-events:none;"></div>
+  <style>
+    .tkr { display:flex;align-items:center;gap:50px;width:max-content;animation:tkrScroll 28s linear infinite; }
+    .tkr:hover { animation-play-state:paused; }
+    @keyframes tkrScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .tkr-item { display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0.8;transition:opacity 0.2s; }
+    .tkr-item:hover { opacity:1; }
+    .tkr-item img { height:30px;object-fit:contain;filter:none; }
+    .tkr-dot { width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.35);flex-shrink:0; }
+    .tkr-lbl { font-size:0.58rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.22);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;flex-shrink:0; }
+  </style>
+  <div class="tkr">
+    <span class="tkr-lbl">Supported &amp; Sponsored By</span>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
+    <div class="tkr-dot"></div>
+    <span class="tkr-lbl">Supported &amp; Sponsored By</span>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
+    <div class="tkr-dot"></div>
   </div>
 </div>
 
