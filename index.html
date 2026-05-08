@@ -376,7 +376,6 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#about">Story</a></li>
     <li><a href="#music">Music</a></li>
     <li><a href="#setlist">Setlist</a></li>
-    <li><a href="#diary">Diary</a></li>
     <li><a href="#merch">Merch</a></li>
     <li><a href="#quiz">Quiz</a></li>
     <li><a href="#memes">Memes</a></li>
@@ -647,9 +646,9 @@ setInterval(updateCountdown, 1000);
   .dr-day { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; letter-spacing:0.04em; color:var(--white); }
 
   .dr-info h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .dr.upcoming .dr-info h3 { font-size:1.55rem; }
-  .dr.upcoming .dr-day { font-size:2.8rem; }
-  .dr.upcoming .dr-month { font-size:0.72rem; }
+  .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.55rem; }
+  .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:2.8rem; }
+  .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.72rem; }
   .dr-info h3 .flag { font-size:1.1rem; }
   .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
   .dr-info p { font-size:0.76rem; color:rgba(255,255,255,0.38); margin-top:3px; }
@@ -1252,90 +1251,6 @@ function toggleSetlist(){
 </script>
 
 
-<!-- TOUR DIARY -->
-<section id="diary" style="background:var(--dark2);">
-  <p class="section-label">On The Road</p>
-  <h2 class="section-title">Tour Diary</h2>
-  <div class="divider"></div>
-  <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:0.04em;">Behind the scenes. Real moments. The actual story.</p>
-
-  <style>
-    .diary-wrap { position:relative; overflow:hidden; }
-    .diary-track { display:flex; transition:transform 0.45s cubic-bezier(0.22,1,0.36,1); }
-    .diary-slide { min-width:100%; flex-shrink:0; display:grid; grid-template-columns:1fr 1fr; min-height:380px; }
-    .diary-img { overflow:hidden; background:#111; }
-    .diary-img img { width:100%; height:100%; object-fit:cover; display:block; }
-    .diary-text { background:var(--dark); padding:clamp(24px,4vw,48px); display:flex; flex-direction:column; justify-content:center; border-left:1px solid rgba(200,169,110,0.1); }
-    .diary-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:44px; height:44px; border-radius:50%; background:rgba(10,10,10,0.75); border:1px solid rgba(200,169,110,0.35); color:var(--accent); font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; backdrop-filter:blur(6px); }
-    .diary-arrow:hover { background:rgba(200,169,110,0.2); border-color:var(--accent); }
-    @media(max-width:640px){ .diary-slide{ grid-template-columns:1fr; } .diary-img{ min-height:220px; } }
-  </style>
-
-  <div class="diary-wrap">
-    <button class="diary-arrow" style="left:12px;" onclick="diaryNav(-1)">‹</button>
-    <button class="diary-arrow" style="right:12px;" onclick="diaryNav(1)">›</button>
-
-    <div class="diary-track" id="diary-track">
-
-      <!-- Slide 1 -->
-      <div class="diary-slide">
-        <div class="diary-img">
-          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Spain Shows">
-        </div>
-        <div class="diary-text">
-          <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">1–4 May 2026</div>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:14px;line-height:1;">Spain Shows:<br>Done ✓</h3>
-          <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
-          <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:18px;">Jerez de la Frontera, Cádiz and Sevilla shows completed. Three cities in days. Energy was unreal. Liechtenstein and Austria are next — 16 May.</p>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:#7ec87e;flex-shrink:0;"></div>
-            <span style="font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">Liechtenstein &amp; Austria → Next</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="diary-slide">
-        <div class="diary-img">
-          <img src="https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png" alt="World Tour Announcement">
-        </div>
-        <div class="diary-text">
-          <div style="font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">25 April 2026</div>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:0.06em;color:var(--white);margin-bottom:14px;line-height:1;">World Tour<br>Announced</h3>
-          <div style="width:32px;height:2px;background:var(--accent);margin-bottom:16px;"></div>
-          <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:20px;">Pablo and Evren officially announce the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global. Nobody saw this coming — and that was the point.</p>
-          <div style="display:flex;gap:28px;flex-wrap:wrap;">
-            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">14+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Shows</div></div>
-            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">9+</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Countries</div></div>
-            <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">2026</div><div style="font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px;">Year</div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Dots -->
-    <div style="display:flex;gap:8px;justify-content:center;padding:14px 0 4px;" id="diary-dots">
-      <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);cursor:pointer;" onclick="diaryGoTo(0)"></div>
-      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;" onclick="diaryGoTo(1)"></div>
-    </div>
-  </div>
-</section>
-
-<script>
-var dIdx = 0;
-var dTotal = 2;
-function diaryGoTo(n){
-  dIdx = Math.max(0, Math.min(dTotal-1, n));
-  document.getElementById('diary-track').style.transform = 'translateX(-'+dIdx*100+'%)';
-  document.querySelectorAll('#diary-dots div').forEach(function(d,i){
-    d.style.background = i===dIdx ? 'var(--accent)' : 'rgba(255,255,255,0.2)';
-  });
-}
-function diaryNav(dir){ diaryGoTo(dIdx+dir); }
-</script>
-
-
 <!-- MERCH -->
 <section id="merch">
   <p class="section-label">The Collection</p>
@@ -1365,6 +1280,120 @@ function diaryNav(dir){ diaryGoTo(dIdx+dir); }
   </div>
   <p style="margin-top:22px;font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">★ Sign up to the newsletter below to be first to know when merch drops.</p>
 </section>
+
+<!-- LATEST NEWS -->
+<section id="news" style="background:var(--black);">
+  <p class="section-label">Updates</p>
+  <h2 class="section-title">Latest News</h2>
+  <div class="divider"></div>
+
+  <style>
+    .news-item { border-left: 2px solid rgba(200,169,110,0.2); padding: 0 0 0 24px; margin-bottom: 0; transition: border-color 0.2s; }
+    .news-item:hover { border-color: var(--accent); }
+    .news-item + .news-item { margin-top: 2px; }
+    .news-date { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; margin-bottom: 8px; }
+    .news-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 8px; }
+    .news-body { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.65; max-width: 680px; }
+    .news-tag { display: inline-block; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; padding: 3px 10px; margin-bottom: 10px; }
+    .tag-announce { background: rgba(200,169,110,0.15); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
+    .tag-concert { background: rgba(100,180,100,0.12); color: #7ec87e; border: 1px solid rgba(100,180,100,0.3); }
+    .tag-new { background: rgba(232,65,65,0.12); color: #e84141; border: 1px solid rgba(232,65,65,0.3); }
+
+    /* Accordion for older news */
+    .news-old-toggle { display: flex; align-items: center; gap: 14px; cursor: pointer; padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 24px; user-select: none; }
+    .news-old-toggle span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+    .news-old-toggle svg { transition: transform 0.3s; }
+    .news-old-toggle.open svg { transform: rotate(180deg); }
+    .news-older { display: none; }
+    .news-older.open { display: flex; flex-direction: column; gap: 2px; }
+  </style>
+
+  <!-- LATEST FIRST -->
+  <div style="display:flex;flex-direction:column;gap:2px;">
+
+    <div class="news-item" style="padding:28px 0 28px 24px;">
+      <div class="news-tag tag-new">New</div>
+      <div class="news-date">5 May 2026</div>
+      <div class="news-title">New Concert Announcement — Vaduz & Feldkirch</div>
+      <div class="news-body">Two new shows confirmed for 16 May 2026. Pablo and Evren will perform together at Rheinpark Stadium in Vaduz, Liechtenstein (Doors 12:00) and Vorarlberghalle in Feldkirch, Austria (Doors 15:00). Two shows, one day — both performances will feature Pablo and Evren on stage together for the first time this tour.</div>
+    </div>
+
+    <div class="news-item" style="padding:28px 0 28px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">4 May 2026</div>
+      <div class="news-title">Concert — Sevilla, Spain</div>
+      <div class="news-body">Ramón Sánchez-Pizjuán Stadium, Sevilla. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:28px 0 28px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">2 May 2026</div>
+      <div class="news-title">Concert — Cádiz, Spain</div>
+      <div class="news-body">JP Financial Stadium, Cádiz. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+  </div>
+
+  <!-- OLDER NEWS ACCORDION -->
+  <div class="news-old-toggle" onclick="this.classList.toggle('open'); document.getElementById('older-news').classList.toggle('open'); document.querySelector('.news-old-toggle svg').style.transform = this.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5.5L8 10.5L13 5.5" stroke="rgba(255,255,255,0.38)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Show older updates</span>
+  </div>
+
+  <div class="news-older" id="older-news" style="gap:2px;">
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">1 May 2026</div>
+      <div class="news-title">Concert — Istanbul, Turkey (Evren Solo)</div>
+      <div class="news-body">Beşiktaş Stadium, Istanbul. Doors 21:00. Evren solo performance — Pablo was unable to attend as entry to Istanbul was not permitted. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">1 May 2026</div>
+      <div class="news-title">Concert — Jerez de la Frontera, Spain</div>
+      <div class="news-body">Estadio Municipal de Chapín, Jerez de la Frontera. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">25 April 2026</div>
+      <div class="news-title">First Official Concert — Erzincan, Turkey (Evren Solo)</div>
+      <div class="news-body">Erzincan 13 Şubat City Stadium, Erzincan. Doors 21:00. Evren's first solo performance of the World Tour — Pablo was unable to attend as entry to Erzincan was not permitted. Historic first show of the 2026 World Tour.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">21 March 2026</div>
+      <div class="news-title">Concert — Bern, Switzerland</div>
+      <div class="news-body">Wankdorf Stadium, Bern. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">20 February 2026</div>
+      <div class="news-title">Concert — Malta</div>
+      <div class="news-body">National Stadium, Ta' Qali, Malta. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">13 February 2026</div>
+      <div class="news-title">Concert — Barcelona, Spain</div>
+      <div class="news-body">Spotify Camp Nou, Barcelona. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-announce">Announcement</div>
+      <div class="news-date">25 April 2026</div>
+      <div class="news-title">Pablo and Evren Live World Tour — Official Announcement</div>
+      <div class="news-body">Pablo and Evren officially announce the 2026 World Tour. Starting in Basel, Switzerland and spanning 9+ countries across Europe, the Middle East, and beyond — this is the beginning of something nobody saw coming. HOLY OBESITY is going global.</div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- QUIZ -->
 <section id="quiz" style="background:var(--dark);">
@@ -1975,118 +2004,6 @@ function diaryNav(dir){ diaryGoTo(dIdx+dir); }
   </div>
 </section>
 
-<!-- LATEST NEWS -->
-<section id="news" style="background:var(--black);">
-  <p class="section-label">Updates</p>
-  <h2 class="section-title">Latest News</h2>
-  <div class="divider"></div>
-
-  <style>
-    .news-item { border-left: 2px solid rgba(200,169,110,0.2); padding: 0 0 0 24px; margin-bottom: 0; transition: border-color 0.2s; }
-    .news-item:hover { border-color: var(--accent); }
-    .news-item + .news-item { margin-top: 2px; }
-    .news-date { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; margin-bottom: 8px; }
-    .news-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em; color: var(--white); margin-bottom: 8px; }
-    .news-body { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.65; max-width: 680px; }
-    .news-tag { display: inline-block; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; padding: 3px 10px; margin-bottom: 10px; }
-    .tag-announce { background: rgba(200,169,110,0.15); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
-    .tag-concert { background: rgba(100,180,100,0.12); color: #7ec87e; border: 1px solid rgba(100,180,100,0.3); }
-    .tag-new { background: rgba(232,65,65,0.12); color: #e84141; border: 1px solid rgba(232,65,65,0.3); }
-
-    /* Accordion for older news */
-    .news-old-toggle { display: flex; align-items: center; gap: 14px; cursor: pointer; padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 24px; user-select: none; }
-    .news-old-toggle span { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
-    .news-old-toggle svg { transition: transform 0.3s; }
-    .news-old-toggle.open svg { transform: rotate(180deg); }
-    .news-older { display: none; }
-    .news-older.open { display: flex; flex-direction: column; gap: 2px; }
-  </style>
-
-  <!-- LATEST FIRST -->
-  <div style="display:flex;flex-direction:column;gap:2px;">
-
-    <div class="news-item" style="padding:28px 0 28px 24px;">
-      <div class="news-tag tag-new">New</div>
-      <div class="news-date">5 May 2026</div>
-      <div class="news-title">New Concert Announcement — Vaduz & Feldkirch</div>
-      <div class="news-body">Two new shows confirmed for 16 May 2026. Pablo and Evren will perform together at Rheinpark Stadium in Vaduz, Liechtenstein (Doors 12:00) and Vorarlberghalle in Feldkirch, Austria (Doors 15:00). Two shows, one day — both performances will feature Pablo and Evren on stage together for the first time this tour.</div>
-    </div>
-
-    <div class="news-item" style="padding:28px 0 28px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">4 May 2026</div>
-      <div class="news-title">Concert — Sevilla, Spain</div>
-      <div class="news-body">Ramón Sánchez-Pizjuán Stadium, Sevilla. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:28px 0 28px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">2 May 2026</div>
-      <div class="news-title">Concert — Cádiz, Spain</div>
-      <div class="news-body">JP Financial Stadium, Cádiz. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-  </div>
-
-  <!-- OLDER NEWS ACCORDION -->
-  <div class="news-old-toggle" onclick="this.classList.toggle('open'); document.getElementById('older-news').classList.toggle('open'); document.querySelector('.news-old-toggle svg').style.transform = this.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5.5L8 10.5L13 5.5" stroke="rgba(255,255,255,0.38)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span>Show older updates</span>
-  </div>
-
-  <div class="news-older" id="older-news" style="gap:2px;">
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">1 May 2026</div>
-      <div class="news-title">Concert — Istanbul, Turkey (Evren Solo)</div>
-      <div class="news-body">Beşiktaş Stadium, Istanbul. Doors 21:00. Evren solo performance — Pablo was unable to attend as entry to Istanbul was not permitted. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">1 May 2026</div>
-      <div class="news-title">Concert — Jerez de la Frontera, Spain</div>
-      <div class="news-body">Estadio Municipal de Chapín, Jerez de la Frontera. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">25 April 2026</div>
-      <div class="news-title">First Official Concert — Erzincan, Turkey (Evren Solo)</div>
-      <div class="news-body">Erzincan 13 Şubat City Stadium, Erzincan. Doors 21:00. Evren's first solo performance of the World Tour — Pablo was unable to attend as entry to Erzincan was not permitted. Historic first show of the 2026 World Tour.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">21 March 2026</div>
-      <div class="news-title">Concert — Bern, Switzerland</div>
-      <div class="news-body">Wankdorf Stadium, Bern. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">20 February 2026</div>
-      <div class="news-title">Concert — Malta</div>
-      <div class="news-body">National Stadium, Ta' Qali, Malta. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">13 February 2026</div>
-      <div class="news-title">Concert — Barcelona, Spain</div>
-      <div class="news-body">Spotify Camp Nou, Barcelona. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-announce">Announcement</div>
-      <div class="news-date">25 April 2026</div>
-      <div class="news-title">Pablo and Evren Live World Tour — Official Announcement</div>
-      <div class="news-body">Pablo and Evren officially announce the 2026 World Tour. Starting in Basel, Switzerland and spanning 9+ countries across Europe, the Middle East, and beyond — this is the beginning of something nobody saw coming. HOLY OBESITY is going global.</div>
-    </div>
-
-  </div>
-</section>
 
 <!-- BOOK US -->
 <section id="press" class="on-light">
