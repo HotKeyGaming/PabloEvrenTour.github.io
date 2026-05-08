@@ -366,6 +366,101 @@ document.addEventListener('mouseout', function(e){
 
 
 <!-- NAV -->
+<style>
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .nav-login-btn {
+    font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; padding:8px 18px;
+    border:1px solid rgba(200,169,110,0.45); color:var(--accent);
+    background:transparent; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+  }
+  .nav-login-btn:hover { background:var(--accent); color:var(--black); }
+  .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:301; background:none; border:none; }
+  .hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  /* Mobile overlay */
+  #mobile-nav {
+    position:fixed; top:0; right:0; bottom:0; width:min(320px,85vw);
+    background:rgba(6,6,10,0.98); backdrop-filter:blur(20px);
+    z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    border-left:1px solid rgba(200,169,110,0.15); overflow-y:auto;
+    display:flex; flex-direction:column; padding:80px 36px 40px;
+  }
+  #mobile-nav.open { transform:translateX(0); }
+  #mobile-nav-backdrop {
+    position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:299;
+    opacity:0; pointer-events:none; transition:opacity 0.3s;
+  }
+  #mobile-nav-backdrop.open { opacity:1; pointer-events:all; }
+  .mobile-nav-link {
+    display:block; font-family:'Bebas Neue',sans-serif;
+    font-size:1.8rem; letter-spacing:0.08em; text-decoration:none;
+    padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    transition:all 0.2s; color:rgba(255,255,255,0.7);
+  }
+  .mobile-nav-link:hover, .mobile-nav-link:active { color:var(--accent); padding-left:8px; }
+  .mobile-nav-link.hot { color:var(--accent); }
+  .mobile-nav-link.special { color:#7ec87e; }
+  .mobile-nav-section { font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase;
+    color:rgba(200,169,110,0.4); font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    margin:24px 0 8px; }
+  .mobile-nav-close { position:absolute; top:20px; right:20px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.5rem; cursor:pointer; padding:8px; }
+</style>
+
+<!-- Mobile nav backdrop -->
+<div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+
+<!-- Mobile nav panel -->
+<div id="mobile-nav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <div style="margin-bottom:28px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">Pablo X Evren</div>
+    <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);">World Tour 2026</div>
+  </div>
+  <div class="mobile-nav-section">Tour</div>
+  <a href="#countdown" class="mobile-nav-link hot" onclick="closeMobileNav()">New Date</a>
+  <a href="#dates" class="mobile-nav-link hot" onclick="closeMobileNav()">Tour Dates</a>
+  <a href="#tourmap" class="mobile-nav-link" onclick="closeMobileNav()">Tour Map</a>
+  <div class="mobile-nav-section">Content</div>
+  <a href="#gallery" class="mobile-nav-link" onclick="closeMobileNav()">Gallery</a>
+  <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()">Story</a>
+  <a href="#music" class="mobile-nav-link" onclick="closeMobileNav()">Music</a>
+  <a href="#setlist" class="mobile-nav-link" onclick="closeMobileNav()">Setlist</a>
+  <a href="#milestones" class="mobile-nav-link" onclick="closeMobileNav()">Milestones</a>
+  <a href="#news" class="mobile-nav-link hot" onclick="closeMobileNav()">Latest News</a>
+  <div class="mobile-nav-section">Experience</div>
+  <a href="#merch" class="mobile-nav-link" onclick="closeMobileNav()">Merchandise</a>
+  <a href="#quiz" class="mobile-nav-link special" onclick="closeMobileNav()">🎉 Quiz</a>
+  <a href="#memes" class="mobile-nav-link" onclick="closeMobileNav()">Memes</a>
+  <a href="#songs" class="mobile-nav-link" onclick="closeMobileNav()">Songs</a>
+  <a href="#alphabet" class="mobile-nav-link" onclick="closeMobileNav()">Glossary</a>
+  <div class="mobile-nav-section">Info</div>
+  <a href="#socials" class="mobile-nav-link" onclick="closeMobileNav()">Socials</a>
+  <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);">
+    <button onclick="closeMobileNav();showLoginModal();" style="width:100%;padding:14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Register / Login</button>
+  </div>
+</div>
+
+<script>
+function openMobileNav(){
+  document.getElementById('mobile-nav').classList.add('open');
+  document.getElementById('mobile-nav-backdrop').classList.add('open');
+  document.querySelector('.hamburger').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('mobile-nav-backdrop').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+
 <nav>
   <a class="nav-logo" href="#"><span>Pablo</span> X <span>Evren</span> <span style="font-size:0.75rem;letter-spacing:0.12em;color:rgba(255,255,255,0.45);margin-left:6px;">World Tour 2026</span></a>
   <ul class="nav-links">
@@ -384,7 +479,251 @@ document.addEventListener('mouseout', function(e){
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-right">
+    <button onclick="openSearch()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:7px 14px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.1em;transition:all 0.2s;display:flex;align-items:center;gap:8px;" onmouseover="this.style.borderColor='rgba(200,169,110,0.5)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.5)'">🔍 Search</button>
+    <button class="nav-login-btn" onclick="showLoginModal()">Register / Login</button>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+
+<!-- SEARCH OVERLAY -->
+<style>
+  #search-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:500;
+    display:none; flex-direction:column; align-items:center; padding-top:120px;
+    backdrop-filter:blur(12px);
+  }
+  #search-overlay.open { display:flex; }
+  #search-input {
+    width:min(680px,90vw); background:rgba(255,255,255,0.05);
+    border:1px solid rgba(200,169,110,0.5); border-radius:0;
+    padding:20px 24px; font-family:'Barlow',sans-serif; font-size:1.2rem;
+    color:var(--white); outline:none; letter-spacing:0.04em;
+  }
+  #search-input::placeholder { color:rgba(255,255,255,0.3); }
+  #search-results {
+    width:min(680px,90vw); margin-top:4px; background:rgba(10,10,10,0.98);
+    border:1px solid rgba(200,169,110,0.2); border-top:none; max-height:400px; overflow-y:auto;
+  }
+  .sr-item {
+    display:flex; align-items:center; gap:16px; padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:background 0.15s;
+    text-decoration:none;
+  }
+  .sr-item:hover { background:rgba(200,169,110,0.08); }
+  .sr-cat { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    color:rgba(200,169,110,0.6); min-width:70px; }
+  .sr-title { font-size:0.92rem; color:var(--white); font-family:'Barlow Condensed',sans-serif;
+    font-weight:600; letter-spacing:0.04em; }
+  .sr-sub { font-size:0.72rem; color:rgba(255,255,255,0.38); }
+  .search-close { position:absolute; top:24px; right:28px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.8rem; cursor:pointer; z-index:501; }
+</style>
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <input id="search-input" type="text" placeholder="Search concerts, songs, cities, sections..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+  <div id="search-results"></div>
+  <div style="margin-top:16px;font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Press ESC to close</div>
+</div>
+<script>
+var searchData = [
+  // Tour dates
+  {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates'},
+  {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates'},
+  {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates'},
+  {cat:'Concert',title:'Bern, Switzerland',sub:'Wankdorf Stadium · 21 Mar 2026',href:'#dates'},
+  {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates'},
+  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Feldkirch, Austria',sub:'Vorarlberghalle · 16 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates'},
+  {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates'},
+  {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates'},
+  {cat:'Concert',title:'Reggio Emilia, Italy',sub:'RCF Arena Campovolo · 18 Jul 2026',href:'#dates'},
+  // Songs
+  {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist'},
+  {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Feat. Kanye West + many guests',href:'#setlist'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist'},
+  {cat:'Song',title:'Saint Pablo',sub:'Setlist · Feat. Kanye West, Pablo',href:'#setlist'},
+  {cat:'Song',title:'No Child Left Behind',sub:'Setlist · aka yea im crying 💔',href:'#setlist'},
+  {cat:'Song',title:'Moon',sub:'Setlist · Feat. Kanye West, Don Toliver',href:'#setlist'},
+  // Sections
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all tour cities',href:'#tourmap'},
+  {cat:'Section',title:'Gallery',sub:'Photos from the tour',href:'#gallery'},
+  {cat:'Section',title:'Our Story',sub:'About Pablo & Evren / ZBA Basel',href:'#about'},
+  {cat:'Section',title:'Listen Now',sub:'Music on Spotify',href:'#music'},
+  {cat:'Section',title:'Merchandise',sub:'Tour Tee, Cap, Hoodie, Crewneck',href:'#merch'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'7 randomized questions',href:'#quiz'},
+  {cat:'Section',title:'Latest News',sub:'Tour updates and announcements',href:'#news'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet'},
+  {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs'},
+  {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes'},
+  {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall'},
+  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press'},
+  {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact'},
+  {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials'},
+  // Merch
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch'},
+  {cat:'Merch',title:'Pablo X Evren Crewneck',sub:'35 CHF',href:'#merch'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · 3D Fish Edition',href:'#merch'},
+  // Lore
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum classification',href:'#alphabet'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · 67² obese KG',href:'#alphabet'},
+  {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes'},
+  {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet'},
+  {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz'},
+];
+
+function doSearch(q){
+  var res = document.getElementById('search-results');
+  q = q.trim().toLowerCase();
+  if(!q){ res.innerHTML=''; return; }
+  var matches = searchData.filter(function(d){
+    return d.title.toLowerCase().includes(q) || d.sub.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q);
+  }).slice(0,8);
+  if(!matches.length){ res.innerHTML='<div style="padding:18px 24px;font-size:0.82rem;color:rgba(255,255,255,0.3);">No results found</div>'; return; }
+  res.innerHTML = matches.map(function(m){
+    return '<a class="sr-item" href="'+m.href+'" onclick="closeSearch()"><div class="sr-cat">'+m.cat+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">'+m.sub+'</div></div></a>';
+  }).join('');
+}
+function openSearch(){ document.getElementById('search-overlay').classList.add('open'); setTimeout(function(){document.getElementById('search-input').focus();},100); }
+function closeSearch(){ document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value=''; document.getElementById('search-results').innerHTML=''; }
+document.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();} if(e.key==='Escape')closeSearch(); });
+</script>
+
+
+<!-- LOGIN MODAL -->
+<style>
+  #login-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:600;
+    display:none; align-items:center; justify-content:center;
+    backdrop-filter:blur(12px);
+  }
+  #login-modal.open { display:flex; }
+  .login-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    padding:48px 44px; width:min(480px,90vw); position:relative; text-align:center;
+  }
+</style>
+<div id="login-modal" onclick="if(event.target===this)closeLoginModal()">
+  <div class="login-box">
+    <button onclick="closeLoginModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.4rem;cursor:pointer;">✕</button>
+    <div style="font-size:2.5rem;margin-bottom:16px;">🚧</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:8px;">Under Construction</div>
+    <div style="width:40px;height:2px;background:var(--accent);margin:0 auto 20px;"></div>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The Register / Login system is currently being built. Create your Pablo X Evren account to get early access to tickets, VIP drops, and exclusive content.</p>
+    <p style="font-size:0.78rem;color:rgba(200,169,110,0.6);letter-spacing:0.06em;">Subscribe to the newsletter below to be notified when accounts launch.</p>
+    <a href="#newsletter" onclick="closeLoginModal()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:var(--accent);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;">Join Newsletter →</a>
+  </div>
+</div>
+<script>
+function showLoginModal(){ document.getElementById('login-modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLoginModal(){ document.getElementById('login-modal').classList.remove('open'); document.body.style.overflow=''; }
+</script>
+
+
+<!-- FEEDBACK BUTTON -->
+<style>
+  #feedback-btn {
+    position:fixed; left:50%; bottom:0; transform:translateX(-50%);
+    z-index:250; background:var(--accent); color:var(--black);
+    font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; padding:8px 20px;
+    cursor:pointer; border:none; border-radius:8px 8px 0 0;
+    box-shadow:0 -2px 16px rgba(200,169,110,0.3); transition:all 0.2s;
+  }
+  #feedback-btn:hover { padding-bottom:12px; }
+  #feedback-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:400;
+    display:none; align-items:flex-end; justify-content:center;
+    backdrop-filter:blur(8px);
+  }
+  #feedback-modal.open { display:flex; }
+  .feedback-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    border-bottom:none; padding:36px 32px; width:min(520px,100vw);
+    position:relative; border-radius:12px 12px 0 0;
+    animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+</style>
+<button id="feedback-btn" onclick="openFeedback()">💬 Feedback</button>
+<div id="feedback-modal" onclick="if(event.target===this)closeFeedback()">
+  <div class="feedback-box">
+    <button onclick="closeFeedback()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.3rem;cursor:pointer;">✕</button>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px;">Send Feedback</div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:20px;">Your message goes directly to the team. No email shown publicly.</p>
+    <div id="feedback-form">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <input id="fb-name" type="text" placeholder="Your name (optional)" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <select id="fb-type" style="background:#1a1a18;border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;">
+          <option value="general">General Feedback</option>
+          <option value="bug">Bug / Something Broken</option>
+          <option value="idea">Idea / Suggestion</option>
+          <option value="concert">Concert Feedback</option>
+          <option value="merch">Merchandise</option>
+          <option value="love">Just want to say something 💛</option>
+        </select>
+        <textarea id="fb-message" rows="4" placeholder="Write your message..." style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;resize:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button onclick="submitFeedback()" style="background:var(--accent);color:var(--black);border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Send Message</button>
+      </div>
+    </div>
+    <div id="feedback-thanks" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:2rem;margin-bottom:12px;">✅</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--accent);">Message Sent!</div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-top:8px;">Thanks for the feedback. The team will read it.</p>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("user_placeholder"); })();
+function openFeedback(){ document.getElementById('feedback-modal').classList.add('open'); }
+function closeFeedback(){
+  document.getElementById('feedback-modal').classList.remove('open');
+  setTimeout(function(){
+    document.getElementById('feedback-form').style.display='block';
+    document.getElementById('feedback-thanks').style.display='none';
+  },400);
+}
+function submitFeedback(){
+  var name = document.getElementById('fb-name').value || 'Anonymous';
+  var type = document.getElementById('fb-type').value;
+  var msg = document.getElementById('fb-message').value.trim();
+  if(!msg){ alert('Please write a message first!'); return; }
+  // Send via EmailJS
+  emailjs.send('service_pablo_evren','template_feedback',{
+    from_name: name,
+    feedback_type: type,
+    message: msg,
+    to_email: 'pablopau2009@gmail.com'
+  }).then(function(){
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  }, function(){
+    // Fallback if EmailJS not configured yet
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  });
+}
+</script>
 
 <!-- HERO -->
 <section id="hero">
@@ -691,7 +1030,7 @@ setInterval(updateCountdown, 1000);
   <div class="timeline-line"></div>
 
   <!-- ══ COMPLETED ══ -->
-  <div class="dates-divider">✓ Completed Shows</div>
+  <div class="dates-divider" style="color:rgba(100,200,100,0.7);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✓ Completed Shows</div>
 
   <!-- Basel -->
   <div class="dr completed">
@@ -958,7 +1297,7 @@ setInterval(updateCountdown, 1000);
   </div>
 
   <!-- ══ UNCONFIRMED ══ -->
-  <div class="dates-divider">? Unconfirmed</div>
+  <div class="dates-divider" style="font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">? Unconfirmed</div>
 
   <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇦🇲</span> Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
   <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇰🇿</span> Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
@@ -1257,30 +1596,121 @@ function toggleSetlist(){
   <p class="section-label">The Collection</p>
   <h2 class="section-title">Merchandise</h2>
   <div class="divider"></div>
-  <div class="merch-grid">
-    <div class="merch-card">
-      <div class="merch-img" style="background:#111;"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg" alt="World Tour Tee" style="width:100%;height:100%;object-fit:cover;opacity:0.9;"></div>
-      <div class="merch-info"><div class="merch-name">World Tour Tee</div><div class="merch-price">67 CHF</div></div>
-    </div>
-    <div class="merch-card">
-      <div class="merch-img" style="background:#111;"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg" alt="Holy Obesity Cap" style="width:100%;height:100%;object-fit:cover;opacity:0.9;"></div>
-      <div class="merch-info"><div class="merch-name">Holy Obesity Cap</div><div class="merch-price">21 CHF</div></div>
-    </div>
-    <div class="merch-card">
-      <div class="merch-img" style="background:#111;"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp" alt="Tour Hoodie" style="width:100%;height:100%;object-fit:cover;opacity:0.9;"></div>
-      <div class="merch-info">
-        <div class="merch-name">Tour Hoodie</div>
-        <div class="merch-price">45 CHF</div>
-        <div style="margin-top:8px;font-size:0.68rem;color:var(--accent);letter-spacing:0.04em;line-height:1.5;">♥ 10% of every purchase goes to the South Side Riehen Foundation</div>
+
+  <style>
+    .merch-grid-new { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:3px; margin-bottom:3px; }
+    .merch-card-new { border:1px solid rgba(200,169,110,0.1); overflow:hidden; transition:all 0.25s; position:relative; background:var(--dark); }
+    .merch-card-new:hover { border-color:rgba(200,169,110,0.4); transform:translateY(-3px); box-shadow:0 8px 32px rgba(200,169,110,0.12); }
+    .merch-img-new { width:100%; aspect-ratio:1; background:rgba(200,169,110,0.05); overflow:hidden; }
+    .merch-img-new img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .merch-card-new:hover .merch-img-new img { transform:scale(1.04); }
+    .merch-info-new { padding:18px 16px; }
+    .merch-name-new { font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:0.08em; font-size:0.95rem; text-transform:uppercase; color:var(--white); margin-bottom:4px; }
+    .merch-price-new { font-size:1rem; color:var(--accent); font-family:'Bebas Neue',sans-serif; letter-spacing:0.06em; }
+    .merch-badge-new { position:absolute; top:10px; right:10px; background:var(--accent); color:var(--black); font-size:0.56rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; padding:4px 9px; font-family:'Barlow Condensed',sans-serif; }
+    .merch-badge-new.new { background:#4caf50; }
+    .merch-badge-new.limited { background:#e84141; color:#fff; }
+    /* Currency converter */
+    .currency-box { border:1px solid rgba(200,169,110,0.25); background:rgba(200,169,110,0.04); padding:28px 28px; margin-top:3px; }
+  </style>
+
+  <div class="merch-grid-new">
+    <div class="merch-card-new">
+      <div class="merch-img-new"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg" alt="World Tour Tee"></div>
+      <div class="merch-info-new">
+        <div class="merch-name-new">World Tour Tee</div>
+        <div class="merch-price-new">67 CHF</div>
       </div>
     </div>
-    <div class="merch-card">
-      <div class="merch-img" style="background:#111;"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/EWHebCyjsfu1z9BNODtk/image.jpg" alt="Pablo X Evren Crewneck" style="width:100%;height:100%;object-fit:cover;opacity:0.9;"></div>
-      <div class="merch-info"><div class="merch-name">Pablo X Evren Crewneck</div><div class="merch-price">35 CHF</div></div>
+    <div class="merch-card-new">
+      <div class="merch-img-new"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg" alt="Holy Obesity Cap"></div>
+      <div class="merch-info-new">
+        <div class="merch-name-new">Holy Obesity Cap</div>
+        <div class="merch-price-new">21 CHF</div>
+      </div>
+    </div>
+    <div class="merch-card-new">
+      <span class="merch-badge-new">♥ Foundation</span>
+      <div class="merch-img-new"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp" alt="Tour Hoodie"></div>
+      <div class="merch-info-new">
+        <div class="merch-name-new">Tour Hoodie</div>
+        <div class="merch-price-new">45 CHF</div>
+        <div style="margin-top:6px;font-size:0.65rem;color:var(--accent);line-height:1.5;">♥ 10% → South Side Riehen Foundation</div>
+      </div>
+    </div>
+    <div class="merch-card-new">
+      <div class="merch-img-new"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/EWHebCyjsfu1z9BNODtk/image.jpg" alt="Pablo X Evren Crewneck"></div>
+      <div class="merch-info-new">
+        <div class="merch-name-new">Pablo X Evren Crewneck</div>
+        <div class="merch-price-new">35 CHF</div>
+      </div>
+    </div>
+    <!-- Fish Tour Pencil Case -->
+    <div class="merch-card-new">
+      <span class="merch-badge-new new">New</span>
+      <div class="merch-img-new" style="display:flex;align-items:center;justify-content:center;background:#0a1628;">
+        <div style="width:100%;height:100%;position:relative;">
+          <iframe title="Fish Tour Pencil Case" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/pJvvy/embed?autospin=1&autostart=1&ui_hint=0&dnt=1" style="width:100%;height:100%;border:none;"></iframe>
+        </div>
+      </div>
+      <div class="merch-info-new">
+        <div class="merch-name-new">Fish Tour Pencil Case</div>
+        <div class="merch-price-new">6.7 CHF</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.35);margin-top:4px;">3D Interactive Preview ↑</div>
+      </div>
     </div>
   </div>
-  <p style="margin-top:22px;font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">★ Sign up to the newsletter below to be first to know when merch drops.</p>
+
+  <!-- Currency Exchange Box -->
+  <div class="currency-box">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px;">Currency Exchange</div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.6;">Don't know how much a product costs in your currency? Check it out here.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <select id="curr-product" onchange="calcCurrency()" style="background:#1a1a18;border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:11px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;">
+          <option value="67">World Tour Tee — 67 CHF</option>
+          <option value="21">Holy Obesity Cap — 21 CHF</option>
+          <option value="45">Tour Hoodie — 45 CHF</option>
+          <option value="35">Pablo X Evren Crewneck — 35 CHF</option>
+          <option value="6.7">Fish Tour Pencil Case — 6.7 CHF</option>
+        </select>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div id="curr-chf" style="flex:1;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.3);padding:11px 14px;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--accent);letter-spacing:0.06em;text-align:center;"></div>
+          <div style="color:rgba(255,255,255,0.3);font-size:1.2rem;">→</div>
+          <select id="curr-select" onchange="calcCurrency()" style="flex:1;background:#1a1a18;border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:11px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;">
+            <option value="CHF">CHF — Swiss Franc</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="USD">USD — US Dollar</option>
+            <option value="GBP">GBP — British Pound</option>
+            <option value="JPY">JPY — Japanese Yen</option>
+            <option value="TRY">TRY — Turkish Lira</option>
+          </select>
+          <div id="curr-result" style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);padding:11px 14px;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--white);letter-spacing:0.06em;text-align:center;"></div>
+        </div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em;">Exchange rates updated regularly. Approximate values only.</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:16px;font-size:0.78rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">★ Sign up to the newsletter below to be first to know when merch drops.</p>
 </section>
+
+<script>
+// Exchange rates vs CHF (approximate)
+var rates = { CHF:1, EUR:0.93, USD:1.08, GBP:0.80, JPY:162, TRY:37 };
+function calcCurrency(){
+  var chf = parseFloat(document.getElementById('curr-product').value);
+  var cur = document.getElementById('curr-select').value;
+  var rate = rates[cur] || 1;
+  var result = (chf * rate).toFixed(cur==='JPY'?0:2);
+  document.getElementById('curr-chf').textContent = chf.toFixed(2) + ' CHF';
+  var sym = {CHF:'CHF',EUR:'€',USD:'$',GBP:'£',JPY:'¥',TRY:'₺'};
+  document.getElementById('curr-result').textContent = sym[cur] + ' ' + result;
+}
+calcCurrency();
+</script>
 
 <!-- LATEST NEWS -->
 <section id="news" style="background:var(--black);">
@@ -1395,6 +1825,83 @@ function toggleSetlist(){
   </div>
 </section>
 
+
+
+<!-- TOUR MILESTONES -->
+<section id="milestones" style="background:var(--dark2);">
+  <p class="section-label">The Journey So Far</p>
+  <h2 class="section-title">Tour Milestones</h2>
+  <div class="divider"></div>
+  <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:40px;">Every historic moment. Every first. Every achievement. The story of the 2026 World Tour told in milestones.</p>
+
+  <style>
+    .milestone-list { position:relative; padding-left:32px; }
+    .milestone-list::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); }
+    .milestone { position:relative; margin-bottom:32px; }
+    .milestone::before { content:''; position:absolute; left:-29px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px rgba(200,169,110,0.5); }
+    .milestone.future::before { background:var(--dark2); border:2px solid rgba(200,169,110,0.3); box-shadow:none; }
+    .milestone-date { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); font-family:'Barlow Condensed',sans-serif; font-weight:600; margin-bottom:6px; }
+    .milestone-title { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:var(--white); margin-bottom:6px; }
+    .milestone-desc { font-size:0.82rem; color:rgba(255,255,255,0.45); line-height:1.65; }
+    .milestone-badge { display:inline-block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:3px 10px; margin-left:10px; vertical-align:middle; }
+    .mb-gold { background:rgba(200,169,110,0.15); border:1px solid rgba(200,169,110,0.4); color:var(--accent); }
+    .mb-green { background:rgba(50,180,50,0.12); border:1px solid rgba(50,180,50,0.3); color:#7ec87e; }
+    .mb-blue { background:rgba(50,100,200,0.12); border:1px solid rgba(50,100,200,0.3); color:#6b9cf4; }
+  </style>
+
+  <div class="milestone-list">
+    <div class="milestone">
+      <div class="milestone-date">February 2026</div>
+      <div class="milestone-title">First Ever Show <span class="milestone-badge mb-gold">Historic</span></div>
+      <div class="milestone-desc">Barcelona, Spain — Spotify Camp Nou. Pablo's debut international performance. The world tour officially begins. Nobody saw it coming.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">20 February 2026</div>
+      <div class="milestone-title">First Island Show <span class="milestone-badge mb-blue">First</span></div>
+      <div class="milestone-desc">Malta — National Stadium, Ta' Qali. The tour crosses to an island nation for the first time. Pablo Only.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">21 March 2026</div>
+      <div class="milestone-title">Home Country Show — Bern <span class="milestone-badge mb-green">Switzerland</span></div>
+      <div class="milestone-desc">Wankdorf Stadium, Bern. Pablo performs in Switzerland — the country where it all began. The ZBA Basel crowd travels to Bern.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">25 April 2026</div>
+      <div class="milestone-title">First Evren Solo Show <span class="milestone-badge mb-gold">Historic</span></div>
+      <div class="milestone-desc">Erzincan, Turkey — 13 Şubat City Stadium. Evren's first ever solo performance. Pablo was unable to attend. Evren held it down alone. A legendary night.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">25 April 2026</div>
+      <div class="milestone-title">World Tour Officially Announced <span class="milestone-badge mb-gold">Announcement</span></div>
+      <div class="milestone-desc">Pablo and Evren officially go public with the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">1 May 2026</div>
+      <div class="milestone-title">Spain Leg Begins — Jerez & Istanbul Same Day <span class="milestone-badge mb-blue">Double Show Day</span></div>
+      <div class="milestone-desc">First time Pablo and Evren perform on the same day in different countries. Pablo in Jerez de la Frontera, Evren in Istanbul. Two shows. One day. Different continents.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">4 May 2026</div>
+      <div class="milestone-title">Spain Leg Complete — 4 Cities <span class="milestone-badge mb-green">Completed</span></div>
+      <div class="milestone-desc">After Jerez, Cádiz and Sevilla — the Spain leg is done. 3 cities in 4 days. The South of Spain has been conquered.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">16 May 2026</div>
+      <div class="milestone-title">First Pablo & Evren Joint Performance <span class="milestone-badge mb-gold">Historic</span></div>
+      <div class="milestone-desc">Vaduz, Liechtenstein — Rheinpark Stadium. Pablo and Evren on the same stage for the first time in this tour. Two shows in one day — Vaduz at 12:00, Feldkirch at 15:00.</div>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">Summer 2026</div>
+      <div class="milestone-title">First Stadium Show — Atatürk Olympic <span class="milestone-badge mb-gold">Upcoming</span></div>
+      <div class="milestone-desc">Istanbul, Turkey — Atatürk Olympic Stadium. The biggest venue of the tour. Pablo Only. 30 May 2026.</div>
+    </div>
+    <div class="milestone future">
+      <div class="milestone-date">July 2026</div>
+      <div class="milestone-title">First Egypt Show — Hurghada <span class="milestone-badge mb-gold">Upcoming</span></div>
+      <div class="milestone-desc">Hurghada, Egypt — Khaled Bichara Stadium. Evren's first solo show in Africa. Pablo entry to Egypt not permitted. History in the making.</div>
+    </div>
+  </div>
+</section>
 
 <!-- QUIZ -->
 <section id="quiz" style="background:var(--dark);">
