@@ -631,7 +631,7 @@ setInterval(updateCountdown, 1000);
   .dr-bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.15; transition:opacity 0.35s; }
   .dr:hover .dr-bg { opacity:0.4; }
   .dr-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.75) 60%,rgba(10,10,10,0.4) 100%); }
-  .dr-inner { position:relative; z-index:2; display:grid; grid-template-columns:28px 90px 1fr auto; align-items:center; gap:20px; padding:20px 0 20px 32px; width:100%; transition:padding-left 0.25s; }
+  .dr-inner { position:relative; z-index:2; display:grid; grid-template-columns:28px 100px 1fr auto; align-items:center; gap:20px; padding:20px 0 20px 32px; width:100%; transition:padding-left 0.25s; }
   .dr:hover .dr-inner { padding-left:44px; }
 
   /* Timeline dot */
@@ -649,6 +649,7 @@ setInterval(updateCountdown, 1000);
   .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.55rem !important; }
   .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:2.8rem !important; }
   .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.72rem !important; }
+  .dr.completed .dr-day.ongoing { font-size:1.6rem !important; }
   .dr-info h3 .flag { font-size:1.1rem; }
   .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
   .dr-info p { font-size:0.76rem; color:rgba(255,255,255,0.38); margin-top:3px; }
@@ -698,7 +699,7 @@ setInterval(updateCountdown, 1000);
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day">Ongoing</div></div>
+      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Ongoing</div></div>
       <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span class="badge-done">✓ Completed</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
       <div class="dr-action"><span class="unavail">Unavailable</span></div>
     </div>
