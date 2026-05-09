@@ -309,6 +309,17 @@
   </style>
 </head>
 <body>
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688,#c8a96e);z-index:9999;transition:width 0.1s linear;pointer-events:none;box-shadow:0 0 8px rgba(200,169,110,0.6);"></div>
+<script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+</script>
+
 
 <!-- LOADING SCREEN -->
 <div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
@@ -602,7 +613,25 @@ function closeMobileNav(){
 </script>
 
 <nav>
-  <a class="nav-logo" href="#"><span>Pablo</span> X <span>Evren</span> <span style="font-size:0.75rem;letter-spacing:0.12em;color:rgba(255,255,255,0.45);margin-left:6px;">World Tour 2026</span></a>
+  <a class="nav-logo" href="#">
+    <span>Pablo</span> X <span>Evren</span>
+    <span style="font-size:0.75rem;letter-spacing:0.12em;color:rgba(255,255,255,0.45);margin-left:6px;">World Tour 2026</span>
+    <span id="now-playing-pill" style="display:none;margin-left:10px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:3px 10px 3px 8px;font-size:0.58rem;letter-spacing:0.1em;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;align-items:center;gap:5px;vertical-align:middle;">
+      <span id="np-bars" style="display:inline-flex;align-items:flex-end;gap:1.5px;height:10px;">
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar1 0.8s ease-in-out infinite;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar2 0.8s ease-in-out infinite 0.2s;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar3 0.8s ease-in-out infinite 0.4s;"></span>
+      </span>
+      All The Love
+    </span>
+  </a>
+  <style>
+    @keyframes npBar1{0%,100%{height:3px}50%{height:10px}}
+    @keyframes npBar2{0%,100%{height:7px}50%{height:3px}}
+    @keyframes npBar3{0%,100%{height:5px}50%{height:9px}}
+    #now-playing-pill { display:none; }
+    #now-playing-pill.visible { display:inline-flex !important; }
+  </style>
   <ul class="nav-links">
     <li><a href="#countdown">New Date</a></li>
     <li><a href="#dates">Tour</a></li>
@@ -2115,6 +2144,64 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   </div>
 </section>
 
+<!-- SOCIAL FEED -->
+<section id="feed" style="background:var(--dark2);padding:clamp(30px,5vw,60px) clamp(24px,6vw,80px);">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+    <div>
+      <p class="section-label">Latest From Us</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:0.06em;color:var(--white);">Social Feed</h2>
+    </div>
+    <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.3);padding:8px 16px;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">
+      Follow @king__pablito69 →
+    </a>
+  </div>
+
+  <div style="display:grid;grid-template-columns:280px 1fr;gap:3px;align-items:start;">
+    <!-- Latest post embed -->
+    <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+      <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
+        <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
+          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg"
+            alt="Latest Instagram Post"
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
+            onmouseover="this.style.transform='scale(1.04)'"
+            onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+        </div>
+        <div style="padding:14px 16px;">
+          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">Spain leg complete ✓ Jerez, Cádiz and Sevilla done. Liechtenstein & Austria next 🇱🇮🇦🇹</div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:8px;">@king__pablito69 · View on Instagram →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Stats + links panel -->
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <!-- Stats -->
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:20px 24px;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:16px;">Social Presence</div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Instagram</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@king__pablito69</div></a></div>
+          <div><a href="https://www.tiktok.com/@hotkeygaming" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">TikTok</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@hotkeygaming</div></a></div>
+          <div><a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">YouTube</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming69</div></a></div>
+          <div><a href="https://x.com/hotkeygaming41" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Twitter/X</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming41</div></a></div>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div style="background:rgba(200,169,110,0.05);border:1px solid rgba(200,169,110,0.18);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.08em;color:var(--white);">Follow for Live Updates</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">Tour updates, behind the scenes, and exclusive content</div>
+        </div>
+        <a href="https://linktr.ee/hotkeygaming" target="_blank" style="background:var(--accent);color:var(--black);padding:11px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">All Links →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- QUIZ -->
 <section id="quiz" style="background:var(--dark);">
   <p class="section-label">The Terence Files</p>
@@ -2686,64 +2773,6 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 </section>
 
 
-<!-- SOCIAL FEED -->
-<section id="feed" style="background:var(--dark2);padding:clamp(30px,5vw,60px) clamp(24px,6vw,80px);">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
-    <div>
-      <p class="section-label">Latest From Us</p>
-      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:0.06em;color:var(--white);">Social Feed</h2>
-    </div>
-    <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.3);padding:8px 16px;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">
-      Follow @king__pablito69 →
-    </a>
-  </div>
-
-  <div style="display:grid;grid-template-columns:280px 1fr;gap:3px;align-items:start;">
-    <!-- Latest post embed -->
-    <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
-      <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
-        <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
-          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg"
-            alt="Latest Instagram Post"
-            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
-            onmouseover="this.style.transform='scale(1.04)'"
-            onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </div>
-        </div>
-        <div style="padding:14px 16px;">
-          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
-          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">Spain leg complete ✓ Jerez, Cádiz and Sevilla done. Liechtenstein & Austria next 🇱🇮🇦🇹</div>
-          <div style="font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:8px;">@king__pablito69 · View on Instagram →</div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Stats + links panel -->
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <!-- Stats -->
-      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:20px 24px;">
-        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:16px;">Social Presence</div>
-        <div style="display:flex;gap:32px;flex-wrap:wrap;">
-          <div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Instagram</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@king__pablito69</div></a></div>
-          <div><a href="https://www.tiktok.com/@hotkeygaming" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">TikTok</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@hotkeygaming</div></a></div>
-          <div><a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">YouTube</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming69</div></a></div>
-          <div><a href="https://x.com/hotkeygaming41" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Twitter/X</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming41</div></a></div>
-        </div>
-      </div>
-      <!-- CTA -->
-      <div style="background:rgba(200,169,110,0.05);border:1px solid rgba(200,169,110,0.18);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-        <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.08em;color:var(--white);">Follow for Live Updates</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">Tour updates, behind the scenes, and exclusive content</div>
-        </div>
-        <a href="https://linktr.ee/hotkeygaming" target="_blank" style="background:var(--accent);color:var(--black);padding:11px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">All Links →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAN WALL -->
 <section id="fanwall">
   <p class="section-label">The Crowd Speaks</p>
@@ -3004,6 +3033,8 @@ function setLang(lang) {
       isPlaying = true;
       document.getElementById('music-icon-play').style.display = 'none';
       document.getElementById('music-icon-pause').style.display = 'block';
+      var pill = document.getElementById('now-playing-pill');
+      if(pill) pill.classList.add('visible');
     }).catch(function(){});
   }
 
@@ -3013,6 +3044,8 @@ function setLang(lang) {
       document.getElementById('music-icon-play').style.display = 'block';
       document.getElementById('music-icon-pause').style.display = 'none';
       isPlaying = false;
+      var pill = document.getElementById('now-playing-pill');
+      if(pill) pill.classList.remove('visible');
     } else {
       startMusic();
     }
@@ -3073,5 +3106,35 @@ function toggleTheme(){
 // Apply on load
 applyTheme();
 </script>
+<!-- WHATSAPP SHARE (tiny, bottom right) -->
+<a id="wa-share" href="https://wa.me/?text=Check%20out%20the%20Pablo%20X%20Evren%20World%20Tour%202026%20website!%20%F0%9F%8E%B5%20https://hotkeygaming.github.io/PabloEvrenTour.github.io/" target="_blank" title="Share on WhatsApp" style="position:fixed;bottom:84px;right:28px;z-index:248;width:34px;height:34px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(37,211,102,0.3);opacity:0.7;transition:opacity 0.2s,transform 0.2s;" onmouseover="this.style.opacity='1';this.style.transform='scale(1.1)'" onmouseout="this.style.opacity='0.7';this.style.transform='scale(1)'">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+
+<script>
+function launchPerfectConfetti(){
+  var colors = ['#c8a96e','#e2c688','#ffd700','#fff','#ff6b6b','#4ecdc4','#a8e6cf'];
+  var count = 0;
+  var interval = setInterval(function(){
+    if(count > 120){ clearInterval(interval); return; }
+    for(var b=0;b<3;b++){
+      var el = document.createElement('div');
+      var size = Math.random()*10+4;
+      var x = Math.random()*100;
+      el.style.cssText = 'position:fixed;top:-10px;left:'+x+'%;width:'+size+'px;height:'+size+'px;'
+        +'background:'+colors[Math.floor(Math.random()*colors.length)]+';'
+        +'border-radius:'+(Math.random()>0.5?'50%':'2px')+';'
+        +'pointer-events:none;z-index:9998;'
+        +'animation:confettiFall '+(1.5+Math.random()*2)+'s ease-in forwards;'
+        +'transform:rotate('+Math.random()*360+'deg);';
+      document.body.appendChild(el);
+      setTimeout(function(e){ return function(){ e.remove(); }; }(el), 3500);
+    }
+    count++;
+  }, 30);
+}
+</script>
+
 </body>
 </html>
