@@ -275,9 +275,139 @@
       .newsletter-form { flex-direction: column; }
       .newsletter-input { border-right: 1px solid rgba(0,0,0,0.18); border-bottom: none; }
     }
+
+  /* LIGHT MODE */
+  body.light-mode {
+    --black: #f5f5f0;
+    --dark: #e8e5de;
+    --dark2: #dedad2;
+    --white: #111110;
+    --cream: #111;
+    --accent: #9a742e;
+    --accent2: #b8893a;
+    --mid: #555;
+    background: #f5f5f0;
+    color: #111;
+  }
+  body.light-mode nav { background: rgba(245,245,240,0.92); border-bottom-color: rgba(154,116,46,0.2); }
+  body.light-mode .nav-logo { color: #111; }
+  body.light-mode .nav-links a { color: rgba(0,0,0,0.55); }
+  body.light-mode #hero { filter: none; }
+  body.light-mode .date-row, body.light-mode .dr { background: transparent; }
+  body.light-mode .dr-info h3 { color: #111; }
+  body.light-mode .dr-info p { color: rgba(0,0,0,0.5); }
+  body.light-mode .section-title { color: #111110; }
+  body.light-mode .expect-card { background: #e0ddd6; border-color: rgba(154,116,46,0.15); }
+  body.light-mode .expect-card p { color: rgba(0,0,0,0.55); }
+  body.light-mode .track-card { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .track-title { color: #111; }
+  body.light-mode .fan-msg { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .fan-msg blockquote { color: rgba(0,0,0,0.65); }
+  body.light-mode #mobile-nav { background: rgba(245,245,240,0.98); }
+  body.light-mode .mobile-nav-link { color: rgba(0,0,0,0.7); border-bottom-color: rgba(0,0,0,0.08); }
+
   </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
+  <!-- Background image with dark overlay -->
+  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.85) 100%);"></div>
+  <!-- Content -->
+  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
+    <div id="loader-eyebrow" style="font-size:0.68rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:20px;opacity:0;transition:opacity 0.8s;">World Tour 2026</div>
+    <div id="loader-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:0.06em;line-height:0.9;color:var(--white);opacity:0;transition:opacity 0.8s 0.3s,transform 0.8s 0.3s;transform:translateY(30px);">
+      <span style="color:#c8a96e;">Pablo</span><br>& Evren
+    </div>
+    <div id="loader-sub" style="font-size:clamp(0.8rem,2vw,1rem);letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
+    <!-- Progress bar -->
+    <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
+      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.8s cubic-bezier(0.22,1,0.36,1);"></div>
+    </div>
+  </div>
+</div>
+<style>
+  #loader.fade-out { opacity:0; transition:opacity 0.6s ease; pointer-events:none; }
+</style>
+<script>
+  window.addEventListener('load', function(){
+    var loader = document.getElementById('loader');
+    // Animate in
+    setTimeout(function(){
+      document.getElementById('loader-eyebrow').style.opacity='1';
+      document.getElementById('loader-title').style.opacity='1';
+      document.getElementById('loader-title').style.transform='translateY(0)';
+      document.getElementById('loader-sub').style.opacity='1';
+      document.getElementById('loader-bar').style.width='100%';
+    }, 100);
+    // Fade out after 2.4s
+    setTimeout(function(){
+      loader.classList.add('fade-out');
+      document.body.style.overflow='';
+    }, 2400);
+    setTimeout(function(){
+      loader.style.display='none';
+    }, 3000);
+  });
+  document.body.style.overflow='hidden'; // prevent scroll during load
+</script>
+
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:8000;background:rgba(6,6,12,0.97);border-top:1px solid rgba(200,169,110,0.2);padding:14px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;backdrop-filter:blur(12px);">
+  <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:220px;">
+    <span style="font-size:1.1rem;">🍪</span>
+    <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.5;letter-spacing:0.02em;">This website uses cookies to improve your experience. By continuing, you agree to our use of cookies. <a href="#" style="color:var(--accent);text-decoration:none;">Privacy Policy</a></p>
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button onclick="declineCookies()" style="padding:8px 16px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">Decline</button>
+    <button onclick="acceptCookies()" style="padding:8px 20px;background:var(--accent);border:none;color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">Accept</button>
+  </div>
+</div>
+<script>
+  function acceptCookies(){
+    localStorage.setItem('cookieConsent','accepted');
+    document.getElementById('cookie-banner').style.display='none';
+  }
+  function declineCookies(){
+    localStorage.setItem('cookieConsent','declined');
+    document.getElementById('cookie-banner').style.display='none';
+  }
+  // Show only if not yet decided
+  if(!localStorage.getItem('cookieConsent')){
+    setTimeout(function(){
+      document.getElementById('cookie-banner').style.display='flex';
+    }, 3200); // show after loader finishes
+  }
+</script>
+
+
+<!-- VISITOR COUNTER -->
+<div id="visitor-counter" style="position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:240;background:rgba(6,6,12,0.88);border:1px solid rgba(200,169,110,0.2);padding:6px 16px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;pointer-events:none;opacity:0;transition:opacity 0.5s;">
+  <div style="width:6px;height:6px;border-radius:50%;background:#4caf50;animation:pulseDot 2s ease-in-out infinite;flex-shrink:0;"></div>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.12em;color:rgba(255,255,255,0.5);white-space:nowrap;"><span id="vc-count" style="color:var(--accent);font-weight:700;">67</span> visitors · 🇨🇭 Switzerland</span>
+</div>
+<script>
+  // Show visitor counter after loader
+  setTimeout(function(){
+    var vc = document.getElementById('visitor-counter');
+    vc.style.opacity='1';
+    // Slowly increment counter realistically
+    var count = 67;
+    var el = document.getElementById('vc-count');
+    setInterval(function(){
+      if(Math.random() < 0.08){ // 8% chance each 10s = realistic
+        count++;
+        el.textContent = count;
+      }
+    }, 10000);
+    // Hide after 8 seconds
+    setTimeout(function(){ vc.style.opacity='0'; }, 8000);
+  }, 3500);
+</script>
+
 
 <!-- GOLD CURSOR -->
 <div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;box-shadow:0 0 8px rgba(200,169,110,0.8);display:none;"></div>
@@ -441,7 +571,17 @@ document.addEventListener('mouseout', function(e){
   <div class="mobile-nav-section">Info</div>
   <a href="#socials" class="mobile-nav-link" onclick="closeMobileNav()">Socials</a>
   <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
-  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);">
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;gap:10px;">
+    <!-- Dark/Light toggle -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);" id="theme-label">🌙 Dark Mode</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.3);margin-top:2px;">Toggle website theme</div>
+      </div>
+      <div onclick="toggleTheme()" id="theme-toggle" style="width:52px;height:28px;border-radius:14px;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.35);cursor:pointer;position:relative;transition:all 0.3s;flex-shrink:0;">
+        <div id="theme-knob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform 0.3s;"></div>
+      </div>
+    </div>
     <button onclick="closeMobileNav();showLoginModal();" style="width:100%;padding:14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Register / Login</button>
   </div>
 </div>
@@ -527,82 +667,148 @@ function closeMobileNav(){
   <button class="search-close" onclick="closeSearch()">✕</button>
   <input id="search-input" type="text" placeholder="Search concerts, songs, cities, sections..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
   <div id="search-results"></div>
-  <div style="margin-top:16px;font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Press ESC to close</div>
+  <div id="search-recommendations" style="width:min(680px,90vw);margin-top:20px;"></div>
+  <div style="margin-top:16px;font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Press ESC to close · Ctrl+K to open</div>
 </div>
 <script>
 var searchData = [
-  // Tour dates
-  {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates'},
-  {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates'},
-  {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates'},
-  {cat:'Concert',title:'Bern, Switzerland',sub:'Wankdorf Stadium · 21 Mar 2026',href:'#dates'},
-  {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates'},
-  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Feldkirch, Austria',sub:'Vorarlberghalle · 16 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates'},
-  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates'},
-  {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates'},
-  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates'},
-  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates'},
-  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates'},
-  {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates'},
-  {cat:'Concert',title:'Reggio Emilia, Italy',sub:'RCF Arena Campovolo · 18 Jul 2026',href:'#dates'},
+  {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates',img:'https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg'},
+  {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates',img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+  {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg'},
+  {cat:'Concert',title:'Bern, Switzerland',sub:'Wankdorf Stadium · 21 Mar 2026',href:'#dates',img:'https://dynamicmedia.livenationinternational.com/Media/k/m/w/b07edc72-53cf-4f60-a6a9-e339a3ed7c9e.jpg'},
+  {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates',img:'https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg'},
+  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
+  {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
+  {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Feldkirch, Austria',sub:'Vorarlberghalle · 16 May 2026',href:'#dates',img:'https://files.eliteprospects.com/layout/arenas/267006_466x349.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates',img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
+  {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
+  {cat:'Concert',title:'Reggio Emilia, Italy',sub:'RCF Arena Campovolo · 18 Jul 2026',href:'#dates',img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1'},
   // Songs
-  {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist'},
-  {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist'},
-  {cat:'Song',title:'BOMB',sub:'Setlist · Feat. Kanye West + many guests',href:'#setlist'},
-  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist'},
-  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist'},
-  {cat:'Song',title:'Saint Pablo',sub:'Setlist · Feat. Kanye West, Pablo',href:'#setlist'},
-  {cat:'Song',title:'No Child Left Behind',sub:'Setlist · aka yea im crying 💔',href:'#setlist'},
-  {cat:'Song',title:'Moon',sub:'Setlist · Feat. Kanye West, Don Toliver',href:'#setlist'},
+  {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Feat. Kanye West + many guests',href:'#setlist',icon:'💣'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🍂'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Saint Pablo',sub:'Setlist · Feat. Kanye West, Pablo',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'No Child Left Behind',sub:'Setlist · aka yea im crying 💔',href:'#setlist',icon:'💔'},
+  {cat:'Song',title:'Moon',sub:'Setlist · Feat. Kanye West, Don Toliver',href:'#setlist',icon:'🌙'},
   // Sections
-  {cat:'Section',title:'Tour Map',sub:'Interactive map of all tour cities',href:'#tourmap'},
-  {cat:'Section',title:'Gallery',sub:'Photos from the tour',href:'#gallery'},
-  {cat:'Section',title:'Our Story',sub:'About Pablo & Evren / ZBA Basel',href:'#about'},
-  {cat:'Section',title:'Listen Now',sub:'Music on Spotify',href:'#music'},
-  {cat:'Section',title:'Merchandise',sub:'Tour Tee, Cap, Hoodie, Crewneck',href:'#merch'},
-  {cat:'Section',title:'Terence Files Quiz',sub:'7 randomized questions',href:'#quiz'},
-  {cat:'Section',title:'Latest News',sub:'Tour updates and announcements',href:'#news'},
-  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones'},
-  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet'},
-  {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs'},
-  {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes'},
-  {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall'},
-  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press'},
-  {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact'},
-  {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials'},
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all tour cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Section',title:'Gallery',sub:'Photos from the tour',href:'#gallery',icon:'📸'},
+  {cat:'Section',title:'Our Story',sub:'About Pablo & Evren / ZBA Basel',href:'#about',icon:'📖'},
+  {cat:'Section',title:'Listen Now',sub:'Music on Spotify',href:'#music',icon:'🎧'},
+  {cat:'Section',title:'Merchandise',sub:'Tour Tee, Cap, Hoodie, Crewneck',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'7 randomized questions',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Latest News',sub:'Tour updates and announcements',href:'#news',icon:'📰'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs',icon:'🎵'},
+  {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes',icon:'⬅️'},
+  {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall',icon:'💛'},
+  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press',icon:'📋'},
+  {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact',icon:'✉️'},
+  {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials',icon:'📱'},
   // Merch
-  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch'},
-  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch'},
-  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch'},
-  {cat:'Merch',title:'Pablo X Evren Crewneck',sub:'35 CHF',href:'#merch'},
-  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · 3D Fish Edition',href:'#merch'},
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Pablo X Evren Crewneck',sub:'35 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/EWHebCyjsfu1z9BNODtk/image.jpg'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · 3D Fish Edition',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
   // Lore
-  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum classification',href:'#alphabet'},
-  {cat:'Lore',title:'Big D',sub:'Holy Obesity · 67² obese KG',href:'#alphabet'},
-  {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes'},
-  {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet'},
-  {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz'},
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum classification',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · 67² obese KG',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
+  {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
+  {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
 ];
 
 function doSearch(q){
   var res = document.getElementById('search-results');
+  var rec = document.getElementById('search-recommendations');
   q = q.trim().toLowerCase();
-  if(!q){ res.innerHTML=''; return; }
+  if(!q){
+    res.innerHTML='';
+    showRecommendations();
+    return;
+  }
+  rec.innerHTML='';
   var matches = searchData.filter(function(d){
     return d.title.toLowerCase().includes(q) || d.sub.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q);
   }).slice(0,8);
   if(!matches.length){ res.innerHTML='<div style="padding:18px 24px;font-size:0.82rem;color:rgba(255,255,255,0.3);">No results found</div>'; return; }
   res.innerHTML = matches.map(function(m){
-    return '<a class="sr-item" href="'+m.href+'" onclick="closeSearch()"><div class="sr-cat">'+m.cat+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">'+m.sub+'</div></div></a>';
+    var imgHtml = m.img ? '<img src="'+m.img+'" style="width:44px;height:44px;object-fit:cover;border-radius:2px;flex-shrink:0;">' : '<div style="width:44px;height:44px;background:rgba(200,169,110,0.1);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">'+( m.icon||'✦')+'</div>';
+    return '<a class="sr-item" href="'+m.href+'" onclick="closeSearch()">'+imgHtml+'<div class="sr-cat">'+m.cat+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">'+m.sub+'</div></div></a>';
   }).join('');
 }
-function openSearch(){ document.getElementById('search-overlay').classList.add('open'); setTimeout(function(){document.getElementById('search-input').focus();},100); }
-function closeSearch(){ document.getElementById('search-overlay').classList.remove('open'); document.getElementById('search-input').value=''; document.getElementById('search-results').innerHTML=''; }
+
+var recommendPool = [
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates',img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · New',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
+  {cat:'Song',title:'POWER',sub:'Setlist · Special Guest: Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Massive Guest List',href:'#setlist',icon:'💣'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'Test your lore knowledge',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · TON 618',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Nibbooggers',sub:'We are all family ❤️',href:'#alphabet',icon:'🐦'},
+  {cat:'Lore',title:'The First 4 Memes',sub:'Left · Study · Big · Terence',href:'#memes',icon:'⬅️'},
+];
+
+function shuffle(a){ var b=a.slice(); for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;} return b; }
+
+function showRecommendations(){
+  var rec = document.getElementById('search-recommendations');
+  var picks = shuffle(recommendPool).slice(0,6);
+  rec.innerHTML = '<div style="font-size:0.6rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:12px;">✦ Recommended</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">'
+    + picks.map(function(m){
+      var imgHtml = m.img
+        ? '<div style="width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;"><img src="'+m.img+'" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform=\'scale(1.06)\'" onmouseout="this.style.transform=\'scale(1)\'"></div>'
+        : '<div style="width:100%;aspect-ratio:16/9;background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;font-size:2rem;">'+(m.icon||'✦')+'</div>';
+      return '<a href="'+m.href+'" onclick="closeSearch()" style="display:block;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor=\'rgba(200,169,110,0.4)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.07)\'">'
+        + imgHtml
+        + '<div style="padding:10px 12px;">'
+        + '<div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.55);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:3px;">'+m.cat+'</div>'
+        + '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;color:var(--white);">'+m.title+'</div>'
+        + '<div style="font-size:0.68rem;color:rgba(255,255,255,0.35);margin-top:2px;">'+m.sub+'</div>'
+        + '</div></a>';
+    }).join('')
+    + '</div>';
+}
+
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(function(){
+    document.getElementById('search-input').focus();
+    showRecommendations();
+  },100);
+}
+function closeSearch(){
+  document.getElementById('search-overlay').classList.remove('open');
+  document.getElementById('search-input').value='';
+  document.getElementById('search-results').innerHTML='';
+  document.getElementById('search-recommendations').innerHTML='';
+}
 document.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();} if(e.key==='Escape')closeSearch(); });
 </script>
 
@@ -2479,6 +2685,65 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 
 </section>
 
+
+<!-- SOCIAL FEED -->
+<section id="feed" style="background:var(--dark2);padding:clamp(30px,5vw,60px) clamp(24px,6vw,80px);">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+    <div>
+      <p class="section-label">Latest From Us</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:0.06em;color:var(--white);">Social Feed</h2>
+    </div>
+    <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.3);padding:8px 16px;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">
+      Follow @king__pablito69 →
+    </a>
+  </div>
+
+  <div style="display:grid;grid-template-columns:280px 1fr;gap:3px;align-items:start;">
+    <!-- Latest post embed -->
+    <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+      <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
+        <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
+          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg"
+            alt="Latest Instagram Post"
+            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
+            onmouseover="this.style.transform='scale(1.04)'"
+            onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+        </div>
+        <div style="padding:14px 16px;">
+          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">Spain leg complete ✓ Jerez, Cádiz and Sevilla done. Liechtenstein & Austria next 🇱🇮🇦🇹</div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:8px;">@king__pablito69 · View on Instagram →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Stats + links panel -->
+    <div style="display:flex;flex-direction:column;gap:3px;">
+      <!-- Stats -->
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:20px 24px;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:16px;">Social Presence</div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Instagram</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@king__pablito69</div></a></div>
+          <div><a href="https://www.tiktok.com/@hotkeygaming" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">TikTok</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@hotkeygaming</div></a></div>
+          <div><a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">YouTube</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming69</div></a></div>
+          <div><a href="https://x.com/hotkeygaming41" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Twitter/X</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming41</div></a></div>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div style="background:rgba(200,169,110,0.05);border:1px solid rgba(200,169,110,0.18);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.08em;color:var(--white);">Follow for Live Updates</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">Tour updates, behind the scenes, and exclusive content</div>
+        </div>
+        <a href="https://linktr.ee/hotkeygaming" target="_blank" style="background:var(--accent);color:var(--black);padding:11px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">All Links →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAN WALL -->
 <section id="fanwall">
   <p class="section-label">The Crowd Speaks</p>
@@ -2778,5 +3043,35 @@ function setLang(lang) {
 </footer>
 
 
+
+<script>
+var isLight = localStorage.getItem('theme') === 'light';
+function applyTheme(){
+  if(isLight){
+    document.body.classList.add('light-mode');
+    var lbl = document.getElementById('theme-label');
+    var knob = document.getElementById('theme-knob');
+    var tog = document.getElementById('theme-toggle');
+    if(lbl) lbl.textContent = '☀️ Light Mode';
+    if(knob) knob.style.transform = 'translateX(24px)';
+    if(tog) tog.style.background = 'rgba(200,169,110,0.5)';
+  } else {
+    document.body.classList.remove('light-mode');
+    var lbl = document.getElementById('theme-label');
+    var knob = document.getElementById('theme-knob');
+    var tog = document.getElementById('theme-toggle');
+    if(lbl) lbl.textContent = '🌙 Dark Mode';
+    if(knob) knob.style.transform = 'translateX(0)';
+    if(tog) tog.style.background = 'rgba(200,169,110,0.2)';
+  }
+}
+function toggleTheme(){
+  isLight = !isLight;
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  applyTheme();
+}
+// Apply on load
+applyTheme();
+</script>
 </body>
 </html>
