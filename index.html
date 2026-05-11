@@ -335,7 +335,7 @@ window.addEventListener('scroll', function(){
     <div id="loader-sub" style="font-size:clamp(0.8rem,2vw,1rem);letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
     <!-- Progress bar -->
     <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
-      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.8s cubic-bezier(0.22,1,0.36,1);"></div>
+      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.2s cubic-bezier(0.22,1,0.36,1);"></div>
     </div>
   </div>
 </div>
@@ -357,41 +357,12 @@ window.addEventListener('scroll', function(){
     setTimeout(function(){
       loader.classList.add('fade-out');
       document.body.style.overflow='';
-    }, 2400);
+    }, 1500);
     setTimeout(function(){
       loader.style.display='none';
-    }, 3000);
+    }, 2100);
   });
   document.body.style.overflow='hidden'; // prevent scroll during load
-</script>
-
-
-<!-- COOKIE BANNER -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:8000;background:rgba(6,6,12,0.97);border-top:1px solid rgba(200,169,110,0.2);padding:14px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;backdrop-filter:blur(12px);">
-  <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:220px;">
-    <span style="font-size:1.1rem;">🍪</span>
-    <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.5;letter-spacing:0.02em;">This website uses cookies to improve your experience. By continuing, you agree to our use of cookies. <a href="#" style="color:var(--accent);text-decoration:none;">Privacy Policy</a></p>
-  </div>
-  <div style="display:flex;gap:8px;flex-shrink:0;">
-    <button onclick="declineCookies()" style="padding:8px 16px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">Decline</button>
-    <button onclick="acceptCookies()" style="padding:8px 20px;background:var(--accent);border:none;color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">Accept</button>
-  </div>
-</div>
-<script>
-  function acceptCookies(){
-    localStorage.setItem('cookieConsent','accepted');
-    document.getElementById('cookie-banner').style.display='none';
-  }
-  function declineCookies(){
-    localStorage.setItem('cookieConsent','declined');
-    document.getElementById('cookie-banner').style.display='none';
-  }
-  // Show only if not yet decided
-  if(!localStorage.getItem('cookieConsent')){
-    setTimeout(function(){
-      document.getElementById('cookie-banner').style.display='flex';
-    }, 3200); // show after loader finishes
-  }
 </script>
 
 
@@ -582,9 +553,20 @@ document.addEventListener('mouseout', function(e){
   <div class="mobile-nav-section">Info</div>
   <a href="#socials" class="mobile-nav-link" onclick="closeMobileNav()">Socials</a>
   <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
-  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;gap:10px;">
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;gap:12px;">
+
+    <!-- Language Toggle -->
+    <div>
+      <div style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.45);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:8px;">Language</div>
+      <div style="display:flex;gap:2px;">
+        <button onclick="setLang('en');updateLangBtns();" id="lang-en" style="flex:1;padding:10px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">EN</button>
+        <button onclick="setLang('de');updateLangBtns();" id="lang-de" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">DE</button>
+        <button onclick="setLang('es');updateLangBtns();" id="lang-es" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">ES</button>
+      </div>
+    </div>
+
     <!-- Dark/Light toggle -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
       <div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);" id="theme-label">🌙 Dark Mode</div>
         <div style="font-size:0.62rem;color:rgba(255,255,255,0.3);margin-top:2px;">Toggle website theme</div>
@@ -593,6 +575,11 @@ document.addEventListener('mouseout', function(e){
         <div id="theme-knob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform 0.3s;"></div>
       </div>
     </div>
+
+    <!-- Feedback -->
+    <button onclick="closeMobileNav();openFeedback();" style="width:100%;padding:12px;background:rgba(200,169,110,0.08);color:var(--accent);border:1px solid rgba(200,169,110,0.3);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">💬 Send Feedback</button>
+
+    <!-- Login -->
     <button onclick="closeMobileNav();showLoginModal();" style="width:100%;padding:14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Register / Login</button>
   </div>
 </div>
@@ -898,7 +885,7 @@ function closeLoginModal(){ document.getElementById('login-modal').classList.rem
   }
   @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
 </style>
-<button id="feedback-btn" onclick="openFeedback()">💬 Feedback</button>
+
 <div id="feedback-modal" onclick="if(event.target===this)closeFeedback()">
   <div class="feedback-box">
     <button onclick="closeFeedback()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.3rem;cursor:pointer;">✕</button>
@@ -1136,6 +1123,8 @@ function submitFeedback(){
           <div style="text-align:center;"><div id="tor-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
           <div style="text-align:center;"><div id="tor-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Sec</div></div>
         </div>
         <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:#4caf50;padding:10px 20px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(76,175,80,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
       </div>
@@ -1187,6 +1176,7 @@ function updateToronto(){
   var td=document.getElementById("tor-d"); if(td) td.textContent=pad(diff/86400000);
   var th=document.getElementById("tor-h"); if(th) th.textContent=pad((diff%86400000)/3600000);
   var tm=document.getElementById("tor-m"); if(tm) tm.textContent=pad((diff%3600000)/60000);
+  var ts=document.getElementById("tor-s"); if(ts) ts.textContent=pad((diff%60000)/1000);
 }
 
 updateCountdown(); updateToronto();
@@ -1212,11 +1202,11 @@ setInterval(updateTorontoCountdown, 60000);
 <!-- SOCIAL PROOF -->
 <div id="proof">
   <div class="proof-grid">
-    <div class="proof-stat"><h3>9+</h3><p>Countries</p></div>
+    <div class="proof-stat"><h3>10+</h3><p>Countries</p></div>
     <div class="proof-div"></div>
-    <div class="proof-stat"><h3>14</h3><p>Shows Planned</p></div>
+    <div class="proof-stat"><h3>15+</h3><p>Shows Planned</p></div>
     <div class="proof-div"></div>
-    <div class="proof-stat"><h3>Live</h3><p>In Europe 2026</p></div>
+    <div class="proof-stat"><h3>3</h3><p>Continents</p></div>
     <div class="proof-div"></div>
     <div class="proof-quote">
       <blockquote>The energy Pablo and Evren bring is on another level. You leave the show changed.</blockquote>
@@ -1752,8 +1742,8 @@ setInterval(updateTorontoCountdown, 60000);
       <p>Their sound draws from the cinematic ambition of <strong>Kanye</strong> — that wall-of-sound philosophy, the willingness to go left when everyone expects right. Huge drums, heavy bass, melodies that hit like punches. Nothing small about it.</p>
       <p>What started as two guys pushing through Study together became something nobody saw coming. Now they're taking it global — and this World Tour is just the beginning.</p>
       <div class="about-stat">
-        <div class="stat"><h4>9+</h4><p>Countries</p></div>
-        <div class="stat"><h4>14</h4><p>Shows</p></div>
+        <div class="stat"><h4>10+</h4><p>Countries</p></div>
+        <div class="stat"><h4>15+</h4><p>Shows</p></div>
         <div class="stat"><h4>1</h4><p>Holy Obesity</p></div>
       </div>
     </div>
@@ -2961,12 +2951,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   </div>
 </section>
 
-<!-- LANGUAGE TOGGLE -->
-<div id="lang-toggle" style="position:fixed;bottom:28px;left:28px;z-index:9999;display:flex;gap:2px;background:rgba(10,10,10,0.9);border:1px solid rgba(200,169,110,0.3);backdrop-filter:blur(10px);">
-  <button onclick="setLang('en')" id="lang-en" style="padding:9px 14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;">EN</button>
-  <button onclick="setLang('de')" id="lang-de" style="padding:9px 14px;background:transparent;color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;">DE</button>
-  <button onclick="setLang('es')" id="lang-es" style="padding:9px 14px;background:transparent;color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;">ES</button>
-</div>
+
 
 <script>
 var translations = {
@@ -3195,5 +3180,20 @@ function launchPerfectConfetti(){
 }
 </script>
 
+
+<script>
+function updateLangBtns(){
+  var cur = localStorage.getItem('lang') || 'en';
+  ['en','de','es'].forEach(function(l){
+    var btn = document.getElementById('lang-'+l);
+    if(!btn) return;
+    btn.style.background = l===cur ? 'var(--accent)' : 'rgba(255,255,255,0.06)';
+    btn.style.color = l===cur ? 'var(--black)' : 'rgba(255,255,255,0.5)';
+  });
+}
+// Also persist language choice
+var _origSetLang = typeof setLang === 'function' ? setLang : null;
+document.addEventListener('DOMContentLoaded', function(){ updateLangBtns(); });
+</script>
 </body>
 </html>
