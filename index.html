@@ -709,8 +709,8 @@ var searchData = [
   {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
   {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
   {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
-  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
-  {cat:'Concert',title:'Feldkirch, Austria',sub:'Vorarlberghalle · 16 May 2026',href:'#dates',img:'https://files.eliteprospects.com/layout/arenas/267006_466x349.jpg'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 14 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Feldkirch, Austria',sub:'Vorarlberghalle · 14 May 2026',href:'#dates',img:'https://files.eliteprospects.com/layout/arenas/267006_466x349.jpg'},
   {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates',img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
   {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
@@ -756,6 +756,7 @@ var searchData = [
   {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
   {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
   {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
+  {cat:'Concert',title:'Toronto, Canada',sub:'Rogers Centre · 28 Dec 2026 · Evren Solo',href:'#dates',img:'https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg'},
 ];
 
 function doSearch(q){
@@ -779,7 +780,7 @@ function doSearch(q){
 }
 
 var recommendPool = [
-  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 16 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 14 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
   {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre · 19 & 21 Jun 2026',href:'#dates',img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
   {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
@@ -1087,98 +1088,127 @@ function submitFeedback(){
 </div>
 
 <!-- COUNTDOWN -->
-<div id="countdown" style="position:relative;overflow:hidden;min-height:200px;">
-  <!-- City background image changes per show -->
+<div id="countdown" style="position:relative;overflow:hidden;">
+  <!-- bg image -->
   <div id="cd-bg" style="position:absolute;inset:0;background-size:cover;background-position:center;transition:all 1s ease;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.7) 60%,rgba(0,0,0,0.4) 100%);"></div>
-  <div style="position:relative;z-index:2;padding:36px clamp(24px,6vw,80px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
-    <div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-        <div style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
-        <span id="cd-label" style="font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">Next Show</span>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.93) 0%,rgba(0,0,0,0.75) 60%,rgba(0,0,0,0.45) 100%);"></div>
+
+  <div style="position:relative;z-index:2;padding:28px clamp(24px,6vw,80px);display:flex;flex-direction:column;gap:0;">
+
+    <!-- TOP: Next Show -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:22px;border-bottom:1px solid rgba(200,169,110,0.15);">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
+          <span id="cd-label" style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">Next Show</span>
+        </div>
+        <div id="cd-city" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:0.06em;color:var(--white);line-height:1;"></div>
+        <div id="cd-venue" style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.05em;"></div>
       </div>
-      <div id="cd-city" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:0.06em;color:var(--white);line-height:1;"></div>
-      <div id="cd-venue" style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.06em;"></div>
-    </div>
-    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
-      <div style="display:flex;gap:16px;">
-        <div style="text-align:center;">
-          <div id="cd-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
-          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Days</div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;gap:10px;">
+          <div style="text-align:center;"><div id="cd-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Days</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Hrs</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Min</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Sec</div></div>
         </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
-        <div style="text-align:center;">
-          <div id="cd-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
-          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Hours</div>
-        </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
-        <div style="text-align:center;">
-          <div id="cd-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
-          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Min</div>
-        </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:rgba(200,169,110,0.4);align-self:flex-start;padding-top:4px;">:</div>
-        <div style="text-align:center;">
-          <div id="cd-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div>
-          <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;">Sec</div>
-        </div>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:var(--accent);color:var(--black);padding:12px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Get Tickets</a>
       </div>
-      <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:var(--accent);color:var(--black);padding:14px 32px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;display:inline-block;">Get Tickets</a>
     </div>
+
+    <!-- BOTTOM: Toronto New Date -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:18px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#4caf50;animation:pulseDot 1.4s ease-in-out infinite;"></div>
+          <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#4caf50;font-weight:600;font-family:'Barlow Condensed',sans-serif;">🆕 New Date Confirmed</span>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:0.06em;color:rgba(255,255,255,0.85);line-height:1;">Toronto, Canada 🇨🇦</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.05em;">Rogers Centre · Doors 21:00 · 28 Dec 2026 · Evren Solo</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;gap:8px;">
+          <div style="text-align:center;"><div id="tor-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Days</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
+        </div>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:#4caf50;padding:10px 20px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(76,175,80,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <script>
-// ══ PROPER AUTO-COUNTDOWN — finds next upcoming show automatically ══
 var shows = [
-  { city:"Vaduz, Liechtenstein", venue:"Rheinpark Stadium · Doors 12:00", date:new Date("2026-05-16T12:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Vaduz_-_Rheinpark_Stadion.jpg/1280px-Vaduz_-_Rheinpark_Stadion.jpg" },
-  { city:"Feldkirch, Austria", venue:"Vorarlberghalle · Doors 15:00", date:new Date("2026-05-16T15:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Feldkirch_Montfortgasse.jpg/1280px-Feldkirch_Montfortgasse.jpg" },
-  { city:"Istanbul, Turkey", venue:"Atatürk Olympic Stadium · Doors 21:00", date:new Date("2026-05-30T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Istanbul_2013.jpg/1280px-Istanbul_2013.jpg" },
-  { city:"Milan, Italy", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg" },
-  { city:"Brescia, Italy", venue:"Mario Rigamonti Stadium · Doors 21:00", date:new Date("2026-06-20T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Brescia_-_Piazza_della_Loggia.jpg/1280px-Brescia_-_Piazza_della_Loggia.jpg" },
-  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Milano_duomo_notturno.jpg/1280px-Milano_duomo_notturno.jpg" },
-  { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg/1280px-Stockholm_City_Hall_-_Stockholm%2C_Sweden.jpg" },
-  { city:"Copenhagen, Denmark", venue:"Parken Stadium · Doors 21:00", date:new Date("2026-07-13T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Copenhagen_-_Nyhavn.jpg/1280px-Copenhagen_-_Nyhavn.jpg" },
-  { city:"Rome, Italy", venue:"Stadio Olimpico · Doors 21:00", date:new Date("2026-07-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Rome_Colosseum_inside.jpg/1280px-Rome_Colosseum_inside.jpg" },
-  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Hurghada_Red_Sea.jpg/1280px-Hurghada_Red_Sea.jpg" },
-  { city:"Reggio Emilia, Italy", venue:"RCF Arena Campovolo · Doors 21:00", date:new Date("2026-07-18T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/RCF_Arena_Campovolo.jpg/1280px-RCF_Arena_Campovolo.jpg" }
+  { city:"Vaduz, Liechtenstein", venue:"Rheinpark Stadium · Doors 12:00", date:new Date("2026-05-14T12:00:00"), img:"https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg" },
+  { city:"Feldkirch, Austria", venue:"Vorarlberghalle · Doors 15:00", date:new Date("2026-05-14T15:00:00"), img:"https://files.eliteprospects.com/layout/arenas/267006_466x349.jpg" },
+  { city:"Milan, Italy", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
+  { city:"Brescia, Italy", venue:"Mario Rigamonti Stadium · Doors 21:00", date:new Date("2026-06-20T21:00:00"), img:"https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg" },
+  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
+  { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
+  { city:"Copenhagen, Denmark", venue:"Parken Stadium · Doors 21:00", date:new Date("2026-07-13T21:00:00"), img:"https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg" },
+  { city:"Rome, Italy", venue:"Stadio Olimpico · Doors 21:00", date:new Date("2026-07-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg" },
+  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
+  { city:"Reggio Emilia, Italy", venue:"RCF Arena Campovolo · Doors 21:00", date:new Date("2026-07-18T21:00:00"), img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1" },
+  { city:"Toronto, Canada", venue:"Rogers Centre · Doors 21:00 · Evren Solo", date:new Date("2026-12-28T21:00:00"), img:"https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg" }
 ];
 
-function getNextShow() {
-  var now = new Date();
-  for(var i=0;i<shows.length;i++){
-    if(shows[i].date > now) return shows[i];
-  }
-  return null;
-}
+function getNextShow(){ var now=new Date(); for(var i=0;i<shows.length;i++){ if(shows[i].date>now) return shows[i]; } return null; }
+function pad(n){ return String(Math.floor(n)).padStart(2,"0"); }
 
 function updateCountdown(){
   var show = getNextShow();
   if(!show){
-    document.getElementById("cd-label").textContent = "Tour Complete";
-    document.getElementById("cd-city").textContent = "See You Next Time";
-    document.getElementById("cd-venue").textContent = "Thank you for an incredible 2026 World Tour";
+    document.getElementById("cd-label").textContent="Tour Complete";
+    document.getElementById("cd-city").textContent="See You Next Time";
+    document.getElementById("cd-venue").textContent="Thank you for an incredible tour";
     ["cd-d","cd-h","cd-m","cd-s"].forEach(function(id){document.getElementById(id).textContent="00";});
     return;
   }
-  // Update city info
-  document.getElementById("cd-city").textContent = show.city;
-  document.getElementById("cd-venue").textContent = show.venue;
-  document.getElementById("cd-bg").style.backgroundImage = "url('"+show.img+"')";
-
-  // Countdown
-  var diff = show.date - new Date();
-  if(diff < 0) diff = 0;
-  var pad = function(n){return String(Math.floor(n)).padStart(2,"0");};
-  document.getElementById("cd-d").textContent = pad(diff/86400000);
-  document.getElementById("cd-h").textContent = pad((diff%86400000)/3600000);
-  document.getElementById("cd-m").textContent = pad((diff%3600000)/60000);
-  document.getElementById("cd-s").textContent = pad((diff%60000)/1000);
+  document.getElementById("cd-city").textContent=show.city;
+  document.getElementById("cd-venue").textContent=show.venue;
+  document.getElementById("cd-bg").style.backgroundImage="url('"+show.img+"')";
+  var diff=show.date-new Date(); if(diff<0)diff=0;
+  document.getElementById("cd-d").textContent=pad(diff/86400000);
+  document.getElementById("cd-h").textContent=pad((diff%86400000)/3600000);
+  document.getElementById("cd-m").textContent=pad((diff%3600000)/60000);
+  document.getElementById("cd-s").textContent=pad((diff%60000)/1000);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+function updateToronto(){
+  var tor=new Date("2026-12-28T21:00:00");
+  var diff=tor-new Date(); if(diff<0)diff=0;
+  document.getElementById("tor-d").textContent=pad(diff/86400000);
+  document.getElementById("tor-h").textContent=pad((diff%86400000)/3600000);
+  document.getElementById("tor-m").textContent=pad((diff%3600000)/60000);
+}
+
+updateCountdown(); updateToronto();
+setInterval(function(){ updateCountdown(); updateToronto(); }, 1000);
 </script>
 
+
+<script>
+// Toronto countdown in announcement bar
+function updateTorontoCountdown(){
+  var target = new Date("2026-12-28T21:00:00");
+  var now = new Date();
+  var diff = target - now;
+  if(diff < 0){ document.getElementById('toronto-countdown').textContent = 'Show has passed'; return; }
+  var d = Math.floor(diff/86400000);
+  var h = Math.floor((diff%86400000)/3600000);
+  var m = Math.floor((diff%3600000)/60000);
+  document.getElementById('toronto-countdown').textContent = d + ' days · ' + h + 'h · ' + m + 'm until show';
+}
+updateTorontoCountdown();
+setInterval(updateTorontoCountdown, 60000);
+</script>
 <!-- SOCIAL PROOF -->
 <div id="proof">
   <div class="proof-grid">
@@ -1388,8 +1418,8 @@ setInterval(updateCountdown, 1000);
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
-      <div class="dr-info"><h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein</h3><p>Rheinpark Stadium · Doors 12:00 · 16 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">14</div></div>
+      <div class="dr-info"><h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein</h3><p>Rheinpark Stadium · Doors 12:00 · 14 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
       <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
     </div>
   </div>
@@ -1400,8 +1430,8 @@ setInterval(updateCountdown, 1000);
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
-      <div class="dr-info"><h3><span class="flag">🇦🇹</span> Feldkirch, Austria</h3><p>Vorarlberghalle · Doors 15:00 · 16 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">14</div></div>
+      <div class="dr-info"><h3><span class="flag">🇦🇹</span> Feldkirch, Austria</h3><p>Vorarlberghalle · Doors 15:00 · 14 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
       <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
     </div>
   </div>
@@ -1519,7 +1549,8 @@ setInterval(updateCountdown, 1000);
     <div style="color:var(--accent);font-size:1.3rem;flex-shrink:0;margin-top:2px;">⚠</div>
     <div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Please Note</div>
-      <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65;">Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome, Istanbul,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65;">Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
+      <p style="font-size:0.85rem;color:rgba(232,65,65,0.8);line-height:1.65;margin-top:8px;"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
     </div>
   </div>
 
@@ -1533,6 +1564,23 @@ setInterval(updateCountdown, 1000);
       </div>
     </div>
     <a href="#newsletter" style="font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--accent);color:var(--black);padding:13px 28px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Notify Me →</a>
+  </div>
+
+
+  <!-- Toronto -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">28</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇨🇦</span> Toronto, Canada <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
+        <p>Rogers Centre · Doors 21:00 · 28 Dec 2026</p>
+        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend — entry to Canada not permitted</span></p>
+      </div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
   </div>
 
   <!-- ══ UNCONFIRMED ══ -->
@@ -1987,7 +2035,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="news-tag tag-new">New</div>
       <div class="news-date">5 May 2026</div>
       <div class="news-title">New Concert Announcement — Vaduz & Feldkirch</div>
-      <div class="news-body">Two new shows confirmed for 16 May 2026. Pablo and Evren will perform together at Rheinpark Stadium in Vaduz, Liechtenstein (Doors 12:00) and Vorarlberghalle in Feldkirch, Austria (Doors 15:00). Two shows, one day — both performances will feature Pablo and Evren on stage together for the first time this tour.</div>
+      <div class="news-body">Two new shows confirmed for 14 May 2026. Pablo and Evren will perform together at Rheinpark Stadium in Vaduz, Liechtenstein (Doors 12:00) and Vorarlberghalle in Feldkirch, Austria (Doors 15:00). Two shows, one day — both performances will feature Pablo and Evren on stage together for the first time this tour.</div>
     </div>
 
     <div class="news-item" style="padding:28px 0 28px 24px;">
@@ -2127,7 +2175,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="milestone-desc">After Jerez, Cádiz and Sevilla — the Spain leg is done. 3 cities in 4 days. The South of Spain has been conquered.</div>
     </div>
     <div class="milestone">
-      <div class="milestone-date">16 May 2026</div>
+      <div class="milestone-date">14 May 2026</div>
       <div class="milestone-title">First Pablo & Evren Joint Performance <span class="milestone-badge mb-gold">Historic</span></div>
       <div class="milestone-desc">Vaduz, Liechtenstein — Rheinpark Stadium. Pablo and Evren on the same stage for the first time in this tour. Two shows in one day — Vaduz at 12:00, Feldkirch at 15:00.</div>
     </div>
