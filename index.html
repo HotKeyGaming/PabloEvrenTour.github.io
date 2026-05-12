@@ -1548,6 +1548,10 @@ setInterval(updateTorontoCountdown, 60000);
         <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend — entry to Canada not permitted</span></p>
       </div>
       <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- ══ CANCELLED ══ -->
   <div class="dates-divider" style="color:#e84141;font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✕ Cancelled Shows</div>
 
   <!-- Istanbul May 30 - CANCELLED -->
@@ -1611,126 +1615,23 @@ setInterval(updateTorontoCountdown, 60000);
   <p class="section-label">The Route</p>
   <h2 class="section-title">Tour Map</h2>
   <div class="divider"></div>
-
-  <style>
-    #route-map-wrap { position:relative; background:#06090f; border:1px solid rgba(200,169,110,0.18); overflow:hidden; }
-    .rmap-pin { cursor:pointer; transition:transform 0.2s; }
-    .rmap-pin:hover { transform:scale(1.4); }
-    .rmap-pin circle.pulse { transform-origin:center; animation:mapPinPulse 2s ease-in-out infinite; }
-    @keyframes mapPinPulse { 0%,100%{opacity:0.4;r:14} 50%{opacity:0.05;r:24} }
-    .rmap-tooltip {
-      position:absolute; background:rgba(4,6,16,0.97); border:1px solid rgba(200,169,110,0.4);
-      padding:10px 14px; pointer-events:none; opacity:0; transition:opacity 0.15s;
-      font-family:'Barlow Condensed',sans-serif; min-width:180px; z-index:30; white-space:nowrap;
-    }
-    .rmap-tooltip strong { display:block; font-size:0.85rem; letter-spacing:0.1em; color:#c8a96e; text-transform:uppercase; }
-    .rmap-tooltip span { font-size:0.7rem; color:rgba(255,255,255,0.45); line-height:1.5; display:block; }
-    .route-line { stroke-dasharray:2000; stroke-dashoffset:2000; animation:drawRoute 3s ease-in-out forwards; }
-    @keyframes drawRoute { to{ stroke-dashoffset:0; } }
-  </style>
-
-  <div id="route-map-wrap">
-    <div id="rmap-tooltip" class="rmap-tooltip">
-      <strong id="rmt-city"></strong><span id="rmt-info"></span>
+  <div style="position:relative;border:1px solid rgba(200,169,110,0.22);overflow:hidden;">
+    <div style="position:absolute;top:14px;left:14px;z-index:20;background:rgba(4,8,20,0.92);border-left:2px solid #c8a96e;padding:10px 14px;backdrop-filter:blur(6px);">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.14em;color:#c8a96e;">2026 World Tour</div>
+      <div style="font-size:0.68rem;color:rgba(255,255,255,0.38);margin-top:2px;letter-spacing:0.06em;">15+ shows · 10+ countries · 3 continents</div>
     </div>
-    <!-- Badge -->
-    <div style="position:absolute;top:12px;left:12px;z-index:20;background:rgba(4,8,20,0.92);border-left:2px solid #c8a96e;padding:8px 12px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.12em;color:#c8a96e;">2026 World Tour</div>
-      <div style="font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:1px;">10+ countries · 3 continents</div>
+    <iframe src="https://www.google.com/maps/d/embed?mid=17YVV4s6rTjN1xhfjf59OhptaP-Dg8PA&ehbc=2E312F" width="100%" height="500" style="border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div style="margin-top:12px;padding:16px 24px;border:1px solid rgba(200,169,110,0.18);background:rgba(255,255,255,0.02);display:flex;gap:32px;flex-wrap:wrap;align-items:center;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.35);flex-shrink:0;">Map Legend</div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:14px;height:14px;border-radius:50%;background:#e84141;box-shadow:0 0 6px rgba(232,65,65,0.5);flex-shrink:0;"></div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;letter-spacing:0.06em;color:rgba(255,255,255,0.65);">Upcoming Show</span>
     </div>
-    <!-- Legend -->
-    <div style="position:absolute;bottom:12px;left:12px;z-index:20;display:flex;gap:16px;background:rgba(4,8,20,0.8);padding:7px 12px;border:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#e2c688;"></div><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;">UPCOMING</span></div>
-      <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#4caf50;"></div><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;">COMPLETED</span></div>
-      <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#e84141;"></div><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;">CANCELLED</span></div>
-      <div style="display:flex;align-items:center;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#444;"></div><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;">UNCONFIRMED</span></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:14px;height:14px;border-radius:50%;background:#4195e8;box-shadow:0 0 6px rgba(65,149,232,0.5);flex-shrink:0;"></div>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;letter-spacing:0.06em;color:rgba(255,255,255,0.65);">Past Show</span>
     </div>
-
-    <svg id="route-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
-      <rect width="1000" height="500" fill="#06090f"/>
-      <!-- Grid lines -->
-      <line x1="0" y1="166" x2="1000" y2="166" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(200,169,110,0.06)" stroke-width="0.5"/>
-      <line x1="0" y1="333" x2="1000" y2="333" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="250" y1="0" x2="250" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-      <line x1="750" y1="0" x2="750" y2="500" stroke="rgba(200,169,110,0.04)" stroke-width="0.5"/>
-
-      <!-- Continents -->
-      <!-- North America -->
-      <path d="M50,58 L75,52 L100,50 L128,52 L150,58 L170,64 L185,72 L195,82 L200,96 L204,112 L202,128 L196,144 L188,158 L178,168 L165,172 L152,168 L140,162 L128,160 L118,164 L108,168 L98,162 L88,150 L78,136 L68,120 L58,104 L52,88 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <path d="M192,28 L210,22 L228,24 L238,32 L232,44 L216,48 L200,44 L188,36 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M160,172 L174,170 L182,178 L182,190 L174,196 L162,192 L156,182 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- South America -->
-      <path d="M168,200 L184,194 L200,192 L216,196 L228,204 L238,218 L240,236 L236,256 L228,276 L214,294 L198,306 L182,304 L168,292 L158,274 L154,252 L156,230 L160,212 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- Europe -->
-      <path d="M424,92 L442,86 L462,82 L482,78 L500,76 L516,80 L524,90 L518,102 L506,110 L492,116 L478,120 L464,122 L450,118 L436,112 L424,104 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M420,118 L438,112 L452,114 L460,124 L458,138 L448,148 L434,152 L420,146 L414,134 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M426,94 L438,90 L444,98 L438,108 L428,108 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M462,66 L480,58 L498,56 L512,62 L516,76 L508,88 L494,94 L478,92 L464,84 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M474,120 L484,116 L492,120 L494,132 L490,146 L482,156 L474,150 L470,138 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M496,100 L506,96 L510,104 L504,110 L496,108 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M518,112 L534,108 L546,114 L546,126 L536,132 L522,130 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Africa -->
-      <path d="M418,160 L458,156 L504,154 L540,156 L562,162 L572,174 L568,192 L556,208 L532,218 L506,222 L480,220 L454,214 L432,204 L418,188 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M454,222 L532,218 L558,228 L570,246 L566,268 L550,288 L530,304 L508,312 L486,308 L464,296 L450,276 L444,254 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M558,220 L578,212 L594,218 L604,234 L598,254 L582,260 L566,252 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Middle East / Turkey -->
-      <path d="M546,130 L572,124 L600,122 L624,126 L634,136 L628,148 L610,154 L590,156 L568,150 L548,142 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M568,150 L610,148 L640,146 L668,148 L686,158 L682,174 L662,182 L636,184 L606,180 L576,170 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M574,170 L608,168 L640,166 L654,180 L648,200 L630,214 L608,218 L588,214 L572,200 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Russia -->
-      <path d="M500,36 L580,26 L660,22 L740,24 L810,32 L850,44 L848,62 L820,74 L778,80 L734,82 L690,80 L648,78 L608,80 L570,82 L540,78 L514,68 L500,54 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.6"/>
-      <!-- Central Asia / China -->
-      <path d="M634,88 L682,84 L730,86 L770,92 L786,106 L780,120 L756,130 L720,134 L682,132 L648,126 L632,112 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <path d="M730,86 L780,88 L818,98 L840,114 L830,132 L806,144 L776,148 L744,146 L714,140 L694,128 L690,114 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- India -->
-      <path d="M644,146 L672,140 L692,148 L692,166 L682,182 L664,192 L646,186 L634,170 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Japan -->
-      <path d="M846,102 L858,98 L864,108 L856,118 L846,116 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-      <!-- Australia -->
-      <path d="M762,292 L798,282 L836,284 L862,298 L872,318 L860,340 L836,352 L806,352 L780,340 L764,320 Z" fill="#131a24" stroke="#1e2a38" stroke-width="0.5"/>
-
-      <!-- ANIMATED TOUR ROUTE LINE (completed shows) -->
-      <polyline class="route-line" points="521,120 505,135 540,150 519,122 482,148 483,148 485,146 580,137 610,140" fill="none" stroke="rgba(76,175,80,0.4)" stroke-width="1.5" stroke-linecap="round" style="animation-delay:0.5s"/>
-
-      <!-- COMPLETED PINS (green) -->
-      <g class="rmap-pin" data-city="Basel, Switzerland" data-info="St. Jakob Park · Ongoing ✓"><circle cx="521" cy="120" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="527" y="117" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">BASEL</text></g>
-      <g class="rmap-pin" data-city="Barcelona, Spain" data-info="Camp Nou · 13 Feb ✓"><circle cx="505" cy="135" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="511" y="132" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">BCN</text></g>
-      <g class="rmap-pin" data-city="Malta" data-info="Ta'Qali · 20 Feb ✓"><circle cx="540" cy="151" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="546" y="148" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">MALTA</text></g>
-      <g class="rmap-pin" data-city="Bern, Switzerland" data-info="Wankdorf · 21 Mar ✓"><circle cx="519" cy="122" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/></g>
-      <g class="rmap-pin" data-city="Erzincan, Turkey" data-info="13 Şubat Stadium · 25 Apr ✓"><circle cx="610" cy="140" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="616" y="137" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">ERZINCAN</text></g>
-      <g class="rmap-pin" data-city="Jerez, Spain" data-info="Estadio Chapín · 1 May ✓"><circle cx="482" cy="148" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/></g>
-      <g class="rmap-pin" data-city="Cádiz, Spain" data-info="JP Financial · 2 May ✓"><circle cx="480" cy="151" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="469" y="145" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">CADIZ</text></g>
-      <g class="rmap-pin" data-city="Sevilla, Spain" data-info="Ramón S-P · 4 May ✓"><circle cx="485" cy="146" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/><text x="490" y="143" font-family="Barlow Condensed" font-size="7" fill="#4caf50" letter-spacing="0.8">SEVILLA</text></g>
-      <g class="rmap-pin" data-city="Istanbul (Past)" data-info="Beşiktaş Stadium · 1 May ✓"><circle cx="581" cy="137" r="5" fill="#2d6a2d" stroke="#4caf50" stroke-width="1.5"/></g>
-
-      <!-- UPCOMING PINS (gold pulsing) -->
-      <g class="rmap-pin" data-city="Vaduz, Liechtenstein" data-info="Rheinpark Stadium · 14 May 2026"><circle cx="526" cy="119" r="14" fill="rgba(226,198,136,0.15)" class="pulse"/><circle cx="526" cy="119" r="6" fill="#e2c688"/><text x="532" y="113" font-family="Barlow Condensed" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">VADUZ</text></g>
-      <g class="rmap-pin" data-city="Feldkirch, Austria" data-info="Vorarlberghalle · 14 May 2026"><circle cx="527" cy="123" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.3s"/><circle cx="527" cy="123" r="6" fill="#e2c688"/></g>
-      <g class="rmap-pin" data-city="Milan, Italy" data-info="Mind Live Theatre · 19 & 21 Jun 2026"><circle cx="526" cy="127" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.4s"/><circle cx="526" cy="127" r="6" fill="#e2c688"/><text x="532" y="135" font-family="Barlow Condensed" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">MILAN</text></g>
-      <g class="rmap-pin" data-city="Brescia, Italy" data-info="Mario Rigamonti · 20 Jun 2026"><circle cx="530" cy="124" r="6" fill="#e2c688"/></g>
-      <g class="rmap-pin" data-city="Stockholm, Sweden" data-info="Strawberry Arena · 11 Jul 2026"><circle cx="550" cy="91" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.2s"/><circle cx="550" cy="91" r="6" fill="#e2c688"/><text x="557" y="88" font-family="Barlow Condensed" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">STOCKHOLM</text></g>
-      <g class="rmap-pin" data-city="Copenhagen, Denmark" data-info="Parken Stadium · 13 Jul 2026"><circle cx="535" cy="100" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2.5s"/><circle cx="535" cy="100" r="6" fill="#e2c688"/><text x="514" y="97" font-family="Barlow Condensed" font-size="7" fill="#e2c688" font-weight="700" letter-spacing="0.8">CPH</text></g>
-      <g class="rmap-pin" data-city="Rome, Italy" data-info="Stadio Olimpico · 16 Jul 2026"><circle cx="535" cy="135" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:2s"/><circle cx="535" cy="135" r="6" fill="#e2c688"/><text x="541" y="143" font-family="Barlow Condensed" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">ROME</text></g>
-      <g class="rmap-pin" data-city="Hurghada, Egypt" data-info="Khaled Bichara · 17 Jul 2026"><circle cx="570" cy="176" r="14" fill="rgba(226,198,136,0.15)" class="pulse" style="animation-duration:1.8s"/><circle cx="570" cy="176" r="6" fill="#e2c688"/><text x="576" y="173" font-family="Barlow Condensed" font-size="7.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">HURGHADA</text></g>
-      <g class="rmap-pin" data-city="Reggio Emilia, Italy" data-info="RCF Arena · 18 Jul 2026"><circle cx="529" cy="128" r="6" fill="#e2c688"/><text x="512" y="136" font-family="Barlow Condensed" font-size="6.5" fill="#e2c688" font-weight="700" letter-spacing="0.8">REGGIO E.</text></g>
-      <!-- Toronto - Canada -->
-      <g class="rmap-pin" data-city="Toronto, Canada" data-info="Rogers Centre · 28 Dec 2026 · Evren Solo 🆕"><circle cx="200" cy="148" r="14" fill="rgba(76,175,80,0.15)" class="pulse" style="animation-duration:2.8s"/><circle cx="200" cy="148" r="6" fill="#4caf50"/><text x="207" y="145" font-family="Barlow Condensed" font-size="7.5" fill="#4caf50" font-weight="700" letter-spacing="0.8">TORONTO</text></g>
-
-      <!-- CANCELLED (red) -->
-      <g class="rmap-pin" data-city="Istanbul (Cancelled)" data-info="Atatürk Olympic · 30 May · CANCELLED"><circle cx="581" cy="133" r="5" fill="#4a0000" stroke="#e84141" stroke-width="1.5"/><text x="556" y="129" font-family="Barlow Condensed" font-size="7" fill="#e84141" letter-spacing="0.8">ISTANBUL ✕</text></g>
-
-      <!-- UNCONFIRMED (grey) -->
-      <g class="rmap-pin" data-city="Yerevan, Armenia" data-info="Unconfirmed"><circle cx="624" cy="138" r="4" fill="#222" stroke="#444"/><text x="630" y="136" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">YEREVAN</text></g>
-      <g class="rmap-pin" data-city="Almaty, Kazakhstan" data-info="Unconfirmed"><circle cx="714" cy="130" r="4" fill="#222" stroke="#444"/><text x="720" y="128" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">ALMATY</text></g>
-      <g class="rmap-pin" data-city="Lima, Peru" data-info="Unconfirmed"><circle cx="205" cy="285" r="4" fill="#222" stroke="#444"/><text x="211" y="283" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">LIMA</text></g>
-      <g class="rmap-pin" data-city="Tokyo, Japan" data-info="Unconfirmed"><circle cx="858" cy="114" r="4" fill="#222" stroke="#444"/><text x="846" y="110" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">TOKYO</text></g>
-      <g class="rmap-pin" data-city="Florida, USA" data-info="Unconfirmed"><circle cx="205" cy="170" r="4" fill="#222" stroke="#444"/><text x="211" y="168" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">FLORIDA</text></g>
-      <g class="rmap-pin" data-city="Mexico" data-info="Unconfirmed"><circle cx="178" cy="192" r="4" fill="#222" stroke="#444"/><text x="184" y="190" font-family="Barlow Condensed" font-size="6" fill="#444" letter-spacing="0.8">MEXICO</text></g>
-    </svg>
-
-    <p style="padding:8px 14px 10px;font-size:0.65rem;color:rgba(255,255,255,0.18);letter-spacing:0.06em;">Hover over a pin for show details</p>
   </div>
 </section>
 
@@ -1945,7 +1846,7 @@ setInterval(updateTorontoCountdown, 60000);
 <!-- SETLIST -->
 <section id="setlist" style="position:relative;overflow:hidden;">
   <!-- Background image with dark overlay -->
-  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202605/07/XscDg9PZyKCs6PuAPbUq/image.png');background-size:cover;background-position:center;opacity:0.12;"></div>
+  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202605/07/XscDg9PZyKCs6PuAPbUq/image.png');background-size:cover;background-position:center;opacity:0.22;"></div>
   <div style="position:absolute;inset:0;background:rgba(10,10,10,0.88);"></div>
   <div style="position:relative;z-index:2;padding:var(--gap) clamp(24px,6vw,80px);">
     <p class="section-label">On Stage Every Night</p>
@@ -1972,9 +1873,9 @@ setInterval(updateTorontoCountdown, 60000);
       .sl-num { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:rgba(200,169,110,0.3); min-width:32px; line-height:1.2; flex-shrink:0; transition:color 0.2s; }
       .sl-row:hover .sl-num { color:var(--accent); }
       .sl-play-btn { width:32px; height:32px; border-radius:50%; border:1px solid rgba(200,169,110,0.3); background:transparent; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer; transition:all 0.2s; }
-      .sl-play-btn:hover, .sl-row:hover .sl-play-btn { background:var(--accent); border-color:var(--accent); }
+      .sl-play-btn:hover, .sl-row:hover .sl-play-btn { background:#1DB954; border-color:#1DB954; }
       .sl-play-btn svg { fill:rgba(200,169,110,0.8); transition:fill 0.2s; margin-left:2px; }
-      .sl-play-btn:hover svg, .sl-row:hover .sl-play-btn svg { fill:var(--black); }
+      .sl-play-btn:hover svg, .sl-row:hover .sl-play-btn svg { fill:#fff; }
       .sl-info { flex:1; min-width:0; }
       .sl-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); margin-bottom:3px; transition:color 0.2s; }
       .sl-row:hover .sl-info h4 { color:var(--accent); }
@@ -1982,15 +1883,16 @@ setInterval(updateTorontoCountdown, 60000);
       .sl-guests span { color:rgba(200,169,110,0.6); }
       .sl-spotify { display:none; margin-top:10px; border-radius:8px; overflow:hidden; }
       .sl-row.expanded .sl-spotify { display:block; }
-      .sl-vote { font-size:0.62rem; letter-spacing:0.1em; font-family:'Barlow Condensed',sans-serif; color:rgba(255,255,255,0.25); flex-shrink:0; text-align:right; min-width:50px; }
+      .sl-vote { font-size:0.75rem; background:transparent; border:none; color:rgba(255,255,255,0.2); flex-shrink:0; cursor:pointer; padding:6px 8px; border-radius:4px; transition:all 0.2s; font-family:'Barlow Condensed',sans-serif; letter-spacing:0.06em; }
+      .sl-vote:hover { color:var(--accent); background:rgba(200,169,110,0.08); }
       .sl-vote.voted { color:var(--accent); }
       </style>
 
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">01</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/1dGr1c8CrMLDpV6mPbImSI" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>POWER</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West</div>
@@ -2002,9 +1904,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">02</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/1nydEVnIMgJGqFdyWmHmUj" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Wolves</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West</div>
@@ -2016,9 +1918,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">03</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/6lXKNdOsnaLv9LwulZbxNl" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Can't Tell Me Nothing</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West, Big Bork</div>
@@ -2044,9 +1946,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">05</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/5RzSnxqTx4vYEp9re5E0ud" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>River</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West, Ty Dolla Sign, Family Nibbooggers</div>
@@ -2086,9 +1988,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">08</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/3TGjNhgbM3OYLK3gEkqb3k" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Saint Pablo</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West, Pablo</div>
@@ -2100,9 +2002,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">09</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/2kgxyflhiicDbF8SDrBxqy" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>BOMB</h4>
               <div class="sl-guests"><span>Special Guest</span> Special MASSIVE Guests: Kanye West, Yuno Miles, North West, South West, East West, West West, Chicago West, Atlanta West, Basel West, Big West</div>
@@ -2114,9 +2016,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">10</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/42GcjriRK6srwHkfbkBqVl" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Blood On The Leaves</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West</div>
@@ -2128,9 +2030,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">11</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/2SjnvpedDUU0Ga69bxnoCa" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>ALL THE LOVE</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West, Andre Troutman</div>
@@ -2142,9 +2044,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">12</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/0ZUo4YjG4saFnEJhdWp9Bt" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>I Wonder</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West</div>
@@ -2156,9 +2058,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">13</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/7lQ8MOhq6IN2w8EYcFNSUk" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Moon</h4>
               <div class="sl-guests"><span>Feat.</span> Kanye West, Don Toliver</div>
@@ -2170,9 +2072,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">14</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/0FutrWIUM5DbfAFuSwM8PF" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>No Child Left Behind</h4>
               <div class="sl-guests"><span></span> aka yea im crying 💔 time</div>
@@ -2338,9 +2240,9 @@ setInterval(updateTorontoCountdown, 60000);
           </div>
       <div class="sl-row" onclick="toggleSong(this)">
             <div class="sl-num">26</div>
-            <button class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
+            <a href="https://open.spotify.com/track/3HmqBb59ybgFYBb9Qb3oXS" target="_blank" class="sl-play-btn" onclick="event.stopPropagation()" title="Play on Spotify">
               <svg width="10" height="12" viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
-            </button>
+            </a>
             <div class="sl-info">
               <h4>Runaway</h4>
               <div class="sl-guests"><span></span> Goodbye Time · yea im crying 💔😭🥀</div>
@@ -3689,40 +3591,70 @@ document.addEventListener('DOMContentLoaded', function(){ updateLangBtns(); });
 <script>
 // Cinematic hero animation on load
 window.addEventListener('load', function(){
+  // Add scan line to hero
+  var hero = document.getElementById('hero');
+  if(hero){
+    var scan = document.createElement('div');
+    scan.id = 'hero-scan';
+    scan.style.cssText = 'position:absolute;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.35),transparent);pointer-events:none;z-index:2;top:-10%;animation:scanLine 4s ease-in-out infinite;';
+    hero.appendChild(scan);
+    // Add scan keyframe
+    var style = document.createElement('style');
+    style.textContent = '@keyframes scanLine{0%{top:-10%}100%{top:110%}} @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}} .hero-img{animation:heroZoom 14s ease-in-out infinite alternate !important;}';
+    document.head.appendChild(style);
+  }
   setTimeout(function(){
-    // Animate eyebrow
+    // Animate eyebrow with letter spacing effect
     var ey = document.getElementById('hero-eyebrow');
-    if(ey){ ey.style.opacity='1'; ey.style.transform='translateY(0)'; }
-    // Animate words
-    document.querySelectorAll('.hero-word').forEach(function(w){
-      w.style.opacity='1'; w.style.transform='translateY(0)';
+    if(ey){
+      ey.style.cssText += 'opacity:1;transform:translateY(0);letter-spacing:0.3em;';
+      setTimeout(function(){ if(ey) ey.style.letterSpacing='0.28em'; }, 800);
+    }
+    // Animate words with stagger
+    var words = document.querySelectorAll('.hero-word');
+    words.forEach(function(w, i){
+      setTimeout(function(){
+        w.style.opacity='1';
+        w.style.transform='translateY(0)';
+        // Brief flash effect
+        w.style.textShadow='0 0 40px rgba(200,169,110,0.8)';
+        setTimeout(function(){ w.style.textShadow='none'; }, 600);
+      }, i * 180);
     });
     // Animate sub + cta
-    var sub = document.getElementById('hero-sub');
-    var cta = document.getElementById('hero-cta');
-    if(sub){ sub.style.opacity='1'; sub.style.transform='translateY(0)'; }
-    if(cta){ cta.style.opacity='1'; cta.style.transform='translateY(0)'; }
-  }, 1600); // after loader
+    setTimeout(function(){
+      var sub = document.getElementById('hero-sub');
+      var cta = document.getElementById('hero-cta');
+      if(sub){ sub.style.opacity='1'; sub.style.transform='translateY(0)'; }
+      if(cta){ cta.style.opacity='1'; cta.style.transform='translateY(0)'; }
+    }, 700);
+  }, 1700);
 });
 
-// Gold particle effect
+// Enhanced gold particle effect
 (function(){
   var container = document.getElementById('hero-particles');
   if(!container) return;
+  var shapes = ['50%','2px','0'];
   function spawnParticle(){
     var p = document.createElement('div');
-    p.className = 'hero-particle';
-    var size = Math.random()*4+2;
-    var dur = Math.random()*12+8;
+    var size = Math.random()*5+1;
+    var dur = Math.random()*14+8;
     var left = Math.random()*100;
-    p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+left+'%;bottom:0;'
-      +'background:rgba(200,169,110,'+(Math.random()*0.5+0.2)+');'
-      +'animation-duration:'+dur+'s;animation-delay:'+(Math.random()*5)+'s;';
+    var opacity = Math.random()*0.6+0.2;
+    var shape = shapes[Math.floor(Math.random()*shapes.length)];
+    p.style.cssText = 'position:absolute;width:'+size+'px;height:'+size+'px;left:'+left+'%;bottom:-10px;'
+      +'background:rgba(200,169,110,'+opacity+');border-radius:'+shape+';'
+      +'animation:particleDrift '+dur+'s linear forwards;'
+      +'animation-delay:'+(Math.random()*3)+'s;pointer-events:none;';
     container.appendChild(p);
-    setTimeout(function(){ p.remove(); }, (dur+5)*1000);
+    setTimeout(function(){ if(p.parentNode) p.remove(); }, (dur+4)*1000);
   }
-  for(var i=0;i<25;i++) setTimeout(spawnParticle, i*300);
-  setInterval(spawnParticle, 1200);
+  var style2 = document.createElement('style');
+  style2.textContent = '@keyframes particleDrift{0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0;}8%{opacity:1;}92%{opacity:0.7;}100%{transform:translateY(-110vh) translateX('+( Math.random()>0.5?'':'-')+'60px) rotate(720deg);opacity:0;}}';
+  document.head.appendChild(style2);
+  for(var i=0;i<30;i++) setTimeout(spawnParticle, i*200);
+  setInterval(spawnParticle, 800);
 })();
 </script>
 
