@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milan, Italy — Pablo X Evren World Tour 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--black:#0a0a0a;--dark:#111110;--dark2:#181816;--white:#fafaf8;--accent:#c8a96e;--accent2:#e2c688;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:12px 28px;background:rgba(10,10,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.15);}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.14em;text-decoration:none;color:var(--white);}
+    .nav-logo span{color:var(--accent);}
+    .back-btn{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.35);padding:7px 16px;transition:all 0.2s;}
+    .back-btn:hover{background:rgba(200,169,110,0.1);}
+    section{padding:clamp(40px,6vw,80px) clamp(24px,6vw,80px);}
+    .label{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px;font-family:'Barlow Condensed',sans-serif;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,7rem);letter-spacing:0.05em;line-height:0.9;margin-bottom:20px;}
+    .divider{width:48px;height:1px;background:var(--accent);margin:20px 0 36px;}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2px;margin-bottom:40px;}
+    .info-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:20px;}
+    .info-card .lbl{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;}
+    .info-card .val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.08em;color:var(--white);}
+    .section-body{font-size:0.95rem;color:rgba(255,255,255,0.55);line-height:1.8;max-width:700px;}
+    .tip-box{border:1px solid rgba(200,169,110,0.2);background:rgba(200,169,110,0.04);padding:20px 24px;margin-top:16px;}
+    .tip-box h3{font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+    .tip-box p{font-size:0.85rem;color:rgba(255,255,255,0.48);line-height:1.65;}
+    .ticket-btn{display:inline-block;background:var(--accent);color:var(--black);padding:16px 44px;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;margin-top:32px;}
+    .ticket-btn:hover{background:var(--accent2);}
+    .hero-show{position:relative;overflow:hidden;min-height:380px;display:flex;align-items:flex-end;}
+    .hero-show-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+    .hero-show-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.95) 0%,rgba(10,10,10,0.4) 100%);}
+    .hero-show-content{position:relative;z-index:2;padding:clamp(32px,5vw,60px) clamp(24px,6vw,80px);}
+    iframe{border:none;width:100%;height:300px;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    .hero-show-content{animation:fadeUp 0.8s ease both;}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Pablo</span> X <span>Evren</span></a>
+  <a class="back-btn" href="index.html#dates">← Back to Tour</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-show" style="margin-top:56px;">
+  <div class="hero-show-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
+  <div class="hero-show-overlay"></div>
+  <div class="hero-show-content">
+    <p class="label">🇮🇹 Upcoming Show</p>
+    <h1>Milan, Italy</h1>
+    <p style="font-size:1rem;color:rgba(255,255,255,0.55);letter-spacing:0.04em;">Mind Live Theatre &nbsp;·&nbsp; 19 & 21 Jun 2026 &nbsp;·&nbsp; Doors 21:00</p>
+    <p style="font-size:0.82rem;color:var(--accent);margin-top:8px;letter-spacing:0.04em;">★ Pablo Only Performance</p>
+  </div>
+</div>
+
+<!-- SHOW INFO -->
+<section style="background:var(--dark);padding-top:40px;">
+  <div class="info-grid">
+    <div class="info-card"><div class="lbl">Date</div><div class="val">19 & 21 Jun 2026</div></div>
+    <div class="info-card"><div class="lbl">Doors Open</div><div class="val">21:00</div></div>
+    <div class="info-card"><div class="lbl">Venue</div><div class="val" style="font-size:0.95rem;">Mind Live Theatre</div></div>
+    <div class="info-card"><div class="lbl">Performance</div><div class="val" style="font-size:0.85rem;line-height:1.3;">Pablo Only Performance</div></div>
+  </div>
+
+  <p class="section-body">Two nights in Milan at the iconic Mind Live Theatre. Pablo performs solo on both June 19 and June 21 with a rest day in between. Milan is the fashion and culture capital of Italy.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;max-width:700px;">
+    <div class="tip-box">
+      <h3>🌤 Weather</h3>
+      <p>June in Milan is warm — 25–30°C. Light summer clothing recommended.</p>
+    </div>
+    <div class="tip-box">
+      <h3>🚇 Getting There</h3>
+      <p>Milan has two major airports: Malpensa (MXP) and Linate (LIN). The city is well connected by metro (MM lines). Tram and metro to the venue.</p>
+    </div>
+  </div>
+
+  <a href="https://www.instagram.com/king__pablito69" target="_blank" class="ticket-btn">Get Tickets</a>
+</section>
+
+<!-- MAP -->
+<section style="background:var(--dark2);">
+  <p class="label">Venue Location</p>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;margin-bottom:20px;">Mind Live Theatre</h2>
+  <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin-bottom:20px;">Via Cristina Belgioioso 171, 20157 Milano, Italy</p>
+  <div style="border:1px solid rgba(200,169,110,0.18);overflow:hidden;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796!2d9.15!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x!2sMind+Live+Theatre!5e0!3m2!1sen!2s!4v1" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- BACK -->
+<section style="background:var(--black);text-align:center;padding:40px;">
+  <p style="font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.1em;margin-bottom:16px;">VIEW ALL SHOWS</p>
+  <a href="index.html#dates" style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.35);padding:12px 28px;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">← Back to All Tour Dates</a>
+</section>
+
+<footer style="background:var(--dark2);border-top:1px solid rgba(200,169,110,0.1);padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+  <span style="font-size:0.68rem;color:rgba(255,255,255,0.2);">© 2026 Pablo X Evren — Holy Obesity World Tour</span>
+  <a href="index.html" style="font-size:0.68rem;color:rgba(200,169,110,0.5);text-decoration:none;">← Main Website</a>
+</footer>
+
+</body>
+</html>
