@@ -345,10 +345,8 @@ window.addEventListener('scroll', function(){
 <style>
   #loader.fade-out { opacity:0; transition:opacity 0.6s ease; pointer-events:none; }
 </style>
-<script>
   window.addEventListener('load', function(){
     var loader = document.getElementById('loader');
-    // Animate in
     setTimeout(function(){
       document.getElementById('loader-eyebrow').style.opacity='1';
       document.getElementById('loader-title').style.opacity='1';
@@ -356,7 +354,6 @@ window.addEventListener('scroll', function(){
       document.getElementById('loader-sub').style.opacity='1';
       document.getElementById('loader-bar').style.width='100%';
     }, 100);
-    // Fade out after 2.4s
     setTimeout(function(){
       loader.classList.add('fade-out');
       document.body.style.overflow='';
@@ -365,7 +362,16 @@ window.addEventListener('scroll', function(){
       loader.style.display='none';
     }, 2100);
   });
-  document.body.style.overflow='hidden'; // prevent scroll during load
+  // Safety net for slow/stuck loads - show loader always, hide after 5s max
+  document.body.style.overflow='hidden';
+  setTimeout(function(){
+    var loader = document.getElementById('loader');
+    if(loader && loader.style.display !== 'none'){
+      loader.classList.add('fade-out');
+      document.body.style.overflow='';
+      setTimeout(function(){ loader.style.display='none'; }, 700);
+    }
+  }, 5000);
 </script>
 
 
@@ -1284,9 +1290,33 @@ setInterval(updateTorontoCountdown, 60000);
   .dates-coming { margin:0 clamp(24px,6vw,80px); padding:22px 0; border-top:1px solid rgba(200,169,110,0.12); border-bottom:1px solid rgba(200,169,110,0.12); display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
 
   @media(max-width:768px){
-    .dr-inner { grid-template-columns:20px 70px 1fr; gap:12px; }
-    .dr-action { display:none; }
-    .timeline-line { left:20px; }
+    .dr-inner {
+      grid-template-columns:16px 54px 1fr;
+      grid-template-rows:auto auto;
+      gap:8px;
+      padding:14px 12px 14px 14px;
+      flex-wrap:wrap;
+    }
+    .dr-action {
+      grid-column: 3;
+      display:flex !important;
+      flex-direction:row;
+      gap:6px;
+      align-items:center;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .dr-action a, .dr-action span {
+      font-size:0.6rem !important;
+      padding:7px 12px !important;
+      letter-spacing:0.08em !important;
+      white-space:nowrap;
+    }
+    .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.05rem !important; }
+    .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:1.8rem !important; }
+    .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.6rem !important; }
+    .timeline-line { left:16px; }
   }
 </style>
 
