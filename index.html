@@ -693,7 +693,6 @@ var searchData = [
   {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates',img:'https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg'},
   {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates',img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
   {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg'},
-  {cat:'Concert',title:'Bern, Switzerland',sub:'Wankdorf Stadium · 21 Mar 2026',href:'#dates',img:'https://dynamicmedia.livenationinternational.com/Media/k/m/w/b07edc72-53cf-4f60-a6a9-e339a3ed7c9e.jpg'},
   {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates',img:'https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg'},
   {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
   {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
@@ -1331,18 +1330,6 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Basel -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg);"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Ongoing</div></div>
-      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span class="badge-done">✓ Completed</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Unavailable</span></div>
-    </div>
-  </div>
-
-  <!-- Barcelona -->
-  <div class="dr completed">
     <div class="dr-bg" style="background-image:url(https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
@@ -1361,23 +1348,7 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Feb 2026</div><div class="dr-day">20</div></div>
       <div class="dr-info"><h3><span class="flag">🇲🇹</span> Malta <span class="badge-done">✓ Completed</span></h3><p>National Stadium, Ta' Qali · Doors 21:00 · 20 Feb 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Unavailable</span></div>
-    </div>
-  </div>
-
-  <!-- Bern -->
-  <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://dynamicmedia.livenationinternational.com/Media/k/m/w/b07edc72-53cf-4f60-a6a9-e339a3ed7c9e.jpg);"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Mar 2026</div><div class="dr-day">21</div></div>
-      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Bern, Switzerland <span class="badge-done">✓ Completed</span></h3><p>Wankdorf Stadium · Doors 21:00 · 21 Mar 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Unavailable</span></div>
-    </div>
-  </div>
-
-  <!-- Erzincan -->
+        <!-- Bern -->
   <div class="dr completed">
     <div class="dr-bg" style="background-image:url(https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg);"></div>
     <div class="dr-overlay"></div>
@@ -1439,6 +1410,18 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- ══ UPCOMING ══ -->
   <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url(https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg);"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Ongoing</div></div>
+      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">Every Day</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Barcelona -->
 
 
   <!-- Milan San Siro May 16 -->
@@ -1466,7 +1449,7 @@ setInterval(updateTorontoCountdown, 60000);
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">14</div></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
       <div class="dr-info"><h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3><p>Rheinpark Stadium · Doors 12:00 · 17 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
       <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="vaduz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
     </div>
@@ -1478,7 +1461,7 @@ setInterval(updateTorontoCountdown, 60000);
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">14</div></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
       <div class="dr-info"><h3><span class="flag">🇦🇹</span> Bregenz, Austria <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3><p>ImmoAgentur Stadium · Doors 15:00 · 17 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
       <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="bregenz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
     </div>
@@ -2534,7 +2517,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="news-tag tag-concert">Completed</div>
       <div class="news-date">21 March 2026</div>
       <div class="news-title">Concert — Bern, Switzerland</div>
-      <div class="news-body">Wankdorf Stadium, Bern. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
+      <div class="news-body">, Bern. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
     </div>
 
     <div class="news-item" style="padding:24px 0 24px 24px;">
@@ -2596,943 +2579,37 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="milestone-title">First Island Show <span class="milestone-badge mb-blue">First</span></div>
       <div class="milestone-desc">Malta — National Stadium, Ta' Qali. The tour crosses to an island nation for the first time. Pablo Only.</div>
     </div>
-    <div class="milestone">
-      <div class="milestone-date">21 March 2026</div>
-      <div class="milestone-title">Home Country Show — Bern <span class="milestone-badge mb-green">Switzerland</span></div>
-      <div class="milestone-desc">Wankdorf Stadium, Bern. Pablo performs in Switzerland — the country where it all began. The ZBA Basel crowd travels to Bern.</div>
-    </div>
-    <div class="milestone">
-      <div class="milestone-date">25 April 2026</div>
-      <div class="milestone-title">First Evren Solo Show <span class="milestone-badge mb-gold">Historic</span></div>
-      <div class="milestone-desc">Erzincan, Turkey — 13 Şubat City Stadium. Evren's first ever solo performance. Pablo was unable to attend. Evren held it down alone. A legendary night.</div>
-    </div>
-    <div class="milestone">
-      <div class="milestone-date">25 April 2026</div>
-      <div class="milestone-title">World Tour Officially Announced <span class="milestone-badge mb-gold">Announcement</span></div>
-      <div class="milestone-desc">Pablo and Evren officially go public with the 2026 World Tour. 9+ countries. 14+ shows. HOLY OBESITY is going global.</div>
-    </div>
-    <div class="milestone">
-      <div class="milestone-date">1 May 2026</div>
-      <div class="milestone-title">Spain Leg Begins — Jerez & Istanbul Same Day <span class="milestone-badge mb-blue">Double Show Day</span></div>
-      <div class="milestone-desc">First time Pablo and Evren perform on the same day in different countries. Pablo in Jerez de la Frontera, Evren in Istanbul. Two shows. One day. Different continents.</div>
-    </div>
-    <div class="milestone">
-      <div class="milestone-date">4 May 2026</div>
-      <div class="milestone-title">Spain Leg Complete — 4 Cities <span class="milestone-badge mb-green">Completed</span></div>
-      <div class="milestone-desc">After Jerez, Cádiz and Sevilla — the Spain leg is done. 3 cities in 4 days. The South of Spain has been conquered.</div>
-    </div>
-    <div class="milestone">
-      <div class="milestone-date">14 May 2026</div>
-      <div class="milestone-title">First Pablo & Evren Joint Performance <span class="milestone-badge mb-gold">Historic</span></div>
-      <div class="milestone-desc">Vaduz, Liechtenstein — Rheinpark Stadium. Pablo and Evren on the same stage for the first time in this tour. Two shows in one day — Vaduz at 12:00, Bregenz at 15:00.</div>
-    </div>
-    <div class="milestone future">
-      <div class="milestone-date">Summer 2026</div>
-      <div class="milestone-title">First Stadium Show — Atatürk Olympic <span class="milestone-badge mb-gold">Upcoming</span></div>
-      <div class="milestone-desc">Istanbul, Turkey — Atatürk Olympic Stadium. The biggest venue of the tour. Pablo Only. 30 May 2026.</div>
-    </div>
-    <div class="milestone future">
-      <div class="milestone-date">July 2026</div>
-      <div class="milestone-title">First Egypt Show — Hurghada <span class="milestone-badge mb-gold">Upcoming</span></div>
-      <div class="milestone-desc">Hurghada, Egypt — Khaled Bichara Stadium. Evren's first solo show in Africa. Pablo entry to Egypt not permitted. History in the making.</div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL FEED -->
-<section id="feed" style="background:var(--dark2);padding:clamp(30px,5vw,60px) clamp(24px,6vw,80px);">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
-    <div>
-      <p class="section-label">Latest From Us</p>
-      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:0.06em;color:var(--white);">Social Feed</h2>
-    </div>
-    <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(200,169,110,0.3);padding:8px 16px;transition:all 0.2s;" onmouseover="this.style.background='rgba(200,169,110,0.1)'" onmouseout="this.style.background='transparent'">
-      Follow @king__pablito69 →
-    </a>
-  </div>
-
-  <div style="display:grid;grid-template-columns:280px 1fr;gap:3px;align-items:start;">
-    <!-- Latest post embed -->
-    <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
-      <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
-        <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
-          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg"
-            alt="Latest Instagram Post"
-            style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;"
-            onmouseover="this.style.transform='scale(1.04)'"
-            onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.6);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </div>
-        </div>
-        <div style="padding:14px 16px;">
-          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
-          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">Spain leg complete ✓ Jerez, Cádiz and Sevilla done. Liechtenstein & Austria next 🇱🇮🇦🇹</div>
-          <div style="font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:8px;">@king__pablito69 · View on Instagram →</div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Stats + links panel -->
-    <div style="display:flex;flex-direction:column;gap:3px;">
-      <!-- Stats -->
-      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:20px 24px;">
-        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:16px;">Social Presence</div>
-        <div style="display:flex;gap:32px;flex-wrap:wrap;">
-          <div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Instagram</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@king__pablito69</div></a></div>
-          <div><a href="https://www.tiktok.com/@hotkeygaming" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">TikTok</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@hotkeygaming</div></a></div>
-          <div><a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">YouTube</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming69</div></a></div>
-          <div><a href="https://x.com/hotkeygaming41" target="_blank" style="text-decoration:none;"><div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);line-height:1;">Twitter/X</div><div style="font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.06em;">@HotKeyGaming41</div></a></div>
-        </div>
-      </div>
-      <!-- CTA -->
-      <div style="background:rgba(200,169,110,0.05);border:1px solid rgba(200,169,110,0.18);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-        <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.08em;color:var(--white);">Follow for Live Updates</div>
-          <div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:4px;">Tour updates, behind the scenes, and exclusive content</div>
-        </div>
-        <a href="https://linktr.ee/hotkeygaming" target="_blank" style="background:var(--accent);color:var(--black);padding:11px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">All Links →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUIZ -->
-<section id="quiz" style="background:var(--dark);">
-  <p class="section-label">The Terence Files</p>
-  <h2 class="section-title">Terence Files Quiz</h2>
-  <div class="divider"></div>
-  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:0.04em;">Think you know the lore? Prove it. Questions are randomized every time.</p>
-
-  <style>
-    .quiz-card { border:1px solid rgba(200,169,110,0.15); background:rgba(255,255,255,0.02); padding:32px; margin-bottom:3px; }
-    .quiz-q { font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; letter-spacing:0.06em; color:var(--white); margin-bottom:20px; text-transform:uppercase; }
-    .quiz-opts { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .quiz-opt {
-      padding:13px 18px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.03);
-      color:rgba(255,255,255,0.7); font-family:'Barlow Condensed',sans-serif; font-size:0.9rem;
-      font-weight:500; letter-spacing:0.04em; cursor:pointer; text-align:left;
-      transition:all 0.2s; border-radius:2px;
-    }
-    .quiz-opt:hover:not(.answered) { border-color:rgba(200,169,110,0.5); background:rgba(200,169,110,0.08); color:var(--white); }
-    .quiz-opt.correct { background:rgba(50,180,80,0.2); border-color:#4caf50; color:#7ec87e; }
-    .quiz-opt.wrong { background:rgba(220,50,50,0.15); border-color:#e84141; color:#e88080; }
-    .quiz-opt.answered { cursor:default; }
-    .quiz-fact { margin-top:14px; font-size:0.8rem; color:var(--accent); letter-spacing:0.04em; line-height:1.6; display:none; padding:12px 16px; border-left:2px solid var(--accent); background:rgba(200,169,110,0.05); }
-    .quiz-score-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
-    .quiz-score { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--accent); letter-spacing:0.1em; }
-    .quiz-score span { color:rgba(255,255,255,0.35); font-size:1rem; }
-    .quiz-next-btn { background:var(--accent); color:var(--black); border:none; padding:11px 28px; font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer; display:none; transition:background 0.2s; }
-    .quiz-next-btn:hover { background:var(--accent2); }
-    .quiz-shuffle-btn { background:transparent; color:var(--accent); border:1px solid rgba(200,169,110,0.4); padding:11px 24px; font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
-    .quiz-shuffle-btn:hover { background:rgba(200,169,110,0.1); }
-  </style>
-
-  <div class="quiz-score-bar">
-    <div class="quiz-score">Score: <span id="qscore">0</span> / <span id="qtotal">7</span></div>
-    <div style="display:flex;gap:10px;">
-      <button class="quiz-next-btn" id="qnext" onclick="nextQuestion()">Next Question →</button>
-      <button class="quiz-shuffle-btn" onclick="initQuiz()">🔀 Shuffle & Restart</button>
-    </div>
-  </div>
-
-  <div id="quiz-container"></div>
-
-  <script>
-  var quizData = [
-    {
-      q: "Who is HOLY OBESITY?",
-      opts: ["Big D", "Disfo", "Holy Obese", "Evren"],
-      correct: [0,3],
-      fact: "HOLY OBESITY = Big D + Evren. He weighs 67² obese KG — like TON 618. The name doesn't apologize for taking up space."
-    },
-    {
-      q: "Where is Evren NOT allowed to go?",
-      opts: ["Hurghada", "Istanbul", "Reggio Emilia", "Stockholm"],
-      correct: [0,1],
-      fact: "Evren is banned from both Hurghada (Egypt) and Istanbul. He is very sad about it. Pablo performed solo there."
-    },
-    {
-      q: "Which song is so chopped it can never be performed?",
-      opts: ["Good Morning", "Good Night", "Talking", "I Wonder"],
-      correct: [1],
-      fact: "Good Night is the worst song OAT — so chopped it can never be performed live. Holy chopped."
-    },
-    {
-      q: "Which of these dogs are in the Terence Files?",
-      opts: ["Happy Dogmog", "Sad Dogmog", "Chopped Dogmog", "Ugly Dogmog"],
-      correct: [0,1,2],
-      fact: "Happy Dogmog, Sad Dogmog and Chopped Dogmog are all in the Terence Files. Ugly Dogmog is not a real dog."
-    },
-    {
-      q: "Nib + Bog is?",
-      opts: ["Nibbooggers", "Nibs", "Ögs", "Nibbog"],
-      correct: [3],
-      fact: "Nib + Bog = Nibbog. We are all the Family Nibbooggers ❤️"
-    },
-    {
-      q: "Bus Line agreement — which are the best buses?",
-      opts: ["35", "45", "32", "38"],
-      correct: [1,2],
-      fact: "Bus 45 and Bus 32 are the best — in North and South side Riehen. Fun fact: Big D once destroyed the tire of the 38 bus with his weight."
-    },
-    {
-      q: "Who's very very Big and Left?",
-      opts: ["Moggogogers", "Big D", "Terence", "Yuh Lieng"],
-      correct: [0],
-      fact: "Moggogogers. Very Big. Very Left. No further questions."
-    }
-  ];
-
-  var shuffled = [];
-  var currentQ = 0;
-  var score = 0;
-  var answered = false;
-
-  function shuffle(arr) {
-    var a = arr.slice();
-    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
-    return a;
-  }
-
-  function initQuiz() {
-    shuffled = shuffle(quizData);
-    currentQ = 0;
-    score = 0;
-    document.getElementById('qscore').textContent = '0';
-    document.getElementById('qtotal').textContent = shuffled.length;
-    document.getElementById('qnext').style.display = 'none';
-    renderQuestion();
-  }
-
-  function renderQuestion() {
-    answered = false;
-    var q = shuffled[currentQ];
-    var html = '<div class="quiz-card">';
-    html += '<div style="font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-family:\'Barlow Condensed\',sans-serif;">Question ' + (currentQ+1) + ' of ' + shuffled.length + '</div>';
-    html += '<div class="quiz-q">' + q.q + '</div>';
-    html += '<div class="quiz-opts">';
-    q.opts.forEach(function(opt, i) {
-      html += '<button class="quiz-opt" data-idx="'+i+'" onclick="selectAnswer('+i+')">' + (i+1) + '. ' + opt + '</button>';
-    });
-    html += '</div>';
-    html += '<div class="quiz-fact" id="qfact">'+q.fact+'</div>';
-    html += '</div>';
-    document.getElementById('quiz-container').innerHTML = html;
-  }
-
-  function selectAnswer(idx) {
-    if(answered) return;
-    answered = true;
-    var q = shuffled[currentQ];
-    var opts = document.querySelectorAll('.quiz-opt');
-    var userCorrect = q.correct.indexOf(idx) !== -1;
-
-    opts.forEach(function(btn) {
-      btn.classList.add('answered');
-      var i = parseInt(btn.dataset.idx);
-      if(q.correct.indexOf(i) !== -1) btn.classList.add('correct');
-      else if(i === idx) btn.classList.add('wrong');
-    });
-
-    if(userCorrect) {
-      score++;
-      document.getElementById('qscore').textContent = score;
-    }
-
-    document.getElementById('qfact').style.display = 'block';
-    if(currentQ < shuffled.length - 1) {
-      document.getElementById('qnext').style.display = 'inline-block';
-    } else {
-      document.getElementById('qnext').style.display = 'none';
-      setTimeout(function(){
-        var container = document.getElementById('quiz-container');
-        var finalMsg = score === shuffled.length ? '🏆 Perfect score! You are a true Terence Files scholar.' :
-                       score >= 5 ? '🔥 Solid. You know the lore.' :
-                       score >= 3 ? '😐 Mid. Study the Terence Files more carefully.' :
-                       '💀 You know nothing. Go watch the files again.';
-        container.innerHTML += '<div style="margin-top:16px;padding:24px;border:1px solid rgba(200,169,110,0.3);background:rgba(200,169,110,0.06);font-family:\'Bebas Neue\',sans-serif;font-size:1.4rem;letter-spacing:0.08em;color:var(--accent);">' + finalMsg + '</div>';
-      }, 300);
-    }
-  }
-
-  function nextQuestion() {
-    currentQ++;
-    document.getElementById('qnext').style.display = 'none';
-    renderQuestion();
-  }
-
-  initQuiz();
-  </script>
-</section>
-
-
-
-<!-- THE FIRST 4 MEMES -->
-<section id="memes" style="background:var(--dark2);">
-  <p class="section-label">Foundational Lore</p>
-  <h2 class="section-title">The First 4 Memes</h2>
-  <div class="divider"></div>
-  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:36px;line-height:1.7;">Before anything else, there were four. Sacred. Immovable. Eternal. The cultural bedrock of the Terence Files universe.</p>
-
-  <style>
-    .meme-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:3px; }
-    .meme-card { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); padding:32px 28px; position:relative; overflow:hidden; transition:all 0.25s; cursor:default; }
-    .meme-card:hover { background:rgba(200,169,110,0.07); border-color:rgba(200,169,110,0.35); }
-    .meme-card:hover .meme-num { opacity:0.12; }
-    .meme-num { position:absolute; top:-10px; right:10px; font-family:'Bebas Neue',sans-serif; font-size:7rem; color:var(--accent); opacity:0.05; line-height:1; pointer-events:none; transition:opacity 0.25s; }
-    .meme-tag { font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:rgba(200,169,110,0.5); font-family:'Barlow Condensed',sans-serif; font-weight:700; margin-bottom:16px; }
-    .meme-icon { font-size:2.2rem; margin-bottom:18px; }
-    .meme-name { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.1em; color:var(--accent); margin-bottom:14px; }
-    .meme-desc { font-size:0.83rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:16px; }
-    .meme-badge { display:inline-block; font-size:0.56rem; letter-spacing:0.2em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:4px 12px; border:1px solid rgba(200,169,110,0.3); color:rgba(200,169,110,0.65); }
-  </style>
-
-  <div class="meme-grid">
-    <div class="meme-card">
-      <div class="meme-num">01</div>
-      <div class="meme-tag">Meme #01 — Founding Pillar</div>
-      <div class="meme-icon">⬅️</div>
-      <div class="meme-name">Left</div>
-      <p class="meme-desc">Just Left. That's it. Left. Always left. The direction. The calling. The police enforce it. You are left or you are wrong.</p>
-      <div class="meme-badge">Canonical</div>
-    </div>
-    <div class="meme-card">
-      <div class="meme-num">02</div>
-      <div class="meme-tag">Meme #02 — Founding Pillar</div>
-      <div class="meme-icon">📚</div>
-      <div class="meme-name">Study</div>
-      <p class="meme-desc">We have to study for FMS. That is the lore. Study is the burden we carry. Left Study Big (LSB). Probably not Terence doing the studying though.</p>
-      <div class="meme-badge">Canonical</div>
-    </div>
-    <div class="meme-card">
-      <div class="meme-num">03</div>
-      <div class="meme-tag">Meme #03 — Founding Pillar</div>
-      <div class="meme-icon">💪</div>
-      <div class="meme-name">Big</div>
-      <p class="meme-desc">Big like Terence. Big like Big D. LTB — Left Terence Big. LSB — Left Study Big. Big is the physical and spiritual magnitude of the Files. If you're big, you're canonized.</p>
-      <div class="meme-badge">Canonical</div>
-    </div>
-    <div class="meme-card">
-      <div class="meme-num">04</div>
-      <div class="meme-tag">Meme #04 — Founding Pillar</div>
-      <div class="meme-icon">🐦</div>
-      <div class="meme-name">Terence</div>
-      <p class="meme-desc">Terence IS Big D. Holy Obesity. The fat bird from Angry Birds. The deity. The HOLY OBESITY maximum tier personified. He is the reason the Files exist. He is the Files.</p>
-      <div class="meme-badge">Canonical</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- SONG LEGISLATION -->
-<section id="songs" style="background:var(--black);">
-  <p class="section-label">Sonic Policy</p>
-  <h2 class="section-title">Song Legislation</h2>
-  <div class="divider"></div>
-  <p style="font-size:0.88rem;color:rgba(255,255,255,0.4);margin-bottom:36px;line-height:1.7;">Not all songs are created equal. The Terence Files has strict rules about what can and cannot be spammed — and which songs are played at concerts. Violations are handled by the TLP and fined in McChickens.</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px;">
-
-    <!-- FORBIDDEN -->
-    <div style="border:1px solid rgba(200,30,30,0.4);background:rgba(80,0,0,0.25);">
-      <div style="padding:18px 24px;border-bottom:1px solid rgba(200,30,30,0.2);display:flex;align-items:center;gap:12px;background:rgba(120,0,0,0.3);">
-        <span style="font-size:1.3rem;">🚫</span>
-        <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:#e84141;">Forbidden</div>
-          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(232,65,65,0.6);font-family:'Barlow Condensed',sans-serif;">Do Not Spam — Ever — Violation = McChicken Fine</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;">
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Good Night</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Worst song of all time. Absolutely chopped. This is canon.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Worst OAT</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Fried</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden. Do not spam under any circumstances.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">CARNIVAL</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden. All caps. All banned.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Bomb</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden to spam. But <span style="color:var(--accent);">performed live at concerts</span> — it's in the setlist.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
-        </div>
-        <div style="padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">TALKING</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Forbidden to spam. But <span style="color:var(--accent);">performed live at concerts</span> — it's in the setlist.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(200,30,30,0.3);border:1px solid rgba(200,30,30,0.5);color:#e84141;white-space:nowrap;">Banned</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- BLESSED -->
-    <div style="border:1px solid rgba(30,160,80,0.4);background:rgba(0,60,20,0.25);">
-      <div style="padding:18px 24px;border-bottom:1px solid rgba(30,160,80,0.2);display:flex;align-items:center;gap:12px;background:rgba(0,80,30,0.3);">
-        <span style="font-size:1.3rem;">✅</span>
-        <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:#4caf50;">Blessed</div>
-          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(76,175,80,0.6);font-family:'Barlow Condensed',sans-serif;">Spam Freely — Encouraged — These Are Goated — Played At Every Concert</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;">
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Moon</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Certified banger. Spam away.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Diamonds From Sierra Leone</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">A classic. Blessed. Spam with pride.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">No Child Left Behind</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">The name alone. Spiritually aligned with Left meme.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
-        </div>
-        <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">This One Here</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">This one here. You know it. Blessed.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
-        </div>
-        <div style="padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;color:var(--white);">Sky City</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.38);margin-top:3px;">Elevated. Literally. Celestial banger.</div></div>
-          <span style="font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:3px 9px;background:rgba(30,120,50,0.3);border:1px solid rgba(30,160,80,0.5);color:#4caf50;white-space:nowrap;">Goated</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Concert rule box -->
-  <div style="padding:18px 24px;border:1px solid rgba(200,169,110,0.25);background:rgba(200,169,110,0.05);display:flex;gap:14px;align-items:flex-start;">
-    <span style="font-size:1.1rem;flex-shrink:0;">🎤</span>
-    <div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;">Concert Policy</div>
-      <p style="font-size:0.82rem;color:rgba(255,255,255,0.48);line-height:1.65;"><span style="color:#e84141;">Forbidden songs</span> may not be spammed — but <span style="color:var(--accent);font-weight:600;">Bomb and Talking are performed live at every concert</span> (they are in the official setlist). <span style="color:#4caf50;">All Blessed songs</span> are played at every concert. No exceptions. The TLP will be present.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HOLY OBESITY ALPHABET -->
-<section id="alphabet" style="background:var(--black);">
-  <p class="section-label">The Official Lexicon</p>
-  <h2 class="section-title">Holy Obesity Glossary</h2>
-  <div class="divider"></div>
-  <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:36px;letter-spacing:0.04em;">The Terence Files operate in their own linguistic universe. Memorize these. You will be tested. Licensed at Morhaldenstrasse 67.</p>
-
-  <style>
-    .gls-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:3px; }
-    .gls-card {
-      padding:24px 22px; border:1px solid rgba(255,255,255,0.06);
-      background:rgba(255,255,255,0.02); transition:all 0.25s; cursor:default;
-      border-left:3px solid transparent;
-    }
-    .gls-card:hover {
-      background:rgba(200,169,110,0.08);
-      border-color:rgba(200,169,110,0.5);
-      border-left-color:var(--accent);
-      transform:translateX(4px);
-    }
-    .gls-card:hover .gls-term { color:var(--accent); }
-    .gls-term { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.1em; color:var(--white); margin-bottom:4px; transition:color 0.2s; }
-    .gls-phonetic { font-size:0.7rem; color:rgba(255,255,255,0.3); letter-spacing:0.06em; font-style:italic; margin-bottom:10px; }
-    .gls-def { font-size:0.83rem; color:rgba(255,255,255,0.55); line-height:1.65; }
-    .gls-tag { display:inline-block; font-size:0.56rem; letter-spacing:0.18em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:2px 8px; border:1px solid rgba(200,169,110,0.3); color:rgba(200,169,110,0.7); margin-top:10px; }
-  </style>
-
-  <style>
-    @media(max-width:768px){
-      #gls-preview .gls-card:nth-child(n+7) { display:none; }
-      #gls-preview.expanded .gls-card { display:block !important; }
-    }
-    @media(min-width:769px){ #gls-more-btn { display:none !important; } }
-  </style>
-  <script>
-  function toggleGlossary(){
-    var grid = document.getElementById('gls-preview');
-    var btn = document.getElementById('gls-btn-text');
-    var arrow = document.getElementById('gls-arrow');
-    var open = grid.classList.contains('expanded');
-    if(open){
-      grid.classList.remove('expanded');
-      btn.textContent = 'Show All Terms';
-      arrow.style.transform = 'rotate(0deg)';
-      grid.scrollIntoView({behavior:'smooth', block:'start'});
-    } else {
-      grid.classList.add('expanded');
-      btn.textContent = 'Hide Terms';
-      arrow.style.transform = 'rotate(180deg)';
-    }
-  }
-  </script>
-  <div id="gls-preview" class="gls-grid">
-
-    <div class="gls-card">
-      <div class="gls-term">Holy Obesity</div>
-      <div class="gls-phonetic">hoh · lee · oh · bee · si · tee</div>
-      <div class="gls-def">Official classification for an extreme fat person. The maximum tier of the Holy Taxonomy. Spiritually adjacent to Terence himself.</div>
-      <div class="gls-tag">Tier II — Maximum</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Holy Obese</div>
-      <div class="gls-phonetic">hoh · lee · oh · bees</div>
-      <div class="gls-def">Official classification for a fat person. The "Holy" prefix conveys reverence. One tier below Holy Obesity.</div>
-      <div class="gls-tag">Tier I</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">TBD</div>
-      <div class="gls-phonetic">tee · bee · dee</div>
-      <div class="gls-def">The Big Deniz. Not to be confused with "To Be Determined," though arguably both definitions apply equally to Deniz.</div>
-      <div class="gls-tag">Acronym</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">LTB</div>
-      <div class="gls-phonetic">el · tee · bee</div>
-      <div class="gls-def">Left Terence Big. A holy trinity of founding forces compressed into a single acronym of profound cultural significance.</div>
-      <div class="gls-tag">Holy Trinity</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">TLP</div>
-      <div class="gls-phonetic">tee · el · pee</div>
-      <div class="gls-def">The Left Police. The judicial enforcement arm of the Terence Files. They uphold leftward direction and dispense McChicken fines.</div>
-      <div class="gls-tag">Enforcement</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">LSB</div>
-      <div class="gls-phonetic">el · es · bee</div>
-      <div class="gls-def">Left Study Big. A scholarly-physical-directional hybrid acronym. Represents intellectual magnitude and committed leftism.</div>
-      <div class="gls-tag">Acronym</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">DISFO</div>
-      <div class="gls-phonetic">dis · foh</div>
-      <div class="gls-def">Primary classified domain of the TF. Full nature is ITF-only. Partial information: OTF. No information: TFA. Handle with care.</div>
-      <div class="gls-tag">Classified — ITF Only</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">WIDSFO</div>
-      <div class="gls-phonetic">wid · sfoh</div>
-      <div class="gls-def">Classified sub-domain of the TF. Closely related to DISFO. Access restricted to OTF and above. ITF has full context.</div>
-      <div class="gls-tag">Classified</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">DA</div>
-      <div class="gls-phonetic">dee · ay</div>
-      <div class="gls-def">Domain Alpha. Cross-referenced throughout the Files. An anchor concept that connects multiple classified domains.</div>
-      <div class="gls-tag">Domain</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Dogmog</div>
-      <div class="gls-phonetic">dog · mog</div>
-      <div class="gls-def">A dog. Simply a dog. Do not overthink it. The word is Dogmog. It means dog. That is all it means. Stop asking questions.</div>
-      <div class="gls-tag">Core Vocabulary</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Nib</div>
-      <div class="gls-phonetic">nib</div>
-      <div class="gls-def">A happy dogmog. Nib is the emotional state of a dog experiencing joy and contentment. Nib is good. Pursue Nib situations.</div>
-      <div class="gls-tag">Emotional State</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Bog</div>
-      <div class="gls-phonetic">bog</div>
-      <div class="gls-def">A sad dogmog. Bog is the emotional state of a dog in suffering or distress. The direct opposite of Nib. Avoid Bog.</div>
-      <div class="gls-tag">Emotional State</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Ögs</div>
-      <div class="gls-phonetic">örgs</div>
-      <div class="gls-def">Chopped dogmogs. The most extreme dogmog state. The umlaut over the Ö denotes gravity. Handle with maximum care.</div>
-      <div class="gls-tag">Extreme State</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">ITF</div>
-      <div class="gls-phonetic">eye · tee · eff</div>
-      <div class="gls-def">Inside Terence Files. Highest clearance. Held by Evren and Pablo only. They hold the highest authority over all TF matters.</div>
-      <div class="gls-tag">Clearance — Supreme</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">OTF</div>
-      <div class="gls-phonetic">oh · tee · eff</div>
-      <div class="gls-def">Outside Terence Files. Medium clearance. Held by Adrian and Julian Yigezu (the Fake Ahh Julian).</div>
-      <div class="gls-tag">Clearance — Medium</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">TFA</div>
-      <div class="gls-phonetic">tee · eff · ay</div>
-      <div class="gls-def">Terence Files All. Community level. Where everyone begins. Most members stay here. Honourable nonetheless.</div>
-      <div class="gls-tag">Clearance — Community</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Nibbooggers</div>
-      <div class="gls-phonetic">nib · boog · gers</div>
-      <div class="gls-def">Nib + Bog = Nibbog. We are all the Family Nibbooggers. A collective of dogmog emotional states unified under one name. ❤️</div>
-      <div class="gls-tag">Family</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Moggogogers</div>
-      <div class="gls-phonetic">mog · go · go · gers</div>
-      <div class="gls-def">Very Big. Very Left. No further questions. The moggogogers are a force. Do not underestimate.</div>
-      <div class="gls-tag">Entity</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">Big D</div>
-      <div class="gls-phonetic">big · dee</div>
-      <div class="gls-def">Holy Obesity classification. Weighs 67² obese KG — like TON 618. Once destroyed the tire of Bus 38 with his weight. A legend.</div>
-      <div class="gls-tag">Holy Obesity</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">McChicken</div>
-      <div class="gls-phonetic">mc · chik · en</div>
-      <div class="gls-def">Official currency of the Terence Files Economic Zone. All fines, debts, and transactions are denominated in McChickens. Exchange rate: classified ITF-only.</div>
-      <div class="gls-tag">🍗 Currency</div>
-    </div>
-
-    <div class="gls-card">
-      <div class="gls-term">MH67</div>
-      <div class="gls-phonetic">em · aitch · 67</div>
-      <div class="gls-def">Morhaldenstrasse 67. The official headquarters and legal address of the Terence Files. All activities here are 100% legal. Do not question it.</div>
-      <div class="gls-tag">Headquarters</div>
-    </div>
-
-  </div>
-
-  <!-- Show more button -->
-  <button id="gls-more-btn" onclick="toggleGlossary()" style="margin-top:16px;width:100%;background:transparent;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:13px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.2s;">
-    <span id="gls-btn-text">Show All Terms</span>
-    <svg id="gls-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/></svg>
-  </button>
-
-  <div id="gls-extra" style="display:none;">
-  </div>
-
-  <div style="margin-top:16px;padding:16px 20px;border:1px solid rgba(200,169,110,0.15);background:rgba(200,169,110,0.03);font-size:0.75rem;color:rgba(255,255,255,0.28);letter-spacing:0.06em;">
-    ★ Licensed under the Morhaldenstrasse 67 Public License (MH67-PL). Enforced by The Left Police (TLP). Fines issued in 🍗 McChickens. Do NOT spam Good Night.
-  </div>
-
-  <!-- HOLY TAXONOMY -->
-  <div style="margin-top:48px;">
-    <p class="section-label">Classification System</p>
-    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:0.06em;color:var(--white);margin-bottom:8px;">Holy Taxonomy</h3>
-    <div style="width:48px;height:1px;background:var(--accent);margin:16px 0 24px;"></div>
-    <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:36px;">The Terence Files maintains an official classification system for individuals of considerable physical presence. This is not medical advice. This is lore.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
-
-      <!-- Tier I -->
-      <div style="padding:40px 36px;border:1px solid rgba(200,169,110,0.15);background:rgba(255,255,255,0.02);position:relative;overflow:hidden;transition:all 0.3s;cursor:default;"
-        onmouseover="this.style.background='rgba(200,169,110,0.07)';this.style.borderColor='rgba(200,169,110,0.45)';"
-        onmouseout="this.style.background='rgba(255,255,255,0.02)';this.style.borderColor='rgba(200,169,110,0.15)';">
-        <div style="position:absolute;top:-20px;right:-10px;font-size:8rem;opacity:0.06;pointer-events:none;line-height:1;">I</div>
-        <div style="font-size:3rem;margin-bottom:20px;">😮</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:12px;">Holy Obese</div>
-        <div style="font-size:0.7rem;letter-spacing:0.18em;color:rgba(200,169,110,0.5);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:16px;">hoh · lee · oh · bees</div>
-        <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;">Tier I classification within the Holy Taxonomy. Applied to a fat person. The "Holy" prefix is not ironic — it denotes a certain reverence and spiritual gravitas toward the subject's physical stature. One tier below the extreme classification. The person is notable, but not yet transcendent.</p>
-        <div style="margin-top:20px;display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:5px 14px;border:1px solid rgba(200,169,110,0.3);color:rgba(200,169,110,0.7);">Tier I — Holy Obese</div>
-      </div>
-
-      <!-- Tier II -->
-      <div style="padding:40px 36px;border:1px solid rgba(180,30,30,0.5);background:rgba(120,10,10,0.25);position:relative;overflow:hidden;transition:all 0.3s;cursor:default;"
-        onmouseover="this.style.background='rgba(160,20,20,0.45)';this.style.borderColor='rgba(220,50,50,0.8)';"
-        onmouseout="this.style.background='rgba(120,10,10,0.25)';this.style.borderColor='rgba(180,30,30,0.5)';">
-        <div style="position:absolute;top:-20px;right:-10px;font-size:8rem;opacity:0.06;pointer-events:none;line-height:1;color:var(--accent);">II</div>
-        <div style="position:absolute;top:12px;right:14px;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:4px 10px;background:#c81c1c;color:#fff;">Maximum</div>
-        <div style="font-size:3rem;margin-bottom:20px;">😱</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:#e84141;margin-bottom:12px;">Holy Obesity</div>
-        <div style="font-size:0.7rem;letter-spacing:0.18em;color:rgba(232,65,65,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:16px;">hoh · lee · oh · bee · si · tee</div>
-        <p style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75;">Tier II classification. The maximum tier. Reserved exclusively for an extreme fat person — one of truly staggering physical presence. At this level, the "Holy" prefix takes on near-religious significance. The subject exists in Terence's spiritual territory. An Absolute Unit in the most profound sense.</p>
-        <div style="margin-top:20px;display:inline-block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;font-weight:700;padding:5px 14px;border:1px solid #c81c1c;color:#e84141;">Tier II — Holy Obesity (Maximum)</div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
-
-<!-- FAN WALL -->
-<section id="fanwall">
-  <p class="section-label">The Crowd Speaks</p>
-  <h2 class="section-title">Fan Wall</h2>
-  <div class="divider"></div>
-  <div class="fanwall-grid">
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote>
-      <div class="fan-author">— moggogogers <span class="fan-city">/ Basel, CH</span></div>
-    </div>
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote>
-      <div class="fan-author">— family nibbooggers <span class="fan-city">/ Istanbul</span></div>
-    </div>
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote>
-      <div class="fan-author">— big terence <span class="fan-city">/ Germany</span></div>
-    </div>
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"Holy Obesity is the best thing to come out of Basel. These two together are a movement. Cannot wait for the world tour."</blockquote>
-      <div class="fan-author">— dogmoggers <span class="fan-city">/ Switzerland</span></div>
-    </div>
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote>
-      <div class="fan-author">— big bork <span class="fan-city">/ France</span></div>
-    </div>
-    <div class="fan-msg">
-      <div class="fan-stars">★★★★★</div>
-      <blockquote>"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote>
-      <div class="fan-author">— bus line 45 <span class="fan-city">/ Spain</span></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- BOOK US -->
-<section id="press" class="on-light">
-  <p class="section-label">For Promoters & Venues</p>
-  <h2 class="section-title">Book Pablo & Evren</h2>
-  <div class="divider"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);">
-    <div>
-      <p style="font-size:0.97rem;color:#444;line-height:1.78;margin-bottom:16px;">Want to bring Pablo and Evren to your city? We are open to booking requests for festivals, club nights, venue shows, and private events across Europe and beyond.</p>
-      <p style="font-size:0.97rem;color:#444;line-height:1.78;margin-bottom:16px;">Our team responds to all serious inquiries within 48 hours. Please include your venue capacity, proposed date, and location in your message.</p>
-      <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px;">
-        <a href="mailto:booking@pabloevrentour.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#333;font-size:0.85rem;">
-          <span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#9a742e;min-width:70px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">Booking</span>
-          booking@pabloevrentour.com
-        </a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#333;font-size:0.85rem;">
-          <span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#9a742e;min-width:70px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">Instagram</span>
-          @king__pablito69
-        </a>
-        <a href="https://www.tiktok.com/@hotkeygaming" target="_blank" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#333;font-size:0.85rem;">
-          <span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#9a742e;min-width:70px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">TikTok</span>
-          @hotkeygaming
-        </a>
-      </div>
-    </div>
-    <div style="background:#fff;padding:32px;border:1px solid rgba(0,0,0,0.08);">
-      <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;color:#222;margin-bottom:20px;">Send a Booking Request</p>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <input type="text" placeholder="Your name / company" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <input type="email" placeholder="your@email.com" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <input type="text" placeholder="City / Venue" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <input type="text" placeholder="Proposed date" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <textarea rows="3" placeholder="Additional details..." style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;resize:vertical;color:#333;"></textarea>
-        <button onclick="this.textContent='Request Sent ✓';this.style.background='#6a8a3e';" style="background:#9a742e;color:#fff;border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;">Send Booking Request</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-<!-- NEWSLETTER -->
-<section id="newsletter">
-  <p class="section-label">Stay Connected</p>
-  <h2 class="section-title">Join the Movement</h2>
-  <div class="divider"></div>
-  <p class="newsletter-sub">New tour dates, VIP drops, merch launches, exclusive content. Be the first to know. No spam — ever.</p>
-  <div class="newsletter-form">
-    <input class="newsletter-input" type="email" placeholder="your@email.com">
-    <button class="newsletter-btn" onclick="this.textContent='Subscribed ✓'; this.style.background='#222';">Subscribe</button>
-  </div>
-  <p class="newsletter-note">Join fans already subscribed. Unsubscribe anytime.</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label">Get in Touch</p>
-  <h2 class="section-title">Contact</h2>
-  <div class="divider"></div>
-  <div class="contact-inner">
-    <div>
-      <p class="contact-intro">For booking, press, collaborations, or just to say something — we want to hear from you.</p>
-      <div class="contact-links">
-        <a href="mailto:booking@pabloevrentour.com" class="contact-link"><span class="contact-link-label">Booking</span>booking@pabloevrentour.com</a>
-        <a href="mailto:press@pabloevrentour.com" class="contact-link"><span class="contact-link-label">Press</span>press@pabloevrentour.com</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" class="contact-link"><span class="contact-link-label">Instagram</span>@king__pablito69</a>
-        <a href="https://www.tiktok.com/@hotkeygaming" target="_blank" class="contact-link"><span class="contact-link-label">TikTok</span>@hotkeygaming</a>
-        <a href="https://x.com/hotkeygaming41" target="_blank" class="contact-link"><span class="contact-link-label">Twitter/X</span>@HotKeyGaming41</a>
-        <a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" class="contact-link"><span class="contact-link-label">YouTube</span>@HotKeyGaming69</a>
-      </div>
-    </div>
-    <div class="contact-form">
-      <div class="form-field"><label>Name</label><input type="text" placeholder="Your name"></div>
-      <div class="form-field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-      <div class="form-field">
-        <label>Subject</label>
-        <select>
-          <option>General Inquiry</option><option>Booking / Agent</option>
-          <option>Press / Media</option><option>Collaboration</option>
-          <option>VIP Inquiry</option><option>Fan Message</option>
-        </select>
-      </div>
-      <div class="form-field"><label>Message</label><textarea rows="5" placeholder="Write your message..."></textarea></div>
-      <button class="btn-send">Send Message</button>
-    </div>
-  </div>
-</section>
-
-
-
 <script>
-var translations = {
-  en: {
-    'nav-newdate':'New Date','nav-tour':'Tour','nav-map':'Map','nav-gallery':'Gallery',
-    'nav-story':'Story','nav-music':'Music','nav-merch':'Merch','nav-quiz':'Quiz',
-    'nav-news':'News','nav-contact':'Contact',
-    'hero-eyebrow':'World Tour 2026',
-    'hero-sub':'An unforgettable journey across stages, cities, and continents. Experience the music live.',
-    'btn-tickets':'Get Tickets','btn-listen':'Listen Now','btn-gallery':'Gallery','btn-merch':'Merch','btn-news':'News','btn-quiz':'🎉 Quiz',
-    'section-dates-label':'On the Road','section-dates':'World Tour Dates 2026',
-    'section-route':'The Route','section-tourmap':'Tour Map',
-    'section-socials-label':'Follow The Journey','section-socials':'Find Us Online',
-    'section-experience':'The Experience','section-expect':'What to Expect',
-    'section-gallery-label':'Behind the Lens','section-gallery':'Gallery',
-    'section-story':'The Story','section-about':'About Pablo & Evren',
-    'section-sound':'The Sound','section-music':'Listen Now',
-    'section-collection':'The Collection','section-merch':'Merchandise',
-    'section-quiz-label':'The Terence Files','section-quiz':'Terence Files Quiz',
-    'section-crowd':'The Crowd Speaks','section-fanwall':'Fan Wall',
-    'section-news-label':'Updates','section-news':'Latest News',
-    'section-booking-label':'For Promoters & Venues','section-booking':'Book Pablo & Evren',
-    'section-newsletter-label':'Stay Connected','section-newsletter':'Join the Movement',
-    'section-contact-label':'Get in Touch','section-contact':'Contact',
-    'scroll':'Scroll'
-  },
-  de: {
-    'nav-newdate':'Neues Datum','nav-tour':'Tour','nav-map':'Karte','nav-gallery':'Galerie',
-    'nav-story':'Geschichte','nav-music':'Musik','nav-merch':'Merch','nav-quiz':'Quiz',
-    'nav-news':'Neuigkeiten','nav-contact':'Kontakt',
-    'hero-eyebrow':'Welttournee 2026',
-    'hero-sub':'Eine unvergessliche Reise über Bühnen, Städte und Kontinente. Erlebe die Musik live.',
-    'btn-tickets':'Tickets kaufen','btn-listen':'Jetzt hören','btn-gallery':'Galerie','btn-merch':'Merch','btn-news':'Neuigkeiten','btn-quiz':'🎉 Quiz',
-    'section-dates-label':'Auf der Straße','section-dates':'Tourtermine 2026',
-    'section-route':'Die Route','section-tourmap':'Tourplan',
-    'section-socials-label':'Folg uns','section-socials':'Online finden',
-    'section-experience':'Das Erlebnis','section-expect':'Was dich erwartet',
-    'section-gallery-label':'Hinter der Linse','section-gallery':'Galerie',
-    'section-story':'Die Geschichte','section-about':'Über Pablo & Evren',
-    'section-sound':'Der Sound','section-music':'Jetzt hören',
-    'section-collection':'Die Kollektion','section-merch':'Merchandise',
-    'section-quiz-label':'Die Terence Akten','section-quiz':'Terence Akten Quiz',
-    'section-crowd':'Das Publikum spricht','section-fanwall':'Fan-Wand',
-    'section-news-label':'Aktuelles','section-news':'Neuigkeiten',
-    'section-booking-label':'Für Veranstalter','section-booking':'Pablo & Evren buchen',
-    'section-newsletter-label':'Bleib verbunden','section-newsletter':'Werde Teil der Bewegung',
-    'section-contact-label':'Kontakt aufnehmen','section-contact':'Kontakt',
-    'scroll':'Scrollen'
-  },
-  es: {
-    'nav-newdate':'Nueva Fecha','nav-tour':'Tour','nav-map':'Mapa','nav-gallery':'Galería',
-    'nav-story':'Historia','nav-music':'Música','nav-merch':'Merch','nav-quiz':'Quiz',
-    'nav-news':'Noticias','nav-contact':'Contacto',
-    'hero-eyebrow':'Gira Mundial 2026',
-    'hero-sub':'Un viaje inolvidable por escenarios, ciudades y continentes. Vive la música en directo.',
-    'btn-tickets':'Comprar Entradas','btn-listen':'Escuchar Ahora','btn-gallery':'Galería','btn-merch':'Merch','btn-news':'Noticias','btn-quiz':'🎉 Quiz',
-    'section-dates-label':'En la Carretera','section-dates':'Fechas de la Gira 2026',
-    'section-route':'La Ruta','section-tourmap':'Mapa de la Gira',
-    'section-socials-label':'Síguenos','section-socials':'Encuéntranos Online',
-    'section-experience':'La Experiencia','section-expect':'Qué esperar',
-    'section-gallery-label':'Detrás del Objetivo','section-gallery':'Galería',
-    'section-story':'La Historia','section-about':'Sobre Pablo & Evren',
-    'section-sound':'El Sonido','section-music':'Escuchar Ahora',
-    'section-collection':'La Colección','section-merch':'Merchandising',
-    'section-quiz-label':'Los Archivos Terence','section-quiz':'Quiz de los Archivos Terence',
-    'section-crowd':'El Público Habla','section-fanwall':'Muro de Fans',
-    'section-news-label':'Actualizaciones','section-news':'Últimas Noticias',
-    'section-booking-label':'Para Promotores','section-booking':'Contratar a Pablo & Evren',
-    'section-newsletter-label':'Mantente Conectado','section-newsletter':'Únete al Movimiento',
-    'section-contact-label':'Ponte en Contacto','section-contact':'Contacto',
-    'scroll':'Desplazar'
-  }
-};
-
-function setLang(lang) {
-  var t = translations[lang];
-  // Nav links - match actual order in DOM
-  var navKeys = ['nav-newdate','nav-tour','nav-map','nav-gallery','nav-story','nav-music','nav-merch','nav-quiz','nav-news','nav-contact'];
-  document.querySelectorAll('.nav-links a').forEach(function(a,i){ if(navKeys[i] && t[navKeys[i]]) a.textContent = t[navKeys[i]]; });
-  // Hero
-  var eyebrow = document.querySelector('.hero-eyebrow');
-  if(eyebrow) eyebrow.textContent = t['hero-eyebrow'];
-  var sub = document.querySelector('.hero-sub');
-  if(sub) sub.textContent = t['hero-sub'];
-  // Hero buttons
-  var heroBtns = document.querySelectorAll('.hero-cta .btn');
-  var btnKeys = ['btn-tickets','btn-listen','btn-gallery','btn-merch','btn-news','btn-quiz'];
-  heroBtns.forEach(function(b,i){ if(btnKeys[i] && t[btnKeys[i]]) b.textContent = t[btnKeys[i]]; });
-  // Section labels and titles
-  var labels = document.querySelectorAll('.section-label');
-  var titles = document.querySelectorAll('.section-title');
-  var labelKeys = ['section-dates-label','section-route','section-socials-label','section-experience','section-gallery-label','section-story','section-sound','section-collection','section-quiz-label','section-crowd','section-news-label','section-booking-label','section-newsletter-label','section-contact-label'];
-  var titleKeys = ['section-dates','section-tourmap','section-socials','section-expect','section-gallery','section-about','section-music','section-merch','section-quiz','section-fanwall','section-news','section-booking','section-newsletter','section-contact'];
-  labels.forEach(function(l,i){ if(labelKeys[i] && t[labelKeys[i]]) l.textContent = t[labelKeys[i]]; });
-  titles.forEach(function(t2,i){ if(titleKeys[i] && t[titleKeys[i]]) t2.textContent = t[titleKeys[i]]; });
-  // Scroll hint
-  var scroll = document.querySelector('.scroll-hint span');
-  if(scroll) scroll.textContent = t['scroll'];
-  // Update button styles
-  ['en','de','es'].forEach(function(l){
-    var btn = document.getElementById('lang-'+l);
-    if(btn) {
-      btn.style.background = l===lang ? 'var(--accent)' : 'transparent';
-      btn.style.color = l===lang ? 'var(--black)' : 'rgba(255,255,255,0.5)';
-    }
-  });
-}
-</script>
-<audio id="bg-music" loop preload="auto">
-  <source src="Dg6T0OR3S0F1W0L.mp3" type="audio/mpeg">
-</audio>
-<div id="music-btn" onclick="toggleMusic()" style="position:fixed;bottom:28px;right:28px;z-index:9999;width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(200,169,110,0.35);transition:background 0.2s;" title="Toggle music">
-  <svg id="music-icon-play" viewBox="0 0 24 24" width="18" height="18" fill="var(--black)" style="margin-left:2px;"><polygon points="5,3 19,12 5,21"/></svg>
-  <svg id="music-icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="var(--black)" style="display:none;"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
-</div>
-<script>
-  var audio = document.getElementById('bg-music');
+  var audio = null;
   var isPlaying = false;
 
+  function initAudio(){
+    if(!audio) audio = document.getElementById('bg-music');
+    return !!audio;
+  }
+
   function startMusic() {
+    if(!initAudio()) return;
     audio.volume = 0.4;
     audio.play().then(function() {
       isPlaying = true;
-      document.getElementById('music-icon-play').style.display = 'none';
-      document.getElementById('music-icon-pause').style.display = 'block';
+      var playIcon = document.getElementById('music-icon-play');
+      var pauseIcon = document.getElementById('music-icon-pause');
+      if(playIcon) playIcon.style.display = 'none';
+      if(pauseIcon) pauseIcon.style.display = 'block';
       var pill = document.getElementById('now-playing-pill');
       if(pill) pill.classList.add('visible');
     }).catch(function(){});
   }
 
   function toggleMusic() {
+    if(!initAudio()) return;
     if (isPlaying) {
       audio.pause();
-      document.getElementById('music-icon-play').style.display = 'block';
-      document.getElementById('music-icon-pause').style.display = 'none';
+      var playIcon = document.getElementById('music-icon-play');
+      var pauseIcon = document.getElementById('music-icon-pause');
+      if(playIcon) playIcon.style.display = 'block';
+      if(pauseIcon) pauseIcon.style.display = 'none';
       isPlaying = false;
       var pill = document.getElementById('now-playing-pill');
       if(pill) pill.classList.remove('visible');
@@ -3749,4 +2826,958 @@ window.addEventListener('DOMContentLoaded', function(){
 </script>
 
 </body>
-</html>
+</html>html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pablo X Evren World Tour 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111110;
+      --dark2: #181816;
+      --white: #fafaf8;
+      --cream: #f0ede6;
+      --accent: #c8a96e;
+      --accent2: #e2c688;
+      --mid: #777770;
+      --gap: clamp(50px, 8vw, 100px);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; max-width: 100vw; }
+    html { overflow-x: hidden; max-width: 100vw; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 28px;
+      background: rgba(10,10,10,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.14em; text-decoration: none; color: var(--white); white-space:nowrap; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 14px; list-style: none; flex-wrap:nowrap; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; font-weight: 500; transition: color 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color: var(--accent); }
+    /* Hide less important nav items on medium screens */
+    @media(max-width:1200px){ .nav-hide-md { display:none !important; } }
+    @media(max-width:900px){ .nav-links { display:none; } }
+
+    /* HERO */
+    #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png') center center / cover no-repeat;
+    }
+    .hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.94) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 clamp(24px,6vw,80px) clamp(60px,8vw,110px);
+      animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem,13vw,13rem); font-weight: 400; line-height: 0.88; letter-spacing: 0.04em; color: var(--white); margin-bottom: 24px; }
+    .hero-title em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: clamp(0.9rem,1.6vw,1.05rem); color: rgba(255,255,255,0.65); letter-spacing: 0.04em; max-width: 500px; line-height: 1.65; }
+    .hero-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 14px 36px; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-primary { background: var(--accent); color: var(--black); }
+    .btn-primary:hover { background: var(--accent2); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+    .scroll-hint { position: absolute; right: 48px; bottom: 44px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 55px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
+
+    /* SHARED */
+    section { padding: var(--gap) clamp(24px,6vw,80px); }
+    .section-label { font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem,5vw,5rem); font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .divider { width: 48px; height: 1px; background: var(--accent); margin: 24px 0 40px; }
+    .on-light .section-title { color: #111; }
+    .on-light .section-label { color: #9a742e; }
+    .on-light .divider { background: #9a742e; }
+
+    /* COUNTDOWN */
+    #countdown { background: var(--accent); padding: 26px clamp(24px,6vw,80px); }
+    .countdown-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .countdown-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--black); opacity: 0.8; }
+    .countdown-venue { font-size: 0.78rem; color: var(--black); opacity: 0.6; letter-spacing: 0.08em; margin-top: 4px; }
+    .countdown-timer { display: flex; gap: 22px; }
+    .cd-unit { text-align: center; }
+    .cd-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem,5vw,3.6rem); color: var(--black); line-height: 1; letter-spacing: 0.04em; }
+    .cd-text { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-top: 2px; }
+    .countdown-cta .btn-cd { background: var(--black); color: var(--accent); display: inline-block; padding: 13px 30px; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .countdown-cta .btn-cd:hover { background: #222; }
+
+    /* SOCIAL PROOF STRIP */
+    #proof { background: var(--dark2); padding: 36px clamp(24px,6vw,80px); border-top: 1px solid rgba(200,169,110,0.08); border-bottom: 1px solid rgba(200,169,110,0.08); }
+    .proof-grid { display: flex; gap: clamp(28px,4vw,70px); flex-wrap: wrap; align-items: center; }
+    .proof-stat h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem,4vw,3.2rem); color: var(--accent); letter-spacing: 0.06em; line-height: 1; }
+    .proof-stat p { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px; }
+    .proof-div { width: 1px; height: 56px; background: rgba(200,169,110,0.18); flex-shrink: 0; }
+    .proof-quote blockquote { font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.65); line-height: 1.6; border-left: 2px solid var(--accent); padding-left: 18px; }
+    .proof-quote cite { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 10px; font-style: normal; }
+
+    /* TOUR DATES */
+    #dates { background: var(--dark); background-image: radial-gradient(ellipse at 80% 50%, rgba(200,169,110,0.04) 0%, transparent 70%); }
+    .dates-grid { display: flex; flex-direction: column; }
+    .date-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; position: relative; }
+    .date-row::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:center; transition:transform 0.25s cubic-bezier(0.22,1,0.36,1); border-radius:2px; }
+    .date-row:hover::before { transform:scaleY(1); }
+    .date-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .date-row:hover { background: rgba(200,169,110,0.05); padding-left: 16px; }
+    .date-month { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .date-day { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; letter-spacing: 0.04em; color: var(--white); }
+    .date-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); }
+    .date-info p { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 4px; }
+    .date-ticket { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(200,169,110,0.45); padding: 9px 20px; text-decoration: none; color: var(--accent); transition: all 0.2s; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; }
+    .date-ticket:hover { background: var(--accent); color: var(--black); }
+    .sold-out { border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.22); cursor: default; }
+    .sold-out:hover { background: transparent; color: rgba(255,255,255,0.22); }
+
+    /* TOUR MAP */
+    #tourmap { background: var(--dark2); }
+    .map-wrap { margin-top: 40px; position: relative; border: 1px solid rgba(200,169,110,0.2); overflow: hidden; }
+    .map-wrap iframe { width: 100%; height: 480px; border: none; display: block; }
+    .map-badge { position: absolute; top: 16px; left: 16px; z-index: 10; background: rgba(10,10,10,0.9); backdrop-filter: blur(8px); padding: 14px 18px; border-left: 2px solid var(--accent); }
+    .map-badge h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.12em; color: var(--accent); }
+    .map-badge p { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    /* WHAT TO EXPECT */
+    #expect { background: var(--black); }
+    .expect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 2px; margin-top: 40px; }
+    .expect-card { background: var(--dark); padding: 36px 28px; border: 1px solid rgba(200,169,110,0.07); transition: border-color 0.3s, background 0.3s; }
+    .expect-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.04); }
+    .expect-icon { font-size: 1.8rem; margin-bottom: 18px; }
+    .expect-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+    .expect-card p { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.65; }
+
+    /* GALLERY */
+    #gallery { background: var(--dark2); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 8px; margin-top: 40px; }
+    .gallery-item { background: #1a1a18; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item::before { content: attr(data-label); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.18); letter-spacing: 0.14em; z-index: 1; text-align: center; text-transform: uppercase; width: 85%; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); opacity: 0.85; }
+    .gallery-item:hover img { transform: scale(1.04); opacity: 1; }
+    .g1 { grid-column: span 7; height: 360px; }
+    .g2 { grid-column: span 5; height: 360px; }
+    .g3 { grid-column: span 4; height: 260px; }
+    .g4 { grid-column: span 4; height: 260px; }
+    .g5 { grid-column: span 4; height: 260px; }
+    .gallery-note { margin-top: 14px; font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .about-photo { width: 100%; aspect-ratio: 4/3; background: #d5cfc3; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-photo img { width:100%; height:100%; object-fit:cover; }
+    .about-photo-placeholder { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; color: #999; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; padding: 20px; }
+    .about-text p { font-size: 0.97rem; line-height: 1.8; color: #3a3830; margin-bottom: 18px; }
+    .about-text strong { color: #111; }
+    .about-stat { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; }
+    .stat h4 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: #9a742e; letter-spacing: 0.04em; line-height: 1; }
+    .stat p { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #888; margin-top: 4px; }
+    @media(max-width:768px){ .about-inner { grid-template-columns: 1fr; } .about-photos-grid { grid-template-columns: 1fr !important; } }
+
+    /* MUSIC */
+    #music { background: var(--dark); background-image: radial-gradient(ellipse at 20% 80%, rgba(200,169,110,0.06) 0%, transparent 60%); }
+    .music-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 16px; margin-top: 40px; }
+    .track-card { background: rgba(255,255,255,0.03); padding: 24px; border: 1px solid rgba(255,255,255,0.07); transition: all 0.2s; cursor: pointer; }
+    .track-card:hover { border-color: rgba(200,169,110,0.35); background: rgba(200,169,110,0.05); transform: translateY(-2px); }
+    .track-number { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); letter-spacing: 0.06em; }
+    .track-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 6px; color: var(--white); }
+    .track-meta { font-size: 0.72rem; color: rgba(255,255,255,0.32); letter-spacing: 0.06em; }
+    .track-play { margin-top: 18px; display: flex; align-items: center; gap: 10px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .play-icon { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .play-icon svg { width: 10px; fill: var(--accent); margin-left: 2px; }
+    .music-platforms { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .music-platforms span { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .platform-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(200,169,110,0.28); text-decoration: none; color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; transition: all 0.2s; }
+    .platform-btn:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+
+    /* VIP */
+    #vip { background: var(--black); background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a96e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .vip-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: center; margin-top: 40px; }
+    .vip-text p { font-size: 0.97rem; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 16px; }
+    .vip-perks { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 11px; }
+    .vip-perks li { font-size: 0.85rem; color: rgba(255,255,255,0.62); padding-left: 20px; position: relative; }
+    .vip-perks li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+    .vip-card { border: 1px solid rgba(200,169,110,0.22); padding: 48px 36px; text-align: center; background: rgba(200,169,110,0.03); position: relative; overflow: hidden; }
+    .vip-card::before { content: 'VIP'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 9rem; color: rgba(200,169,110,0.04); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: 0.1em; }
+    .vip-badge { display: inline-block; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(200,169,110,0.38); padding: 6px 16px; margin-bottom: 24px; }
+    .vip-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .vip-card p { font-size: 0.85rem; color: rgba(255,255,255,0.42); line-height: 1.6; margin-bottom: 28px; }
+    .vip-notify { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .vip-notify:hover { background: var(--accent2); }
+
+    /* FAN WALL */
+    #fanwall { background: var(--dark2); background-image: radial-gradient(ellipse at 50% 100%, rgba(200,169,110,0.04) 0%, transparent 60%); }
+    .fanwall-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px; margin-top: 40px; }
+    .fan-msg { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); padding: 24px 22px; transition: border-color 0.2s; }
+    .fan-msg:hover { border-color: rgba(200,169,110,0.25); }
+    .fan-stars { color: var(--accent); font-size: 0.78rem; letter-spacing: 4px; margin-bottom: 14px; }
+    .fan-msg blockquote { font-size: 0.9rem; font-style: italic; color: rgba(255,255,255,0.68); line-height: 1.65; }
+    .fan-author { margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .fan-city { color: rgba(255,255,255,0.28); }
+
+    /* PRESS */
+    #press { background: var(--cream); }
+    .press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,80px); margin-top: 40px; }
+    .press-bio p { font-size: 0.95rem; color: #3a3830; line-height: 1.78; margin-bottom: 16px; }
+    .press-downloads h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #222; margin-bottom: 18px; }
+    .download-list { display: flex; flex-direction: column; gap: 9px; }
+    .download-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(0,0,0,0.1); text-decoration: none; color: #333; transition: all 0.2s; background: rgba(255,255,255,0.5); }
+    .download-item:hover { background: #fff; border-color: #9a742e; color: #9a742e; }
+    .dl-icon { font-size: 1.2rem; }
+    .dl-info { flex: 1; }
+    .dl-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.06em; font-size: 0.88rem; }
+    .dl-size { font-size: 0.68rem; color: #999; }
+    .logo-strip { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+    .logo-box { border: 1px solid rgba(0,0,0,0.12); padding: 11px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.14em; color: #666; }
+
+    /* MERCH */
+    #merch { background: var(--dark); }
+    .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin-top: 40px; }
+    .merch-card { border: 1px solid rgba(200,169,110,0.1); overflow: hidden; transition: border-color 0.2s; position: relative; }
+    .merch-card:hover { border-color: rgba(200,169,110,0.32); }
+    .merch-img { width: 100%; aspect-ratio: 1; background: rgba(200,169,110,0.05); display: flex; align-items: center; justify-content: center; }
+    .merch-img-icon { font-size: 3rem; opacity: 0.28; }
+    .merch-info { padding: 16px 14px; }
+    .merch-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.08em; font-size: 0.92rem; text-transform: uppercase; color: var(--white); }
+    .merch-price { font-size: 0.78rem; color: var(--accent); margin-top: 4px; }
+    .merch-badge { position: absolute; top: 10px; right: 10px; background: var(--accent); color: var(--black); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; padding: 4px 9px; font-family: 'Barlow Condensed', sans-serif; }
+
+    /* NEWSLETTER */
+    #newsletter { background: var(--accent); background-image: linear-gradient(135deg, #c8a96e 0%, #b0893a 100%); padding: clamp(50px,8vw,100px) clamp(24px,6vw,80px); text-align: center; }
+    #newsletter .section-label { color: rgba(0,0,0,0.4); }
+    #newsletter .section-title { color: var(--black); }
+    #newsletter .divider { background: rgba(0,0,0,0.18); margin: 22px auto 18px; }
+    .newsletter-sub { font-size: 1rem; color: rgba(0,0,0,0.58); max-width: 440px; margin: 0 auto 32px; line-height: 1.6; }
+    .newsletter-form { display: flex; gap: 0; max-width: 460px; margin: 0 auto; }
+    .newsletter-input { flex: 1; padding: 15px 18px; background: rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.18); border-right: none; font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: var(--black); outline: none; }
+    .newsletter-input::placeholder { color: rgba(0,0,0,0.38); }
+    .newsletter-btn { padding: 15px 26px; background: var(--black); color: var(--accent); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-btn:hover { background: #1e1e1c; }
+    .newsletter-note { margin-top: 12px; font-size: 0.68rem; color: rgba(0,0,0,0.38); }
+
+    /* CONTACT */
+    #contact { background: var(--dark2); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .contact-intro { font-size: 0.97rem; color: rgba(255,255,255,0.48); line-height: 1.75; }
+    .contact-links { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+    .contact-link { display: flex; gap: 14px; align-items: center; text-decoration: none; color: rgba(255,255,255,0.48); font-size: 0.84rem; transition: color 0.2s; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); min-width: 60px; }
+    .contact-form { display: flex; flex-direction: column; gap: 13px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.32); }
+    .form-field input, .form-field textarea, .form-field select { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 13px 15px; font-family: 'Barlow', sans-serif; font-size: 0.9rem; outline: none; resize: vertical; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
+    .form-field select option { background: #1a1a18; }
+    .btn-send { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; cursor: pointer; align-self: flex-start; margin-top: 6px; transition: background 0.2s; }
+    .btn-send:hover { background: var(--accent2); }
+
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid rgba(200,169,110,0.1); padding: 28px clamp(24px,6vw,80px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+    .footer-socials { display: flex; gap: 22px; }
+    .footer-socials a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
+    .footer-socials a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .scroll-hint { display: none; }
+      .date-row { grid-template-columns: 70px 1fr; }
+      .date-ticket { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; height: 160px; }
+      .about-inner,.vip-inner,.press-grid,.contact-inner { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid rgba(0,0,0,0.18); border-bottom: none; }
+    }
+
+  /* LIGHT MODE */
+  body.light-mode {
+    --black: #f5f5f0;
+    --dark: #e8e5de;
+    --dark2: #dedad2;
+    --white: #111110;
+    --cream: #111;
+    --accent: #9a742e;
+    --accent2: #b8893a;
+    --mid: #555;
+    background: #f5f5f0;
+    color: #111;
+  }
+  body.light-mode nav { background: rgba(245,245,240,0.92); border-bottom-color: rgba(154,116,46,0.2); }
+  body.light-mode .nav-logo { color: #111; }
+  body.light-mode .nav-links a { color: rgba(0,0,0,0.55); }
+  body.light-mode #hero { filter: none; }
+  body.light-mode .date-row, body.light-mode .dr { background: transparent; }
+  body.light-mode .dr-info h3 { color: #111; }
+  body.light-mode .dr-info p { color: rgba(0,0,0,0.5); }
+  body.light-mode .section-title { color: #111110; }
+  body.light-mode .expect-card { background: #e0ddd6; border-color: rgba(154,116,46,0.15); }
+  body.light-mode .expect-card p { color: rgba(0,0,0,0.55); }
+  body.light-mode .track-card { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .track-title { color: #111; }
+  body.light-mode .fan-msg { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .fan-msg blockquote { color: rgba(0,0,0,0.65); }
+  body.light-mode #mobile-nav { background: rgba(245,245,240,0.98); }
+  body.light-mode .mobile-nav-link { color: rgba(0,0,0,0.7); border-bottom-color: rgba(0,0,0,0.08); }
+
+  </style>
+</head>
+<body>
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688,#c8a96e);z-index:9999;transition:width 0.1s linear;pointer-events:none;box-shadow:0 0 8px rgba(200,169,110,0.6);"></div>
+<script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+</script>
+
+
+<!-- LOADING SCREEN -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;">
+  <!-- Background image with dark overlay -->
+  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.85) 100%);"></div>
+  <!-- Content -->
+  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
+    <div id="loader-eyebrow" style="font-size:0.68rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:20px;opacity:0;transition:opacity 0.8s;">World Tour 2026</div>
+    <div id="loader-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:0.06em;line-height:0.9;color:var(--white);opacity:0;transition:opacity 0.8s 0.3s,transform 0.8s 0.3s;transform:translateY(30px);">
+      <span style="color:#c8a96e;">Pablo</span><br>& Evren
+    </div>
+    <div id="loader-sub" style="font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
+    <!-- Progress bar -->
+    <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
+      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.2s cubic-bezier(0.22,1,0.36,1);"></div>
+    </div>
+  </div>
+</div>
+<style>
+  #loader.fade-out { opacity:0; transition:opacity 0.6s ease; pointer-events:none; }
+</style>
+<script>
+  window.addEventListener('load', function(){
+    var loader = document.getElementById('loader');
+    setTimeout(function(){
+      document.getElementById('loader-eyebrow').style.opacity='1';
+      document.getElementById('loader-title').style.opacity='1';
+      document.getElementById('loader-title').style.transform='translateY(0)';
+      document.getElementById('loader-sub').style.opacity='1';
+      document.getElementById('loader-bar').style.width='100%';
+    }, 100);
+    setTimeout(function(){
+      loader.classList.add('fade-out');
+      document.body.style.overflow='';
+    }, 2300);
+    setTimeout(function(){
+      loader.style.display='none';
+    }, 2900);
+  });
+  document.body.style.overflow='hidden';
+</script>
+
+
+<!-- VISITOR COUNTER -->
+<div id="visitor-counter" style="position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:240;background:rgba(6,6,12,0.88);border:1px solid rgba(200,169,110,0.2);padding:6px 16px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;pointer-events:none;opacity:0;transition:opacity 0.5s;">
+  <div style="width:6px;height:6px;border-radius:50%;background:#4caf50;animation:pulseDot 2s ease-in-out infinite;flex-shrink:0;"></div>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.12em;color:rgba(255,255,255,0.5);white-space:nowrap;"><span id="vc-count" style="color:var(--accent);font-weight:700;">67</span> visitors · 🇨🇭 Switzerland</span>
+</div>
+<script>
+  // Show visitor counter after loader
+  setTimeout(function(){
+    var vc = document.getElementById('visitor-counter');
+    vc.style.opacity='1';
+    // Slowly increment counter realistically
+    var count = 67;
+    var el = document.getElementById('vc-count');
+    setInterval(function(){
+      if(Math.random() < 0.08){ // 8% chance each 10s = realistic
+        count++;
+        el.textContent = count;
+      }
+    }, 10000);
+    // Hide after 8 seconds
+    setTimeout(function(){ vc.style.opacity='0'; }, 8000);
+  }, 3500);
+</script>
+
+
+<!-- GOLD CURSOR -->
+<div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;box-shadow:0 0 8px rgba(200,169,110,0.8);display:none;"></div>
+<div id="cursor-ring" style="position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(200,169,110,0.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;display:none;"></div>
+<style>
+  @media (hover: hover) { * { cursor: none !important; } }
+</style>
+<script>
+var dot = document.getElementById('cursor-dot');
+var ring = document.getElementById('cursor-ring');
+var mx = 0, my = 0, rx = 0, ry = 0;
+var hasTouch = ('ontouchstart' in window);
+
+// Show cursor elements on mouse move (desktop)
+document.addEventListener('mousemove', function(e){
+  dot.style.display = 'block';
+  ring.style.display = 'block';
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+
+// Ring follows with lag
+(function animRing(){
+  rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+// Click/touch ripple — works on BOTH desktop and mobile
+function spawnRipple(x, y) {
+  var ripple = document.createElement('div');
+  ripple.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:rippleOut 0.6s ease-out forwards;';
+  document.body.appendChild(ripple);
+  // Also spawn a touch-dot on mobile
+  if(hasTouch) {
+    var tdot = document.createElement('div');
+    tdot.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:14px;height:14px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(200,169,110,0.9);animation:touchDotFade 0.5s ease-out forwards;';
+    document.body.appendChild(tdot);
+    setTimeout(function(){tdot.remove();},500);
+  }
+  setTimeout(function(){ripple.remove();},600);
+}
+
+document.addEventListener('click', function(e){
+  if(('ontouchstart' in window)) return; // mobile handles via touchstart only
+  spawnRipple(e.clientX, e.clientY);
+});
+var lastTouch = 0;
+var touchMoved = false;
+document.addEventListener('touchstart', function(e){
+  touchMoved = false;
+  var now = Date.now();
+  if(now - lastTouch < 800) return;
+  lastTouch = now;
+  var t = e.touches[0];
+  spawnRipple(t.clientX, t.clientY);
+}, {passive:true});
+document.addEventListener('touchmove', function(){ touchMoved = true; }, {passive:true});
+
+// Hover enlarge on desktop
+document.addEventListener('mouseover', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(2.5)';
+    ring.style.transform='translate(-50%,-50%) scale(1.5)';
+    ring.style.borderColor='rgba(200,169,110,0.9)';
+  }
+});
+document.addEventListener('mouseout', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.borderColor='rgba(200,169,110,0.5)';
+  }
+});
+</script>
+<style>
+@keyframes rippleOut {
+  0%{width:6px;height:6px;opacity:1;}
+  100%{width:80px;height:80px;opacity:0;margin-left:-37px;margin-top:-37px;}
+}
+@keyframes touchDotFade {
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(2.5);}
+}
+</style>
+
+
+<!-- NAV -->
+<style>
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .nav-login-btn {
+    font-family:'Barlow Condensed',sans-serif; font-size:0.62rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; padding:5px 12px;
+    border:1px solid rgba(200,169,110,0.45); color:var(--accent);
+    background:transparent; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+  }
+  .nav-login-btn:hover { background:var(--accent); color:var(--black); }
+  .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:301; background:none; border:none; }
+  .hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  /* Mobile overlay */
+  #mobile-nav {
+    position:fixed; top:0; right:0; bottom:0; width:min(320px,85vw);
+    background:rgba(6,6,10,0.98); backdrop-filter:blur(20px);
+    z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    border-left:1px solid rgba(200,169,110,0.15); overflow-y:auto;
+    display:flex; flex-direction:column; padding:80px 36px 40px;
+  }
+  #mobile-nav.open { transform:translateX(0); }
+  #mobile-nav-backdrop {
+    position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:299;
+    opacity:0; pointer-events:none; transition:opacity 0.3s;
+  }
+  #mobile-nav-backdrop.open { opacity:1; pointer-events:all; }
+  .mobile-nav-link {
+    display:block; font-family:'Bebas Neue',sans-serif;
+    font-size:1.8rem; letter-spacing:0.08em; text-decoration:none;
+    padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    transition:all 0.2s; color:rgba(255,255,255,0.7);
+  }
+  .mobile-nav-link:hover, .mobile-nav-link:active { color:var(--accent); padding-left:8px; }
+  .mobile-nav-link.hot { color:var(--accent); }
+  .mobile-nav-link.special { color:#7ec87e; }
+  .mobile-nav-section { font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase;
+    color:rgba(200,169,110,0.4); font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    margin:24px 0 8px; }
+  .mobile-nav-close { position:absolute; top:20px; right:20px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.5rem; cursor:pointer; padding:8px; }
+</style>
+
+<!-- Mobile nav backdrop -->
+<div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+
+<!-- Mobile nav panel -->
+<div id="mobile-nav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <div style="margin-bottom:28px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">Pablo X Evren</div>
+    <div style="font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);">World Tour 2026</div>
+  </div>
+  <div class="mobile-nav-section">Tour</div>
+  <a href="#countdown" class="mobile-nav-link hot" onclick="closeMobileNav()">New Date</a>
+  <a href="#dates" class="mobile-nav-link hot" onclick="closeMobileNav()">Tour Dates</a>
+  <a href="#tourmap" class="mobile-nav-link" onclick="closeMobileNav()">Tour Map</a>
+  <div class="mobile-nav-section">Content</div>
+  <a href="#gallery" class="mobile-nav-link" onclick="closeMobileNav()">Gallery</a>
+  <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()">Story</a>
+  <a href="#music" class="mobile-nav-link" onclick="closeMobileNav()">Music</a>
+  <a href="#setlist" class="mobile-nav-link" onclick="closeMobileNav()">Setlist</a>
+  <a href="#milestones" class="mobile-nav-link" onclick="closeMobileNav()">Milestones</a>
+  <a href="#news" class="mobile-nav-link hot" onclick="closeMobileNav()">Latest News</a>
+  <div class="mobile-nav-section">Experience</div>
+  <a href="#merch" class="mobile-nav-link" onclick="closeMobileNav()">Merchandise</a>
+  <a href="#quiz" class="mobile-nav-link special" onclick="closeMobileNav()">🎉 Quiz</a>
+  <a href="#memes" class="mobile-nav-link" onclick="closeMobileNav()">Memes</a>
+  <a href="#songs" class="mobile-nav-link" onclick="closeMobileNav()">Songs</a>
+  <a href="#alphabet" class="mobile-nav-link" onclick="closeMobileNav()">Glossary</a>
+  <div class="mobile-nav-section">Info</div>
+  <a href="#socials" class="mobile-nav-link" onclick="closeMobileNav()">Socials</a>
+  <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;gap:12px;">
+
+    <!-- Language Toggle -->
+    <div>
+      <div style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.45);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:8px;">Language</div>
+      <div style="display:flex;gap:2px;">
+        <button onclick="setLang('en');updateLangBtns();" id="lang-en" style="flex:1;padding:10px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">EN</button>
+        <button onclick="setLang('de');updateLangBtns();" id="lang-de" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">DE</button>
+        <button onclick="setLang('es');updateLangBtns();" id="lang-es" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">ES</button>
+      </div>
+    </div>
+
+    <!-- Dark/Light toggle -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);" id="theme-label">🌙 Dark Mode</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.3);margin-top:2px;">Toggle website theme</div>
+      </div>
+      <div onclick="toggleTheme()" id="theme-toggle" style="width:52px;height:28px;border-radius:14px;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.35);cursor:pointer;position:relative;transition:all 0.3s;flex-shrink:0;">
+        <div id="theme-knob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- Feedback -->
+    <button onclick="closeMobileNav();openFeedback();" style="width:100%;padding:12px;background:rgba(200,169,110,0.08);color:var(--accent);border:1px solid rgba(200,169,110,0.3);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">💬 Send Feedback</button>
+
+    <!-- Login -->
+    <button onclick="closeMobileNav();showLoginModal();" style="width:100%;padding:14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Register / Login</button>
+  </div>
+</div>
+
+<script>
+function openMobileNav(){
+  document.getElementById('mobile-nav').classList.add('open');
+  document.getElementById('mobile-nav-backdrop').classList.add('open');
+  document.querySelector('.hamburger').classList.add('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('mobile-nav-backdrop').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <span>Pablo</span> X <span>Evren</span>
+    <span style="font-size:0.82rem;letter-spacing:0.12em;color:rgba(255,255,255,0.5);margin-left:6px;">World Tour 2026</span>
+    <span id="now-playing-pill" style="display:none;margin-left:10px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:3px 10px 3px 8px;font-size:0.58rem;letter-spacing:0.1em;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;align-items:center;gap:5px;vertical-align:middle;">
+      <span id="np-bars" style="display:inline-flex;align-items:flex-end;gap:1.5px;height:10px;">
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar1 0.8s ease-in-out infinite;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar2 0.8s ease-in-out infinite 0.2s;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar3 0.8s ease-in-out infinite 0.4s;"></span>
+      </span>
+      All The Love
+    </span>
+  </a>
+  <style>
+    @keyframes npBar1{0%,100%{height:3px}50%{height:10px}}
+    @keyframes npBar2{0%,100%{height:7px}50%{height:3px}}
+    @keyframes npBar3{0%,100%{height:5px}50%{height:9px}}
+    #now-playing-pill { display:none; }
+    #now-playing-pill.visible { display:inline-flex !important; }
+  </style>
+  <ul class="nav-links">
+    <li><a href="#countdown">New Date</a></li>
+    <li><a href="#dates">Tour</a></li>
+    <li><a href="#tourmap">Map</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">Story</a></li>
+    <li><a href="#music">Music</a></li>
+    <li class="nav-hide-md"><a href="#setlist">Setlist</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li class="nav-hide-md"><a href="#quiz">Quiz</a></li>
+    <li class="nav-hide-md"><a href="#memes">Memes</a></li>
+    <li class="nav-hide-md"><a href="#songs">Songs</a></li>
+    <li class="nav-hide-md"><a href="#alphabet">Glossary</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button onclick="openSearch()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:5px 10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.1em;transition:all 0.2s;display:flex;align-items:center;gap:6px;" onmouseover="this.style.borderColor='rgba(200,169,110,0.5)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.5)'">🔍 Search</button>
+    <button class="nav-login-btn" onclick="showLoginModal()">Register / Login</button>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- SEARCH OVERLAY -->
+<style>
+  #search-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:500;
+    display:none; flex-direction:column; align-items:center; padding-top:120px;
+    backdrop-filter:blur(12px);
+  }
+  #search-overlay.open { display:flex; }
+  #search-input {
+    width:min(680px,90vw); background:rgba(255,255,255,0.05);
+    border:1px solid rgba(200,169,110,0.5); border-radius:0;
+    padding:20px 24px; font-family:'Barlow',sans-serif; font-size:1.2rem;
+    color:var(--white); outline:none; letter-spacing:0.04em;
+  }
+  #search-input::placeholder { color:rgba(255,255,255,0.3); }
+  #search-results {
+    width:min(680px,90vw); margin-top:4px; background:rgba(10,10,10,0.98);
+    border:1px solid rgba(200,169,110,0.2); border-top:none; max-height:400px; overflow-y:auto;
+  }
+  .sr-item {
+    display:flex; align-items:center; gap:16px; padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:background 0.15s;
+    text-decoration:none;
+  }
+  .sr-item:hover { background:rgba(200,169,110,0.08); }
+  .sr-cat { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    color:rgba(200,169,110,0.6); min-width:70px; }
+  .sr-title { font-size:0.92rem; color:var(--white); font-family:'Barlow Condensed',sans-serif;
+    font-weight:600; letter-spacing:0.04em; }
+  .sr-sub { font-size:0.72rem; color:rgba(255,255,255,0.38); }
+  .search-close { position:absolute; top:24px; right:28px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.8rem; cursor:pointer; z-index:501; }
+</style>
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <input id="search-input" type="text" placeholder="Search concerts, songs, cities, sections..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+  <div id="search-results"></div>
+  <div id="search-recommendations" style="width:min(680px,90vw);margin-top:20px;"></div>
+  <div style="margin-top:16px;font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Press ESC to close · Ctrl+K to open</div>
+</div>
+<script>
+var searchData = [
+  {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates',img:'https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg'},
+  {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates',img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+  {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg'},
+  {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates',img:'https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg'},
+  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
+  {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
+  {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
+  {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Bregenz, Austria',sub:'ImmoAgentur Stadium · 17 May 2026',href:'#dates',img:'https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
+  {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
+  {cat:'Concert',title:'Reggio Emilia, Italy',sub:'RCF Arena Campovolo · 18 Jul 2026',href:'#dates',img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1'},
+  // Songs
+  {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Feat. Kanye West + many guests',href:'#setlist',icon:'💣'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🍂'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Saint Pablo',sub:'Setlist · Feat. Kanye West, Pablo',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'No Child Left Behind',sub:'Setlist · aka yea im crying 💔',href:'#setlist',icon:'💔'},
+  {cat:'Song',title:'Moon',sub:'Setlist · Feat. Kanye West, Don Toliver',href:'#setlist',icon:'🌙'},
+  // Sections
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all tour cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Section',title:'Gallery',sub:'Photos from the tour',href:'#gallery',icon:'📸'},
+  {cat:'Section',title:'Our Story',sub:'About Pablo & Evren / ZBA Basel',href:'#about',icon:'📖'},
+  {cat:'Section',title:'Listen Now',sub:'Music on Spotify',href:'#music',icon:'🎧'},
+  {cat:'Section',title:'Merchandise',sub:'Tour Tee, Cap, Hoodie, Crewneck',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'7 randomized questions',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Latest News',sub:'Tour updates and announcements',href:'#news',icon:'📰'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs',icon:'🎵'},
+  {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes',icon:'⬅️'},
+  {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall',icon:'💛'},
+  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press',icon:'📋'},
+  {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact',icon:'✉️'},
+  {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials',icon:'📱'},
+  // Merch
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Pablo X Evren Crewneck',sub:'35 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/EWHebCyjsfu1z9BNODtk/image.jpg'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · 3D Fish Edition',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
+  // Lore
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum classification',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · 67² obese KG',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
+  {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
+  {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
+  {cat:'Concert',title:'Toronto, Canada',sub:'Rogers Centre · 28 Dec 2026 · Evren Solo',href:'#dates',img:'https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg'},
+];
+
+function doSearch(q){
+  var res = document.getElementById('search-results');
+  var rec = document.getElementById('search-recommendations');
+  q = q.trim().toLowerCase();
+  if(!q){
+    res.innerHTML='';
+    showRecommendations();
+    return;
+  }
+  rec.innerHTML='';
+  var matches = searchData.filter(function(d){
+    return d.title.toLowerCase().includes(q) || d.sub.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q);
+  }).slice(0,8);
+  if(!matches.length){ res.innerHTML='<div style="padding:18px 24px;font-size:0.82rem;color:rgba(255,255,255,0.3);">No results found</div>'; return; }
+  res.innerHTML = matches.map(function(m){
+    var imgHtml = m.img ? '<img src="'+m.img+'" style="width:44px;height:44px;object-fit:cover;border-radius:2px;flex-shrink:0;">' : '<div style="width:44px;height:44px;background:rgba(200,169,110,0.1);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">'+( m.icon||'✦')+'</div>';
+    return '<a class="sr-item" href="'+m.href+'" onclick="closeSearch()">'+imgHtml+'<div class="sr-cat">'+m.cat+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">'+m.sub+'</div></div></a>';
+  }).join('');
+}
+
+var recommendPool = [
+  {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · New',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
+  {cat:'Song',title:'POWER',sub:'Setlist · Special Guest: Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Massive Guest List',href:'#setlist',icon:'💣'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'Test your lore knowledge',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · TON 618',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Nibbooggers',sub:'We are all family ❤️',href:'#alphabet',icon:'🐦'},
+  {cat:'Lore',title:'The First 4 Memes',sub:'Left · Study · Big · Terence',href:'#memes',icon:'⬅️'},
+];
+
+function shuffle(a){ var b=a.slice(); for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;} return b; }
+
+function showRecommendations(){
+  var rec = document.getElementById('search-recommendations');
+  var picks = shuffle(recommendPool).slice(0,6);
+  rec.innerHTML = '<div style="font-size:0.6rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:12px;">✦ Recommended</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">'
+    + picks.map(function(m){
+      var imgHtml = m.img
+        ? '<div style="width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;"><img src="'+m.img+'" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform=\'scale(1.06)\'" onmouseout="this.style.transform=\'scale(1)\'"></div>'
+        : '<div style="width:100%;aspect-ratio:16/9;background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;font-size:2rem;">'+(m.icon||'✦')+'</div>';
+      return '<a href="'+m.href+'" onclick="closeSearch()" style="display:block;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor=\'rgba(200,169,110,0.4)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.07)\'">'
+        + imgHtml
+        + '<div style="padding:10px 12px;">'
+        + '<div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.55);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:3px;">'+m.cat+'</div>'
+        + '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;color:var(--white);">'+m.title+'</div>'
+        + '<div style="font-size:0.68rem;color:rgba(255,255,255,0.35);margin-top:2px;">'+m.sub+'</div>'
+        + '</div></a>';
+    }).join('')
+    + '</div>';
+}
+
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(function(){
+    document.getElementById('search-input').focus();
+    showRecommendations();
+  },100);
+}
+function closeSearch(){
+  document.getElementById('search-overlay').classList.remove('open');
+  document.getElementById('search-input').value='';
+  document.getElementById('search-results').innerHTML='';
+  document.getElementById('search-recommendations').innerHTML='';
+}
+document.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();} if(e.key==='Escape')closeSearch(); });
+</script>
+
+
+<!-- LOGIN MODAL -->
+<style>
+  #login-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:600;
+    display:none; align-items:center; justify-content:center;
+    backdrop-filter:blur(12px);
+  }
+  #login-modal.open { display:flex; }
+  .login-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    padding:48px 44px; width:min(480px,90vw); position:relative; text-align:center;
+  }
+</style>
+<div id="login-modal" onclick="if(event.target===this)closeLoginModal()">
+  <div class="login-box">
+    <button onclick="closeLoginModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.4rem;cursor:pointer;">✕</button>
+    <div style="font-size:2.5rem;margin-bottom:16px;">🚧</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:8px;">Under Construction</div>
+    <div style="width:40px;height:2px;background:var(--accent);margin:0 auto 20px;"></div>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The Register / Login system is currently being built. Create your Pablo X Evren account to get early access to tickets, VIP drops, and exclusive content.</p>
+    <p style="font-size:0.78rem;color:rgba(200,169,110,0.6);letter-spacing:0.06em;">Subscribe to the newsletter below to be notified when accounts launch.</p>
+    <a href="#newsletter" onclick="closeLoginModal()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:var(--accent);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;">Join Newsletter →</a>
+  </div>
+</div>
+<script>
+function showLoginModal(){ document.getElementById('login-modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLoginModal(){ document.getElementById('login-modal').classList.remove('open'); document.body.style.overflow=''; }
+</script>
+
+
+<!-- FEEDBACK BUTTON -->
+<style>
+  #feedback-btn {
+    position:fixed; left:50%; bottom:0; transform:translateX(-50%);
+    z-index:250; background:var(--accent); color:var(--black);
+    font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; padding:8px 20px;
+    cursor:pointer; border:none; border-radius:8px 8px 0 0;
+    box-shadow:0 -2px 16px rgba(200,169,110,0.3); transition:all 0.2s;
+  }
+  #feedback-btn:hover { padding-bottom:12px; }
+  #feedback-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:400;
+    display:none; align-items:flex-end; justify-content:center;
+    backdrop-filter:blur(8px);
+  }
+  #feedback-modal.open { display:flex; }
+  .feedback-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    border-bottom:none; padding:36px 32px; width:min(520px,100vw);
+    position:relative; border-radius:12px 12px 0 0;
+    animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+</style>
+
+<div id="feedback-modal" onclick="if(event.target===this)closeFeedback()">
+  <div class="feedback-box">
+    <button onclick="closeFeedback()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.3rem;cursor:pointer;">✕</button>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px;">Send Feedback</div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:20px;">Your message goes directly to the team. No email shown publicly.</p>
+    <div id="feedback-form">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <input id="fb-name" type="text" placeholder="Your name (optional)" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <select id="fb-type" style="background:#1a1a18;border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;">
+          <option value="general">General Feedback</option>
+          <option value="bug">Bug / Something Broken</option>
+          <option value="idea">Idea / Suggestion</option>
+          <option value="concert">Concert Feedback</option>
+          <option value="merch">Merchandise</option>
+          <option value="love">Just want to say something 💛</option>
+        </select>
+        <textarea id="fb-message" rows="4" placeholder="Write your message..." style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;resize:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button onclick="submitFeedback()" style="background:var(--accent);color:var(--black);border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Send Message</button>
+      </div>
+    </div>
+    <div id="feedback-thanks" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:2rem;margin-bottom:12px;">✅</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--accent);">Message Sent!</div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-top:8px;">Thanks for the feedback. The team will read it.</p>
+    </div>
+  </div>
+</div>
+<script>
+function openFeedback(){ document.getElementById('feedback-modal').classList.add('open'); }
+function closeFeedback(){
+  document.getElementById('feedback-modal').classList.remove('open');
+  setTimeout(function(){
+    document.getElementById('feedback-form').style.display='block';
+    document.getElementById('feedback-thanks').style.display='none';
+  },400);
+}
+function submitFeedback(){
+  var name = document.getElementById('fb-name').value || 'Anonymous';
+  var type = document.getElementById('fb-type').value;
+  var msg = document.getElementById('fb-message').value.trim();
+  if(!msg){ alert('Please write a message first!'); return; }
+  var btn = event.target;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/xnjwgnpj', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      name: name,
+      feedback_type: type,
+      message: msg,
+      _replyto: 'pablopau2009@gmail.com',
+      _subject: 'Website Feedback: ' + type + ' from ' + name
+    })
+  }).then(function(r){
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  }).catch(function(){
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  });
+}
+</script>
