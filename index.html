@@ -699,8 +699,8 @@ var searchData = [
   {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
   {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
   {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
-  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 14 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
-  {cat:'Concert',title:'Bregenz, Austria',sub:'ImmoAgentur Stadium · 14 May 2026',href:'#dates',img:'https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Bregenz, Austria',sub:'ImmoAgentur Stadium · 17 May 2026',href:'#dates',img:'https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg'},
   {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
   {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
@@ -771,7 +771,7 @@ function doSearch(q){
 
 var recommendPool = [
   {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
-  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 14 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
   {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
   {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
@@ -1176,7 +1176,7 @@ function updateCountdown(){
   }
   var cityEl=document.getElementById("cd-city"); if(cityEl) cityEl.textContent=show.city;
   var venueEl=document.getElementById("cd-venue"); if(venueEl) venueEl.textContent=show.venue;
-  var bgEl=document.getElementById("cd-bg"); if(bgEl) bgEl.style.backgroundImage="url('"+show.img+"')";
+  var bgEl=document.getElementById("cd-bg"); if(bgEl) bgEl.style.backgroundImage="url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg')";
   var diff=show.date-new Date(); if(diff<0)diff=0;
   var dd=document.getElementById("cd-d"); if(dd) dd.textContent=pad(diff/86400000);
   var dh=document.getElementById("cd-h"); if(dh) dh.textContent=pad((diff%86400000)/3600000);
