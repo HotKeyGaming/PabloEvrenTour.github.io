@@ -315,34 +315,38 @@
 </head>
 <body>
 <!-- LOADING SCREEN -->
-<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;">
-  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.92) 100%);"></div>
-  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
-    <div id="loader-eyebrow" style="font-size:0.68rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:20px;opacity:0;transition:opacity 0.8s;">World Tour 2026</div>
-    <div id="loader-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:0.06em;line-height:0.9;color:#fafaf8;opacity:0;transition:opacity 0.8s 0.3s,transform 0.8s 0.3s;transform:translateY(30px);"><span style="color:#c8a96e;">Pablo</span><br>&amp; Evren</div>
-    <div id="loader-sub" style="font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
-    <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
-      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.8s cubic-bezier(0.22,1,0.36,1);"></div>
-    </div>
+<style>
+  #loader { position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none; }
+  #loader.fade-out { opacity:0;transition:opacity 0.5s ease; }
+  #loader-bg { position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35; }
+  #loader-grad { position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.92) 100%); }
+  #loader-inner { position:relative;z-index:2;text-align:center;padding:0 24px; }
+  #loader-eyebrow { font-size:0.75rem;letter-spacing:0.38em;text-transform:uppercase;color:#c8a96e;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;margin-bottom:16px;opacity:1; }
+  #loader-title { font-family:'Bebas Neue',Impact,Arial Black,sans-serif;font-size:clamp(3.5rem,14vw,10rem);letter-spacing:0.06em;line-height:0.9;color:#ffffff;opacity:1; }
+  #loader-title span { color:#c8a96e; }
+  #loader-sub { font-size:clamp(0.9rem,2.5vw,1.2rem);letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-top:18px;font-family:'Barlow Condensed',Arial,sans-serif;opacity:1; }
+  #loader-track { margin-top:44px;width:220px;height:2px;background:rgba(255,255,255,0.12);margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px; }
+  #loader-bar { height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.9s cubic-bezier(0.22,1,0.36,1);border-radius:2px; }
+</style>
+<div id="loader">
+  <div id="loader-bg"></div>
+  <div id="loader-grad"></div>
+  <div id="loader-inner">
+    <div id="loader-eyebrow">World Tour 2026</div>
+    <div id="loader-title"><span>Pablo</span><br>&amp; Evren</div>
+    <div id="loader-sub">Live in Concert</div>
+    <div id="loader-track"><div id="loader-bar"></div></div>
   </div>
 </div>
-<style>#loader.fade-out{opacity:0;transition:opacity 0.5s ease;}</style>
 <script>
-  setTimeout(function(){
-    var ey=document.getElementById('loader-eyebrow');
-    var ti=document.getElementById('loader-title');
-    var su=document.getElementById('loader-sub');
-    var ba=document.getElementById('loader-bar');
-    if(ey) ey.style.opacity='1';
-    if(ti){ti.style.opacity='1';ti.style.transform='translateY(0)';}
-    if(su) su.style.opacity='1';
-    if(ba) ba.style.width='100%';
-  }, 80);
-  setTimeout(function(){
-    var l=document.getElementById('loader');
-    if(l){l.classList.add('fade-out');setTimeout(function(){if(l)l.style.display='none';},500);}
-  }, 2300);
+  (function(){
+    var bar = document.getElementById('loader-bar');
+    if(bar) setTimeout(function(){ bar.style.width='100%'; }, 60);
+    setTimeout(function(){
+      var l = document.getElementById('loader');
+      if(l){ l.classList.add('fade-out'); setTimeout(function(){ l.style.display='none'; }, 500); }
+    }, 2300);
+  })();
 </script>
 
 <!-- SCROLL PROGRESS BAR -->
@@ -356,38 +360,6 @@ window.addEventListener('scroll', function(){
 });
 </script>
 
-
-<!-- LOADING SCREEN -->
-<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;">
-  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.92) 100%);"></div>
-  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
-    <div id="loader-eyebrow" style="font-size:0.68rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:20px;opacity:0;transition:opacity 0.8s;">World Tour 2026</div>
-    <div id="loader-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:0.06em;line-height:0.9;color:#fafaf8;opacity:0;transition:opacity 0.8s 0.3s,transform 0.8s 0.3s;transform:translateY(30px);"><span style="color:#c8a96e;">Pablo</span><br>& Evren</div>
-    <div id="loader-sub" style="font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
-    <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
-      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.8s cubic-bezier(0.22,1,0.36,1);"></div>
-    </div>
-  </div>
-</div>
-<style>#loader.fade-out{opacity:0;transition:opacity 0.5s ease;}</style>
-<script>
-  setTimeout(function(){
-    var ey=document.getElementById('loader-eyebrow');
-    var ti=document.getElementById('loader-title');
-    var su=document.getElementById('loader-sub');
-    var ba=document.getElementById('loader-bar');
-    if(ey) ey.style.opacity='1';
-    if(ti){ti.style.opacity='1';ti.style.transform='translateY(0)';}
-    if(su) su.style.opacity='1';
-    if(ba) ba.style.width='100%';
-  }, 80);
-  // Hide after 2.3s - NO overflow:hidden so page never gets stuck
-  setTimeout(function(){
-    var l=document.getElementById('loader');
-    if(l){l.classList.add('fade-out');setTimeout(function(){l.style.display='none';},500);}
-  }, 2300);
-</script>
 
 <!-- VISITOR COUNTER -->
 <div id="visitor-counter" style="position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:240;background:rgba(6,6,12,0.88);border:1px solid rgba(200,169,110,0.2);padding:6px 16px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;pointer-events:none;opacity:0;transition:opacity 0.5s;">
