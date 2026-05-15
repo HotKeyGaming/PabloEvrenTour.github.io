@@ -1318,8 +1318,1331 @@ setInterval(updateTorontoCountdown, 60000);
   <div class="dates-divider" style="color:rgba(100,200,100,0.7);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✓ Completed Shows</div>
 
   <!-- Basel -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pablo X Evren World Tour 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111110;
+      --dark2: #181816;
+      --white: #fafaf8;
+      --cream: #f0ede6;
+      --accent: #c8a96e;
+      --accent2: #e2c688;
+      --mid: #777770;
+      --gap: clamp(50px, 8vw, 100px);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; max-width: 100vw; }
+    html { overflow-x: hidden; max-width: 100vw; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 28px;
+      background: rgba(10,10,10,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.14em; text-decoration: none; color: var(--white); white-space:nowrap; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 14px; list-style: none; flex-wrap:nowrap; }
+    .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); text-decoration: none; font-weight: 500; transition: color 0.2s; white-space:nowrap; }
+    .nav-links a:hover { color: var(--accent); }
+    /* Hide less important nav items on medium screens */
+    @media(max-width:1200px){ .nav-hide-md { display:none !important; } }
+    @media(max-width:900px){ .nav-links { display:none; } }
+
+    /* HERO */
+    #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png') center center / cover no-repeat;
+    }
+    .hero-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.94) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 clamp(24px,6vw,80px) clamp(60px,8vw,110px);
+      animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:none} }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem,13vw,13rem); font-weight: 400; line-height: 0.88; letter-spacing: 0.04em; color: var(--white); margin-bottom: 24px; }
+    .hero-title em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: clamp(0.9rem,1.6vw,1.05rem); color: rgba(255,255,255,0.65); letter-spacing: 0.04em; max-width: 500px; line-height: 1.65; }
+    .hero-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 14px 36px; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-primary { background: var(--accent); color: var(--black); }
+    .btn-primary:hover { background: var(--accent2); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+    .scroll-hint { position: absolute; right: 48px; bottom: 44px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 55px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
+
+    /* SHARED */
+    section { padding: var(--gap) clamp(24px,6vw,80px); }
+    .section-label { font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem,5vw,5rem); font-weight: 400; line-height: 1; letter-spacing: 0.05em; }
+    .divider { width: 48px; height: 1px; background: var(--accent); margin: 24px 0 40px; }
+    .on-light .section-title { color: #111; }
+    .on-light .section-label { color: #9a742e; }
+    .on-light .divider { background: #9a742e; }
+
+    /* COUNTDOWN */
+    #countdown { background: var(--accent); padding: 26px clamp(24px,6vw,80px); }
+    .countdown-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .countdown-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; color: var(--black); opacity: 0.8; }
+    .countdown-venue { font-size: 0.78rem; color: var(--black); opacity: 0.6; letter-spacing: 0.08em; margin-top: 4px; }
+    .countdown-timer { display: flex; gap: 22px; }
+    .cd-unit { text-align: center; }
+    .cd-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem,5vw,3.6rem); color: var(--black); line-height: 1; letter-spacing: 0.04em; }
+    .cd-text { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-top: 2px; }
+    .countdown-cta .btn-cd { background: var(--black); color: var(--accent); display: inline-block; padding: 13px 30px; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .countdown-cta .btn-cd:hover { background: #222; }
+
+    /* SOCIAL PROOF STRIP */
+    #proof { background: var(--dark2); padding: 36px clamp(24px,6vw,80px); border-top: 1px solid rgba(200,169,110,0.08); border-bottom: 1px solid rgba(200,169,110,0.08); }
+    .proof-grid { display: flex; gap: clamp(28px,4vw,70px); flex-wrap: wrap; align-items: center; }
+    .proof-stat h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem,4vw,3.2rem); color: var(--accent); letter-spacing: 0.06em; line-height: 1; }
+    .proof-stat p { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px; }
+    .proof-div { width: 1px; height: 56px; background: rgba(200,169,110,0.18); flex-shrink: 0; }
+    .proof-quote blockquote { font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.65); line-height: 1.6; border-left: 2px solid var(--accent); padding-left: 18px; }
+    .proof-quote cite { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-top: 10px; font-style: normal; }
+
+    /* TOUR DATES */
+    #dates { background: var(--dark); background-image: radial-gradient(ellipse at 80% 50%, rgba(200,169,110,0.04) 0%, transparent 70%); }
+    .dates-grid { display: flex; flex-direction: column; }
+    .date-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 32px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; position: relative; }
+    .date-row::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:center; transition:transform 0.25s cubic-bezier(0.22,1,0.36,1); border-radius:2px; }
+    .date-row:hover::before { transform:scaleY(1); }
+    .date-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .date-row:hover { background: rgba(200,169,110,0.05); padding-left: 16px; }
+    .date-month { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .date-day { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; letter-spacing: 0.04em; color: var(--white); }
+    .date-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); }
+    .date-info p { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 4px; }
+    .date-ticket { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(200,169,110,0.45); padding: 9px 20px; text-decoration: none; color: var(--accent); transition: all 0.2s; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; }
+    .date-ticket:hover { background: var(--accent); color: var(--black); }
+    .sold-out { border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.22); cursor: default; }
+    .sold-out:hover { background: transparent; color: rgba(255,255,255,0.22); }
+
+    /* TOUR MAP */
+    #tourmap { background: var(--dark2); }
+    .map-wrap { margin-top: 40px; position: relative; border: 1px solid rgba(200,169,110,0.2); overflow: hidden; }
+    .map-wrap iframe { width: 100%; height: 480px; border: none; display: block; }
+    .map-badge { position: absolute; top: 16px; left: 16px; z-index: 10; background: rgba(10,10,10,0.9); backdrop-filter: blur(8px); padding: 14px 18px; border-left: 2px solid var(--accent); }
+    .map-badge h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.12em; color: var(--accent); }
+    .map-badge p { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    /* WHAT TO EXPECT */
+    #expect { background: var(--black); }
+    .expect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 2px; margin-top: 40px; }
+    .expect-card { background: var(--dark); padding: 36px 28px; border: 1px solid rgba(200,169,110,0.07); transition: border-color 0.3s, background 0.3s; }
+    .expect-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.04); }
+    .expect-icon { font-size: 1.8rem; margin-bottom: 18px; }
+    .expect-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+    .expect-card p { font-size: 0.85rem; color: rgba(255,255,255,0.48); line-height: 1.65; }
+
+    /* GALLERY */
+    #gallery { background: var(--dark2); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 8px; margin-top: 40px; }
+    .gallery-item { background: #1a1a18; overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item::before { content: attr(data-label); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.18); letter-spacing: 0.14em; z-index: 1; text-align: center; text-transform: uppercase; width: 85%; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); opacity: 0.85; }
+    .gallery-item:hover img { transform: scale(1.04); opacity: 1; }
+    .g1 { grid-column: span 7; height: 360px; }
+    .g2 { grid-column: span 5; height: 360px; }
+    .g3 { grid-column: span 4; height: 260px; }
+    .g4 { grid-column: span 4; height: 260px; }
+    .g5 { grid-column: span 4; height: 260px; }
+    .gallery-note { margin-top: 14px; font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .about-photo { width: 100%; aspect-ratio: 4/3; background: #d5cfc3; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-photo img { width:100%; height:100%; object-fit:cover; }
+    .about-photo-placeholder { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; color: #999; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; padding: 20px; }
+    .about-text p { font-size: 0.97rem; line-height: 1.8; color: #3a3830; margin-bottom: 18px; }
+    .about-text strong { color: #111; }
+    .about-stat { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; }
+    .stat h4 { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: #9a742e; letter-spacing: 0.04em; line-height: 1; }
+    .stat p { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: #888; margin-top: 4px; }
+    @media(max-width:768px){ .about-inner { grid-template-columns: 1fr; } .about-photos-grid { grid-template-columns: 1fr !important; } }
+
+    /* MUSIC */
+    #music { background: var(--dark); background-image: radial-gradient(ellipse at 20% 80%, rgba(200,169,110,0.06) 0%, transparent 60%); }
+    .music-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 16px; margin-top: 40px; }
+    .track-card { background: rgba(255,255,255,0.03); padding: 24px; border: 1px solid rgba(255,255,255,0.07); transition: all 0.2s; cursor: pointer; }
+    .track-card:hover { border-color: rgba(200,169,110,0.35); background: rgba(200,169,110,0.05); transform: translateY(-2px); }
+    .track-number { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); letter-spacing: 0.06em; }
+    .track-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 12px 0 6px; color: var(--white); }
+    .track-meta { font-size: 0.72rem; color: rgba(255,255,255,0.32); letter-spacing: 0.06em; }
+    .track-play { margin-top: 18px; display: flex; align-items: center; gap: 10px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .play-icon { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .play-icon svg { width: 10px; fill: var(--accent); margin-left: 2px; }
+    .music-platforms { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .music-platforms span { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+    .platform-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(200,169,110,0.28); text-decoration: none; color: var(--accent); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; transition: all 0.2s; }
+    .platform-btn:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+
+    /* VIP */
+    #vip { background: var(--black); background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a96e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+    .vip-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: center; margin-top: 40px; }
+    .vip-text p { font-size: 0.97rem; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 16px; }
+    .vip-perks { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 11px; }
+    .vip-perks li { font-size: 0.85rem; color: rgba(255,255,255,0.62); padding-left: 20px; position: relative; }
+    .vip-perks li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+    .vip-card { border: 1px solid rgba(200,169,110,0.22); padding: 48px 36px; text-align: center; background: rgba(200,169,110,0.03); position: relative; overflow: hidden; }
+    .vip-card::before { content: 'VIP'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 9rem; color: rgba(200,169,110,0.04); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: 0.1em; }
+    .vip-badge { display: inline-block; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(200,169,110,0.38); padding: 6px 16px; margin-bottom: 24px; }
+    .vip-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .vip-card p { font-size: 0.85rem; color: rgba(255,255,255,0.42); line-height: 1.6; margin-bottom: 28px; }
+    .vip-notify { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .vip-notify:hover { background: var(--accent2); }
+
+    /* FAN WALL */
+    #fanwall { background: var(--dark2); background-image: radial-gradient(ellipse at 50% 100%, rgba(200,169,110,0.04) 0%, transparent 60%); }
+    .fanwall-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px; margin-top: 40px; }
+    .fan-msg { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); padding: 24px 22px; transition: border-color 0.2s; }
+    .fan-msg:hover { border-color: rgba(200,169,110,0.25); }
+    .fan-stars { color: var(--accent); font-size: 0.78rem; letter-spacing: 4px; margin-bottom: 14px; }
+    .fan-msg blockquote { font-size: 0.9rem; font-style: italic; color: rgba(255,255,255,0.68); line-height: 1.65; }
+    .fan-author { margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .fan-city { color: rgba(255,255,255,0.28); }
+
+    /* PRESS */
+    #press { background: var(--cream); }
+    .press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,5vw,80px); margin-top: 40px; }
+    .press-bio p { font-size: 0.95rem; color: #3a3830; line-height: 1.78; margin-bottom: 16px; }
+    .press-downloads h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #222; margin-bottom: 18px; }
+    .download-list { display: flex; flex-direction: column; gap: 9px; }
+    .download-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(0,0,0,0.1); text-decoration: none; color: #333; transition: all 0.2s; background: rgba(255,255,255,0.5); }
+    .download-item:hover { background: #fff; border-color: #9a742e; color: #9a742e; }
+    .dl-icon { font-size: 1.2rem; }
+    .dl-info { flex: 1; }
+    .dl-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.06em; font-size: 0.88rem; }
+    .dl-size { font-size: 0.68rem; color: #999; }
+    .logo-strip { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+    .logo-box { border: 1px solid rgba(0,0,0,0.12); padding: 11px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.14em; color: #666; }
+
+    /* MERCH */
+    #merch { background: var(--dark); }
+    .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; margin-top: 40px; }
+    .merch-card { border: 1px solid rgba(200,169,110,0.1); overflow: hidden; transition: border-color 0.2s; position: relative; }
+    .merch-card:hover { border-color: rgba(200,169,110,0.32); }
+    .merch-img { width: 100%; aspect-ratio: 1; background: rgba(200,169,110,0.05); display: flex; align-items: center; justify-content: center; }
+    .merch-img-icon { font-size: 3rem; opacity: 0.28; }
+    .merch-info { padding: 16px 14px; }
+    .merch-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.08em; font-size: 0.92rem; text-transform: uppercase; color: var(--white); }
+    .merch-price { font-size: 0.78rem; color: var(--accent); margin-top: 4px; }
+    .merch-badge { position: absolute; top: 10px; right: 10px; background: var(--accent); color: var(--black); font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; padding: 4px 9px; font-family: 'Barlow Condensed', sans-serif; }
+
+    /* NEWSLETTER */
+    #newsletter { background: var(--accent); background-image: linear-gradient(135deg, #c8a96e 0%, #b0893a 100%); padding: clamp(50px,8vw,100px) clamp(24px,6vw,80px); text-align: center; }
+    #newsletter .section-label { color: rgba(0,0,0,0.4); }
+    #newsletter .section-title { color: var(--black); }
+    #newsletter .divider { background: rgba(0,0,0,0.18); margin: 22px auto 18px; }
+    .newsletter-sub { font-size: 1rem; color: rgba(0,0,0,0.58); max-width: 440px; margin: 0 auto 32px; line-height: 1.6; }
+    .newsletter-form { display: flex; gap: 0; max-width: 460px; margin: 0 auto; }
+    .newsletter-input { flex: 1; padding: 15px 18px; background: rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.18); border-right: none; font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: var(--black); outline: none; }
+    .newsletter-input::placeholder { color: rgba(0,0,0,0.38); }
+    .newsletter-btn { padding: 15px 26px; background: var(--black); color: var(--accent); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-btn:hover { background: #1e1e1c; }
+    .newsletter-note { margin-top: 12px; font-size: 0.68rem; color: rgba(0,0,0,0.38); }
+
+    /* CONTACT */
+    #contact { background: var(--dark2); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+    .contact-intro { font-size: 0.97rem; color: rgba(255,255,255,0.48); line-height: 1.75; }
+    .contact-links { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+    .contact-link { display: flex; gap: 14px; align-items: center; text-decoration: none; color: rgba(255,255,255,0.48); font-size: 0.84rem; transition: color 0.2s; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); min-width: 60px; }
+    .contact-form { display: flex; flex-direction: column; gap: 13px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.32); }
+    .form-field input, .form-field textarea, .form-field select { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 13px 15px; font-family: 'Barlow', sans-serif; font-size: 0.9rem; outline: none; resize: vertical; transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
+    .form-field select option { background: #1a1a18; }
+    .btn-send { background: var(--accent); color: var(--black); border: none; padding: 14px 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; cursor: pointer; align-self: flex-start; margin-top: 6px; transition: background 0.2s; }
+    .btn-send:hover { background: var(--accent2); }
+
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid rgba(200,169,110,0.1); padding: 28px clamp(24px,6vw,80px); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+    .footer-socials { display: flex; gap: 22px; }
+    .footer-socials a { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s; }
+    .footer-socials a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .scroll-hint { display: none; }
+      .date-row { grid-template-columns: 70px 1fr; }
+      .date-ticket { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; height: 160px; }
+      .about-inner,.vip-inner,.press-grid,.contact-inner { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-input { border-right: 1px solid rgba(0,0,0,0.18); border-bottom: none; }
+    }
+
+  /* LIGHT MODE */
+  body.light-mode {
+    --black: #f5f5f0;
+    --dark: #e8e5de;
+    --dark2: #dedad2;
+    --white: #111110;
+    --cream: #111;
+    --accent: #9a742e;
+    --accent2: #b8893a;
+    --mid: #555;
+    background: #f5f5f0;
+    color: #111;
+  }
+  body.light-mode nav { background: rgba(245,245,240,0.92); border-bottom-color: rgba(154,116,46,0.2); }
+  body.light-mode .nav-logo { color: #111; }
+  body.light-mode .nav-links a { color: rgba(0,0,0,0.55); }
+  body.light-mode #hero { filter: none; }
+  body.light-mode .date-row, body.light-mode .dr { background: transparent; }
+  body.light-mode .dr-info h3 { color: #111; }
+  body.light-mode .dr-info p { color: rgba(0,0,0,0.5); }
+  body.light-mode .section-title { color: #111110; }
+  body.light-mode .expect-card { background: #e0ddd6; border-color: rgba(154,116,46,0.15); }
+  body.light-mode .expect-card p { color: rgba(0,0,0,0.55); }
+  body.light-mode .track-card { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .track-title { color: #111; }
+  body.light-mode .fan-msg { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); }
+  body.light-mode .fan-msg blockquote { color: rgba(0,0,0,0.65); }
+  body.light-mode #mobile-nav { background: rgba(245,245,240,0.98); }
+  body.light-mode .mobile-nav-link { color: rgba(0,0,0,0.7); border-bottom-color: rgba(0,0,0,0.08); }
+
+  </style>
+</head>
+<body>
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688,#c8a96e);z-index:9999;transition:width 0.1s linear;pointer-events:none;box-shadow:0 0 8px rgba(200,169,110,0.6);"></div>
+<script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+</script>
+
+
+<!-- LOADING SCREEN -->
+<div id="loader" style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;">
+  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.92) 100%);"></div>
+  <div style="position:relative;z-index:2;text-align:center;padding:0 24px;">
+    <div id="loader-eyebrow" style="font-size:0.68rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:20px;opacity:0;transition:opacity 0.8s;">World Tour 2026</div>
+    <div id="loader-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,9rem);letter-spacing:0.06em;line-height:0.9;color:#fafaf8;opacity:0;transition:opacity 0.8s 0.3s,transform 0.8s 0.3s;transform:translateY(30px);"><span style="color:#c8a96e;">Pablo</span><br>& Evren</div>
+    <div id="loader-sub" style="font-size:clamp(1rem,2.5vw,1.3rem);letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:20px;font-family:'Barlow Condensed',sans-serif;opacity:0;transition:opacity 0.8s 0.6s;">World Tour 2026</div>
+    <div style="margin-top:48px;width:200px;height:1px;background:rgba(255,255,255,0.1);margin-left:auto;margin-right:auto;overflow:hidden;">
+      <div id="loader-bar" style="height:100%;width:0%;background:linear-gradient(to right,#c8a96e,#e2c688);transition:width 1.8s cubic-bezier(0.22,1,0.36,1);"></div>
+    </div>
+  </div>
+</div>
+<style>#loader.fade-out{opacity:0;transition:opacity 0.5s ease;}</style>
+<script>
+  setTimeout(function(){
+    var ey=document.getElementById('loader-eyebrow');
+    var ti=document.getElementById('loader-title');
+    var su=document.getElementById('loader-sub');
+    var ba=document.getElementById('loader-bar');
+    if(ey) ey.style.opacity='1';
+    if(ti){ti.style.opacity='1';ti.style.transform='translateY(0)';}
+    if(su) su.style.opacity='1';
+    if(ba) ba.style.width='100%';
+  }, 80);
+  // Hide after 2.3s - NO overflow:hidden so page never gets stuck
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l){l.classList.add('fade-out');setTimeout(function(){l.style.display='none';},500);}
+  }, 2300);
+</script>
+
+<!-- VISITOR COUNTER -->
+<div id="visitor-counter" style="position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:240;background:rgba(6,6,12,0.88);border:1px solid rgba(200,169,110,0.2);padding:6px 16px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;pointer-events:none;opacity:0;transition:opacity 0.5s;">
+  <div style="width:6px;height:6px;border-radius:50%;background:#4caf50;animation:pulseDot 2s ease-in-out infinite;flex-shrink:0;"></div>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.12em;color:rgba(255,255,255,0.5);white-space:nowrap;"><span id="vc-count" style="color:var(--accent);font-weight:700;">67</span> visitors · 🇨🇭 Switzerland</span>
+</div>
+<script>
+  // Show visitor counter after loader
+  setTimeout(function(){
+    var vc = document.getElementById('visitor-counter');
+    vc.style.opacity='1';
+    // Slowly increment counter realistically
+    var count = 67;
+    var el = document.getElementById('vc-count');
+    setInterval(function(){
+      if(Math.random() < 0.08){ // 8% chance each 10s = realistic
+        count++;
+        el.textContent = count;
+      }
+    }, 10000);
+    // Hide after 8 seconds
+    setTimeout(function(){ vc.style.opacity='0'; }, 8000);
+  }, 3500);
+</script>
+
+
+<!-- GOLD CURSOR -->
+<div id="cursor-dot" style="position:fixed;width:12px;height:12px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,opacity 0.2s;box-shadow:0 0 8px rgba(200,169,110,0.8);display:none;"></div>
+<div id="cursor-ring" style="position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(200,169,110,0.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.15s ease;display:none;"></div>
+<style>
+  @media (hover: hover) { * { cursor: none !important; } }
+</style>
+<script>
+var dot = document.getElementById('cursor-dot');
+var ring = document.getElementById('cursor-ring');
+var mx = 0, my = 0, rx = 0, ry = 0;
+var hasTouch = ('ontouchstart' in window);
+
+// Show cursor elements on mouse move (desktop)
+document.addEventListener('mousemove', function(e){
+  dot.style.display = 'block';
+  ring.style.display = 'block';
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px'; dot.style.top = my+'px';
+});
+
+// Ring follows with lag
+(function animRing(){
+  rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+// Click/touch ripple — works on BOTH desktop and mobile
+function spawnRipple(x, y) {
+  var ripple = document.createElement('div');
+  ripple.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:rippleOut 0.6s ease-out forwards;';
+  document.body.appendChild(ripple);
+  // Also spawn a touch-dot on mobile
+  if(hasTouch) {
+    var tdot = document.createElement('div');
+    tdot.style.cssText = 'position:fixed;left:'+x+'px;top:'+y+'px;width:14px;height:14px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:99997;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(200,169,110,0.9);animation:touchDotFade 0.5s ease-out forwards;';
+    document.body.appendChild(tdot);
+    setTimeout(function(){tdot.remove();},500);
+  }
+  setTimeout(function(){ripple.remove();},600);
+}
+
+document.addEventListener('click', function(e){
+  if(('ontouchstart' in window)) return; // mobile handles via touchstart only
+  spawnRipple(e.clientX, e.clientY);
+});
+var lastTouch = 0;
+var touchMoved = false;
+document.addEventListener('touchstart', function(e){
+  touchMoved = false;
+  var now = Date.now();
+  if(now - lastTouch < 800) return;
+  lastTouch = now;
+  var t = e.touches[0];
+  spawnRipple(t.clientX, t.clientY);
+}, {passive:true});
+document.addEventListener('touchmove', function(){ touchMoved = true; }, {passive:true});
+
+// Hover enlarge on desktop
+document.addEventListener('mouseover', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(2.5)';
+    ring.style.transform='translate(-50%,-50%) scale(1.5)';
+    ring.style.borderColor='rgba(200,169,110,0.9)';
+  }
+});
+document.addEventListener('mouseout', function(e){
+  if(e.target.closest('a,button,.quiz-opt,.track-card,.merch-card,.fan-msg')){
+    dot.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.transform='translate(-50%,-50%) scale(1)';
+    ring.style.borderColor='rgba(200,169,110,0.5)';
+  }
+});
+</script>
+<style>
+@keyframes rippleOut {
+  0%{width:6px;height:6px;opacity:1;}
+  100%{width:80px;height:80px;opacity:0;margin-left:-37px;margin-top:-37px;}
+}
+@keyframes touchDotFade {
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(2.5);}
+}
+</style>
+
+
+<!-- NAV -->
+<style>
+  .nav-right { display:flex; align-items:center; gap:16px; }
+  .nav-login-btn {
+    font-family:'Barlow Condensed',sans-serif; font-size:0.62rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; padding:5px 12px;
+    border:1px solid rgba(200,169,110,0.45); color:var(--accent);
+    background:transparent; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+  }
+  .nav-login-btn:hover { background:var(--accent); color:var(--black); }
+  .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:301; background:none; border:none; }
+  .hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  /* Mobile overlay */
+  #mobile-nav {
+    position:fixed; top:0; right:0; bottom:0; width:min(320px,85vw);
+    background:rgba(6,6,10,0.98); backdrop-filter:blur(20px);
+    z-index:300; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    border-left:1px solid rgba(200,169,110,0.15); overflow-y:auto;
+    display:flex; flex-direction:column; padding:80px 36px 40px;
+  }
+  #mobile-nav.open { transform:translateX(0); }
+  #mobile-nav-backdrop {
+    position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:299;
+    opacity:0; pointer-events:none; transition:opacity 0.3s;
+  }
+  #mobile-nav-backdrop.open { opacity:1; pointer-events:all; }
+  .mobile-nav-link {
+    display:block; font-family:'Bebas Neue',sans-serif;
+    font-size:1.8rem; letter-spacing:0.08em; text-decoration:none;
+    padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    transition:all 0.2s; color:rgba(255,255,255,0.7);
+  }
+  .mobile-nav-link:hover, .mobile-nav-link:active { color:var(--accent); padding-left:8px; }
+  .mobile-nav-link.hot { color:var(--accent); }
+  .mobile-nav-link.special { color:#7ec87e; }
+  .mobile-nav-section { font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase;
+    color:rgba(200,169,110,0.4); font-family:'Barlow Condensed',sans-serif; font-weight:600;
+    margin:24px 0 8px; }
+  .mobile-nav-close { position:absolute; top:20px; right:20px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.5rem; cursor:pointer; padding:8px; }
+</style>
+
+<!-- Mobile nav backdrop -->
+<div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+
+<!-- Mobile nav panel -->
+<div id="mobile-nav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <div style="margin-bottom:28px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:var(--accent);">Pablo X Evren</div>
+    <div style="font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);">World Tour 2026</div>
+  </div>
+  <div class="mobile-nav-section">Tour</div>
+  <a href="#countdown" class="mobile-nav-link hot" onclick="closeMobileNav()">New Date</a>
+  <a href="#dates" class="mobile-nav-link hot" onclick="closeMobileNav()">Tour Dates</a>
+  <a href="#tourmap" class="mobile-nav-link" onclick="closeMobileNav()">Tour Map</a>
+  <div class="mobile-nav-section">Content</div>
+  <a href="#gallery" class="mobile-nav-link" onclick="closeMobileNav()">Gallery</a>
+  <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()">Story</a>
+  <a href="#music" class="mobile-nav-link" onclick="closeMobileNav()">Music</a>
+  <a href="#setlist" class="mobile-nav-link" onclick="closeMobileNav()">Setlist</a>
+  <a href="#milestones" class="mobile-nav-link" onclick="closeMobileNav()">Milestones</a>
+  <a href="#news" class="mobile-nav-link hot" onclick="closeMobileNav()">Latest News</a>
+  <div class="mobile-nav-section">Experience</div>
+  <a href="#merch" class="mobile-nav-link" onclick="closeMobileNav()">Merchandise</a>
+  <a href="#quiz" class="mobile-nav-link special" onclick="closeMobileNav()">🎉 Quiz</a>
+  <a href="#memes" class="mobile-nav-link" onclick="closeMobileNav()">Memes</a>
+  <a href="#songs" class="mobile-nav-link" onclick="closeMobileNav()">Songs</a>
+  <a href="#alphabet" class="mobile-nav-link" onclick="closeMobileNav()">Glossary</a>
+  <div class="mobile-nav-section">Info</div>
+  <a href="#socials" class="mobile-nav-link" onclick="closeMobileNav()">Socials</a>
+  <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+  <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(200,169,110,0.15);display:flex;flex-direction:column;gap:12px;">
+
+    <!-- Language Toggle -->
+    <div>
+      <div style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.45);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:8px;">Language</div>
+      <div style="display:flex;gap:2px;">
+        <button onclick="setLang('en');updateLangBtns();" id="lang-en" style="flex:1;padding:10px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">EN</button>
+        <button onclick="setLang('de');updateLangBtns();" id="lang-de" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">DE</button>
+        <button onclick="setLang('es');updateLangBtns();" id="lang-es" style="flex:1;padding:10px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;cursor:pointer;transition:all 0.2s;">ES</button>
+      </div>
+    </div>
+
+    <!-- Dark/Light toggle -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);" id="theme-label">🌙 Dark Mode</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.3);margin-top:2px;">Toggle website theme</div>
+      </div>
+      <div onclick="toggleTheme()" id="theme-toggle" style="width:52px;height:28px;border-radius:14px;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.35);cursor:pointer;position:relative;transition:all 0.3s;flex-shrink:0;">
+        <div id="theme-knob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--accent);transition:transform 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- Feedback -->
+    <button onclick="closeMobileNav();openFeedback();" style="width:100%;padding:12px;background:rgba(200,169,110,0.08);color:var(--accent);border:1px solid rgba(200,169,110,0.3);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">💬 Send Feedback</button>
+
+    <!-- Login -->
+    <button onclick="closeMobileNav();showLoginModal();" style="width:100%;padding:14px;background:var(--accent);color:var(--black);border:none;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;">Register / Login</button>
+  </div>
+</div>
+
+<script>
+function openMobileNav(){
+  document.getElementById('mobile-nav').classList.add('open');
+  document.getElementById('mobile-nav-backdrop').classList.add('open');
+  document.querySelector('.hamburger').classList.add('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('mobile-nav-backdrop').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <span>Pablo</span> X <span>Evren</span>
+    <span style="font-size:0.82rem;letter-spacing:0.12em;color:rgba(255,255,255,0.5);margin-left:6px;">World Tour 2026</span>
+    <span id="now-playing-pill" style="display:none;margin-left:10px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);border-radius:20px;padding:3px 10px 3px 8px;font-size:0.58rem;letter-spacing:0.1em;color:var(--accent);font-family:'Barlow Condensed',sans-serif;font-weight:600;align-items:center;gap:5px;vertical-align:middle;">
+      <span id="np-bars" style="display:inline-flex;align-items:flex-end;gap:1.5px;height:10px;">
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar1 0.8s ease-in-out infinite;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar2 0.8s ease-in-out infinite 0.2s;"></span>
+        <span style="width:2px;background:var(--accent);border-radius:1px;animation:npBar3 0.8s ease-in-out infinite 0.4s;"></span>
+      </span>
+      All The Love
+    </span>
+  </a>
+  <style>
+    @keyframes npBar1{0%,100%{height:3px}50%{height:10px}}
+    @keyframes npBar2{0%,100%{height:7px}50%{height:3px}}
+    @keyframes npBar3{0%,100%{height:5px}50%{height:9px}}
+    #now-playing-pill { display:none; }
+    #now-playing-pill.visible { display:inline-flex !important; }
+  </style>
+  <ul class="nav-links">
+    <li><a href="#countdown">New Date</a></li>
+    <li><a href="#dates">Tour</a></li>
+    <li><a href="#tourmap">Map</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">Story</a></li>
+    <li><a href="#music">Music</a></li>
+    <li class="nav-hide-md"><a href="#setlist">Setlist</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li class="nav-hide-md"><a href="#quiz">Quiz</a></li>
+    <li class="nav-hide-md"><a href="#memes">Memes</a></li>
+    <li class="nav-hide-md"><a href="#songs">Songs</a></li>
+    <li class="nav-hide-md"><a href="#alphabet">Glossary</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button onclick="openSearch()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);padding:5px 10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.1em;transition:all 0.2s;display:flex;align-items:center;gap:6px;" onmouseover="this.style.borderColor='rgba(200,169,110,0.5)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.5)'">🔍 Search</button>
+    <button class="nav-login-btn" onclick="showLoginModal()">Register / Login</button>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- SEARCH OVERLAY -->
+<style>
+  #search-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:500;
+    display:none; flex-direction:column; align-items:center; padding-top:120px;
+    backdrop-filter:blur(12px);
+  }
+  #search-overlay.open { display:flex; }
+  #search-input {
+    width:min(680px,90vw); background:rgba(255,255,255,0.05);
+    border:1px solid rgba(200,169,110,0.5); border-radius:0;
+    padding:20px 24px; font-family:'Barlow',sans-serif; font-size:1.2rem;
+    color:var(--white); outline:none; letter-spacing:0.04em;
+  }
+  #search-input::placeholder { color:rgba(255,255,255,0.3); }
+  #search-results {
+    width:min(680px,90vw); margin-top:4px; background:rgba(10,10,10,0.98);
+    border:1px solid rgba(200,169,110,0.2); border-top:none; max-height:400px; overflow-y:auto;
+  }
+  .sr-item {
+    display:flex; align-items:center; gap:16px; padding:14px 24px;
+    border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:background 0.15s;
+    text-decoration:none;
+  }
+  .sr-item:hover { background:rgba(200,169,110,0.08); }
+  .sr-cat { font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    color:rgba(200,169,110,0.6); min-width:70px; }
+  .sr-title { font-size:0.92rem; color:var(--white); font-family:'Barlow Condensed',sans-serif;
+    font-weight:600; letter-spacing:0.04em; }
+  .sr-sub { font-size:0.72rem; color:rgba(255,255,255,0.38); }
+  .search-close { position:absolute; top:24px; right:28px; background:none; border:none;
+    color:rgba(255,255,255,0.5); font-size:1.8rem; cursor:pointer; z-index:501; }
+</style>
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">✕</button>
+  <input id="search-input" type="text" placeholder="Search concerts, songs, cities, sections..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
+  <div id="search-results"></div>
+  <div id="search-recommendations" style="width:min(680px,90vw);margin-top:20px;"></div>
+  <div style="margin-top:16px;font-size:0.7rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Press ESC to close · Ctrl+K to open</div>
+</div>
+<script>
+var searchData = [
+  {cat:'Concert',title:'Basel, Switzerland',sub:'St. Jakob Park Stadium · Ongoing 2026',href:'#dates',img:'https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg'},
+  {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates',img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+  {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg'},
+  {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates',img:'https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg'},
+  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
+  {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
+  {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
+  {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Bregenz, Austria',sub:'ImmoAgentur Stadium · 17 May 2026',href:'#dates',img:'https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
+  {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
+  {cat:'Concert',title:'Reggio Emilia, Italy',sub:'RCF Arena Campovolo · 18 Jul 2026',href:'#dates',img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1'},
+  // Songs
+  {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Feat. Kanye West + many guests',href:'#setlist',icon:'💣'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🍂'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Saint Pablo',sub:'Setlist · Feat. Kanye West, Pablo',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'No Child Left Behind',sub:'Setlist · aka yea im crying 💔',href:'#setlist',icon:'💔'},
+  {cat:'Song',title:'Moon',sub:'Setlist · Feat. Kanye West, Don Toliver',href:'#setlist',icon:'🌙'},
+  // Sections
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all tour cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Section',title:'Gallery',sub:'Photos from the tour',href:'#gallery',icon:'📸'},
+  {cat:'Section',title:'Our Story',sub:'About Pablo & Evren / ZBA Basel',href:'#about',icon:'📖'},
+  {cat:'Section',title:'Listen Now',sub:'Music on Spotify',href:'#music',icon:'🎧'},
+  {cat:'Section',title:'Merchandise',sub:'Tour Tee, Cap, Hoodie, Crewneck',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'7 randomized questions',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Latest News',sub:'Tour updates and announcements',href:'#news',icon:'📰'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs',icon:'🎵'},
+  {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes',icon:'⬅️'},
+  {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall',icon:'💛'},
+  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press',icon:'📋'},
+  {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact',icon:'✉️'},
+  {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials',icon:'📱'},
+  // Merch
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Pablo X Evren Crewneck',sub:'35 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/EWHebCyjsfu1z9BNODtk/image.jpg'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · 3D Fish Edition',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
+  // Lore
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum classification',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · 67² obese KG',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
+  {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
+  {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
+  {cat:'Concert',title:'Toronto, Canada',sub:'Rogers Centre · 28 Dec 2026 · Evren Solo',href:'#dates',img:'https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg'},
+];
+
+function doSearch(q){
+  var res = document.getElementById('search-results');
+  var rec = document.getElementById('search-recommendations');
+  q = q.trim().toLowerCase();
+  if(!q){
+    res.innerHTML='';
+    showRecommendations();
+    return;
+  }
+  rec.innerHTML='';
+  var matches = searchData.filter(function(d){
+    return d.title.toLowerCase().includes(q) || d.sub.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q);
+  }).slice(0,8);
+  if(!matches.length){ res.innerHTML='<div style="padding:18px 24px;font-size:0.82rem;color:rgba(255,255,255,0.3);">No results found</div>'; return; }
+  res.innerHTML = matches.map(function(m){
+    var imgHtml = m.img ? '<img src="'+m.img+'" style="width:44px;height:44px;object-fit:cover;border-radius:2px;flex-shrink:0;">' : '<div style="width:44px;height:44px;background:rgba(200,169,110,0.1);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">'+( m.icon||'✦')+'</div>';
+    return '<a class="sr-item" href="'+m.href+'" onclick="closeSearch()">'+imgHtml+'<div class="sr-cat">'+m.cat+'</div><div><div class="sr-title">'+m.title+'</div><div class="sr-sub">'+m.sub+'</div></div></a>';
+  }).join('');
+}
+
+var recommendPool = [
+  {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
+  {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+  {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
+  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+  {cat:'Concert',title:'Rome, Italy',sub:'Stadio Olimpico · 16 Jul 2026',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 13 Jul 2026',href:'#dates',img:'https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg'},
+  {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
+  {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
+  {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
+  {cat:'Merch',title:'Fish Tour Pencil Case',sub:'6.7 CHF · New',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/07/SMjCXPLQZtV5tXZgLPot/image.png'},
+  {cat:'Song',title:'POWER',sub:'Setlist · Special Guest: Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Runaway',sub:'Setlist · Goodbye Time 💔',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'Blood On The Leaves',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
+  {cat:'Song',title:'BOMB',sub:'Setlist · Massive Guest List',href:'#setlist',icon:'💣'},
+  {cat:'Section',title:'Terence Files Quiz',sub:'Test your lore knowledge',href:'#quiz',icon:'🎉'},
+  {cat:'Section',title:'Holy Obesity Glossary',sub:'Official TF lexicon',href:'#alphabet',icon:'📖'},
+  {cat:'Section',title:'Tour Milestones',sub:'Historic moments from the tour',href:'#milestones',icon:'🏆'},
+  {cat:'Section',title:'Tour Map',sub:'Interactive map of all cities',href:'#tourmap',icon:'🗺️'},
+  {cat:'Lore',title:'Holy Obesity',sub:'Tier II — Maximum',href:'#alphabet',icon:'😱'},
+  {cat:'Lore',title:'Big D',sub:'Holy Obesity · TON 618',href:'#alphabet',icon:'💪'},
+  {cat:'Lore',title:'Nibbooggers',sub:'We are all family ❤️',href:'#alphabet',icon:'🐦'},
+  {cat:'Lore',title:'The First 4 Memes',sub:'Left · Study · Big · Terence',href:'#memes',icon:'⬅️'},
+];
+
+function shuffle(a){ var b=a.slice(); for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;} return b; }
+
+function showRecommendations(){
+  var rec = document.getElementById('search-recommendations');
+  var picks = shuffle(recommendPool).slice(0,6);
+  rec.innerHTML = '<div style="font-size:0.6rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(200,169,110,0.5);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:12px;">✦ Recommended</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">'
+    + picks.map(function(m){
+      var imgHtml = m.img
+        ? '<div style="width:100%;aspect-ratio:16/9;overflow:hidden;background:#111;"><img src="'+m.img+'" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s;" onmouseover="this.style.transform=\'scale(1.06)\'" onmouseout="this.style.transform=\'scale(1)\'"></div>'
+        : '<div style="width:100%;aspect-ratio:16/9;background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;font-size:2rem;">'+(m.icon||'✦')+'</div>';
+      return '<a href="'+m.href+'" onclick="closeSearch()" style="display:block;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor=\'rgba(200,169,110,0.4)\'" onmouseout="this.style.borderColor=\'rgba(255,255,255,0.07)\'">'
+        + imgHtml
+        + '<div style="padding:10px 12px;">'
+        + '<div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.55);font-family:\'Barlow Condensed\',sans-serif;font-weight:600;margin-bottom:3px;">'+m.cat+'</div>'
+        + '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.04em;color:var(--white);">'+m.title+'</div>'
+        + '<div style="font-size:0.68rem;color:rgba(255,255,255,0.35);margin-top:2px;">'+m.sub+'</div>'
+        + '</div></a>';
+    }).join('')
+    + '</div>';
+}
+
+function openSearch(){
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(function(){
+    document.getElementById('search-input').focus();
+    showRecommendations();
+  },100);
+}
+function closeSearch(){
+  document.getElementById('search-overlay').classList.remove('open');
+  document.getElementById('search-input').value='';
+  document.getElementById('search-results').innerHTML='';
+  document.getElementById('search-recommendations').innerHTML='';
+}
+document.addEventListener('keydown',function(e){ if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();} if(e.key==='Escape')closeSearch(); });
+</script>
+
+
+<!-- LOGIN MODAL -->
+<style>
+  #login-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:600;
+    display:none; align-items:center; justify-content:center;
+    backdrop-filter:blur(12px);
+  }
+  #login-modal.open { display:flex; }
+  .login-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    padding:48px 44px; width:min(480px,90vw); position:relative; text-align:center;
+  }
+</style>
+<div id="login-modal" onclick="if(event.target===this)closeLoginModal()">
+  <div class="login-box">
+    <button onclick="closeLoginModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.4rem;cursor:pointer;">✕</button>
+    <div style="font-size:2.5rem;margin-bottom:16px;">🚧</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:8px;">Under Construction</div>
+    <div style="width:40px;height:2px;background:var(--accent);margin:0 auto 20px;"></div>
+    <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The Register / Login system is currently being built. Create your Pablo X Evren account to get early access to tickets, VIP drops, and exclusive content.</p>
+    <p style="font-size:0.78rem;color:rgba(200,169,110,0.6);letter-spacing:0.06em;">Subscribe to the newsletter below to be notified when accounts launch.</p>
+    <a href="#newsletter" onclick="closeLoginModal()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:var(--accent);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;">Join Newsletter →</a>
+  </div>
+</div>
+<script>
+function showLoginModal(){ document.getElementById('login-modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLoginModal(){ document.getElementById('login-modal').classList.remove('open'); document.body.style.overflow=''; }
+</script>
+
+
+<!-- FEEDBACK BUTTON -->
+<style>
+  #feedback-btn {
+    position:fixed; left:50%; bottom:0; transform:translateX(-50%);
+    z-index:250; background:var(--accent); color:var(--black);
+    font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; padding:8px 20px;
+    cursor:pointer; border:none; border-radius:8px 8px 0 0;
+    box-shadow:0 -2px 16px rgba(200,169,110,0.3); transition:all 0.2s;
+  }
+  #feedback-btn:hover { padding-bottom:12px; }
+  #feedback-modal {
+    position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:400;
+    display:none; align-items:flex-end; justify-content:center;
+    backdrop-filter:blur(8px);
+  }
+  #feedback-modal.open { display:flex; }
+  .feedback-box {
+    background:var(--dark2); border:1px solid rgba(200,169,110,0.25);
+    border-bottom:none; padding:36px 32px; width:min(520px,100vw);
+    position:relative; border-radius:12px 12px 0 0;
+    animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+</style>
+
+<div id="feedback-modal" onclick="if(event.target===this)closeFeedback()">
+  <div class="feedback-box">
+    <button onclick="closeFeedback()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.3rem;cursor:pointer;">✕</button>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px;">Send Feedback</div>
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:20px;">Your message goes directly to the team. No email shown publicly.</p>
+    <div id="feedback-form">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <input id="fb-name" type="text" placeholder="Your name (optional)" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        <select id="fb-type" style="background:#1a1a18;border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;">
+          <option value="general">General Feedback</option>
+          <option value="bug">Bug / Something Broken</option>
+          <option value="idea">Idea / Suggestion</option>
+          <option value="concert">Concert Feedback</option>
+          <option value="merch">Merchandise</option>
+          <option value="love">Just want to say something 💛</option>
+        </select>
+        <textarea id="fb-message" rows="4" placeholder="Write your message..." style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;resize:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button onclick="submitFeedback()" style="background:var(--accent);color:var(--black);border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Send Message</button>
+      </div>
+    </div>
+    <div id="feedback-thanks" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:2rem;margin-bottom:12px;">✅</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--accent);">Message Sent!</div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-top:8px;">Thanks for the feedback. The team will read it.</p>
+    </div>
+  </div>
+</div>
+<script>
+function openFeedback(){ document.getElementById('feedback-modal').classList.add('open'); }
+function closeFeedback(){
+  document.getElementById('feedback-modal').classList.remove('open');
+  setTimeout(function(){
+    document.getElementById('feedback-form').style.display='block';
+    document.getElementById('feedback-thanks').style.display='none';
+  },400);
+}
+function submitFeedback(){
+  var name = document.getElementById('fb-name').value || 'Anonymous';
+  var type = document.getElementById('fb-type').value;
+  var msg = document.getElementById('fb-message').value.trim();
+  if(!msg){ alert('Please write a message first!'); return; }
+  var btn = event.target;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/xnjwgnpj', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      name: name,
+      feedback_type: type,
+      message: msg,
+      _replyto: 'pablopau2009@gmail.com',
+      _subject: 'Website Feedback: ' + type + ' from ' + name
+    })
+  }).then(function(r){
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  }).catch(function(){
+    document.getElementById('feedback-form').style.display='none';
+    document.getElementById('feedback-thanks').style.display='block';
+    setTimeout(closeFeedback, 3000);
+  });
+}
+</script>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <!-- Cinematic particles -->
+  <div id="hero-particles" style="position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;"></div>
+
+  <div class="hero-content" style="z-index:3;">
+    <!-- Eyebrow animated -->
+    <p class="hero-eyebrow" id="hero-eyebrow" style="opacity:0;transform:translateY(20px);transition:all 0.7s ease;font-size:1rem;letter-spacing:0.32em;">World Tour 2026</p>
+    <!-- Title word by word -->
+    <h1 class="hero-title" style="overflow:hidden;">
+      <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(60px);transition:all 0.8s cubic-bezier(0.22,1,0.36,1);color:var(--accent);">Pablo</span><br>
+      <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(60px);transition:all 0.8s cubic-bezier(0.22,1,0.36,1) 0.15s;">X</span>
+      <span class="hero-word" style="display:inline-block;opacity:0;transform:translateY(60px);transition:all 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s;color:var(--accent);">Evren</span>
+    </h1>
+    <p class="hero-sub" id="hero-sub" style="opacity:0;transform:translateY(20px);transition:all 0.7s ease 0.6s;">An unforgettable journey across stages, cities, and continents. Experience the music live.</p>
+    <div class="hero-cta" id="hero-cta" style="opacity:0;transform:translateY(20px);transition:all 0.7s ease 0.85s;">
+      <a href="#dates" class="btn btn-primary" style="padding:17px 44px;font-size:0.88rem;">Get Tickets</a>
+      <a href="#music" class="btn" style="background:rgba(255,255,255,0.06);color:#e8e4dc;border:1px solid rgba(255,255,255,0.18);padding:14px 36px;font-size:0.8rem;">Listen Now</a>
+      <a href="#gallery" class="btn" style="background:rgba(200,169,110,0.1);color:#c8a96e;border:1px solid rgba(200,169,110,0.3);padding:14px 36px;font-size:0.8rem;">Gallery</a>
+      <a href="#merch" class="btn" style="background:rgba(40,35,28,0.9);color:#a89070;border:1px solid rgba(140,110,70,0.35);padding:14px 36px;font-size:0.8rem;">Merch</a>
+      <a href="#news" class="btn" style="background:rgba(20,20,20,0.85);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1);padding:14px 36px;font-size:0.8rem;">News</a>
+      <a href="#quiz" class="btn" id="quiz-hero-btn" style="background:linear-gradient(135deg,#c8a96e,#e2c688,#c8a96e);background-size:200% 200%;color:var(--black);border:none;padding:14px 36px;font-size:0.8rem;animation:quizBtnShine 2s ease-in-out infinite,quizBtnPulse 1.5s ease-in-out infinite;font-weight:700;" onmouseover="launchConfetti()">🎉 Quiz</a>
+    </div>
+
+  <style>
+    @keyframes quizBtnShine { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    @keyframes quizBtnPulse { 0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,0.6)} 50%{box-shadow:0 0 0 10px rgba(200,169,110,0)} }
+  </style>
+  <script>
+  function launchConfetti() {
+    var colors = ['#c8a96e','#e2c688','#fff','#ffd700','#ff6b6b','#4ecdc4'];
+    for(var i=0;i<40;i++){
+      (function(i){
+        setTimeout(function(){
+          var el = document.createElement('div');
+          var size = Math.random()*8+4;
+          el.style.cssText = 'position:fixed;top:'+Math.random()*60+'%;left:'+Math.random()*100+'%;width:'+size+'px;height:'+size+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:'+(Math.random()>0.5?'50%':'2px')+';pointer-events:none;z-index:9998;animation:confettiFall 1.5s ease-in forwards;';
+          document.body.appendChild(el);
+          setTimeout(function(){el.remove();},1500);
+        }, i*30);
+      })(i);
+    }
+  }
+  </script>
+  <style>
+    @keyframes confettiFall {
+      0%{transform:translateY(0) rotate(0deg);opacity:1;}
+      100%{transform:translateY(200px) rotate(720deg);opacity:0;}
+    }
+  </style>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- SPONSORS TICKER -->
+<div style="background:var(--dark2);border-top:1px solid rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.1);padding:20px 0;overflow:hidden;position:relative;">
+  <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,var(--dark2),transparent);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,var(--dark2),transparent);z-index:2;pointer-events:none;"></div>
+  <style>
+    .tkr { display:flex;align-items:center;gap:50px;width:max-content;animation:tkrScroll 28s linear infinite; }
+    .tkr:hover { animation-play-state:paused; }
+    @keyframes tkrScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .tkr-item { display:flex;align-items:center;gap:12px;flex-shrink:0;opacity:0.8;transition:opacity 0.2s; }
+    .tkr-item:hover { opacity:1; }
+    .tkr-item img { height:30px;object-fit:contain;filter:none; }
+    .tkr-dot { width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,0.35);flex-shrink:0; }
+    .tkr-lbl { font-size:0.58rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.22);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;flex-shrink:0; }
+  </style>
+  <div class="tkr">
+    <span class="tkr-lbl" style="color:rgba(200,169,110,0.7);font-size:0.65rem;">✦ Supported &amp; Sponsored By ✦</span>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.liblogo.com/img-logo/st7378ide5-stubhub-logo-is-stubhub-reliable-the-most-comprehensive-review-online-ticket.png" alt="StubHub"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2023/11/Viagogo-Logo.png" alt="Viagogo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2022/07/EasyJet-Logo.png" alt="EasyJet"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/06/Lufthansa-Cargo-Logo.jpg" alt="Lufthansa"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logospng.org/download/dhl/logo-dhl-2048.png" alt="DHL"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2024/01/Roche-Emblem.png" alt="Roche"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/02/Novartis-Emblem.png" alt="Novartis"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
+    <div class="tkr-dot"></div>
+    <span class="tkr-lbl" style="color:rgba(200,169,110,0.7);font-size:0.65rem;">✦ Supported &amp; Sponsored By ✦</span>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/05/Ticketmaster-logo.png" alt="Ticketmaster"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.ticketcorner.ch/obj/media/CH-eventim/partner/logos/EVE_TC_CH_pos_4c.png" alt="Ticketcorner"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.liblogo.com/img-logo/st7378ide5-stubhub-logo-is-stubhub-reliable-the-most-comprehensive-review-online-ticket.png" alt="StubHub"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2023/11/Viagogo-Logo.png" alt="Viagogo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://images.genius.com/c94071d172ddbbd78ee12261522ac3d8.675x675x1.png" alt="ILS Vision"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://freepnglogo.com/images/all_img/1724672380pepsi-logo-png-image-hd.png" alt="Pepsi"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://www.getgoing.com/wp-content/uploads/2023/09/airalo-logo-1.png" alt="Airalo"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://1000logos.net/wp-content/uploads/2021/04/Swiss-International-Air-Lines-logo.png" alt="Swiss Air"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2022/07/EasyJet-Logo.png" alt="EasyJet"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/06/Lufthansa-Cargo-Logo.jpg" alt="Lufthansa"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logospng.org/download/dhl/logo-dhl-2048.png" alt="DHL"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2024/01/Roche-Emblem.png" alt="Roche"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://logos-world.net/wp-content/uploads/2023/02/Novartis-Emblem.png" alt="Novartis"></div>
+    <div class="tkr-dot"></div>
+    <div class="tkr-item"><img src="https://pngimg.com/uploads/kfc/kfc_PNG33.png" alt="KFC"></div>
+    <div class="tkr-dot"></div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdown" style="position:relative;overflow:hidden;">
+  <!-- bg image -->
+  <div id="cd-bg" style="position:absolute;inset:0;background-size:cover;background-position:center;transition:all 1s ease;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.93) 0%,rgba(0,0,0,0.75) 60%,rgba(0,0,0,0.45) 100%);"></div>
+
+  <div style="position:relative;z-index:2;padding:28px clamp(24px,6vw,80px);display:flex;flex-direction:column;gap:0;">
+
+    <!-- TOP: Next Show -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:22px;border-bottom:1px solid rgba(200,169,110,0.15);">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
+          <span id="cd-label" style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">Next Show</span>
+        </div>
+        <div id="cd-city" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:0.06em;color:var(--white);line-height:1;"></div>
+        <div id="cd-venue" style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.05em;"></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;gap:10px;">
+          <div style="text-align:center;"><div id="cd-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Days</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Hrs</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Min</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:rgba(200,169,110,0.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="cd-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--accent);line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:3px;">Sec</div></div>
+        </div>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:var(--accent);color:var(--black);padding:12px 24px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Get Tickets</a>
+      </div>
+    </div>
+
+    <!-- BOTTOM: Toronto New Date -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:18px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div style="width:7px;height:7px;border-radius:50%;background:#4caf50;animation:pulseDot 1.4s ease-in-out infinite;"></div>
+          <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#4caf50;font-weight:600;font-family:'Barlow Condensed',sans-serif;">🆕 New Date Confirmed</span>
+        </div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:0.06em;color:rgba(255,255,255,0.85);line-height:1;">Toronto, Canada 🇨🇦</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.05em;">Rogers Centre · Doors 21:00 · 28 Dec 2026 · Evren Solo</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;gap:8px;">
+          <div style="text-align:center;"><div id="tor-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Days</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="tor-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Sec</div></div>
+        </div>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:#4caf50;padding:10px 20px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(76,175,80,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var shows = [
+  { city:"Milan, Italy (San Siro)", venue:"San Siro Stadium · Doors 21:00", date:new Date("2026-05-16T21:00:00"), img:"https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75" },
+  { city:"Vaduz, Liechtenstein", venue:"Rheinpark Stadium · Doors 12:00", date:new Date("2026-05-17T12:00:00"), img:"https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg" },
+  { city:"Bregenz, Austria", venue:"ImmoAgentur Stadium · Doors 15:00", date:new Date("2026-05-17T15:00:00"), img:"https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg" },
+  { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
+  { city:"Brescia, Italy", venue:"Mario Rigamonti Stadium · Doors 21:00", date:new Date("2026-06-20T21:00:00"), img:"https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg" },
+  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
+  { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
+  { city:"Copenhagen, Denmark", venue:"Parken Stadium · Doors 21:00", date:new Date("2026-07-13T21:00:00"), img:"https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg" },
+  { city:"Rome, Italy", venue:"Stadio Olimpico · Doors 21:00", date:new Date("2026-07-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg" },
+  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
+  { city:"Reggio Emilia, Italy", venue:"RCF Arena Campovolo · Doors 21:00", date:new Date("2026-07-18T21:00:00"), img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1" },
+  { city:"Toronto, Canada", venue:"Rogers Centre · Doors 21:00 · Evren Solo", date:new Date("2026-12-28T21:00:00"), img:"https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg" }
+];
+
+function getNextShow(){ var now=new Date(); for(var i=0;i<shows.length;i++){ if(shows[i].date>now) return shows[i]; } return null; }
+function pad(n){ return String(Math.floor(n)).padStart(2,"0"); }
+
+function updateCountdown(){
+  var show = getNextShow();
+  if(!show){
+    var lbl=document.getElementById("cd-label"); if(lbl) lbl.textContent="Tour Complete";
+    var cty=document.getElementById("cd-city"); if(cty) cty.textContent="See You Next Time";
+    var ven=document.getElementById("cd-venue"); if(ven) ven.textContent="Thank you for an incredible tour";
+    ["cd-d","cd-h","cd-m","cd-s"].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent="00";});
+    return;
+  }
+  var cityEl=document.getElementById("cd-city"); if(cityEl) cityEl.textContent=show.city;
+  var venueEl=document.getElementById("cd-venue"); if(venueEl) venueEl.textContent=show.venue;
+  var bgEl=document.getElementById("cd-bg"); if(bgEl) bgEl.style.backgroundImage="url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg')";
+  var diff=show.date-new Date(); if(diff<0)diff=0;
+  var dd=document.getElementById("cd-d"); if(dd) dd.textContent=pad(diff/86400000);
+  var dh=document.getElementById("cd-h"); if(dh) dh.textContent=pad((diff%86400000)/3600000);
+  var dm=document.getElementById("cd-m"); if(dm) dm.textContent=pad((diff%3600000)/60000);
+  var ds=document.getElementById("cd-s"); if(ds) ds.textContent=pad((diff%60000)/1000);
+}
+
+function updateToronto(){
+  var tor=new Date("2026-12-28T21:00:00");
+  var diff=tor-new Date(); if(diff<0)diff=0;
+  var td=document.getElementById("tor-d"); if(td) td.textContent=pad(diff/86400000);
+  var th=document.getElementById("tor-h"); if(th) th.textContent=pad((diff%86400000)/3600000);
+  var tm=document.getElementById("tor-m"); if(tm) tm.textContent=pad((diff%3600000)/60000);
+  var ts=document.getElementById("tor-s"); if(ts) ts.textContent=pad((diff%60000)/1000);
+}
+
+updateCountdown(); updateToronto();
+setInterval(function(){ updateCountdown(); updateToronto(); }, 1000);
+</script>
+
+
+<script>
+// Toronto countdown in announcement bar
+function updateTorontoCountdown(){
+  var target = new Date("2026-12-28T21:00:00");
+  var now = new Date();
+  var diff = target - now;
+  if(diff < 0){ document.getElementById('toronto-countdown').textContent = 'Show has passed'; return; }
+  var d = Math.floor(diff/86400000);
+  var h = Math.floor((diff%86400000)/3600000);
+  var m = Math.floor((diff%3600000)/60000);
+  var tcEl=document.getElementById('toronto-countdown'); if(tcEl) tcEl.textContent = d + ' days · ' + h + 'h · ' + m + 'm until show';
+}
+updateTorontoCountdown();
+setInterval(updateTorontoCountdown, 60000);
+</script>
+<!-- SOCIAL PROOF -->
+<div id="proof">
+  <div class="proof-grid">
+    <div class="proof-stat"><h3>10+</h3><p>Countries</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><h3>15+</h3><p>Shows Planned</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><h3>3</h3><p>Continents</p></div>
+    <div class="proof-div"></div>
+    <div class="proof-quote">
+      <blockquote>The energy Pablo and Evren bring is on another level. You leave the show changed.</blockquote>
+      <cite>Basel Fan, April 2026</cite>
+    </div>
+  </div>
+</div>
+
+<!-- TOUR DATES -->
+<section id="dates" style="background:var(--dark);padding:0;">
+
+<style>
+  .dates-header { padding:var(--gap) clamp(24px,6vw,80px) 40px; }
+  /* Timeline line */
+  .timeline-wrap { position:relative; padding:0 clamp(24px,6vw,80px); }
+  .timeline-line { position:absolute; left:clamp(24px,6vw,80px); top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); pointer-events:none; }
+
+  /* Date row — full width with bg image */
+  .dr { position:relative; overflow:hidden; margin-bottom:3px; min-height:100px; display:flex; align-items:stretch; }
+  .dr-bg { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0.22; transition:opacity 0.35s; }
+  .dr:hover .dr-bg { opacity:0.55; }
+  .dr-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.75) 60%,rgba(10,10,10,0.4) 100%); }
+  .dr-inner { position:relative; z-index:2; display:grid; grid-template-columns:28px 100px 1fr auto; align-items:center; gap:20px; padding:20px 0 20px 32px; width:100%; transition:padding-left 0.25s; }
+  .dr:hover .dr-inner { padding-left:44px; }
+
+  /* Timeline dot */
+  .dr-dot { width:12px; height:12px; border-radius:50%; background:var(--dark); border:2px solid rgba(200,169,110,0.35); flex-shrink:0; transition:all 0.2s; margin-left:-5px; }
+  .dr:hover .dr-dot { border-color:var(--accent); background:var(--accent); box-shadow:0 0 12px rgba(200,169,110,0.5); }
+  .dr.upcoming .dr-dot { border-color:var(--accent); animation:dotPulse 2s ease-in-out infinite; }
+  .dr.completed .dr-dot { background:#2d6a2d; border-color:#4caf50; }
+  @keyframes dotPulse { 0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,0.5)} 50%{box-shadow:0 0 0 6px rgba(200,169,110,0)} }
+
+  .dr-date { }
+  .dr-month { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); font-weight:600; }
+  .dr-day { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; letter-spacing:0.04em; color:var(--white); }
+
+  .dr-info h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.55rem !important; }
+  .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:2.8rem !important; }
+  .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.72rem !important; }
+  .dr.completed .dr-day.ongoing { font-size:1.6rem !important; }
+  .dr-info h3 .flag { font-size:1.1rem; }
+  .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
+  .dr-info p { font-size:0.76rem; color:rgba(255,255,255,0.38); margin-top:3px; }
+  .dr-info .dr-note { font-size:0.72rem; color:var(--accent); margin-top:5px; letter-spacing:0.03em; }
+
+  .dr-action a, .dr-action span { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; border:1px solid rgba(200,169,110,0.45); padding:9px 18px; text-decoration:none; color:var(--accent); transition:all 0.2s; white-space:nowrap; font-family:'Barlow Condensed',sans-serif; font-weight:600; display:inline-block; }
+  .dr-action a:hover { background:var(--accent); color:var(--black); }
+  .dr-action .unavail { border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.2); cursor:default; }
+
+  /* Section dividers */
+  .dates-divider { padding:12px clamp(24px,6vw,80px) 12px calc(clamp(24px,6vw,80px) + 60px); font-size:0.62rem; letter-spacing:0.26em; text-transform:uppercase; color:rgba(255,255,255,0.22); font-family:'Barlow Condensed',sans-serif; background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+
+  /* Unconfirmed */
+  .dr.unconfirmed { opacity:0.38; }
+  .dr.unconfirmed .dr-dot { border-color:rgba(255,255,255,0.2); background:transparent; animation:none; }
+
+  /* Disclaimer box */
+  .dates-disclaimer { margin:16px clamp(24px,6vw,80px); padding:16px 20px; border:1px solid rgba(200,169,110,0.2); background:rgba(200,169,110,0.03); display:flex; gap:14px; align-items:flex-start; }
+  .dates-disclaimer p { font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.6; }
+
+  /* Coming soon banner */
+  .dates-coming { margin:0 clamp(24px,6vw,80px); padding:22px 0; border-top:1px solid rgba(200,169,110,0.12); border-bottom:1px solid rgba(200,169,110,0.12); display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+
+  @media(max-width:768px){
+    .dr-inner {
+      grid-template-columns:16px 54px 1fr;
+      grid-template-rows:auto auto;
+      gap:8px;
+      padding:14px 12px 14px 14px;
+      flex-wrap:wrap;
+    }
+    .dr-action {
+      grid-column: 3;
+      display:flex !important;
+      flex-direction:row;
+      gap:6px;
+      align-items:center;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .dr-action a, .dr-action span {
+      font-size:0.6rem !important;
+      padding:7px 12px !important;
+      letter-spacing:0.08em !important;
+      white-space:nowrap;
+    }
+    .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.05rem !important; }
+    .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:1.8rem !important; }
+    .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.6rem !important; }
+    .timeline-line { left:16px; }
+  }
+</style>
+
+<!-- Section header -->
+<div class="dates-header">
+  <p class="section-label">On the Road</p>
+  <h2 class="section-title">Pablo X Evren — World Tour Dates 2026</h2>
+  <div class="divider"></div>
+</div>
+
+<div class="timeline-wrap">
+  <div class="timeline-line"></div>
+
+  <!-- ══ COMPLETED ══ -->
+  <div class="dates-divider" style="color:rgba(100,200,100,0.7);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✓ Completed Shows</div>
+
+  <!-- Basel -->
+  </div>
+
+  <!-- Barcelona -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750);"></div>
+    <div class="dr-bg" style="background-image:url('https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1331,51 +2654,55 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Malta -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Feb 2026</div><div class="dr-day">20</div></div>
       <div class="dr-info"><h3><span class="flag">🇲🇹</span> Malta <span class="badge-done">✓ Completed</span></h3><p>National Stadium, Ta' Qali · Doors 21:00 · 20 Feb 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-        <!-- Bern -->
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Erzincan -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Apr 2026</div><div class="dr-day">25</div></div>
-      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Erzincan, Turkey <span class="badge-done">✓ Completed</span></h3><p>Erzincan 13 Şubat City Stadium · Doors 21:00 · 25 Apr 2026</p><p class="dr-note">★ Evren Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry not permitted</span></p></div>
+      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Erzincan, Turkey <span class="badge-done">✓ Completed</span></h3><p>13 Şubat City Stadium · Doors 21:00 · 25 Apr 2026</p><p class="dr-note">★ Evren Solo Performance</p></div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+  <!-- Istanbul May 1 -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/61/20220606-L1000240.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
+      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Istanbul, Turkey <span class="badge-done">✓ Completed</span></h3><p>Beşiktaş Stadium · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Evren Solo Performance</p></div>
       <div class="dr-action"><span class="unavail">Unavailable</span></div>
     </div>
   </div>
 
   <!-- Jerez -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
-      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Jerez de la Frontera, Spain <span class="badge-done">✓ Completed</span></h3><p>Estadio Municipal de Chapín · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Unavailable</span></div>
-    </div>
-  </div>
-
-  <!-- Istanbul past -->
-  <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg);"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
-      <div class="dr-info"><h3><span class="flag">🇹🇷</span> Istanbul, Turkey <span class="badge-done">✓ Completed</span></h3><p>Beşiktaş Stadium · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Evren Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry not permitted</span></p></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Jerez de la Frontera, Spain <span class="badge-done">✓ Completed</span></h3><p>Estadio Chapín · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
       <div class="dr-action"><span class="unavail">Unavailable</span></div>
     </div>
   </div>
 
   <!-- Cadiz -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1387,7 +2714,7 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Sevilla -->
   <div class="dr completed">
-    <div class="dr-bg" style="background-image:url(https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1399,19 +2726,18 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- ══ UPCOMING ══ -->
   <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
+
+  <!-- Basel - always first -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Ongoing</div></div>
+      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Daily</div></div>
       <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">Every Day</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+      <div class="dr-action"><span class="unavail">Ongoing</span></div>
     </div>
   </div>
-
-  <!-- Barcelona -->
-
 
   <!-- Milan San Siro May 16 -->
   <div class="dr upcoming">
@@ -1426,51 +2752,72 @@ setInterval(updateTorontoCountdown, 60000);
         <p class="dr-note">★ Pablo Only Performance</p>
       </div>
       <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a>
+        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
       </div>
     </div>
   </div>
 
   <!-- Vaduz -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
-      <div class="dr-info"><h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3><p>Rheinpark Stadium · Doors 12:00 · 17 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="vaduz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3>
+        <p>Rheinpark Stadium · Doors 12:00 · 17 May 2026</p>
+        <p class="dr-note">★ Pablo & Evren Both Performing &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Rescheduled from May 14</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="vaduz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
   </div>
 
   <!-- Bregenz -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
-      <div class="dr-info"><h3><span class="flag">🇦🇹</span> Bregenz, Austria <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3><p>ImmoAgentur Stadium · Doors 15:00 · 17 May 2026</p><p class="dr-note">★ Pablo &amp; Evren Both Performing</p></div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="bregenz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇦🇹</span> Bregenz, Austria <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3>
+        <p>ImmoAgentur Stadium · Doors 15:00 · 17 May 2026</p>
+        <p class="dr-note">★ Pablo & Evren Both Performing &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Rescheduled from May 14</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="bregenz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
   </div>
 
-  <!-- Milan 19 -->
+  <!-- Milan Jun 19 -->
   <div class="dr upcoming">
     <div class="dr-bg" style="background-image:url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">19</div></div>
-      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Milan, Italy</h3><p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 19 Jun 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇹</span> Milan, Italy</h3>
+        <p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 19 Jun 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
   </div>
 
   <!-- Brescia -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1480,33 +2827,47 @@ setInterval(updateTorontoCountdown, 60000);
     </div>
   </div>
 
-  <!-- Milan 21 -->
+  <!-- Milan Jun 21 -->
   <div class="dr upcoming">
     <div class="dr-bg" style="background-image:url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">21</div></div>
-      <div class="dr-info"><h3><span class="flag">🇮🇹</span> Milan, Italy</h3><p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 21 Jun 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇹</span> Milan, Italy</h3>
+        <p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 21 Jun 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
   </div>
 
   <!-- Stockholm -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
-      <div class="dr-info"><h3><span class="flag">🇸🇪</span> Stockholm, Sweden</h3><p>Strawberry Arena · Doors 21:00 · 11 Jul 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="stockholm.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇸🇪</span> Stockholm, Sweden</h3>
+        <p>Strawberry Arena · Doors 21:00 · 11 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="stockholm.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
   </div>
 
   <!-- Copenhagen -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg);"></div>
+    <div class="dr-bg" style="background-image:url('https://cdn.prod.website-files.com/6441117dca95d309de9c51b9/646f2a7006b50bc8dd10f725_200419_parken_luftfoto-2.jpeg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1518,7 +2879,7 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Rome -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1530,7 +2891,7 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Hurghada -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://imgs.ysscores.com/stadium/600/5711727168786.jpg);"></div>
+    <div class="dr-bg" style="background-image:url('https://imgs.ysscores.com/stadium/600/5711727168786.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1542,7 +2903,7 @@ setInterval(updateTorontoCountdown, 60000);
 
   <!-- Reggio Emilia -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url(https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1);"></div>
+    <div class="dr-bg" style="background-image:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
@@ -1551,7 +2912,6 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
     </div>
   </div>
-
 
   <!-- Toronto -->
   <div class="dr upcoming">
@@ -1563,21 +2923,43 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-info">
         <h3><span class="flag">🇨🇦</span> Toronto, Canada <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
         <p>Rogers Centre · Doors 21:00 · 28 Dec 2026</p>
-        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend — entry to Canada not permitted</span></p>
+        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend</span></p>
       </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(200,169,110,0.3)';this.style.color='rgba(200,169,110,0.7)'">Show Info</a><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.45);padding:9px 18px;text-decoration:none;color:var(--accent);transition:all 0.2s;white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Tickets</a></div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
     </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="dates-disclaimer">
+    <span style="font-size:1.2rem;">⚠️</span>
+    <div>
+      <p><strong style="color:rgba(200,169,110,0.8);">Please Note</strong><br>Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
+      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Vaduz and Bregenz rescheduled to May 17</strong> — same venues, same times.</p>
+      <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
+    </div>
+  </div>
+
+  <!-- More Dates Coming Soon -->
+  <div class="dates-coming">
+    <div style="flex:1;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.08em;color:var(--white);line-height:1;">More Dates Coming Soon</div>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:4px;">New cities being added to the 2026 World Tour. Be the first to know.</p>
+    </div>
+    <a href="#newsletter" style="background:var(--accent);color:var(--black);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Notify Me →</a>
   </div>
 
   <!-- ══ CANCELLED ══ -->
   <div class="dates-divider" style="color:#e84141;font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✕ Cancelled Shows</div>
 
-  <!-- Istanbul May 30 - CANCELLED -->
-  <div class="dr" style="opacity:0.5;border-left:3px solid #e84141 !important;">
+  <!-- Istanbul May 30 CANCELLED -->
+  <div class="dr" style="opacity:0.5;border-left:3px solid #e84141;">
     <div class="dr-bg" style="background-image:url('https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg');filter:grayscale(0.8);"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
-      <div class="dr-dot" style="background:#e84141 !important;border-color:#e84141 !important;animation:none;"></div>
+      <div class="dr-dot" style="background:#e84141;border-color:#e84141;animation:none;"></div>
       <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">30</div></div>
       <div class="dr-info">
         <h3><span class="flag">🇹🇷</span> Istanbul, Turkey <span style="display:inline-block;background:rgba(232,65,65,0.15);border:1px solid rgba(232,65,65,0.5);color:#e84141;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✕ Cancelled</span></h3>
@@ -1588,45 +2970,18 @@ setInterval(updateTorontoCountdown, 60000);
     </div>
   </div>
 
-
-
-
-  <!-- Disclaimer -->
-  <div style="margin:20px clamp(24px,6vw,80px);padding:20px 28px;border:1px solid rgba(200,169,110,0.35);background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(200,169,110,0.03));display:flex;gap:16px;align-items:flex-start;">
-    <div style="color:var(--accent);font-size:1.3rem;flex-shrink:0;margin-top:2px;">⚠</div>
-    <div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Please Note</div>
-      <p style="font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65;">Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change.<br><strong style="color:#4caf50;">✓ Vaduz and Bregenz rescheduled to May 17</strong> — same venues, same times. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
-      <p style="font-size:0.85rem;color:rgba(232,65,65,0.8);line-height:1.65;margin-top:8px;"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
-    </div>
-  </div>
-
-  <!-- More Dates Coming Soon -->
-  <div style="margin:4px clamp(24px,6vw,80px) 0;padding:28px 32px;background:linear-gradient(135deg,rgba(200,169,110,0.12),rgba(200,169,110,0.04));border:1px solid rgba(200,169,110,0.4);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:200px;">
-      <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(200,169,110,0.6);animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0;"></div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:var(--accent);line-height:1;">More Dates Coming Soon</div>
-        <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.06em;">New cities being added to the 2026 World Tour. Be the first to know.</div>
-      </div>
-    </div>
-    <a href="#newsletter" style="font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--accent);color:var(--black);padding:13px 28px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e2c688'" onmouseout="this.style.background='var(--accent)'">Notify Me →</a>
-  </div>
-
-
   <!-- ══ UNCONFIRMED ══ -->
   <div class="dates-divider" style="font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">? Unconfirmed</div>
 
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇦🇲</span> Yerevan, Armenia</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇰🇿</span> Almaty, Kazakhstan</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇵🇪</span> Lima, Peru</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇯🇵</span> Tokyo, Japan</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇺🇸</span> Florida, USA</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-bg"></div><div class="dr-overlay"></div><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇲🇽</span> Mexico</h3><p>Unconfirmed — Stay tuned</p></div><div class="dr-action"><span class="unavail">Unconfirmed</span></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇦🇲</span> Yerevan, Armenia</h3><p>Venue TBC</p></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇰🇿</span> Almaty, Kazakhstan</h3><p>Venue TBC</p></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇵🇪</span> Lima, Peru</h3><p>Venue TBC</p></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇯🇵</span> Tokyo, Japan</h3><p>Venue TBC</p></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇺🇸</span> Florida, USA</h3><p>Venue TBC</p></div></div></div>
+  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇲🇽</span> Mexico</h3><p>Venue TBC</p></div></div></div>
 
-</div><!-- end timeline-wrap -->
-<div style="padding-bottom:var(--gap);"></div>
-</section>
+  <div style="padding-bottom:var(--gap);"></div>
+</div>
 
 <!-- TOUR MAP -->
 <section id="tourmap" style="background:var(--dark2);">
