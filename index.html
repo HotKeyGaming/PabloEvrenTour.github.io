@@ -2578,34 +2578,87 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   <p class="section-label">The Journey So Far</p>
   <h2 class="section-title">Tour Milestones</h2>
   <div class="divider"></div>
-  <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:40px;">Every historic moment. Every first. Every achievement. The story of the 2026 World Tour told in milestones.</p>
+  <p style="font-size:0.85rem;color:rgba(255,255,255,0.38);margin-bottom:32px;">Every historic moment. Every first. Every achievement.</p>
 
   <style>
     .milestone-list { position:relative; padding-left:32px; }
-    .milestone-list::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); }
-    .milestone { position:relative; margin-bottom:32px; }
+    .milestone-list::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); pointer-events:none; }
+    .milestone { position:relative; margin-bottom:28px; }
     .milestone::before { content:''; position:absolute; left:-29px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px rgba(200,169,110,0.5); }
     .milestone.future::before { background:var(--dark2); border:2px solid rgba(200,169,110,0.3); box-shadow:none; }
-    .milestone-date { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); font-family:'Barlow Condensed',sans-serif; font-weight:600; margin-bottom:6px; }
-    .milestone-title { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:var(--white); margin-bottom:6px; }
+    .milestone-date { font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--accent); font-family:"Barlow Condensed",sans-serif; font-weight:600; margin-bottom:6px; }
+    .milestone-title { font-family:"Bebas Neue",sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:var(--white); margin-bottom:6px; }
     .milestone-desc { font-size:0.82rem; color:rgba(255,255,255,0.45); line-height:1.65; }
-    .milestone-badge { display:inline-block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-weight:700; padding:3px 10px; margin-left:10px; vertical-align:middle; }
+    .milestone-badge { display:inline-block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; font-family:"Barlow Condensed",sans-serif; font-weight:700; padding:3px 10px; margin-left:10px; vertical-align:middle; }
     .mb-gold { background:rgba(200,169,110,0.15); border:1px solid rgba(200,169,110,0.4); color:var(--accent); }
     .mb-green { background:rgba(50,180,50,0.12); border:1px solid rgba(50,180,50,0.3); color:#7ec87e; }
     .mb-blue { background:rgba(50,100,200,0.12); border:1px solid rgba(50,100,200,0.3); color:#6b9cf4; }
   </style>
 
-  <div class="milestone-list">
-    <div class="milestone">
-      <div class="milestone-date">February 2026</div>
-      <div class="milestone-title">First Ever Show <span class="milestone-badge mb-gold">Historic</span></div>
-      <div class="milestone-desc">Barcelona, Spain — Spotify Camp Nou. Pablo's debut international performance. The world tour officially begins. Nobody saw it coming.</div>
+  <!-- Toggle button -->
+  <button id="milestone-toggle" onclick="toggleMilestones()" style="background:transparent;border:1px solid rgba(200,169,110,0.4);color:var(--accent);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;margin-bottom:28px;">
+    <span id="milestone-toggle-text">VIEW ALL MILESTONES</span>
+    <svg id="milestone-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+
+  <div id="milestone-content" style="display:none;">
+    <div class="milestone-list">
+      <div class="milestone">
+        <div class="milestone-date">13 February 2026</div>
+        <div class="milestone-title">First Ever Show <span class="milestone-badge mb-gold">Historic</span></div>
+        <div class="milestone-desc">Barcelona, Spain — Spotify Camp Nou. Pablo's debut international performance. The world tour officially begins. Nobody saw it coming.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">20 February 2026</div>
+        <div class="milestone-title">First Island Show <span class="milestone-badge mb-blue">First</span></div>
+        <div class="milestone-desc">Malta — National Stadium, Ta' Qali. The tour crosses to an island nation for the first time. Pablo Only.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">25 April 2026</div>
+        <div class="milestone-title">Evren's First Solo Show <span class="milestone-badge mb-green">Solo Debut</span></div>
+        <div class="milestone-desc">Erzincan, Turkey — 13 Şubat City Stadium. Evren performs alone for the first time. Pablo was not permitted entry.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">1 May 2026</div>
+        <div class="milestone-title">Double Show Day <span class="milestone-badge mb-gold">Historic</span></div>
+        <div class="milestone-desc">Two shows on the same day — Istanbul (Evren Solo) and Jerez de la Frontera (Pablo Only). First time both performed simultaneously.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">4 May 2026</div>
+        <div class="milestone-title">Spain Leg Complete <span class="milestone-badge mb-green">Milestone</span></div>
+        <div class="milestone-desc">Sevilla, Ramón Sánchez-Pizjuán Stadium. The Spain leg officially wraps after Barcelona, Jerez, Cádiz and Sevilla.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">25 April 2026</div>
+        <div class="milestone-title">World Tour Official Announcement <span class="milestone-badge mb-gold">Announcement</span></div>
+        <div class="milestone-desc">Pablo and Evren officially announce the Holy Obesity World Tour 2026. Starting in Basel, spanning 10+ countries. Nobody saw it coming.</div>
+      </div>
+      <div class="milestone future">
+        <div class="milestone-date">17 May 2026</div>
+        <div class="milestone-title">First Joint Performance <span class="milestone-badge mb-gold">Upcoming</span></div>
+        <div class="milestone-desc">Vaduz, Liechtenstein + Bregenz, Austria. Pablo and Evren on stage together for the first time this tour.</div>
+      </div>
+      <div class="milestone future">
+        <div class="milestone-date">28 December 2026</div>
+        <div class="milestone-title">Toronto — First North American Show <span class="milestone-badge mb-blue">Upcoming</span></div>
+        <div class="milestone-desc">Rogers Centre, Toronto. The tour reaches North America for the first time. Evren Solo.</div>
+      </div>
     </div>
-    <div class="milestone">
-      <div class="milestone-date">20 February 2026</div>
-      <div class="milestone-title">First Island Show <span class="milestone-badge mb-blue">First</span></div>
-      <div class="milestone-desc">Malta — National Stadium, Ta' Qali. The tour crosses to an island nation for the first time. Pablo Only.</div>
-    </div>
+  </div>
+
+  <script>
+  function toggleMilestones(){
+    var content = document.getElementById('milestone-content');
+    var arrow = document.getElementById('milestone-arrow');
+    var text = document.getElementById('milestone-toggle-text');
+    var open = content.style.display !== 'none';
+    content.style.display = open ? 'none' : 'block';
+    arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+    text.textContent = open ? 'VIEW ALL MILESTONES' : 'HIDE MILESTONES';
+  }
+  </script>
+</section>
+
 <script>
   var audio = null;
   var isPlaying = false;
@@ -3148,7 +3201,7 @@ window.addEventListener('DOMContentLoaded', function(){
   <div style="position:relative;z-index:2;padding:clamp(50px,8vw,90px) clamp(24px,6vw,80px) 32px;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:60px;">
       <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:0.08em;color:var(--white);line-height:1;"><span style="color:var(--accent);">Pablo</span> X <span style="color:var(--accent);">Evren</span></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,2.5vw,2.2rem);letter-spacing:0.1em;color:var(--white);line-height:1;"><span style="color:var(--accent);">Pablo</span> <span style="color:rgba(255,255,255,0.35);font-size:0.75em;vertical-align:middle;">X</span> <span style="color:var(--accent);">Evren</span></div>
         <div style="font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:8px;">Holy Obesity World Tour 2026</div>
         <div style="width:40px;height:1px;background:var(--accent);margin-top:16px;"></div>
       </div>
