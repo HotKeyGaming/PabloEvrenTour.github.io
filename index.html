@@ -482,7 +482,9 @@ document.addEventListener('mouseout', function(e){
     background:transparent; cursor:pointer; transition:all 0.2s; white-space:nowrap;
   }
   .nav-login-btn:hover { background:var(--accent); color:var(--black); }
-  .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:301; background:none; border:none; }
+  .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; padding:8px; z-index:301; background:none; border:none; flex-shrink:0; }
+  @media(max-width:600px){ .nav-login-btn { display:none !important; } }
+  @media(max-width:480px){ .nav-right button:not(.hamburger) { display:none !important; } }
   .hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
   .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity:0; }
@@ -691,8 +693,7 @@ var searchData = [
   {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
   {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
   {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
-  {cat:'Concert',title:'Bregenz, Austria',sub:'ImmoAgentur Stadium · 17 May 2026',href:'#dates',img:'https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg'},
-  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
+    {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
   {cat:'Concert',title:'Brescia, Italy',sub:'Mario Rigamonti Stadium · 20 Jun 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg'},
   {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
@@ -1139,9 +1140,6 @@ function submitFeedback(){
 
 <script>
 var shows = [
-  { city:"Milan, Italy (San Siro)", venue:"San Siro Stadium · Doors 21:00", date:new Date("2026-05-16T21:00:00"), img:"https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75" },
-  { city:"Vaduz, Liechtenstein", venue:"Rheinpark Stadium · Doors 12:00", date:new Date("2026-05-17T12:00:00"), img:"https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg" },
-  { city:"Bregenz, Austria", venue:"ImmoAgentur Stadium · Doors 15:00", date:new Date("2026-05-17T15:00:00"), img:"https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg" },
   { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
   { city:"Brescia, Italy", venue:"Mario Rigamonti Stadium · Doors 21:00", date:new Date("2026-06-20T21:00:00"), img:"https://footballtripper.com/wp-content/uploads/stadio-mario-rigamonti-aerial.jpg" },
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
@@ -1408,6 +1406,59 @@ setInterval(updateTorontoCountdown, 60000);
   </div>
 
   <!-- ══ UPCOMING ══ -->
+  <!-- Milan San Siro May 16 - COMPLETED -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇹</span> Milan, Italy <span class="badge-done">✓ Completed</span></h3>
+        <p>San Siro Stadium · Doors 21:00 · 16 May 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+
+  <!-- Vaduz - COMPLETED - SPECIAL (first joint performance) -->
+  <style>
+    @keyframes vaduzGlow { 0%,100%{box-shadow:0 0 18px rgba(200,169,110,0.25)} 50%{box-shadow:0 0 40px rgba(200,169,110,0.55)} }
+    @keyframes vaduzSparkle { 0%,100%{opacity:0;transform:scale(0.5) rotate(0deg)} 50%{opacity:1;transform:scale(1) rotate(180deg)} }
+    .dr-vaduz { animation:vaduzGlow 3s ease-in-out infinite; border:1px solid rgba(200,169,110,0.6) !important; }
+    .dr-vaduz .dr-bg { opacity:0.5 !important; }
+    .vaduz-special { display:inline-block;background:linear-gradient(135deg,#c8a96e,#e2c688,#c8a96e);background-size:200%;color:#000;font-size:0.58rem;letter-spacing:0.16em;padding:3px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;animation:quizBtnShine 2.5s ease-in-out infinite; }
+    .vaduz-sparkles { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3; }
+    .vaduz-spark { position:absolute;width:4px;height:4px;border-radius:50%;background:#e2c688;animation:vaduzSparkle 2.5s ease-in-out infinite; }
+  </style>
+  <div class="dr completed dr-vaduz" style="position:relative;">
+    <div class="vaduz-sparkles">
+      <div class="vaduz-spark" style="top:20%;left:8%;animation-delay:0s;"></div>
+      <div class="vaduz-spark" style="top:60%;left:15%;animation-delay:0.4s;"></div>
+      <div class="vaduz-spark" style="top:35%;left:92%;animation-delay:0.8s;"></div>
+      <div class="vaduz-spark" style="top:75%;left:85%;animation-delay:1.2s;"></div>
+      <div class="vaduz-spark" style="top:15%;left:50%;animation-delay:0.6s;"></div>
+      <div class="vaduz-spark" style="top:80%;left:40%;animation-delay:1.6s;"></div>
+    </div>
+    <div class="dr-bg" style="background-image:url('https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot" style="background:linear-gradient(135deg,#c8a96e,#e2c688);border-color:#e2c688;box-shadow:0 0 16px rgba(200,169,110,0.8);"></div>
+      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein <span class="badge-done">✓ Completed</span> <span class="vaduz-special">✦ First Joint Show</span></h3>
+        <p>Rheinpark Stadium · Doors 12:00 · 17 May 2026</p>
+        <p class="dr-note" style="color:var(--accent);">★ Pablo &amp; Evren Together On Stage — Historic First Joint Performance of the World Tour</p>
+      </div>
+      <div class="dr-action"><span class="unavail">Unavailable</span></div>
+    </div>
+  </div>
+
+
+
+
   <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
 
   <!-- Basel - always first -->
@@ -1419,63 +1470,6 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Daily</div></div>
       <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">Every Day</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
       <div class="dr-action"><span class="unavail">Ongoing</span></div>
-    </div>
-  </div>
-
-  <!-- Milan San Siro May 16 -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">16</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇮🇹</span> Milan, Italy <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
-        <p>San Siro Stadium · Doors 21:00 · 16 May 2026</p>
-        <p class="dr-note">★ Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Vaduz -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇱🇮</span> Vaduz, Liechtenstein <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3>
-        <p>Rheinpark Stadium · Doors 12:00 · 17 May 2026</p>
-        <p class="dr-note">★ Pablo & Evren Both Performing &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Rescheduled from May 14</span></p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="vaduz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bregenz -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://www.stadionwelt.de/images/stadionlisten/oesterreich/immoagentur-stadion/530.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">17</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇦🇹</span> Bregenz, Austria <span style="display:inline-block;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#4caf50;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔄 Rescheduled</span></h3>
-        <p>ImmoAgentur Stadium · Doors 15:00 · 17 May 2026</p>
-        <p class="dr-note">★ Pablo & Evren Both Performing &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Rescheduled from May 14</span></p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="bregenz.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
     </div>
   </div>
 
@@ -1620,7 +1614,7 @@ setInterval(updateTorontoCountdown, 60000);
     <span style="font-size:1.2rem;">⚠️</span>
     <div>
       <p><strong style="color:rgba(200,169,110,0.8);">Please Note</strong><br>Certain shows — including <strong style="color:rgba(200,169,110,0.8);">Brescia, Rome,</strong> and <strong style="color:rgba(200,169,110,0.8);">Copenhagen</strong> — are subject to change. Dates, venues, and availability may be updated at any time. Subscribe to our newsletter for the latest.</p>
-      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Vaduz and Bregenz rescheduled to May 17</strong> — same venues, same times.</p>
+      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Vaduz rescheduled to May 17</strong> — same venue, same time.</p>
       <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
     </div>
   </div>
@@ -2489,10 +2483,10 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   <div style="display:flex;flex-direction:column;gap:2px;">
 
     <div class="news-item" style="padding:28px 0 28px 24px;">
-      <div class="news-tag tag-new">New</div>
-      <div class="news-date">5 May 2026</div>
-      <div class="news-title">New Concert Announcement — Vaduz & Bregenz</div>
-      <div class="news-body">Two new shows confirmed for 14 May 2026. Pablo and Evren will perform together at Rheinpark Stadium in Vaduz, Liechtenstein (Doors 12:00) and ImmoAgentur Stadium in Bregenz, Austria (Doors 15:00). Two shows, one day — both performances will feature Pablo and Evren on stage together for the first time this tour.</div>
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">17 May 2026</div>
+      <div class="news-title">Concert — Vaduz, Liechtenstein ✦ First Joint Show</div>
+      <div class="news-body">Rheinpark Stadium, Vaduz. Doors 12:00. Pablo and Evren performed together on stage for the very first time this World Tour. A historic moment.</div>
     </div>
 
     <div class="news-item" style="padding:28px 0 28px 24px;">
@@ -2636,7 +2630,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="milestone future">
         <div class="milestone-date">17 May 2026</div>
         <div class="milestone-title">First Joint Performance <span class="milestone-badge mb-gold">Upcoming</span></div>
-        <div class="milestone-desc">Vaduz, Liechtenstein + Bregenz, Austria. Pablo and Evren on stage together for the first time this tour.</div>
+        <div class="milestone-desc">Vaduz, Liechtenstein — Rheinpark Stadium. Pablo and Evren on stage together for the very first time this tour.</div>
       </div>
       <div class="milestone future">
         <div class="milestone-date">28 December 2026</div>
