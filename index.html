@@ -9,13 +9,13 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --black: #0a0a0a;
-      --dark: #111110;
-      --dark2: #181816;
+      --black: #0d0d0c;
+      --dark: #161614;
+      --dark2: #1e1e1c;
       --white: #fafaf8;
       --cream: #f0ede6;
-      --accent: #c8a96e;
-      --accent2: #e2c688;
+      --accent: #cdb175;
+      --accent2: #e8cf92;
       --mid: #777770;
       --gap: clamp(50px, 8vw, 100px);
     }
@@ -44,7 +44,7 @@
     #hero { min-height: 100svh; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-img {
       position: absolute; inset: 0;
-      background: url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png') center center / cover no-repeat;
+      background: url('https://kommodo.ai/i/HGZBz7P7D9I51xGtLBcV') center 20% / cover no-repeat;
     }
     .hero-img::after {
       content: ''; position: absolute; inset: 0;
@@ -318,7 +318,7 @@
 <style>
   #loader { position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none; }
   #loader.fade-out { opacity:0;transition:opacity 0.5s ease; }
-  #loader-bg { position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202604/29/XxTH3ltWgEaRVxeicF5y/image.png');background-size:cover;background-position:center;opacity:0.35; }
+  #loader-bg { position:absolute;inset:0;background-image:url('https://kommodo.ai/i/HGZBz7P7D9I51xGtLBcV');background-size:cover;background-position:center top;opacity:0.45; }
   #loader-grad { position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.6) 0%,rgba(10,10,10,0.92) 100%); }
   #loader-inner { position:relative;z-index:2;text-align:center;padding:0 24px; }
   #loader-eyebrow { font-size:0.75rem;letter-spacing:0.38em;text-transform:uppercase;color:#c8a96e;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;margin-bottom:16px;opacity:1; }
@@ -1904,19 +1904,39 @@ setInterval(updateTorontoCountdown, 60000);
 <!-- SETLIST -->
 <section id="setlist" style="position:relative;overflow:hidden;">
   <!-- Background image with dark overlay -->
-  <div style="position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202605/07/XscDg9PZyKCs6PuAPbUq/image.png');background-size:cover;background-position:center;opacity:0.35;"></div>
-  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.88);"></div>
+  <div style="position:absolute;inset:0;background-image:url('https://kommodo.ai/i/HGZBz7P7D9I51xGtLBcV');background-size:cover;background-position:center top;opacity:0.4;"></div>
+  <div style="position:absolute;inset:0;background:rgba(10,10,10,0.82);"></div>
   <div style="position:relative;z-index:2;padding:var(--gap) clamp(24px,6vw,80px);">
     <p class="section-label">On Stage Every Night</p>
     <h2 class="section-title">The Setlist</h2>
     <div class="divider"></div>
-    <p style="font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:24px;letter-spacing:0.04em;">★ Additional songs and special guests may appear at random concerts.</p>
+    <p style="font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:36px;letter-spacing:0.04em;">★ Additional songs and special guests may appear at random concerts.</p>
 
-    <!-- Toggle button -->
-    <button id="setlist-toggle" onclick="toggleSetlist()" style="background:transparent;border:1px solid rgba(200,169,110,0.4);color:var(--accent);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.2s;margin-bottom:28px;">
-      <span id="setlist-toggle-text">VIEW FULL SETLIST (26 SONGS)</span>
-      <svg id="setlist-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <!-- Toggle button — big, unmissable -->
+    <style>
+      #setlist-toggle {
+        width:100%; background:var(--accent);
+        border:none; color:var(--black);
+        padding:22px 36px;
+        font-family:'Bebas Neue',sans-serif;
+        font-size:clamp(1.4rem,3vw,2rem);
+        letter-spacing:0.14em; text-transform:uppercase;
+        cursor:pointer; display:flex; align-items:center; justify-content:center;
+        gap:16px; transition:all 0.25s; margin-bottom:4px;
+        box-shadow:0 4px 40px rgba(200,169,110,0.25);
+      }
+      #setlist-toggle:hover { background:var(--accent2); box-shadow:0 6px 50px rgba(200,169,110,0.45); transform:translateY(-1px); }
+      #setlist-toggle svg path { stroke:var(--black); }
+      @media(max-width:768px){
+        #setlist-toggle { padding:20px 24px; font-size:1.3rem; }
+      }
+    </style>
+    <button id="setlist-toggle" onclick="toggleSetlist()">
+      <svg id="setlist-arrow" width="22" height="22" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;flex-shrink:0;"><path d="M2 4.5L7 9.5L12 4.5" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round"/></svg>
+      <span id="setlist-toggle-text">VIEW FULL SETLIST — 26 SONGS</span>
+      <svg width="22" height="22" viewBox="0 0 14 14" fill="none" style="transition:transform 0.3s;flex-shrink:0;transform:rotate(180deg);"><path d="M2 4.5L7 9.5L12 4.5" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
+    <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,169,110,0.5);text-align:center;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;">Tap to expand · 26 tracks · Special guests</div>
 
     <div id="setlist-content" style="display:none;">
       <style>
@@ -2324,7 +2344,7 @@ function toggleSetlist(){
   var open = content.style.display !== 'none';
   content.style.display = open ? 'none' : 'block';
   arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
-  text.textContent = open ? 'VIEW FULL SETLIST (26 SONGS)' : 'Collapse Setlist';
+  text.textContent = open ? 'VIEW FULL SETLIST — 26 SONGS' : 'COLLAPSE SETLIST';
 }
 </script>
 
@@ -3190,7 +3210,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 <!-- FOOTER -->
 <footer style="position:relative;overflow:hidden;padding:0;border-top:1px solid rgba(200,169,110,0.15);">
-  <div style="position:absolute;inset:0;background:url('https://plain-weur-prod-public.komododecks.com/202605/07/XscDg9PZyKCs6PuAPbUq/image.png') center center/cover no-repeat;opacity:0.12;"></div>
+  <div style="position:absolute;inset:0;background:url('https://kommodo.ai/i/HGZBz7P7D9I51xGtLBcV') center 30%/cover no-repeat;opacity:0.18;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.85) 0%,rgba(10,10,10,0.97) 100%);"></div>
   <div style="position:relative;z-index:2;padding:clamp(50px,8vw,90px) clamp(24px,6vw,80px) 32px;">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:60px;">
