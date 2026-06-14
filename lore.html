@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Terence Files — Classified Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Space+Mono:wght@400;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#070611; --panel:#0d0b1a; --panel2:#13102255; --line:rgba(123,108,255,.16);
+  --bone:#e6e0d2; --mut:#7d75a0;
+  --violet:#7b6cff; --violet2:#a594ff; --ember:#e0503a; --emberg:rgba(224,80,58,.12);
+  --glow:0 0 40px rgba(123,108,255,.25);
+  --pad:clamp(26px,6vw,90px); --gap:clamp(60px,9vw,140px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Barlow',sans-serif;background:var(--void);color:var(--bone);overflow-x:hidden;max-width:100vw;line-height:1.65;
+  background-image:radial-gradient(ellipse at 50% -10%,rgba(123,108,255,.12),transparent 55%),radial-gradient(ellipse at 80% 110%,rgba(224,80,58,.08),transparent 50%)}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--violet);color:#070611}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.serif{font-family:'Cormorant Garamond',serif}
+.mono{font-family:'Space Mono',monospace}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--violet2)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.6rem,6.5vw,5.6rem);line-height:.98;letter-spacing:.005em;font-style:italic;margin-top:14px}
+.rule{width:60px;height:1px;background:linear-gradient(90deg,var(--violet),transparent);margin:24px 0 0}
+
+/* grain + glow runes */
+.grain{position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--violet),var(--ember));z-index:9000;box-shadow:0 0 12px rgba(123,108,255,.7)}
+
+/* ---------- VAULT INTRO ---------- */
+#vault{position:fixed;inset:0;z-index:9999;background:var(--void);display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .8s var(--ease),visibility .8s}
+#vault.open{opacity:0;visibility:hidden}
+.vault-ring{width:min(260px,62vw);height:min(260px,62vw);border:1px solid rgba(123,108,255,.25);border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
+.vault-ring::before{content:'';position:absolute;inset:18px;border:1px solid rgba(123,108,255,.15);border-radius:50%}
+.vault-ring i{position:absolute;inset:-1px;border-radius:50%;border:2px solid transparent;border-top-color:var(--violet);animation:spin 1.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vault-sym{font-size:clamp(3rem,9vw,5rem);color:var(--violet);text-shadow:var(--glow);animation:flick 2.4s infinite}
+@keyframes flick{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.4}52%{opacity:1}}
+.vault-txt{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-top:34px}
+.vault-txt b{color:var(--ember)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:7000;display:flex;align-items:center;justify-content:space-between;
+  padding:15px var(--pad);transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(7,6,17,.85);backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+.brand{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.3rem;letter-spacing:.02em;text-decoration:none;color:var(--bone)}
+.brand b{color:var(--violet);font-weight:600}
+.nlinks{display:flex;gap:24px;list-style:none}
+.nlinks a{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);text-decoration:none;transition:color .25s}
+.nlinks a:hover{color:var(--violet2)}
+.backbtn{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border:1px solid var(--line);color:var(--violet2);text-decoration:none;transition:.2s}
+.backbtn:hover{background:rgba(123,108,255,.1);border-color:var(--violet)}
+@media(max-width:880px){.nlinks{display:none}}
+
+/* ---------- hero ---------- */
+#top{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px var(--pad) 80px;position:relative;overflow:hidden}
+.rune{position:absolute;font-family:'Cormorant Garamond',serif;color:rgba(123,108,255,.05);pointer-events:none;user-select:none}
+.classified{display:inline-flex;align-items:center;gap:12px;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);border:1px solid rgba(224,80,58,.4);padding:7px 16px;margin-bottom:30px}
+.classified .blink{width:7px;height:7px;border-radius:50%;background:var(--ember);animation:bl 1.2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+#top h1{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:clamp(3.4rem,11vw,9rem);line-height:.92;letter-spacing:.005em}
+#top h1 em{font-style:italic;color:var(--violet);text-shadow:0 0 50px rgba(123,108,255,.4)}
+#top .sub{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--mut);max-width:560px;margin-top:28px}
+#top .meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:40px}
+#top .meta div{font-family:'Space Mono',monospace}
+#top .meta .k{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+#top .meta .v{font-size:1.4rem;color:var(--violet2);margin-top:4px}
+.hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:8px}
+.hint i{width:1px;height:42px;background:linear-gradient(var(--violet),transparent);animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- shell ---------- */
+section{padding:var(--gap) var(--pad);position:relative}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.dl1{transition-delay:.1s}.reveal.dl2{transition-delay:.2s}.reveal.dl3{transition-delay:.3s}
+.lead{font-size:.95rem;color:var(--mut);max-width:640px;margin-top:18px}
+
+/* ---------- 4 memes ---------- */
+.memes{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;margin-top:46px}
+.meme{background:var(--panel);border:1px solid var(--line);padding:34px 30px;position:relative;overflow:hidden;transition:.3s var(--ease)}
+.meme:hover{background:rgba(123,108,255,.06);border-color:rgba(123,108,255,.4);transform:translateY(-3px)}
+.meme .n{position:absolute;top:-18px;right:8px;font-family:'Cormorant Garamond',serif;font-size:7rem;color:rgba(123,108,255,.06);line-height:1}
+.meme .ic{font-size:2rem;margin-bottom:16px}
+.meme h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:1.9rem;color:var(--violet2);margin-bottom:12px}
+.meme p{font-size:.84rem;color:var(--mut);line-height:1.7;margin-bottom:16px}
+.tagm{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(123,108,255,.3);color:var(--violet2)}
+
+/* ---------- quiz ---------- */
+#quiz{background:var(--panel2)}
+.qhead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-top:40px}
+.qscore{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--violet2)}
+.qscore span{color:var(--ember)}
+.qbtn{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:11px 22px;cursor:pointer;transition:.2s;border:1px solid}
+.qnext{background:var(--violet);color:#070611;border-color:var(--violet);display:none}
+.qnext:hover{background:var(--violet2)}
+.qshuf{background:transparent;color:var(--violet2);border-color:rgba(123,108,255,.4)}
+.qshuf:hover{background:rgba(123,108,255,.1)}
+.qcard{border:1px solid var(--line);background:var(--panel);padding:34px;margin-top:20px}
+.qno{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet2);margin-bottom:12px}
+.qq{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:1.6rem;color:var(--bone);margin-bottom:22px}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qopt{padding:14px 18px;border:1px solid rgba(123,108,255,.14);background:rgba(123,108,255,.03);color:var(--mut);font-family:'Barlow',sans-serif;font-size:.92rem;cursor:pointer;text-align:left;transition:.2s}
+.qopt:hover:not(.ans){border-color:rgba(123,108,255,.5);color:var(--bone);background:rgba(123,108,255,.08)}
+.qopt.ok{background:rgba(123,108,255,.16);border-color:var(--violet);color:var(--violet2)}
+.qopt.no{background:var(--emberg);border-color:var(--ember);color:#f0a090}
+.qopt.ans{cursor:default}
+.qfact{margin-top:16px;font-size:.84rem;color:var(--violet2);line-height:1.65;display:none;padding:13px 16px;border-left:2px solid var(--violet);background:rgba(123,108,255,.05)}
+@media(max-width:560px){.qopts{grid-template-columns:1fr}}
+
+/* ---------- legislation ---------- */
+.legg{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:46px}
+.legcol{border:1px solid;overflow:hidden}
+.legcol.bad{border-color:rgba(224,80,58,.4);background:rgba(80,12,8,.2)}
+.legcol.good{border-color:rgba(123,108,255,.4);background:rgba(20,16,44,.4)}
+.legh{padding:18px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid}
+.legcol.bad .legh{background:rgba(120,20,12,.3);border-color:rgba(224,80,58,.2)}
+.legcol.good .legh{background:rgba(30,24,60,.4);border-color:rgba(123,108,255,.2)}
+.legh .t{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:1.5rem}
+.legcol.bad .legh .t{color:var(--ember)}.legcol.good .legh .t{color:var(--violet2)}
+.legh .s{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.legrow{padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.legrow:last-child{border-bottom:none}
+.legrow .nm{font-family:'Barlow',sans-serif;font-weight:600;font-size:.95rem;color:var(--bone)}
+.legrow .ds{font-size:.74rem;color:var(--mut);margin-top:3px}
+.legtag{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border:1px solid;white-space:nowrap;flex-shrink:0}
+.legtag.b{color:var(--ember);border-color:rgba(224,80,58,.5);background:var(--emberg)}
+.legtag.g{color:var(--violet2);border-color:rgba(123,108,255,.5);background:rgba(123,108,255,.1)}
+.legnote{margin-top:3px;border:1px solid var(--line);background:rgba(123,108,255,.04);padding:18px 24px;display:flex;gap:14px}
+.legnote .h{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet2);margin-bottom:5px}
+.legnote p{font-size:.84rem;color:var(--mut);line-height:1.65}
+.legnote .em{color:var(--ember)}.legnote .vi{color:var(--violet2)}
+@media(max-width:640px){.legg{grid-template-columns:1fr}}
+
+/* ---------- glossary ---------- */
+.gls{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;margin-top:46px}
+.glc{padding:24px 22px;border:1px solid rgba(255,255,255,.05);background:var(--panel);border-left:3px solid transparent;transition:.25s var(--ease)}
+.glc:hover{background:rgba(123,108,255,.07);border-color:rgba(123,108,255,.3);border-left-color:var(--violet);transform:translateX(4px)}
+.glc .term{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:1.5rem;color:var(--bone);transition:color .2s}
+.glc:hover .term{color:var(--violet2)}
+.glc .ph{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--mut);margin:3px 0 10px}
+.glc .def{font-size:.84rem;color:var(--mut);line-height:1.65}
+.glc .tg{display:inline-block;font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border:1px solid rgba(123,108,255,.3);color:var(--violet2);margin-top:10px}
+.glsmore{margin-top:18px;width:100%;background:transparent;border:1px solid rgba(123,108,255,.3);color:var(--violet2);padding:13px;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.glsmore:hover{background:rgba(123,108,255,.08)}
+.license{margin-top:18px;border:1px solid var(--line);background:rgba(123,108,255,.03);padding:16px 22px;font-family:'Space Mono',monospace;font-size:.66rem;color:var(--mut);letter-spacing:.04em;line-height:1.7}
+
+/* ---------- taxonomy ---------- */
+.tax{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:40px}
+.txc{padding:42px 36px;border:1px solid;position:relative;transition:.3s}
+.txc.t1{border-color:rgba(123,108,255,.2);background:var(--panel)}
+.txc.t1:hover{background:rgba(123,108,255,.07)}
+.txc.t2{border-color:rgba(224,80,58,.5);background:rgba(70,14,10,.3)}
+.txc.t2:hover{background:rgba(110,22,16,.4)}
+.txc .ic{font-size:3rem;margin-bottom:18px}
+.txc h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:2rem;margin-bottom:12px}
+.txc.t1 h3{color:var(--violet2)}.txc.t2 h3{color:var(--ember)}
+.txc p{font-size:.88rem;color:var(--mut);line-height:1.75}
+.txc .tier{display:inline-block;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:5px 14px;border:1px solid;margin-top:20px}
+.txc.t1 .tier{border-color:rgba(123,108,255,.3);color:var(--violet2)}
+.txc.t2 .tier{border-color:var(--ember);color:var(--ember)}
+.txc .max{position:absolute;top:-1px;right:-1px;font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;background:var(--ember);color:#070611}
+@media(max-width:640px){.tax{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:clamp(56px,8vw,90px) var(--pad) 30px;position:relative}
+.fmark{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);color:var(--bone)}
+.fmark b{color:var(--violet)}
+.fmark small{display:block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-top:8px}
+.fback{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:15px 34px;background:linear-gradient(135deg,#a594ff,#7b6cff);color:#070611;text-decoration:none;transition:.3s var(--ease)}
+.fback:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(123,108,255,.4)}
+.fbtm{margin-top:54px;border-top:1px solid rgba(255,255,255,.06);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div class="grain"></div>
+
+<!-- VAULT INTRO -->
+<div id="vault">
+  <div class="vault-ring"><i></i><div class="vault-sym">⌬</div></div>
+  <div class="vault-txt">Decrypting archive · <b>clearance: ITF</b></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="brand" href="#top">The <b>Terence</b> Files</a>
+  <ul class="nlinks">
+    <li><a href="#memes">The First Four</a></li>
+    <li><a href="#quiz">The Trial</a></li>
+    <li><a href="#legislation">Song Law</a></li>
+    <li><a href="#glossary">Lexicon</a></li>
+    <li><a href="#taxonomy">Taxonomy</a></li>
+  </ul>
+  <a class="backbtn" href="index.html">← Tour Site</a>
+</nav>
+
+<!-- HERO -->
+<header id="top">
+  <div class="rune serif" style="top:8%;left:4%;font-size:18rem">⌬</div>
+  <div class="rune serif" style="bottom:6%;right:3%;font-size:14rem">✦</div>
+  <span class="classified"><span class="blink"></span>Classified · Inside Terence Files Only</span>
+  <h1 class="serif">The <em>Terence</em><br>Files</h1>
+  <p class="sub">A hidden archive of the Pablo &times; Evren universe. Sacred memes, song legislation and the Holy Taxonomy — preserved beneath the tour. Read carefully. You will be tested.</p>
+  <div class="meta">
+    <div><div class="k">Clearance Tiers</div><div class="v">ITF · OTF · TFA</div></div>
+    <div><div class="k">Headquarters</div><div class="v">MH67</div></div>
+    <div><div class="k">Currency</div><div class="v">🍗 McChickens</div></div>
+  </div>
+  <div class="hint"><i></i>Descend</div>
+</header>
+
+<!-- THE FIRST 4 MEMES -->
+<section id="memes">
+  <span class="eyebrow reveal">Foundational Lore</span>
+  <h2 class="sec-title reveal dl1">The First Four</h2>
+  <div class="rule reveal dl1"></div>
+  <p class="lead reveal">Before anything else, there were four. Sacred. Immovable. Eternal.</p>
+  <div class="memes">
+    <div class="meme reveal"><div class="n serif">01</div><div class="ic">⬅️</div><h3>Left</h3><p>Just Left. That's it. Left. Always left. The direction. The calling. The police enforce it. You are left, or you are wrong.</p><span class="tagm">Canonical</span></div>
+    <div class="meme reveal dl1"><div class="n serif">02</div><div class="ic">📚</div><h3>Study</h3><p>We have to study for FMS. That is the lore. Study is the burden we carry. Left Study Big (LSB).</p><span class="tagm">Canonical</span></div>
+    <div class="meme reveal dl2"><div class="n serif">03</div><div class="ic">💪</div><h3>Big</h3><p>Big like Terence. LTB — Left Terence Big. LSB — Left Study Big. Big is the magnitude of the Files.</p><span class="tagm">Canonical</span></div>
+    <div class="meme reveal dl3"><div class="n serif">04</div><div class="ic">🐦</div><h3>Terence</h3><p>The fat bird from Angry Birds. The deity. Holy Obesity personified. He is the reason the Files exist.</p><span class="tagm">Canonical</span></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <span class="eyebrow reveal">The Trial</span>
+  <h2 class="sec-title reveal dl1">Terence Files Quiz</h2>
+  <div class="rule reveal dl1"></div>
+  <p class="lead reveal">Think you know the lore? Prove it. Questions are randomized every attempt.</p>
+  <div class="qhead reveal">
+    <div class="qscore">Score: <span id="qsc">0</span> / <span id="qtot">7</span></div>
+    <div style="display:flex;gap:10px">
+      <button class="qbtn qnext" id="qnext" onclick="qNext()">Next →</button>
+      <button class="qbtn qshuf" onclick="qInit()">⟳ Shuffle &amp; Restart</button>
+    </div>
+  </div>
+  <div id="qbox"></div>
+</section>
+
+<!-- SONG LEGISLATION -->
+<section id="legislation">
+  <span class="eyebrow reveal">Sonic Policy</span>
+  <h2 class="sec-title reveal dl1">Song Legislation</h2>
+  <div class="rule reveal dl1"></div>
+  <p class="lead reveal">Not all songs are created equal. Violations are handled by the TLP and fined in McChickens.</p>
+  <div class="legg reveal">
+    <div class="legcol bad">
+      <div class="legh"><span style="font-size:1.2rem">🚫</span><div><div class="t serif">Forbidden</div><div class="s">Do not spam — violation = McChicken fine</div></div></div>
+      <div class="legrow"><div><div class="nm">Good Night</div><div class="ds">Worst song of all time. Absolutely chopped. This is canon.</div></div><span class="legtag b">Worst OAT</span></div>
+      <div class="legrow"><div><div class="nm">Fried</div><div class="ds">Forbidden. Do not spam under any circumstances.</div></div><span class="legtag b">Banned</span></div>
+      <div class="legrow"><div><div class="nm">CARNIVAL</div><div class="ds">Forbidden. All caps. All banned.</div></div><span class="legtag b">Banned</span></div>
+      <div class="legrow"><div><div class="nm">Bomb</div><div class="ds">Banned to spam. Performed live at concerts.</div></div><span class="legtag b">Banned</span></div>
+      <div class="legrow"><div><div class="nm">TALKING</div><div class="ds">Banned to spam. Performed live at concerts.</div></div><span class="legtag b">Banned</span></div>
+    </div>
+    <div class="legcol good">
+      <div class="legh"><span style="font-size:1.2rem">✅</span><div><div class="t serif">Blessed</div><div class="s">Spam freely — played at every concert</div></div></div>
+      <div class="legrow"><div><div class="nm">Moon</div><div class="ds">Certified banger. Spam away.</div></div><span class="legtag g">Goated</span></div>
+      <div class="legrow"><div><div class="nm">Diamonds From Sierra Leone</div><div class="ds">A classic. Blessed. Spam with pride.</div></div><span class="legtag g">Goated</span></div>
+      <div class="legrow"><div><div class="nm">No Child Left Behind</div><div class="ds">The name alone. Spiritually aligned with the Left meme.</div></div><span class="legtag g">Goated</span></div>
+      <div class="legrow"><div><div class="nm">This One Here</div><div class="ds">This one here. You know it. Blessed.</div></div><span class="legtag g">Goated</span></div>
+      <div class="legrow"><div><div class="nm">Sky City</div><div class="ds">Elevated. Literally. Celestial banger.</div></div><span class="legtag g">Goated</span></div>
+    </div>
+  </div>
+  <div class="legnote reveal">
+    <span style="font-size:1.1rem;flex-shrink:0">🎤</span>
+    <div><div class="h">Concert Policy</div>
+    <p><span class="em">Forbidden songs</span> may not be spammed — but <span class="vi">Bomb and Talking are performed live at every concert</span>. All <span class="vi">Blessed songs</span> are played at every concert. No exceptions.</p></div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary">
+  <span class="eyebrow reveal">The Official Lexicon</span>
+  <h2 class="sec-title reveal dl1">Holy Obesity Glossary</h2>
+  <div class="rule reveal dl1"></div>
+  <p class="lead reveal">The Terence Files operate in their own linguistic universe. Memorize these.</p>
+  <div class="gls reveal" id="gls">
+    <div class="glc"><div class="term">Holy Obesity</div><div class="ph">/ hoh·lee oh·bee·si·tee /</div><div class="def">Maximum-tier classification of the Holy Taxonomy. Most extreme reverence.</div><span class="tg">Tier II — Maximum</span></div>
+    <div class="glc"><div class="term">Holy Obese</div><div class="ph">/ hoh·lee oh·bees /</div><div class="def">Tier I classification. One tier below Holy Obesity.</div><span class="tg">Tier I</span></div>
+    <div class="glc"><div class="term">LTB</div><div class="ph">/ el·tee·bee /</div><div class="def">Left Terence Big. A holy trinity of founding forces in one acronym.</div><span class="tg">Holy Trinity</span></div>
+    <div class="glc"><div class="term">TLP</div><div class="ph">/ tee·el·pee /</div><div class="def">The Left Police. Uphold leftward direction and dispense McChicken fines.</div><span class="tg">Enforcement</span></div>
+    <div class="glc"><div class="term">LSB</div><div class="ph">/ el·es·bee /</div><div class="def">Left Study Big. Intellectual magnitude and committed leftism.</div><span class="tg">Acronym</span></div>
+    <div class="glc"><div class="term">DISFO</div><div class="ph">/ dis·foh /</div><div class="def">Primary classified domain of the TF. Full nature is ITF-only.</div><span class="tg">Classified</span></div>
+    <div class="glc gls-hide"><div class="term">Dogmog</div><div class="ph">/ dog·mog /</div><div class="def">A dog. Simply a dog. Do not overthink it. That is all it means.</div><span class="tg">Core Vocabulary</span></div>
+    <div class="glc gls-hide"><div class="term">Nib</div><div class="ph">/ nib /</div><div class="def">A happy dogmog. The emotional state of a dog experiencing joy. Pursue Nib.</div><span class="tg">Emotional State</span></div>
+    <div class="glc gls-hide"><div class="term">Bog</div><div class="ph">/ bog /</div><div class="def">A sad dogmog. The direct opposite of Nib. Avoid Bog.</div><span class="tg">Emotional State</span></div>
+    <div class="glc gls-hide"><div class="term">Ögs</div><div class="ph">/ örgs /</div><div class="def">Chopped dogmogs. The most extreme dogmog state.</div><span class="tg">Extreme State</span></div>
+    <div class="glc gls-hide"><div class="term">ITF</div><div class="ph">/ eye·tee·eff /</div><div class="def">Inside Terence Files. Highest clearance. Held by Evren and Pablo only.</div><span class="tg">Clearance — Supreme</span></div>
+    <div class="glc gls-hide"><div class="term">OTF</div><div class="ph">/ oh·tee·eff /</div><div class="def">Outside Terence Files. Medium clearance.</div><span class="tg">Clearance — Medium</span></div>
+    <div class="glc gls-hide"><div class="term">TFA</div><div class="ph">/ tee·eff·ay /</div><div class="def">Terence Files All. Community level. Where everyone begins.</div><span class="tg">Clearance — Community</span></div>
+    <div class="glc gls-hide"><div class="term">Nibbooggers</div><div class="ph">/ nib·boog·gers /</div><div class="def">Nib + Bog = Nibbog. We are all the Family Nibbooggers. ❤️</div><span class="tg">Family</span></div>
+    <div class="glc gls-hide"><div class="term">Moggogogers</div><div class="ph">/ mog·go·go·gers /</div><div class="def">Very Big. Very Left. No further questions.</div><span class="tg">Entity</span></div>
+    <div class="glc gls-hide"><div class="term">Big D</div><div class="ph">/ big·dee /</div><div class="def">Holy Obesity. Weighs 67² obese KG — like TON 618. Once destroyed the tire of Bus 38.</div><span class="tg">Holy Obesity</span></div>
+    <div class="glc gls-hide"><div class="term">McChicken</div><div class="ph">/ mc·chik·en /</div><div class="def">Official currency of the Terence Files. All fines denominated in McChickens.</div><span class="tg">🍗 Currency</span></div>
+    <div class="glc gls-hide"><div class="term">MH67</div><div class="ph">/ em·aitch·67 /</div><div class="def">Morhaldenstrasse 67. Official headquarters of the Terence Files. 100% legal.</div><span class="tg">Headquarters</span></div>
+  </div>
+  <button class="glsmore" id="glsBtn" onclick="glsToggle()">Show All Terms</button>
+  <div class="license">★ Licensed under the Morhaldenstrasse 67 Public License (MH67-PL). Enforced by The Left Police (TLP). Fines issued in 🍗 McChickens. Do NOT spam Good Night.</div>
+</section>
+
+<!-- TAXONOMY -->
+<section id="taxonomy">
+  <span class="eyebrow reveal">Classification System</span>
+  <h2 class="sec-title reveal dl1">Holy Taxonomy</h2>
+  <div class="rule reveal dl1"></div>
+  <p class="lead reveal">This is not medical advice. This is lore.</p>
+  <div class="tax reveal">
+    <div class="txc t1"><div class="ic">😮</div><h3>Holy Obese</h3><p>Tier I classification. The "Holy" prefix denotes reverence. One tier below the extreme classification.</p><div class="tier">Tier I — Holy Obese</div></div>
+    <div class="txc t2"><div class="max">Maximum</div><div class="ic">😱</div><h3>Holy Obesity</h3><p>Tier II — the maximum tier. Reserved for truly staggering physical presence. The subject exists in Terence's spiritual territory.</p><div class="tier">Tier II — Holy Obesity (Maximum)</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="rune serif" style="top:10%;right:6%;font-size:12rem;opacity:.5">✦</div>
+  <div class="fmark serif">The <b>Terence</b> Files<small>Classified Archive · Clearance ITF · MH67</small></div>
+  <a class="fback" href="index.html">← Return to the World Tour</a>
+  <div class="fbtm">
+    <span>© 2026 Pablo × Evren · Terence Files · MH67-PL</span>
+    <span>Basel, Switzerland · Family Nibbooggers ❤️</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- QUIZ ---------- */
+var QD=[
+  {q:'Who is HOLY OBESITY?',o:['Big D','Disfo','Holy Obese','Evren'],c:[0,3],f:'HOLY OBESITY = Big D + Evren. He weighs 67² obese KG — like TON 618.'},
+  {q:'Where is Evren NOT allowed to go?',o:['Hurghada','Istanbul','Stockholm','Cairo'],c:[0,1],f:'Evren is banned from both Hurghada and Istanbul. Pablo performed solo there.'},
+  {q:'Which song is so chopped it can NEVER be performed?',o:['Good Morning','Good Night','Talking','I Wonder'],c:[1],f:'Good Night is the worst song OAT — so chopped it can never be performed live.'},
+  {q:'Which of these dogs are in the Terence Files?',o:['Happy Dogmog','Sad Dogmog','Chopped Dogmog','Ugly Dogmog'],c:[0,1,2],f:'Happy, Sad and Chopped Dogmog are canon. Ugly Dogmog is not real.'},
+  {q:'Nib + Bog is?',o:['Nibbooggers','Nibs','Ögs','Nibbog'],c:[3],f:'Nib + Bog = Nibbog. We are all the Family Nibbooggers ❤️'},
+  {q:'Which are the best buses?',o:['35','45','32','38'],c:[1,2],f:'Bus 45 and Bus 32 are the best. Bus 38 famously lost a tire.'},
+  {q:"Who's very, very Big and Left?",o:['Moggogogers','Big D','Terence','Yuh Lieng'],c:[0],f:'Moggogogers. Very Big. Very Left. No further questions.'}
+];
+var qShuf=[],qI=0,qScore=0,qAns=false;
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function qInit(){qShuf=shuffle(QD);qI=0;qScore=0;qAns=false;document.getElementById('qsc').textContent='0';document.getElementById('qtot').textContent=qShuf.length;document.getElementById('qnext').style.display='none';qRender();}
+function qRender(){
+  qAns=false;var q=qShuf[qI],h='<div class="qcard"><div class="qno">File '+(qI+1)+' of '+qShuf.length+'</div><div class="qq">'+q.q+'</div><div class="qopts">';
+  q.o.forEach(function(o,i){h+='<button class="qopt" data-i="'+i+'" onclick="qPick('+i+')">'+(i+1)+'. '+o+'</button>';});
+  h+='</div><div class="qfact" id="qfact">'+q.f+'</div></div>';
+  document.getElementById('qbox').innerHTML=h;
+}
+function qPick(i){
+  if(qAns)return;qAns=true;var q=qShuf[qI];
+  document.querySelectorAll('.qopt').forEach(function(b){b.classList.add('ans');var bi=+b.dataset.i;if(q.c.indexOf(bi)>-1)b.classList.add('ok');else if(bi===i)b.classList.add('no');});
+  if(q.c.indexOf(i)>-1){qScore++;document.getElementById('qsc').textContent=qScore;}
+  document.getElementById('qfact').style.display='block';
+  if(qI<qShuf.length-1)document.getElementById('qnext').style.display='inline-block';
+  else setTimeout(function(){
+    var m=qScore===qShuf.length?'🏆 Perfect score. You are a certified Terence Files scholar.':qScore>=5?'🔥 Solid. You know the lore.':qScore>=3?'😐 Mid. Study the Files more carefully.':'💀 You know nothing. Re-read the archive.';
+    document.getElementById('qbox').innerHTML+='<div style="margin-top:16px;padding:24px;border:1px solid rgba(123,108,255,.3);background:rgba(123,108,255,.06);font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:1.5rem;color:var(--violet2)">'+m+'</div>';
+  },300);
+}
+function qNext(){qI++;document.getElementById('qnext').style.display='none';qRender();}
+qInit();
+
+/* ---------- GLOSSARY TOGGLE ---------- */
+var glsOpen=false;
+function glsToggle(){
+  glsOpen=!glsOpen;
+  document.querySelectorAll('.gls-hide').forEach(function(c){c.style.display=glsOpen?'block':'';});
+  document.getElementById('glsBtn').textContent=glsOpen?'Hide Terms':'Show All Terms';
+}
+/* hide extras initially via JS (so they show if JS off) */
+(function(){var w=innerWidth;document.querySelectorAll('.gls-hide').forEach(function(c,i){if(i>=0)c.style.display='none';});})();
+
+/* ---------- NAV + PROGRESS ---------- */
+addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
+  var h=document.documentElement.scrollHeight-innerHeight;
+  document.getElementById('prog').style.width=(h>0?scrollY/h*100:0)+'%';
+});
+
+/* ---------- REVEAL ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+/* ---------- VAULT INTRO ---------- */
+addEventListener('load',function(){setTimeout(function(){document.getElementById('vault').classList.add('open');},2100);});
+</script>
+</body>
+</html>
