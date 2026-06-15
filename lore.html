@@ -11,7 +11,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   /* RED + DEEP NAVY — Terence the Angry Bird is RED */
-  --void:#04060f; --void2:#060810; --panel:#080d1e; --line:rgba(232,65,65,.18);
+  --void:#020408; --void2:#03050c; --panel:#05080f; --line:rgba(232,65,65,.22);
   --bone:#ece9e4; --mut:#8a8fa8;
   --red:#e84141; --red2:#ff6b6b; --redfaint:rgba(232,65,65,.12);
   --navy:#0a1628; --navy2:#0d1f3c;
@@ -26,7 +26,7 @@
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{font-family:'Sora',sans-serif;background:var(--void);color:var(--bone);overflow-x:hidden;max-width:100vw;line-height:1.65;
-  background-image:radial-gradient(ellipse at 50% -10%,rgba(232,65,65,.15),transparent 55%),radial-gradient(ellipse at 85% 12%,rgba(37,99,235,.12),transparent 45%),radial-gradient(ellipse at 12% 108%,rgba(232,193,112,.08),transparent 50%)}
+  background-image:radial-gradient(ellipse at 50% -10%,rgba(232,65,65,.22),transparent 50%),radial-gradient(ellipse at 85% 12%,rgba(37,99,235,.18),transparent 45%),radial-gradient(ellipse at 12% 108%,rgba(232,193,112,.12),transparent 50%)}
 img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 ::selection{background:var(--red);color:#04060f}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -38,13 +38,13 @@ img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
 #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--red),var(--red2),var(--gold));z-index:9000;box-shadow:0 0 12px rgba(232,65,65,.7)}
 
 /* VAULT INTRO */
-#vault{position:fixed;inset:0;z-index:9999;background:var(--void);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s var(--ease),visibility .8s}
+#vault{position:fixed;inset:0;z-index:9999;background:#010204;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s var(--ease),visibility .8s}
 #vault.open{opacity:0;visibility:hidden}
 .vault-ring{width:min(260px,62vw);height:min(260px,62vw);border:1px solid rgba(232,65,65,.25);border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center}
 .vault-ring::before{content:'';position:absolute;inset:18px;border:1px solid rgba(37,99,235,.18);border-radius:50%}
 .vault-ring i{position:absolute;inset:-1px;border-radius:50%;border:2px solid transparent;border-top-color:var(--red);border-right-color:var(--blue);animation:spin 1.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.vault-sym{font-size:clamp(3rem,9vw,5rem);color:var(--gold);text-shadow:0 0 30px rgba(232,193,112,.5);animation:flick 2.4s infinite}
+.vault-sym{font-size:clamp(3rem,9vw,5rem);color:var(--gold);text-shadow:0 0 30px rgba(232,193,112,.5);animation:flick 2.4s infinite;display:none}
 @keyframes flick{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.4}52%{opacity:1}}
 .vault-txt{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-top:34px}
 .vault-txt b{color:var(--red2)}
@@ -108,7 +108,7 @@ section{padding:var(--gap) var(--pad);position:relative;z-index:2}
 
 /* MEMES */
 .memes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;margin-top:46px}
-.meme{background:var(--panel);border:1px solid var(--line);padding:34px 30px;position:relative;overflow:hidden;transition:.3s var(--ease)}
+.meme{background:rgba(3,5,10,.95);border:1px solid var(--line);padding:34px 30px;position:relative;overflow:hidden;transition:.3s var(--ease)}
 .meme:hover{background:rgba(232,65,65,.07);border-color:rgba(232,65,65,.4);transform:translateY(-3px)}
 .meme .n{position:absolute;top:-18px;right:8px;font-family:'Syne',sans-serif;font-weight:800;font-size:7rem;color:rgba(232,65,65,.06);line-height:1}
 .meme .ic{font-size:2rem;margin-bottom:16px}
@@ -126,7 +126,7 @@ section{padding:var(--gap) var(--pad);position:relative;z-index:2}
 .qnext:hover{filter:brightness(1.1)}
 .qshuf{background:transparent;color:var(--red2);border-color:rgba(232,65,65,.4)}
 .qshuf:hover{background:rgba(232,65,65,.1)}
-.qcard{border:1px solid var(--line);background:var(--panel);padding:34px;margin-top:20px}
+.qcard{border:1px solid var(--line);background:rgba(5,8,15,.98);padding:34px;margin-top:20px}
 .qno{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .qq{font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;color:var(--bone);margin-bottom:22px;line-height:1.3}
 .qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -164,15 +164,15 @@ section{padding:var(--gap) var(--pad);position:relative;z-index:2}
 
 /* GLOSSARY */
 .gls{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;margin-top:46px}
-.glc{padding:24px 22px;border:1px solid rgba(255,255,255,.05);background:var(--panel);border-left:3px solid transparent;transition:.25s var(--ease)}
+.glc{padding:24px 22px;border:1px solid rgba(255,255,255,.05);background:rgba(3,5,10,.95);border-left:3px solid transparent;transition:.25s var(--ease)}
 .glc:hover{background:rgba(232,65,65,.07);border-color:rgba(232,65,65,.3);border-left-color:var(--gold);transform:translateX(4px)}
 .glc .term{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--bone);transition:color .2s}
 .glc:hover .term{color:var(--red2)}
 .glc .ph{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--mut);margin:3px 0 10px}
 .glc .def{font-size:.84rem;color:var(--mut);line-height:1.65}
 .glc .tg{display:inline-block;font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border:1px solid rgba(232,193,112,.3);color:var(--gold);margin-top:10px}
-.glsmore{margin-top:18px;width:100%;background:transparent;border:1px solid rgba(232,65,65,.3);color:var(--red2);padding:13px;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:.2s}
-.glsmore:hover{background:rgba(232,65,65,.08)}
+.glsmore{margin-top:22px;width:100%;background:rgba(232,65,65,.12);border:2px solid var(--red);color:#fff;padding:18px;font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.25s;text-shadow:0 0 12px rgba(232,65,65,.8);box-shadow:0 0 20px rgba(232,65,65,.2)}
+.glsmore:hover{background:rgba(232,65,65,.25);box-shadow:0 0 30px rgba(232,65,65,.5);transform:translateY(-2px)}
 .license{margin-top:18px;border:1px solid var(--line);background:rgba(232,193,112,.03);padding:16px 22px;font-family:'Space Mono',monospace;font-size:.66rem;color:var(--mut);letter-spacing:.04em;line-height:1.7}
 
 /* TAXONOMY */
@@ -213,6 +213,15 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,8vw,90px) var(--pad) 
 .fback{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:15px 34px;background:var(--grad);color:#fff;transition:.3s var(--ease)}
 .fback:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(232,65,65,.4)}
 .fbtm{margin-top:54px;border-top:1px solid rgba(255,255,255,.06);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--mut)}
+
+/* CONCERT POLICY SCARY */
+.legnote{animation:borderFlicker 3s infinite}
+@keyframes borderFlicker{0%,100%{border-color:var(--line);box-shadow:none}45%{border-color:rgba(232,65,65,.4);box-shadow:0 0 18px rgba(232,65,65,.3)}50%{border-color:rgba(232,65,65,.9);box-shadow:0 0 32px rgba(232,65,65,.7),inset 0 0 20px rgba(232,65,65,.05)}55%{border-color:rgba(232,65,65,.4);box-shadow:0 0 18px rgba(232,65,65,.3)}}
+.legnote .h{animation:textFlicker 4s infinite;font-size:.78rem}
+@keyframes textFlicker{0%,100%{color:var(--gold);text-shadow:none}30%{color:#fff;text-shadow:0 0 10px rgba(232,65,65,.9)}31%{color:var(--gold);text-shadow:none}60%{color:#ff4444;text-shadow:0 0 16px rgba(232,65,65,1)}61%{color:var(--gold);text-shadow:none}}
+.legnote .em{font-weight:700;font-size:1rem;animation:pulseRed 1.5s ease-in-out infinite}
+@keyframes pulseRed{0%,100%{color:var(--red);text-shadow:0 0 8px rgba(232,65,65,.5)}50%{color:#ff2222;text-shadow:0 0 20px rgba(232,65,65,1)}}
+.legnote .vi{font-weight:700;color:var(--blue2)}
 </style>
 </head>
 <body>
@@ -223,7 +232,7 @@ footer{border-top:1px solid var(--line);padding:clamp(56px,8vw,90px) var(--pad) 
 
 <!-- VAULT INTRO -->
 <div id="vault">
-  <div class="vault-ring"><i></i><div class="vault-sym">&#8964;</div></div>
+  <div class="vault-ring"><i></i><img src="https://static.wikia.nocookie.net/angrybirds/images/0/07/Terence_bird_AB2.png/revision/latest/scale-to-width/360?cb=20230724171211" alt="Terence" style="width:60%;height:60%;object-fit:contain;animation:flick 2.4s infinite;filter:drop-shadow(0 0 20px rgba(232,65,65,.6))"></div>
   <div class="vault-txt">Decrypting archive &middot; <b>clearance: ITF</b></div>
 </div>
 
@@ -303,7 +312,7 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
   <p class="sub">A hidden archive of the Pablo &times; Evren universe. Sacred memes, song legislation and the Holy Taxonomy — preserved beneath the tour. Read carefully. You will be tested.</p>
   <div class="meta">
     <div><div class="k">Clearance Tiers</div><div class="v">ITF &middot; OTF &middot; TFA</div></div>
-    <div><div class="k">Headquarters</div><div class="v">MH67</div></div>
+    <div><div class="k">Headquarters</div><div class="v">MH69</div></div>
     <div><div class="k">Currency</div><div class="v">&#127829; McChickens</div></div>
   </div>
   <div class="hint"><i></i>Descend</div>
@@ -324,7 +333,7 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
 </section>
 
 <!-- QUIZ -->
-<section id="quiz" style="background:var(--void2)">
+<section id="quiz" style="background:rgba(2,4,9,1)">
   <span class="eyebrow reveal">The Trial</span>
   <h2 class="sec-title reveal dl1">Terence Files Quiz</h2>
   <div class="rule reveal dl1"></div>
@@ -371,7 +380,7 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
 </section>
 
 <!-- GLOSSARY -->
-<section id="glossary" style="background:var(--void2)">
+<section id="glossary" style="background:rgba(2,4,9,1)">
   <span class="eyebrow reveal">The Official Lexicon</span>
   <h2 class="sec-title reveal dl1">Holy Obesity Glossary</h2>
   <div class="rule reveal dl1"></div>
@@ -395,10 +404,10 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
     <div class="glc gls-hide"><div class="term">Moggogogers</div><div class="ph">/ mog&middot;go&middot;go&middot;gers /</div><div class="def">Very Big. Very Left. No further questions.</div><span class="tg">Entity</span></div>
     <div class="glc gls-hide"><div class="term">Big D</div><div class="ph">/ big&middot;dee /</div><div class="def">Holy Obesity. Weighs 67&#178; obese KG — like TON 618. Once destroyed the tire of Bus 38.</div><span class="tg">Holy Obesity</span></div>
     <div class="glc gls-hide"><div class="term">McChicken</div><div class="ph">/ mc&middot;chik&middot;en /</div><div class="def">Official currency of the Terence Files. All fines denominated in McChickens.</div><span class="tg">&#127829; Currency</span></div>
-    <div class="glc gls-hide"><div class="term">MH67</div><div class="ph">/ em&middot;aitch&middot;67 /</div><div class="def">Morhaldenstrasse 67. Official headquarters of the Terence Files. 100% legal.</div><span class="tg">Headquarters</span></div>
+    <div class="glc gls-hide"><div class="term">MH69</div><div class="ph">/ em&middot;aitch&middot;67 /</div><div class="def">Mohrhaldenstrasse 69. Official headquarters of the Terence Files. 100% legal.</div><span class="tg">Headquarters</span></div>
   </div>
   <button class="glsmore" id="glsBtn" onclick="glsToggle()">Show All Terms</button>
-  <div class="license">&#9733; Licensed under the Morhaldenstrasse 67 Public License (MH67-PL). Enforced by The Left Police (TLP). Fines issued in &#127829; McChickens. Do NOT spam Good Night.</div>
+  <div class="license">&#9733; Licensed under the Mohrhaldenstrasse 69 Public License (MH69-PL). Enforced by The Left Police (TLP). Fines issued in &#127829; McChickens. Do NOT spam Good Night.</div>
 </section>
 
 <!-- TAXONOMY -->
@@ -416,10 +425,10 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
 <!-- FOOTER -->
 <footer>
   <div class="rune" style="top:10%;right:6%;font-size:12rem;opacity:.5">&#10022;</div>
-  <div class="fmark">The <b>Terence</b> Files<small>Classified Archive &middot; Clearance ITF &middot; MH67</small></div>
+  <div class="fmark">The <b>Terence</b> Files<small>Classified Archive &middot; Clearance ITF &middot; MH69</small></div>
   <a class="fback" href="index.html">&#8592; Return to the World Tour</a>
   <div class="fbtm">
-    <span>&copy; 2026 Pablo &times; Evren &middot; Terence Files &middot; MH67-PL</span>
+    <span>&copy; 2026 Pablo &times; Evren &middot; Terence Files &middot; MH69-PL</span>
     <span>Basel, Switzerland &middot; Family Nibbooggers &#10084;&#65039;</span>
   </div>
 </footer>
