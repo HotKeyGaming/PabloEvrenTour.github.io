@@ -102,8 +102,8 @@ nav.scrolled{background:rgba(10,10,10,.88);backdrop-filter:blur(18px);border-bot
 @media(max-width:768px){.himg{background-position:center 20%}}
 .himg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.97) 100%)}
 .hcont{position:relative;z-index:3;padding:0 var(--pad) clamp(60px,8vw,110px)}
-.heye{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:0;transform:translateY(20px);transition:.9s var(--ease);margin-bottom:20px;display:block}
-.htitle{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(4rem,15vw,13rem);line-height:.85;letter-spacing:-.02em;margin:0}
+.heye{font-family:'Space Mono',monospace;font-size:.92rem;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);opacity:0;transform:translateY(20px);transition:.9s var(--ease);margin-bottom:22px;display:block}
+.htitle{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(4rem,15vw,13rem);line-height:.85;letter-spacing:-.02em;margin:0;font-style:italic}
 .htitle .w{display:inline-block;opacity:0;transform:translateY(46px);transition:.85s var(--ease)}
 .htitle .wg{color:var(--accent)}
 .htitle .wm{color:rgba(255,255,255,.55)}
@@ -357,8 +357,8 @@ section{padding:var(--gap) var(--pad);position:relative}
 .login-box{background:var(--dark2);border:1px solid rgba(205,177,117,.25);padding:48px 44px;width:min(480px,90vw);position:relative;text-align:center}
 
 /* FEEDBACK */
-#feedback-btn{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:250;background:var(--gradv);color:#fff;font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 20px;cursor:pointer;border:none;border-radius:8px 8px 0 0;box-shadow:0 -2px 16px rgba(205,177,117,.3);transition:all .2s}
-#feedback-btn:hover{padding-bottom:12px}
+#feedback-btn{display:none}
+
 #feedback-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:400;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(8px)}
 #feedback-modal.open{display:flex}
 .fbkbox{background:var(--dark2);border:1px solid rgba(205,177,117,.25);border-bottom:none;padding:36px 32px;width:min(520px,100vw);position:relative;border-radius:12px 12px 0 0;animation:slideUp .3s var(--ease)}
@@ -398,17 +398,17 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
 #lbg{position:absolute;inset:0;background-image:url('https://plain-weur-prod-public.komododecks.com/202605/24/9e1bUS4GzZ5xpBq5kmnn/image.png');background-size:cover;background-position:center top;opacity:.7}
 #lgr{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.25) 0%,rgba(10,10,10,.75) 100%)}
 #li{position:relative;z-index:2;text-align:center;padding:0 24px}
-#ley{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.38em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-#lt{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,14vw,9rem);letter-spacing:-.02em;line-height:.9;color:#fff}
-#lt span{color:var(--accent)}
-#ls{font-family:'Space Mono',monospace;font-size:clamp(.7rem,2vw,1rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:16px}
+#ley{font-family:'Space Mono',monospace;font-size:1rem;letter-spacing:.36em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+#lt{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,14vw,9rem);letter-spacing:-.02em;line-height:.88;color:#fff;font-style:italic}
+#lt span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#ls{font-family:'Space Mono',monospace;font-size:clamp(.88rem,2.2vw,1.15rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:20px}
 #ltrack{margin:40px auto 0;width:220px;height:2px;background:rgba(255,255,255,.12);overflow:hidden;border-radius:2px}
 #lbar{height:100%;width:0%;background:linear-gradient(to right,var(--accent),var(--accent2));transition:width 1.9s cubic-bezier(.22,1,.36,1);border-radius:2px}
 </style>
 <div id="loader"><div id="lbg"></div><div id="lgr"></div>
 <div id="li">
   <div id="ley">World Tour 2026</div>
-  <div id="lt"><span>Pablo</span> &amp; Evren</div>
+  <div id="lt"><span>Pablo</span> <span>&amp; Evren</span></div>
   <div id="ls">Live World Tour 2026</div>
   <div id="ltrack"><div id="lbar"></div></div>
 </div></div>
@@ -968,7 +968,133 @@ setInterval(updateTorontoCountdown, 60000);
 <div class="timeline-wrap">
   <div class="timeline-line"></div>
 
+  <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
+
+  <!-- Basel - always first -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Daily</div></div>
+      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">Every Day</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
+      <div class="dr-action"><span class="unavail">Ongoing</span></div>
+    </div>
+  </div>
+
+  <!-- Milan Jun 19 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">19</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇹</span> Milan, Italy</h3>
+        <p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 19 Jun 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Milan Jun 21 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">21</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">&#127470;&#127481;</span> Milan, Italy <span style="display:inline-block;background:var(--gradv);color:#fff;font-size:.72rem;letter-spacing:.18em;padding:5px 14px;font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;vertical-align:middle;margin-left:8px;box-shadow:0 0 16px rgba(205,177,117,.5);animation:pulse2 2s ease-in-out infinite">🔥 SECOND NIGHT</span></h3>
+        <p>Mind Live Theatre / Mind Live Arena Milano &middot; Doors 21:00 &middot; 21 Jun 2026</p>
+        <p class="dr-note">&#9733; Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stockholm -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">&#127480;&#127466;</span> Stockholm, Sweden</h3>
+        <p>Strawberry Arena &middot; Doors 21:00 &middot; 11 Jul 2026</p>
+        <p class="dr-note">&#9733; Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="stockholm.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hurghada -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://imgs.ysscores.com/stadium/600/5711727168786.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">17</div></div>
+      <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
+      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
+    </div>
+  </div>
+
+  <!-- Toronto -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">28</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇨🇦</span> Toronto, Canada <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
+        <p>Rogers Centre · Doors 21:00 · 28 Dec 2026</p>
+        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
+        <a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="dates-disclaimer">
+    <span style="font-size:1.2rem;">⚠️</span>
+    <div>
+      <p><strong style="color:rgba(200,169,110,0.8);">Please Note</strong><br>Dates and venues may be updated at any time. Subscribe to our newsletter for the latest.</p>
+      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Arnhem, Netherlands (8 Jun 2026) completed — Special Guest: Kanye West</strong></p>
+      <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Reggio Emilia (18 Jul 2026) has been cancelled</strong> due to Security Concerns. We sincerely apologize to all fans.</p>
+      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Vaduz rescheduled to May 17</strong> — same venue, same time.</p>
+      <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
+    </div>
+  </div>
+
+  <!-- More Dates Coming Soon -->
+  <div class="dates-coming">
+    <div style="flex:1;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.08em;color:var(--white);line-height:1;">More Dates Coming Soon</div>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:4px;">New cities being added to the 2026 World Tour. Be the first to know.</p>
+    </div>
+    <a href="#newsletter" style="background:var(--accent);color:var(--black);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Notify Me →</a>
+  </div>
+
+  <!-- ══ CANCELLED ══ -->
   <!-- ══ COMPLETED ══ -->
+  <div class="dates-divider" style="color:rgba(100,200,100,0.7);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✓ Completed Shows</div>
+
   <div class="dates-divider" style="color:rgba(100,200,100,0.7);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✓ Completed Shows</div>
 
   <!-- Basel -->
@@ -1144,149 +1270,6 @@ setInterval(updateTorontoCountdown, 60000);
     </div>
   </div>
 
-  <div class="dates-divider" style="color:var(--accent);font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">↓ Upcoming Shows</div>
-
-  <!-- Basel - always first -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://media.bs.ch/fe_nuxt_crop/variables-w-400-h-225/ef518fb78ac96f27999c9d9fbe7d1c1901f02e01/image.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Daily</div><div class="dr-day ongoing">Daily</div></div>
-      <div class="dr-info"><h3><span class="flag">🇨🇭</span> Basel, Switzerland <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">Every Day</span></h3><p>St. Jakob Park Stadium · Doors 21:00 · 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
-      <div class="dr-action"><span class="unavail">Ongoing</span></div>
-    </div>
-  </div>
-
-  <!-- Milan Jun 19 -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">19</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇮🇹</span> Milan, Italy</h3>
-        <p>Mind Live Theatre / Mind Live Arena Milano · Doors 21:00 · 19 Jun 2026</p>
-        <p class="dr-note">★ Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Milan Jun 19 -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">19</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">&#127470;&#127481;</span> Milan, Italy</h3>
-        <p>Mind Live Theatre / Mind Live Arena Milano &middot; Doors 21:00 &middot; 19 Jun 2026</p>
-        <p class="dr-note">&#9733; Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Milan Jun 21 -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jun 2026</div><div class="dr-day">21</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">&#127470;&#127481;</span> Milan, Italy <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">&#10022; 2nd Show</span></h3>
-        <p>Mind Live Theatre / Mind Live Arena Milano &middot; Doors 21:00 &middot; 21 Jun 2026</p>
-        <p class="dr-note">&#9733; Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="milan.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Stockholm -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">&#127480;&#127466;</span> Stockholm, Sweden</h3>
-        <p>Strawberry Arena &middot; Doors 21:00 &middot; 11 Jul 2026</p>
-        <p class="dr-note">&#9733; Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="stockholm.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hurghada -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://imgs.ysscores.com/stadium/600/5711727168786.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">17</div></div>
-      <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
-      <div class="dr-action"><a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a></div>
-    </div>
-  </div>
-
-  <!-- Toronto -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">28</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇨🇦</span> Toronto, Canada <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
-        <p>Rogers Centre · Doors 21:00 · 28 Dec 2026</p>
-        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend</span></p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Disclaimer -->
-  <div class="dates-disclaimer">
-    <span style="font-size:1.2rem;">⚠️</span>
-    <div>
-      <p><strong style="color:rgba(200,169,110,0.8);">Please Note</strong><br>Dates and venues may be updated at any time. Subscribe to our newsletter for the latest.</p>
-      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Arnhem, Netherlands (8 Jun 2026) completed — Special Guest: Kanye West</strong></p>
-      <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Reggio Emilia (18 Jul 2026) has been cancelled</strong> due to Security Concerns. We sincerely apologize to all fans.</p>
-      <p style="margin-top:8px;"><strong style="color:#4caf50;">✓ Vaduz rescheduled to May 17</strong> — same venue, same time.</p>
-      <p style="margin-top:8px;color:rgba(232,65,65,0.8);"><strong>⚠ Istanbul (30 May 2026) has been cancelled.</strong> Kanye West has booked Atatürk Olympic Stadium on that date. We sincerely apologize. A rescheduled date will be announced.</p>
-    </div>
-  </div>
-
-  <!-- More Dates Coming Soon -->
-  <div class="dates-coming">
-    <div style="flex:1;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.08em;color:var(--white);line-height:1;">More Dates Coming Soon</div>
-      <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:4px;">New cities being added to the 2026 World Tour. Be the first to know.</p>
-    </div>
-    <a href="#newsletter" style="background:var(--accent);color:var(--black);padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">Notify Me →</a>
-  </div>
-
-  <!-- ══ CANCELLED ══ -->
   <div class="dates-divider" style="color:#e84141;font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">✕ Cancelled Shows</div>
 
   <!-- Istanbul May 30 CANCELLED -->
@@ -1468,6 +1451,17 @@ setInterval(updateTorontoCountdown, 60000);
       <h3>Exclusive Songs</h3>
       <p>Tour-only tracks and unreleased music dropped live before they hit streaming. You have to be there to hear them first.</p>
     </div>
+  </div>
+</section>
+
+<!-- LORE CTA -->
+<section id="lorecta" style="padding:0 var(--pad) var(--gap);">
+  <div class="reveal" style="position:relative;overflow:hidden;border:1px solid rgba(205,177,117,.3);padding:clamp(48px,8vw,90px) clamp(24px,5vw,70px);text-align:center;background:radial-gradient(ellipse at 50% 120%,rgba(205,177,117,.2),transparent 60%),linear-gradient(135deg,#0a0716,#0d0a1c);">
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"><span style="position:absolute;top:6%;left:4%;font-size:11rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#8964;</span><span style="position:absolute;bottom:-4%;right:3%;font-size:9rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#10022;</span></div>
+    <span style="font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent2)">Classified &middot; Inside Terence Files</span>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,4.2rem);line-height:1;margin:14px 0 16px;color:#fff">The Lore Backstory</h2>
+    <p style="font-size:.94rem;color:rgba(255,255,255,.5);max-width:540px;margin:0 auto 30px;line-height:1.7">A hidden archive of the Pablo &times; Evren universe — sacred memes, song legislation, the Holy Obesity glossary and the Holy Taxonomy. Enter the vault.</p>
+    <a href="lore.html" style="display:inline-flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;padding:18px 42px;background:var(--gradv);color:#fff;text-decoration:none;transition:all .35s;box-shadow:0 10px 40px rgba(205,177,117,.3)" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">Enter the Archive &#8594;</a>
   </div>
 </section>
 
@@ -2699,17 +2693,6 @@ window.addEventListener('DOMContentLoaded', function(){
   </div>
 </section>
 
-
-<!-- LORE CTA -->
-<section id="lorecta" style="padding:0 var(--pad) var(--gap);">
-  <div class="reveal" style="position:relative;overflow:hidden;border:1px solid rgba(205,177,117,.3);padding:clamp(48px,8vw,90px) clamp(24px,5vw,70px);text-align:center;background:radial-gradient(ellipse at 50% 120%,rgba(205,177,117,.2),transparent 60%),linear-gradient(135deg,#0a0716,#0d0a1c);">
-    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"><span style="position:absolute;top:6%;left:4%;font-size:11rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#8964;</span><span style="position:absolute;bottom:-4%;right:3%;font-size:9rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#10022;</span></div>
-    <span style="font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent2)">Classified &middot; Inside Terence Files</span>
-    <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,4.2rem);line-height:1;margin:14px 0 16px;color:#fff">The Lore Backstory</h2>
-    <p style="font-size:.94rem;color:rgba(255,255,255,.5);max-width:540px;margin:0 auto 30px;line-height:1.7">A hidden archive of the Pablo &times; Evren universe — sacred memes, song legislation, the Holy Obesity glossary and the Holy Taxonomy. Enter the vault.</p>
-    <a href="lore.html" style="display:inline-flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;padding:18px 42px;background:var(--gradv);color:#fff;text-decoration:none;transition:all .35s;box-shadow:0 10px 40px rgba(205,177,117,.3)" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">Enter the Archive &#8594;</a>
-  </div>
-</section>
 
 <!-- VIP EXPERIENCE -->
 <section id="vip">
