@@ -157,13 +157,18 @@ section{padding:var(--gap) var(--pad);position:relative}
 .dr-dot{width:12px;height:12px;border-radius:50%;background:var(--dark);border:2px solid rgba(205,177,117,.35);flex-shrink:0;transition:all .2s;margin-left:-5px}
 .dr:hover .dr-dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 12px rgba(205,177,117,.5)}
 .dr.upcoming .dr-dot{border-color:var(--accent);animation:dotPulse 2s ease-in-out infinite}
-.dr.completed .dr-dot{background:#2d6a2d;border-color:#4caf50}
+.dr.completed .dr-dot{background:#1a3a1a;border-color:rgba(52,211,153,.4)}
+.dr.completed{opacity:.7;filter:saturate(.6)}
+.dr.completed:hover{opacity:.9;filter:saturate(.8)}
+.dr.completed .dr-day{font-size:1.8rem!important;color:rgba(255,255,255,.6)!important}
+.dr.completed .dr-info h3{font-size:1.1rem!important;color:rgba(255,255,255,.7)!important}
+.dr.completed .dr-month{color:rgba(52,211,153,.6)!important}
 @keyframes dotPulse{0%,100%{box-shadow:0 0 0 0 rgba(205,177,117,.5)}50%{box-shadow:0 0 0 6px rgba(205,177,117,0)}}
 .dr-month{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
 .dr-day{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;line-height:1;color:var(--white)}
 .dr-info h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.dr.upcoming .dr-info h3,.dr.completed .dr-info h3{font-size:1.35rem!important}
-.dr.upcoming .dr-day,.dr.completed .dr-day{font-size:2.5rem!important}
+.dr.upcoming .dr-info h3{font-size:1.35rem!important}
+.dr.upcoming .dr-day{font-size:2.5rem!important}
 .dr-info p{font-size:.76rem;color:rgba(255,255,255,.38);margin-top:3px}
 .dr-info .dr-note{font-size:.72rem;color:var(--accent);margin-top:5px}
 .badge-done{display:inline-block;background:rgba(50,180,50,.15);border:1px solid rgba(50,180,50,.35);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle}
@@ -184,7 +189,7 @@ section{padding:var(--gap) var(--pad);position:relative}
 .dates-disclaimer{margin:16px var(--pad);padding:16px 20px;border:1px solid rgba(205,177,117,.2);background:rgba(205,177,117,.03);display:flex;gap:14px;align-items:flex-start}
 .dates-disclaimer p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6}
 .dates-coming{margin:0 var(--pad);padding:22px 0;border-top:1px solid rgba(205,177,117,.12);border-bottom:1px solid rgba(205,177,117,.12);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-@media(max-width:768px){.dr-inner{grid-template-columns:16px 54px 1fr;gap:8px;padding:14px 12px 14px 14px}.dr-action{grid-column:3;display:flex!important;flex-direction:row;gap:6px;flex-wrap:wrap;margin-top:4px}.dr-action a,.dr-action span{font-size:.58rem!important;padding:6px 10px!important}.dr.upcoming .dr-info h3,.dr.completed .dr-info h3{font-size:1rem!important}.dr.upcoming .dr-day,.dr.completed .dr-day{font-size:1.7rem!important}.timeline-line{left:16px}}
+@media(max-width:768px){.dr-inner{grid-template-columns:16px 54px 1fr;gap:8px;padding:14px 12px 14px 14px}.dr-action{grid-column:3;display:flex!important;flex-direction:row;gap:6px;flex-wrap:wrap;margin-top:4px}.dr-action a,.dr-action span{font-size:.58rem!important;padding:6px 10px!important}.dr.upcoming .dr-info h3{font-size:1rem!important}.dr.upcoming .dr-day{font-size:1.7rem!important}.timeline-line{left:16px}}
 
 /* MAP */
 #tourmap{background:var(--dark2)}
@@ -903,7 +908,9 @@ setInterval(updateTorontoCountdown, 60000);
   .dr-dot { width:12px; height:12px; border-radius:50%; background:var(--dark); border:2px solid rgba(200,169,110,0.35); flex-shrink:0; transition:all 0.2s; margin-left:-5px; }
   .dr:hover .dr-dot { border-color:var(--accent); background:var(--accent); box-shadow:0 0 12px rgba(200,169,110,0.5); }
   .dr.upcoming .dr-dot { border-color:var(--accent); animation:dotPulse 2s ease-in-out infinite; }
-  .dr.completed .dr-dot { background:#2d6a2d; border-color:#4caf50; }
+  .dr.completed .dr-dot { background:#1a3a1a; border-color:rgba(52,211,153,.4); }
+  .dr.completed { opacity:.7; filter:saturate(.6); }
+  .dr.completed:hover { opacity:.9; filter:saturate(.8); }
   @keyframes dotPulse { 0%,100%{box-shadow:0 0 0 0 rgba(200,169,110,0.5)} 50%{box-shadow:0 0 0 6px rgba(200,169,110,0)} }
 
   .dr-date { }
@@ -911,9 +918,9 @@ setInterval(updateTorontoCountdown, 60000);
   .dr-day { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; line-height:1; letter-spacing:0.04em; color:var(--white); }
 
   .dr-info h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .dr.upcoming .dr-info h3, .dr.completed .dr-info h3 { font-size:1.55rem !important; }
-  .dr.upcoming .dr-day, .dr.completed .dr-day { font-size:2.8rem !important; }
-  .dr.upcoming .dr-month, .dr.completed .dr-month { font-size:0.72rem !important; }
+  .dr.upcoming .dr-info h3 { font-size:1.55rem !important; }
+  .dr.upcoming .dr-day { font-size:2.8rem !important; }
+  .dr.upcoming .dr-month { font-size:0.72rem !important; }
   .dr.completed .dr-day.ongoing { font-size:1.6rem !important; }
   .dr-info h3 .flag { font-size:1.1rem; }
   .dr-info h3 .badge-done { display:inline-block; background:rgba(50,180,50,0.15); border:1px solid rgba(50,180,50,0.35); color:#7ec87e; font-size:0.56rem; letter-spacing:0.16em; padding:3px 9px; font-weight:700; vertical-align:middle; }
@@ -1464,12 +1471,61 @@ setInterval(updateTorontoCountdown, 60000);
 
 <!-- LORE CTA -->
 <section id="lorecta" style="padding:0 var(--pad) var(--gap);">
-  <div class="reveal" style="position:relative;overflow:hidden;border:1px solid rgba(205,177,117,.3);padding:clamp(48px,8vw,90px) clamp(24px,5vw,70px);text-align:center;background:radial-gradient(ellipse at 50% 120%,rgba(205,177,117,.2),transparent 60%),linear-gradient(135deg,#0a0716,#0d0a1c);">
-    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"><span style="position:absolute;top:6%;left:4%;font-size:11rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#8964;</span><span style="position:absolute;bottom:-4%;right:3%;font-size:9rem;font-family:'Syne',sans-serif;color:rgba(205,177,117,.05)">&#10022;</span></div>
-    <span style="font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent2)">Classified &middot; Inside Terence Files</span>
-    <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,4.2rem);line-height:1;margin:14px 0 16px;color:#fff">The Lore Backstory</h2>
-    <p style="font-size:.94rem;color:rgba(255,255,255,.5);max-width:540px;margin:0 auto 30px;line-height:1.7">A hidden archive of the Pablo &times; Evren universe — sacred memes, song legislation, the Holy Obesity glossary and the Holy Taxonomy. Enter the vault.</p>
-    <a href="lore.html" style="display:inline-flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;padding:18px 42px;background:var(--gradv);color:#fff;text-decoration:none;transition:all .35s;box-shadow:0 10px 40px rgba(205,177,117,.3)" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">Enter the Archive &#8594;</a>
+  <style>
+    #lorecta-inner{position:relative;overflow:hidden;border:1px solid rgba(232,65,65,.35);padding:clamp(56px,9vw,110px) clamp(24px,5vw,70px);text-align:center;background:linear-gradient(135deg,#060210,#0a0418,#060210);cursor:pointer}
+    #lorecta-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(232,65,65,.12),transparent 65%);animation:lorePulse 3s ease-in-out infinite;pointer-events:none}
+    @keyframes lorePulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
+    #lorecta-inner::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(232,65,65,.015) 2px,rgba(232,65,65,.015) 4px);pointer-events:none;animation:scanlines 8s linear infinite}
+    @keyframes scanlines{0%{background-position:0 0}100%{background-position:0 100px}}
+    .lore-rune{position:absolute;font-family:'Syne',sans-serif;font-weight:800;pointer-events:none;user-select:none}
+    .lore-eyebrow{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(232,65,65,.8);display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:22px}
+    .lore-eyebrow .blink{width:8px;height:8px;border-radius:50%;background:#e84141;animation:lblink 1s infinite;box-shadow:0 0 10px rgba(232,65,65,.8)}
+    @keyframes lblink{0%,100%{opacity:1}50%{opacity:.15}}
+    #lore-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,7vw,5.5rem);line-height:.95;letter-spacing:-.02em;color:#fff;margin-bottom:18px;text-shadow:0 0 60px rgba(232,65,65,.4)}
+    #lore-title .red{color:#e84141;text-shadow:0 0 30px rgba(232,65,65,.9),0 0 60px rgba(232,65,65,.4);animation:titleGlow 2.5s ease-in-out infinite}
+    @keyframes titleGlow{0%,100%{text-shadow:0 0 20px rgba(232,65,65,.6),0 0 50px rgba(232,65,65,.3)}50%{text-shadow:0 0 40px rgba(232,65,65,1),0 0 80px rgba(232,65,65,.6),0 0 120px rgba(232,65,65,.3)}}
+    #lore-sub{font-family:'Sora',sans-serif;font-size:clamp(.9rem,1.8vw,1.1rem);color:rgba(255,255,255,.5);max-width:560px;margin:0 auto 36px;line-height:1.75}
+    .lore-stats{display:flex;justify-content:center;gap:clamp(24px,5vw,60px);flex-wrap:wrap;margin-bottom:36px}
+    .lore-stat .sv{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);color:#e84141;display:block;line-height:1}
+    .lore-stat .sk{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px;display:block}
+    .lore-enter-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(.9rem,2vw,1.15rem);letter-spacing:.12em;text-transform:uppercase;padding:20px 52px;background:linear-gradient(135deg,#8b0000,#e84141,#8b0000);background-size:200% 200%;color:#fff;text-decoration:none;border:1px solid rgba(232,65,65,.6);box-shadow:0 0 30px rgba(232,65,65,.4),inset 0 0 20px rgba(232,65,65,.1);animation:btnShift 3s ease-in-out infinite;transition:all .3s}
+    .lore-enter-btn:hover{transform:translateY(-4px);box-shadow:0 0 50px rgba(232,65,65,.8),inset 0 0 30px rgba(232,65,65,.2);background-position:100% 50%}
+    @keyframes btnShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .lore-enter-btn .arr{display:inline-block;animation:arrPulse .8s ease-in-out infinite}
+    @keyframes arrPulse{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+    .lore-border-anim{position:absolute;inset:0;pointer-events:none}
+    .lore-border-anim::before,.lore-border-anim::after{content:'';position:absolute;background:var(--red,#e84141)}
+    .lore-border-anim::before{top:0;left:-100%;width:100%;height:2px;animation:borderSlide 3s linear infinite}
+    .lore-border-anim::after{bottom:0;right:-100%;width:100%;height:2px;animation:borderSlide 3s linear infinite 1.5s}
+    @keyframes borderSlide{0%{transform:translateX(0)}100%{transform:translateX(200%)}}
+  </style>
+
+  <div id="lorecta-inner" class="reveal" onclick="window.location='lore.html'">
+    <div class="lore-border-anim"></div>
+
+    <!-- floating rune symbols -->
+    <div class="lore-rune" style="top:4%;left:3%;font-size:8rem;color:rgba(232,65,65,.06);animation:lorePulse 4s ease-in-out infinite">&#8964;</div>
+    <div class="lore-rune" style="bottom:-2%;right:2%;font-size:7rem;color:rgba(232,65,65,.06);animation:lorePulse 4s ease-in-out infinite .8s">&#10022;</div>
+    <div class="lore-rune" style="top:50%;left:1%;transform:translateY(-50%);font-size:5rem;color:rgba(232,65,65,.04);animation:lorePulse 5s ease-in-out infinite 1.2s">&#128683;</div>
+    <div class="lore-rune" style="top:50%;right:1%;transform:translateY(-50%);font-size:5rem;color:rgba(232,65,65,.04);animation:lorePulse 5s ease-in-out infinite .4s">&#128683;</div>
+
+    <div style="position:relative;z-index:2">
+      <div class="lore-eyebrow"><span class="blink"></span>Classified &middot; Inside Terence Files Only<span class="blink"></span></div>
+      <h2 id="lore-title">The <span class="red">Terence</span><br>Files</h2>
+      <p id="lore-sub">A hidden archive of the Pablo &times; Evren universe — sacred memes, song legislation, the Holy Obesity glossary and the Holy Taxonomy. Most fans scroll past this. Don't be most fans.</p>
+
+      <div class="lore-stats">
+        <div class="lore-stat"><span class="sv">4</span><span class="sk">Sacred Memes</span></div>
+        <div class="lore-stat"><span class="sv">19+</span><span class="sk">Glossary Terms</span></div>
+        <div class="lore-stat"><span class="sv">7</span><span class="sk">Quiz Questions</span></div>
+        <div class="lore-stat"><span class="sv">ITF</span><span class="sk">Clearance Required</span></div>
+      </div>
+
+      <a href="lore.html" class="lore-enter-btn">
+        &#128683; Enter the Archive <span class="arr">&#8594;</span>
+      </a>
+      <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.2)">Proceed with caution &middot; MH69 Clearance Required</div>
+    </div>
   </div>
 </section>
 
