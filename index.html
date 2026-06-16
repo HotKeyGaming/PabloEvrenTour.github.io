@@ -813,8 +813,8 @@ window.addEventListener('load',function(){
 
 <script>
 var shows = [
-  { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
-  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw" },
+  { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
+  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
   { city:"Toronto, Canada", venue:"Rogers Centre · Doors 21:00 · Evren Solo", date:new Date("2026-12-28T21:00:00"), img:"https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg" }
@@ -834,7 +834,7 @@ function updateCountdown(){
   }
   var cityEl=document.getElementById("cd-city"); if(cityEl) cityEl.textContent=show.city;
   var venueEl=document.getElementById("cd-venue"); if(venueEl) venueEl.textContent=show.venue;
-  var bgEl=document.getElementById("cd-bg"); if(bgEl) bgEl.style.backgroundImage="url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg')";
+  var bgEl=document.getElementById("cd-bg"); if(bgEl) bgEl.style.backgroundImage="url('" + show.img + "')";
   var diff=show.date-new Date(); if(diff<0)diff=0;
   var dd=document.getElementById("cd-d"); if(dd) dd.textContent=pad(diff/86400000);
   var dh=document.getElementById("cd-h"); if(dh) dh.textContent=pad((diff%86400000)/3600000);
@@ -1322,8 +1322,8 @@ setInterval(updateTorontoCountdown, 60000);
   <!-- ══ UNCONFIRMED ══ -->
   <div class="dates-divider" style="font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">? Unconfirmed</div>
 
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇦🇲</span> Yerevan, Armenia</h3><p>Venue TBC</p></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇰🇿</span> Almaty, Kazakhstan</h3><p>Venue TBC</p></div></div></div>
+
+
   <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇵🇪</span> Lima, Peru</h3><p>Venue TBC</p></div></div></div>
   <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇯🇵</span> Tokyo, Japan</h3><p>Venue TBC</p></div></div></div>
   <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇺🇸</span> Florida, USA</h3><p>Venue TBC</p></div></div></div>
