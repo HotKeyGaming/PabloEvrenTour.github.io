@@ -504,7 +504,7 @@ function closeMob(){document.getElementById('mob-nav').classList.remove('open');
   <button class="search-close" onclick="closeSearch()">&#10005;</button>
   <input id="search-input" type="text" placeholder="Search concerts, songs, cities, sections..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
   <div id="search-results"></div>
-  <div id="search-rec" style="width:min(680px,90vw);margin-top:18px;"></div>
+  <div id="search-recommendations" style="width:min(680px,90vw);margin-top:18px;"></div>
   <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:.66rem;color:rgba(255,255,255,.2);letter-spacing:.1em;">ESC to close &middot; Ctrl+K to open</div>
 </div>
 <script>
@@ -1094,11 +1094,8 @@ setInterval(updateTorontoCountdown, 60000);
 <!-- COMPLETED SECTION - visually separate -->
 <div style="background:#0a0f0a;border-top:3px solid rgba(52,211,153,.3);margin-top:0;padding-bottom:8px;">
   <div class="divider-completed"><span>&#10003;</span><span class="dc-text">Completed Shows</span></div>
-  <div class="timeline-wrap" style="opacity:.75;">
+  <div class="timeline-wrap">
   <div class="timeline-line" style="background:linear-gradient(to bottom,rgba(52,211,153,.4),rgba(52,211,153,.05));"></div>
-
-  <!-- Basel -->
-  </div>
 
   <!-- Barcelona -->
   <div class="dr completed">
