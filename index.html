@@ -452,6 +452,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
     <li><a href="#merch">Merch</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#pasttours" style="color:var(--accent)!important">Archive</a></li>
   </ul>
   <div class="nav-right">
     <button class="nbtn search-btn" onclick="openSearch()" title="Ctrl+K">&#128269; Search</button>
@@ -481,11 +482,14 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <a href="#merch" class="dl" onclick="closeMob()">Merchandise</a>
   <a href="#fanwall" class="dl" onclick="closeMob()">Fan Wall</a>
   <a href="#vip" class="dl" onclick="closeMob()">VIP Experience</a>
+  <a href="#pasttours" class="dl" onclick="closeMob()" style="color:var(--accent);font-weight:800">&#9733; Past Tours</a>
   <div class="dsec">Info</div>
   <a href="#socials" class="dl" onclick="closeMob()">Socials</a>
   <a href="#press" class="dl" onclick="closeMob()">Book Us</a>
   <a href="#contact" class="dl" onclick="closeMob()">Contact</a>
   <a href="lore.html" class="dl spec" onclick="closeMob()">The Lore Archive &#8594;</a>
+  <a href="2025.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2025 World Tour</a>
+  <a href="2024.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2024 World Tour</a>
   <div class="dtools">
     <div class="dsec" style="margin:0">Language</div>
     <div class="lrow"><button id="lang-en" onclick="setLang('en');updLang();" class="on">EN</button><button id="lang-de" onclick="setLang('de');updLang();">DE</button><button id="lang-es" onclick="setLang('es');updLang();">ES</button></div>
@@ -701,6 +705,7 @@ function submitFeedback(){
       <a href="#gallery" class="btn btn-g">Gallery</a>
       <a href="#merch" class="btn btn-g">Merch</a>
       <a href="#news" class="btn btn-g">News</a>
+      <a href="#pasttours" class="btn btn-g" style="border-color:rgba(205,177,117,.45);color:var(--accent);">&#9733; Past Tours</a>
     </div>
   </div>
   <div class="scrl"><div class="scrl-line"></div><span>Scroll</span></div>
@@ -1341,6 +1346,54 @@ setInterval(updateTorontoCountdown, 60000);
 </div><!-- end dates timeline-wrap (unconfirmed+cancelled) -->
 </div><!-- end dates-info -->
 </section><!-- end dates section -->
+
+<!-- PAST TOURS BLOCK -->
+<section id="pasttours" style="background:var(--dark);padding:clamp(50px,7vw,90px) var(--pad);">
+<style>
+  #pasttours-inner{position:relative;overflow:hidden;border:1px solid rgba(205,177,117,.3);padding:clamp(40px,6vw,80px) clamp(24px,5vw,60px);text-align:center;background:linear-gradient(135deg,#0d0b04,#15120a,#0d0b04);animation:ptBorderPulse 4s ease-in-out infinite}
+  @keyframes ptBorderPulse{0%,100%{border-color:rgba(205,177,117,.3);box-shadow:0 0 0 rgba(205,177,117,0)}50%{border-color:rgba(205,177,117,.7);box-shadow:0 0 30px rgba(205,177,117,.15)}}
+  #pasttours-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(205,177,117,.08),transparent 65%);animation:ptGlow 3s ease-in-out infinite;pointer-events:none}
+  @keyframes ptGlow{0%,100%{opacity:.5}50%{opacity:1}}
+  .pt-rune{position:absolute;font-family:'Syne',sans-serif;font-weight:800;color:rgba(205,177,117,.04);pointer-events:none;user-select:none}
+  .pt-eyebrow{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(205,177,117,.7);display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px}
+  .pt-eyebrow .ptdot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:ptdotpulse 1.4s infinite}
+  @keyframes ptdotpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
+  #pt-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,4rem);line-height:1;letter-spacing:-.01em;color:#fff;margin-bottom:10px}
+  #pt-sub{font-family:'Sora',sans-serif;font-size:.92rem;color:rgba(255,255,255,.4);margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto}
+  .pt-btns{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+  .pt-btn{display:inline-flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;padding:18px 48px;text-decoration:none;transition:all .3s var(--ease);position:relative;overflow:hidden}
+  .pt-btn::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+  .pt-btn:hover::before{opacity:1}
+  .pt-btn:hover{transform:translateY(-3px)}
+  .pt-btn-2024{background:transparent;color:var(--accent);border:2px solid var(--accent);box-shadow:0 0 0 rgba(205,177,117,0)}
+  .pt-btn-2024::before{background:var(--gradv)}
+  .pt-btn-2024:hover{color:#000;box-shadow:0 8px 30px rgba(205,177,117,.5)}
+  .pt-btn-2025{background:var(--gradv);background-size:180% 180%;color:#000;box-shadow:0 6px 24px rgba(205,177,117,.4);animation:btnShimmer 3s ease-in-out infinite}
+  @keyframes btnShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .pt-btn-2025:hover{box-shadow:0 10px 40px rgba(205,177,117,.7)}
+  .pt-years{display:flex;justify-content:center;gap:32px;margin-top:28px;flex-wrap:wrap}
+  .pt-year-stat .pv{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.2rem,2.5vw,1.8rem);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1}
+  .pt-year-stat .pk{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:4px}
+</style>
+  <div id="pasttours-inner" class="reveal">
+    <div class="pt-rune" style="top:5%;left:2%;font-size:10rem">&#9733;</div>
+    <div class="pt-rune" style="bottom:-2%;right:2%;font-size:9rem">&#9651;</div>
+    <div style="position:relative;z-index:2">
+      <div class="pt-eyebrow"><span class="ptdot"></span>Archive &middot; Holy Obesity History<span class="ptdot"></span></div>
+      <h2 id="pt-title">Past Tours</h2>
+      <p id="pt-sub">Before 2026, Pablo was already taking over the world. Explore the full archive.</p>
+      <div class="pt-btns">
+        <a href="2025.html" class="pt-btn pt-btn-2025">2025 World Tour &#8594;</a>
+        <a href="2024.html" class="pt-btn pt-btn-2024">2024 World Tour &#8594;</a>
+      </div>
+      <div class="pt-years">
+        <div class="pt-year-stat"><span class="pv">18</span><span class="pk">Shows in 2025</span></div>
+        <div class="pt-year-stat"><span class="pv">12</span><span class="pk">Shows in 2024</span></div>
+        <div class="pt-year-stat"><span class="pv">30+</span><span class="pk">Total Archive Shows</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TOUR MAP -->
 <section id="tourmap" style="background:var(--dark2);">
@@ -2810,6 +2863,8 @@ window.addEventListener('DOMContentLoaded', function(){
         <a href="https://www.youtube.com/@HotKeyGaming69" target="_blank" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">YouTube</a>
         <a href="https://x.com/hotkeygaming41" target="_blank" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Twitter/X</a>
         <a href="https://linktr.ee/hotkeygaming" target="_blank" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Linktree</a>
+        <a href="2025.html" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(205,177,117,.55);text-decoration:none;">2025 Tour</a>
+        <a href="2024.html" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(205,177,117,.55);text-decoration:none;">2024 Tour</a>
       </div>
     </div>
     <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">

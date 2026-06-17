@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pablo World Tour 2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0d0d0c;--dark:#161614;--accent:#cdb175;--accent2:#e8cf92;--pad:clamp(22px,6vw,84px);--grad:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);--ease:cubic-bezier(.2,.7,.2,1)}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Sora',sans-serif;background:var(--black);color:#fafaf8;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+/* SCROLL PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(to right,var(--accent),var(--accent2));z-index:9999;pointer-events:none;box-shadow:0 0 8px rgba(205,177,117,.6)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px var(--pad);background:transparent;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+nav.scrolled{background:rgba(10,10,10,.9);backdrop-filter:blur(18px);border-bottom-color:rgba(205,177,117,.16)}
+.brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;display:flex;flex-direction:column;gap:1px}
+.brand .gx{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.back-btn{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border:1px solid rgba(205,177,117,.4);color:var(--accent);transition:.2s}
+.back-btn:hover{background:var(--accent);color:#000}
+/* HERO */
+#hero{min-height:100svh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.himg{position:absolute;inset:-6% 0 0;background:url('https://plain-weur-prod-public.komododecks.com/202605/24/9e1bUS4GzZ5xpBq5kmnn/image.png') center 15%/cover no-repeat;animation:hzoom 16s ease-in-out infinite alternate}
+@keyframes hzoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.himg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,rgba(0,0,0,.6) 50%,rgba(0,0,0,.97) 100%)}
+.hcont{position:relative;z-index:2;padding:0 var(--pad) clamp(60px,8vw,110px)}
+.heye{font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.36em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:18px}
+.htitle{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,13vw,11rem);line-height:.88;letter-spacing:-.02em;font-style:italic}
+.htitle .gx{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hsubt{font-family:'Space Mono',monospace;font-size:clamp(.7rem,1.8vw,.95rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:16px}
+.hstats{display:flex;gap:clamp(20px,4vw,50px);flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid rgba(205,177,117,.2)}
+.hstat b{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1}
+.hstat span{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px;display:block}
+/* DATES */
+#dates{background:var(--dark);padding:0}
+.dates-head{padding:clamp(50px,8vw,90px) var(--pad) 40px}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
+.sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,4.5rem);line-height:.96;letter-spacing:-.01em}
+.rule{width:48px;height:2px;background:var(--grad);margin:20px 0 0;border-radius:2px}
+.timeline-wrap{position:relative;padding:0 var(--pad)}
+.timeline-line{position:absolute;left:var(--pad);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,rgba(52,211,153,.5),rgba(52,211,153,.05));pointer-events:none}
+.dr:hover .dr-bg{opacity:.52!important}
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(205,177,117,.12);padding:clamp(40px,6vw,70px) var(--pad) 30px;position:relative;overflow:hidden}
+footer .fbg{position:absolute;inset:0;background:url('https://plain-weur-prod-public.komododecks.com/202605/24/9e1bUS4GzZ5xpBq5kmnn/image.png') center 30%/cover no-repeat;opacity:.12}
+footer .fov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.85),rgba(10,10,10,.98))}
+footer .fi{position:relative;z-index:2}
+.fmark{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3rem);font-style:italic}
+.fmark .gx{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fback{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:14px 32px;background:var(--grad);color:#000;transition:.3s}
+.fback:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(205,177,117,.4)}
+.fbtm{margin-top:40px;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'Space Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.2)}
+@media(max-width:768px){
+  .dr>div:last-child>div{grid-template-columns:16px 54px 1fr!important;gap:8px!important;padding:14px 12px 14px 16px!important}
+  .dr>div:last-child>div>div:last-child{display:none}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<script>window.addEventListener('scroll',function(){var p=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;document.getElementById('prog').style.width=p+'%';document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});</script>
+
+<nav id="nav">
+  <a class="brand" href="index.html">
+    <span class="gx">Pablo</span>
+    <small>World Tour 2024</small>
+  </a>
+  <a class="back-btn" href="index.html">&#8592; World Tour 2026</a>
+</nav>
+
+<section id="hero">
+  <div class="himg"></div>
+  <div class="hcont">
+    <span class="heye">World Tour Archive</span>
+    <h1 class="htitle"><span class="gx">Pablo</span><br>2024 World Tour</h1>
+    <p class="hsubt">Pablo Solo &middot; 12 Shows &middot; All Completed</p>
+    <div class="hstats">
+      <div class="hstat"><b>12</b><span>Shows</span></div>
+      <div class="hstat"><b>8</b><span>Countries</span></div>
+      <div class="hstat"><b>&#10003;</b><span>Tour Complete</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="dates-head">
+    <span class="eyebrow">The Full Run</span>
+    <h2 class="sec-title">2024 Tour Dates</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="timeline-wrap">
+    <div class="timeline-line"></div>
+    
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d2/London_Wembley.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Jan 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">19</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇬🇧 London, UK <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Wembley Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/4f/LasVegas-FremontStreet.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Feb 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">04</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇺🇸 Las Vegas, USA <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Fremont Street</p>
+        <p style="font-size:.7rem;color:#cdb175;margin-top:4px;">★ Surprise Concert</p>
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://statics-maker.llt-services.com/mga/images/2022/12/30/xlarge/de502f0f-fac8-4c7d-afb1-68a9fd6d41ac.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Feb 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">19</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇪🇸 Málaga, Spain <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">La Rosaleda Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Feb 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">22</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇪🇸 Sevilla, Spain <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Ramón Sánchez-Pizjuán Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxYvkoxdTpyuJha-siMQJ833FPkE3KAYYwZQyuSRrADgXB0o8hTd-X1j4&s=10');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Apr 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">01</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇺🇸 Las Vegas, USA <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Allegiant Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Apr 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">06</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇺🇸 Philadelphia, USA <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Lincoln Financial Field</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">May 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">09</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇮🇹 Milan, Italy <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">San Siro Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/32/Italy_-_Pisa_-_Stadium.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">May 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">10</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇮🇹 Pisa, Italy <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Arena Garibaldi – Stadio Romeo Anconetani</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Jul 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">28</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇹🇷 Antalya, Turkey <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Antalya Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Sep 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">08</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇨🇭 Geneva, Switzerland <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Stade de Genève</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvJdRZ_khDAqq0ROmYTw65LLkxzfB-ggAilZwcdbVAX99SPMw_txdHuQ&s=10');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Sep 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">30</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇬🇷 Athens, Greece <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Athens Olympic Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+  <div class="dr" style="position:relative;overflow:hidden;margin-bottom:3px;min-height:90px;display:flex;align-items:stretch;">
+    <div class="dr-bg" style="position:absolute;inset:0;background-image:url('https://visitsofia.bg/images/vegas_media/category30000/object1137/bc9eda16929341c44a00f67d99a530c1.jpg');background-size:cover;background-position:center;opacity:.22;transition:opacity .35s;"></div>
+    <div class="dr-overlay" style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 60%,rgba(10,10,10,.35) 100%);"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:28px 100px 1fr auto;align-items:center;gap:20px;padding:18px 0 18px 32px;width:100%;">
+      <div style="width:11px;height:11px;border-radius:50%;background:#2d6a2d;border:2px solid #4caf50;box-shadow:0 0 10px rgba(52,211,153,.5);margin-left:-4px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#4caf50;">Oct 2024</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1;color:#fff;">07</div>
+      </div>
+      <div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">🇧🇬 Sofia, Bulgaria <span style="display:inline-block;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#7ec87e;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-weight:700;vertical-align:middle;">&#10003; Completed</span></h3>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.38);margin-top:3px;">Vasil Levski National Stadium</p>
+        
+      </div>
+      <div style="padding-right:clamp(24px,6vw,80px);"><span style="font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:7px 14px;color:rgba(255,255,255,.2);">Unavailable</span></div>
+    </div>
+  </div>
+    <div style="height:20px;"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbg"></div><div class="fov"></div>
+  <div class="fi">
+    <div class="fmark"><span class="gx">Pablo</span> World Tour 2024</div>
+    <div style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:8px;">12 Shows &middot; Tour Complete</div>
+    <a class="fback" href="index.html">&#8592; Back to World Tour 2026</a>
+    <div class="fbtm">
+      <span>&copy; 2024 Pablo &mdash; Holy Obesity World Tour. All rights reserved.</span>
+      <span>Basel, Switzerland</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
