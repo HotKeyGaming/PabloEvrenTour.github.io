@@ -1092,10 +1092,10 @@ setInterval(updateTorontoCountdown, 60000);
 </div><!-- end timeline-wrap upcoming -->
 
 <!-- COMPLETED SECTION - visually separate -->
-<div style="background:var(--dark);border-top:3px solid rgba(52,211,153,.3);margin-top:0;padding-bottom:8px;">
+<div style="margin:32px var(--pad) 0;border:1px solid rgba(52,211,153,.2);border-top:3px solid rgba(52,211,153,.4);background:rgba(8,14,8,.8);">
   <div class="divider-completed"><span>&#10003;</span><span class="dc-text">Completed Shows</span></div>
-  <div class="timeline-wrap">
-  <div class="timeline-line" style="background:linear-gradient(to bottom,rgba(52,211,153,.4),rgba(52,211,153,.05));"></div>
+  <div class="timeline-wrap" style="padding:0 clamp(12px,3vw,32px);">
+  <div class="timeline-line" style="background:linear-gradient(to bottom,rgba(52,211,153,.4),rgba(52,211,153,.05));left:clamp(12px,3vw,32px);"></div>
 
   <!-- Barcelona -->
   <div class="dr completed">
@@ -1266,10 +1266,11 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-action"><span class="unavail">Unavailable</span></div>
     </div>
   </div>
+  <div style="height:12px;"></div>
 </div><!-- end timeline-wrap completed -->
 </div><!-- end completed section -->
 
-<div id="dates-info">
+<div id="dates-info" style="margin-top:28px;">
   <div class="dates-disclaimer">
     <span style="font-size:1.2rem;">⚠️</span>
     <div>
