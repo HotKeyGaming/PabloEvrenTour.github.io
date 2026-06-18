@@ -1396,55 +1396,115 @@ setInterval(updateTorontoCountdown, 60000);
 </section>
 
 <!-- TOUR MAP -->
-<section id="tourmap" style="background:var(--dark2);">
-  <p class="section-label">The Route</p>
-  <h2 class="section-title">Tour Map</h2>
-  <div class="divider"></div>
-  <div style="position:relative;border:1px solid rgba(200,169,110,0.22);overflow:hidden;">
-    <div style="position:absolute;top:14px;left:14px;z-index:20;background:rgba(4,8,20,0.92);border-left:2px solid #c8a96e;padding:10px 14px;backdrop-filter:blur(6px);">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.14em;color:#c8a96e;">2026 World Tour</div>
-      <div style="font-size:0.68rem;color:rgba(255,255,255,0.38);margin-top:2px;letter-spacing:0.06em;">15+ shows · 10+ countries · 3 continents</div>
+<section id="tourmap" style="background:var(--dark2);padding:var(--gap) var(--pad) 0;">
+  <p class="section-label reveal">The Route</p>
+  <h2 class="section-title reveal d1">Tour Map</h2>
+  <div class="divider reveal d1"></div>
+</section>
+
+<script src="https://unpkg.com/globe.gl" onload="if(typeof initGlobe==='function')initGlobe()"></script>
+
+<section style="position:relative;width:100%;height:100vh;background:#070605;overflow:hidden;">
+  <div id="globe-container" style="position:absolute;top:0;right:0;bottom:0;width:100%;"></div>
+
+  <!-- Info card -->
+  <div id="globe-card" style="display:none;position:absolute;left:50%;bottom:60px;transform:translateX(-50%);min-width:300px;max-width:90vw;background:rgba(15,12,9,.92);border:1px solid rgba(205,177,117,.3);border-radius:16px;padding:22px 28px;box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:10;font-family:inherit;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span id="card-dot" style="width:9px;height:9px;border-radius:50%;display:inline-block;"></span>
+      <span id="card-status" style="font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;font-family:'Space Mono',monospace;"></span>
     </div>
-    <iframe src="https://www.google.com/maps/d/embed?mid=17YVV4s6rTjN1xhfjf59OhptaP-Dg8PA&ehbc=2E312F" width="100%" height="500" style="border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+    <div id="card-city" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,4vw,2rem);line-height:1;color:#f4efe6;"></div>
+    <div id="card-country" style="margin-top:6px;font-size:.85rem;color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;"></div>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Pablo &times; Evren World Tour 2026</div>
+    <button onclick="document.getElementById('globe-card').style.display='none'" style="position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.5);cursor:pointer;font-size:13px;">&#10005;</button>
   </div>
-  <div style="margin-top:12px;padding:16px 24px;border:1px solid rgba(200,169,110,0.18);background:rgba(255,255,255,0.02);display:flex;gap:32px;flex-wrap:wrap;align-items:center;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.35);flex-shrink:0;">Map Legend</div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:14px;height:14px;border-radius:50%;background:#e84141;box-shadow:0 0 6px rgba(232,65,65,0.5);flex-shrink:0;"></div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;letter-spacing:0.06em;color:rgba(255,255,255,0.65);">Upcoming Show</span>
+
+  <!-- Legend -->
+  <div style="position:absolute;bottom:20px;right:clamp(16px,4vw,40px);z-index:10;display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;">
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(10,10,10,.7);backdrop-filter:blur(8px);padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:30px;">
+      <div style="width:10px;height:10px;border-radius:50%;background:#f0c75e;box-shadow:0 0 8px #f0c75e;flex-shrink:0;"></div>
+      <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);">Upcoming</span>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:14px;height:14px;border-radius:50%;background:#4195e8;box-shadow:0 0 6px rgba(65,149,232,0.5);flex-shrink:0;"></div>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;letter-spacing:0.06em;color:rgba(255,255,255,0.65);">Past Show</span>
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(10,10,10,.7);backdrop-filter:blur(8px);padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:30px;">
+      <div style="width:10px;height:10px;border-radius:50%;background:#3ddc84;box-shadow:0 0 8px #3ddc84;flex-shrink:0;"></div>
+      <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);">Completed</span>
     </div>
   </div>
 </section>
 
 <script>
-(function(){
-  var tip = document.getElementById('rmap-tooltip');
-  var tc = document.getElementById('rmt-city');
-  var ti = document.getElementById('rmt-info');
-  var wrap = document.getElementById('route-map-wrap');
-  if(!tip||!wrap) return;
-  document.querySelectorAll('.rmap-pin').forEach(function(pin){
-    pin.addEventListener('mouseenter', function(){
-      tc.textContent = this.dataset.city;
-      ti.textContent = this.dataset.info;
-      tip.style.opacity = '1';
-    });
-    pin.addEventListener('mousemove', function(e){
-      var r = wrap.getBoundingClientRect();
-      var x = e.clientX - r.left + 14;
-      var y = e.clientY - r.top - 10;
-      if(x + 200 > r.width) x -= 210;
-      if(y < 0) y = 4;
-      tip.style.left = x+'px'; tip.style.top = y+'px';
-    });
-    pin.addEventListener('mouseleave', function(){ tip.style.opacity='0'; });
-  });
-})();
+function initGlobe() {
+  var GOLD = '#f0c75e', GREEN = '#3ddc84';
+  var cities = [
+    { city:'Basel',               country:'Switzerland',   lat:47.5596, lng: 7.5886, status:'upcoming' },
+    { city:'Milan',               country:'Italy',         lat:45.4642, lng: 9.1900, status:'upcoming' },
+    { city:'Stockholm',           country:'Sweden',        lat:59.3293, lng:18.0686, status:'upcoming' },
+    { city:'Hurghada',            country:'Egypt',         lat:27.2579, lng:33.8116, status:'upcoming' },
+    { city:'Toronto',             country:'Canada',        lat:43.6532, lng:-79.3832,status:'upcoming' },
+    { city:'Barcelona',           country:'Spain',         lat:41.3851, lng: 2.1734, status:'completed' },
+    { city:'Malta',               country:'Malta',         lat:35.8989, lng:14.5146, status:'completed' },
+    { city:'Bern',                country:'Switzerland',   lat:46.9480, lng: 7.4474, status:'completed' },
+    { city:'Erzincan',            country:'Turkey',        lat:39.7500, lng:39.5000, status:'completed' },
+    { city:'Istanbul',            country:'Turkey',        lat:41.0082, lng:28.9784, status:'completed' },
+    { city:'Jerez de la Frontera',country:'Spain',         lat:36.6850, lng:-6.1261, status:'completed' },
+    { city:'C\u00e1diz',          country:'Spain',         lat:36.5271, lng:-6.2886, status:'completed' },
+    { city:'Sevilla',             country:'Spain',         lat:37.3891, lng:-5.9845, status:'completed' },
+    { city:'Milan (San Siro)',     country:'Italy',         lat:45.4780, lng: 9.1240, status:'completed' },
+    { city:'Vaduz',               country:'Liechtenstein', lat:47.1410, lng: 9.5209, status:'completed' },
+    { city:'Arnhem',              country:'Netherlands',   lat:51.9851, lng: 5.8987, status:'completed' }
+  ];
+
+  cities.forEach(function(d) { d.color = d.status === 'upcoming' ? GOLD : GREEN; });
+
+  var el = document.getElementById('globe-container');
+  var world = Globe()(el)
+    .backgroundColor('rgba(0,0,0,0)')
+    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-day.jpg')
+    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+    .showAtmosphere(true).atmosphereColor('#9ec5e8').atmosphereAltitude(0.2)
+    .pointsData(cities)
+    .pointLat('lat').pointLng('lng').pointColor('color')
+    .pointAltitude(0.012)
+    .pointRadius(function(d){ return d.status==='upcoming' ? 0.58 : 0.46; })
+    .pointsMerge(false)
+    .pointLabel(function(d){ return '<div style="background:rgba(10,8,6,.9);border:1px solid '+d.color+'88;border-radius:8px;padding:6px 12px;color:#f4efe6;font-size:13px;font-family:Syne,sans-serif;font-weight:700;white-space:nowrap;">'+d.city+', '+d.country+'</div>'; })
+    .onPointClick(function(d){
+      document.getElementById('card-city').textContent    = d.city;
+      document.getElementById('card-country').textContent = d.country;
+      document.getElementById('card-dot').style.background   = d.color;
+      document.getElementById('card-dot').style.boxShadow    = '0 0 10px '+d.color;
+      document.getElementById('card-status').textContent = d.status==='upcoming' ? 'Upcoming Show' : 'Completed Show';
+      document.getElementById('card-status').style.color = d.color;
+      document.getElementById('globe-card').style.display = 'block';
+    })
+    .onPointHover(function(d){ el.style.cursor = d ? 'pointer' : 'grab'; })
+    .ringsData(cities)
+    .ringLat('lat').ringLng('lng')
+    .ringColor(function(d){
+      var rgb = d.status==='upcoming' ? '240,199,94' : '61,220,132';
+      return function(t){ return 'rgba('+rgb+','+Math.sqrt(1-t).toFixed(3)+')'; };
+    })
+    .ringMaxRadius(function(d){ return d.status==='upcoming' ? 4 : 2.6; })
+    .ringPropagationSpeed(2)
+    .ringRepeatPeriod(function(d){ return d.status==='upcoming' ? 1100 : 1900; });
+
+  world.width(el.clientWidth).height(el.clientHeight);
+  window.addEventListener('resize', function(){ world.width(el.clientWidth).height(el.clientHeight); });
+
+  var c = world.controls();
+  c.autoRotate = true; c.autoRotateSpeed = 0.5;
+  c.enableZoom = false; c.enablePan = false; c.rotateSpeed = 0.8;
+  world.pointOfView({ lat:42, lng:14, altitude:2.3 }, 0);
+}
+
+var globeScript = document.querySelector('script[src*="globe.gl"]');
+if (globeScript) {
+  globeScript.addEventListener('load', initGlobe);
+  // fallback in case it already loaded
+  if (typeof Globe !== 'undefined') initGlobe();
+}
 </script>
+
 
 <!-- SOCIAL MEDIA -->
 <section id="socials" style="background:var(--dark);">
