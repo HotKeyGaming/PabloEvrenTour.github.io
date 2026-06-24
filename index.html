@@ -153,7 +153,7 @@ section{padding:var(--gap) var(--pad);position:relative}
 #dates{background:var(--dark);background-image:radial-gradient(ellipse at 80% 50%,rgba(205,177,117,.04) 0%,transparent 70%)}
 .dates-header{padding:var(--gap) var(--pad) 40px}
 .timeline-wrap{position:relative;padding:0 var(--pad)}
-.timeline-line{position:absolute;left:var(--pad);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(205,177,117,.1));pointer-events:none}
+.timeline-line{position:absolute;left:calc(var(--pad) + 8px);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,rgba(205,177,117,.8),rgba(205,177,117,.1));pointer-events:none;z-index:3}
 .dr{position:relative;overflow:hidden;margin-bottom:3px;min-height:100px;display:flex;align-items:stretch}
 .dr-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22;transition:opacity .35s}
 .dr:hover .dr-bg{opacity:.55}
@@ -901,7 +901,7 @@ setInterval(updateStockholm, 1000);
   .dates-header { padding:var(--gap) clamp(24px,6vw,80px) 40px; }
   /* Timeline line */
   .timeline-wrap { position:relative; padding:0 clamp(24px,6vw,80px); }
-  .timeline-line { position:absolute; left:clamp(24px,6vw,80px); top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(200,169,110,0.1)); pointer-events:none; }
+  .timeline-line { left:calc(clamp(22px,6vw,84px) + 8px); }
 
   /* Date row — full width with bg image */
   .dr { position:relative; overflow:hidden; margin-bottom:3px; min-height:100px; display:flex; align-items:stretch; }
@@ -991,7 +991,7 @@ setInterval(updateStockholm, 1000);
 </div>
 
 <div class="timeline-wrap">
-  <div class="timeline-line" style="left:calc(var(--pad) + 14px);"></div>
+  <div class="timeline-line"></div>
 
   <div class="divider-upcoming" style="position:relative;overflow:hidden;"><div class="sparkle-wrap" id="sup-sparkles"></div><div class="sparkle-wrap" id="sup-sparkles"></div><span class="du-icon">&#9654;</span><span class="du-text">Upcoming Shows</span><span class="du-sub">Get Tickets Now</span></div>
 
