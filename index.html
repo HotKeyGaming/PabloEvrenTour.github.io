@@ -155,7 +155,6 @@ section{padding:var(--gap) var(--pad);position:relative}
 .timeline-wrap{position:relative;padding:0 var(--pad)}
 .timeline-line{position:absolute;left:var(--pad);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(205,177,117,.1));pointer-events:none}
 .dr{position:relative;overflow:hidden;margin-bottom:3px;min-height:100px;display:flex;align-items:stretch}
-.dr.upcoming{margin-left:clamp(24px,6vw,80px);margin-right:clamp(24px,6vw,80px)}
 .dr-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22;transition:opacity .35s}
 .dr:hover .dr-bg{opacity:.55}
 .dr-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.98) 0%,rgba(10,10,10,.75) 60%,rgba(10,10,10,.4) 100%)}
@@ -992,7 +991,7 @@ setInterval(updateStockholm, 1000);
 </div>
 
 <div class="timeline-wrap">
-  <div class="timeline-line" style="left:clamp(24px,6vw,80px);"></div>
+  <div class="timeline-line" style="left:calc(var(--pad) + 27px);"></div>
 
   <div class="divider-upcoming" style="margin:0 clamp(24px,6vw,80px);position:relative;overflow:hidden;"><div class="sparkle-wrap" id="sup-sparkles"></div><div class="sparkle-wrap" id="sup-sparkles"></div><span class="du-icon">&#9654;</span><span class="du-text">Upcoming Shows</span><span class="du-sub">Get Tickets Now</span></div>
 
@@ -2657,7 +2656,11 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   window.addEventListener('load', function(){
     setTimeout(function(){
       var toast = document.getElementById('music-toast');
-      if(toast){ toast.classList.add('show'); setTimeout(function(){ toast.classList.remove('show'); }, 3500); }
+      if(toast){
+        toast.style.display = 'flex';
+        toast.classList.add('show');
+        setTimeout(function(){ toast.classList.remove('show'); }, 3800);
+      }
     }, 1800);
   });
 </script>
@@ -2856,7 +2859,7 @@ window.addEventListener('DOMContentLoaded', function(){
     <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
       <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
         <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
-          <img src="https://kommodo.ai/i/RQI8uPL90vKCgvrnbu0f" alt="Latest Instagram Post" style="width:100%;height:100%;object-fit:cover;">
+          <img src="obnese.jpg" alt="Latest Instagram Post" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding:14px 16px;">
           <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
@@ -2952,12 +2955,12 @@ window.addEventListener('DOMContentLoaded', function(){
 <audio id="bg-music" loop preload="auto">
   <source src="Dg6T0OR3S0F1W0L.mp3" type="audio/mpeg">
 </audio>
-<div id="music-toast" style="position:fixed;bottom:82px;right:28px;z-index:248;background:rgba(10,10,10,.95);border:1px solid rgba(205,177,117,.4);border-radius:12px;padding:10px 16px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;opacity:0;transform:translateY(8px);transition:all .4s ease;pointer-events:none;display:flex;align-items:center;gap:8px;">
+<div id="music-toast" style="position:fixed;bottom:36px;right:86px;z-index:248;background:rgba(10,10,10,.95);border:1px solid rgba(205,177,117,.4);border-radius:12px;padding:10px 16px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;opacity:0;transform:translateX(10px);transition:opacity .4s ease,transform .4s ease;pointer-events:none;display:flex;align-items:center;gap:8px;">
   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
   Background Music
   <span style="font-size:.55rem;color:rgba(255,255,255,.4);">▶ Press to play</span>
 </div>
-<style>#music-toast.show{opacity:1;transform:translateY(0)}</style>
+<style>#music-toast.show{opacity:1!important;transform:translateX(0)!important}</style>
 <div id="music-btn" onclick="toggleMusic()" style="position:fixed;bottom:28px;right:28px;z-index:249;width:44px;height:44px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(200,169,110,0.35);transition:background 0.2s;" title="Toggle music">
   <svg id="music-icon-play" viewBox="0 0 24 24" width="18" height="18" fill="var(--black)" style="margin-left:2px;"><polygon points="5,3 19,12 5,21"/></svg>
   <svg id="music-icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="var(--black)" style="display:none;"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
