@@ -69,15 +69,21 @@ nav.scrolled{background:rgba(10,10,10,.88);backdrop-filter:blur(18px);border-bot
 .nbtn.login{background:var(--gradv);color:#fff;border-color:transparent}
 .nbtn.login:hover{filter:brightness(1.1)}
 @media(max-width:640px){.nbtn:not(.login):not(.hbtn):not(.search-btn){display:none!important}}
-.hbtn{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:6px;cursor:pointer;flex-shrink:0}
-.hbtn span{display:block;width:22px;height:2px;background:var(--white);transition:all .3s;border-radius:2px}
+.hbtn{display:flex;flex-direction:column;gap:5px;background:rgba(205,177,117,.08);border:1px solid rgba(205,177,117,.3);padding:10px 10px;cursor:pointer;flex-shrink:0;border-radius:6px;transition:all .3s;position:relative}
+.hbtn:hover{background:rgba(205,177,117,.18);border-color:rgba(205,177,117,.7);box-shadow:0 0 16px rgba(205,177,117,.3)}
+.hbtn span{display:block;width:22px;height:2px;background:var(--accent);transition:all .3s;border-radius:2px}
+.hbtn::after{content:'MENU';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:.42rem;letter-spacing:.12em;color:rgba(205,177,117,.5);white-space:nowrap}
 .hbtn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hbtn.open span:nth-child(2){opacity:0}
 .hbtn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* MOBILE DRAWER */
-#mob-nav{position:fixed;top:0;right:0;bottom:0;width:min(340px,88vw);background:rgba(8,8,14,.98);backdrop-filter:blur(20px);z-index:300;transform:translateX(100%);transition:transform .4s var(--ease);border-left:1px solid var(--line);overflow-y:auto;padding:80px 30px 40px}
+#mob-nav{position:fixed;top:0;right:0;bottom:0;width:min(340px,88vw);background:rgba(6,6,12,.99);backdrop-filter:blur(24px);z-index:300;transform:translateX(100%);transition:transform .4s var(--ease);border-left:1px solid rgba(205,177,117,.25);overflow-y:auto;padding:80px 30px 40px}
+#mob-nav::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:1}
+#mob-nav::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(205,177,117,.06),transparent 60%);pointer-events:none}
 #mob-nav.open{transform:translateX(0)}
+#mob-nav.open::before{animation:drawerGlow 3s ease-in-out infinite}
+@keyframes drawerGlow{0%,100%{opacity:.7}50%{opacity:1;box-shadow:0 0 20px rgba(205,177,117,.4)}}
 #mob-bd{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:299;opacity:0;pointer-events:none;transition:opacity .3s}
 #mob-bd.open{opacity:1;pointer-events:auto}
 .mob-close{position:absolute;top:22px;right:22px;background:none;border:none;color:var(--mid);font-size:1.4rem;cursor:pointer}
@@ -389,6 +395,15 @@ section{padding:var(--gap) var(--pad);position:relative}
 body.light{--black:#f5f5f0;--dark:#e8e5de;--dark2:#dedad2;--white:#111;--cream:#111;--accent:#9a742e;--accent2:#b8893a;--mid:#555;background:#f5f5f0;color:#111}
 body.light nav.scrolled{background:rgba(245,245,240,.92)}
 body.light .section-title,.body.light .section-label{color:#111}
+
+/* SPARKLE DIVIDERS */
+@keyframes sparkleFloat{0%{transform:translateY(0) scale(1);opacity:1}50%{transform:translateY(-8px) scale(1.3);opacity:.7}100%{transform:translateY(-18px) scale(.6);opacity:0}}
+@keyframes divGlow{0%,100%{box-shadow:0 0 0 rgba(205,177,117,0)}50%{box-shadow:0 0 24px rgba(205,177,117,.3)}}
+@keyframes divGlow2{0%,100%{box-shadow:0 0 0 rgba(52,211,153,0)}50%{box-shadow:0 0 20px rgba(52,211,153,.25)}}
+.divider-upcoming{animation:divGlow 3s ease-in-out infinite!important}
+.divider-completed{animation:divGlow2 3s ease-in-out infinite!important}
+.sparkle-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.spk{position:absolute;width:3px;height:3px;border-radius:50%;animation:sparkleFloat linear infinite}
 </style>
 </head>
 <body>
@@ -476,6 +491,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <a href="#about" class="dl" onclick="closeMob()">Story</a>
   <a href="#music" class="dl" onclick="closeMob()">Music</a>
   <a href="#setlist" class="dl" onclick="closeMob()">Setlist</a>
+  <a href="#spotify-pl" class="dl" onclick="closeMob()">&#9654; Spotify Playlist</a>
   <a href="#milestones" class="dl" onclick="closeMob()">Milestones</a>
   <a href="#news" class="dl hot" onclick="closeMob()">News</a>
   <div class="dsec">Experience</div>
@@ -485,7 +501,6 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <a href="#pasttours" class="dl" onclick="closeMob()" style="color:var(--accent);font-weight:800">&#9733; Past Tours</a>
   <div class="dsec">Info</div>
   <a href="#socials" class="dl" onclick="closeMob()">Socials</a>
-  <a href="#press" class="dl" onclick="closeMob()">Book Us</a>
   <a href="#contact" class="dl" onclick="closeMob()">Contact</a>
   <a href="lore.html" class="dl spec" onclick="closeMob()">The Lore Archive &#8594;</a>
   <a href="2025.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2025 World Tour</a>
@@ -550,7 +565,6 @@ var searchData = [
   {cat:'Section',title:'Song Legislation',sub:'Forbidden and Blessed songs',href:'#songs',icon:'🎵'},
   {cat:'Section',title:'The First 4 Memes',sub:'Left, Study, Big, Terence',href:'#memes',icon:'⬅️'},
   {cat:'Section',title:'Fan Wall',sub:'Fan reviews and messages',href:'#fanwall',icon:'💛'},
-  {cat:'Section',title:'Book Us',sub:'Booking requests for promoters',href:'#press',icon:'📋'},
   {cat:'Section',title:'Contact',sub:'Get in touch',href:'#contact',icon:'✉️'},
   {cat:'Section',title:'Socials',sub:'TikTok, Instagram, YouTube, Twitter',href:'#socials',icon:'📱'},
   // Merch
@@ -565,7 +579,6 @@ var searchData = [
   {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
   {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
   {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
-  {cat:'Concert',title:'Toronto, Canada',sub:'Rogers Centre · 28 Dec 2026 · Evren Solo',href:'#dates',img:'https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg'},
 ];
 
 function doSearch(q){
@@ -790,27 +803,27 @@ window.addEventListener('load',function(){
       </div>
     </div>
 
-    <!-- BOTTOM: Toronto New Date -->
+    <!-- BOTTOM: Stockholm New Date -->
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:18px;">
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <div style="width:7px;height:7px;border-radius:50%;background:#4caf50;animation:pulseDot 1.4s ease-in-out infinite;"></div>
-          <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#4caf50;font-weight:600;font-family:'Barlow Condensed',sans-serif;">🆕 New Date Confirmed</span>
+          <div style="width:7px;height:7px;border-radius:50%;background:#cdb175;animation:pulseDot 1.4s ease-in-out infinite;"></div>
+          <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Space Mono',monospace;">&#9733; Next After Milan</span>
         </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:0.06em;color:rgba(255,255,255,0.85);line-height:1;">Toronto, Canada 🇨🇦</div>
-        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.05em;">Rogers Centre · Doors 21:00 · 28 Dec 2026 · Evren Solo</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:0.02em;color:rgba(255,255,255,0.9);line-height:1;font-style:italic;">Stockholm, Sweden &#127480;&#127466;</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.05em;">Strawberry Arena &middot; Doors 21:00 &middot; 11 Jul 2026 &middot; Pablo Only</div>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
         <div style="display:flex;gap:8px;">
-          <div style="text-align:center;"><div id="tor-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Days</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="tor-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="tor-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(76,175,80,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="tor-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:#4caf50;line-height:1;letter-spacing:0.04em;">00</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Sec</div></div>
+          <div style="text-align:center;"><div id="sto-d" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Days</div></div>
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="sto-h" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="sto-m" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
+          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
+          <div style="text-align:center;"><div id="sto-s" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Sec</div></div>
         </div>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:#4caf50;padding:10px 20px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(76,175,80,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(76,175,80,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:var(--accent);padding:10px 20px;font-family:'Space Mono',monospace;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(205,177,117,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(205,177,117,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
       </div>
     </div>
 
@@ -823,7 +836,6 @@ var shows = [
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
-  { city:"Toronto, Canada", venue:"Rogers Centre · Doors 21:00 · Evren Solo", date:new Date("2026-12-28T21:00:00"), img:"https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg" }
 ];
 
 function getNextShow(){ var now=new Date(); for(var i=0;i<shows.length;i++){ if(shows[i].date>now) return shows[i]; } return null; }
@@ -848,35 +860,24 @@ function updateCountdown(){
   var ds=document.getElementById("cd-s"); if(ds) ds.textContent=pad((diff%60000)/1000);
 }
 
-function updateToronto(){
-  var tor=new Date("2026-12-28T21:00:00");
-  var diff=tor-new Date(); if(diff<0)diff=0;
-  var td=document.getElementById("tor-d"); if(td) td.textContent=pad(diff/86400000);
-  var th=document.getElementById("tor-h"); if(th) th.textContent=pad((diff%86400000)/3600000);
-  var tm=document.getElementById("tor-m"); if(tm) tm.textContent=pad((diff%3600000)/60000);
-  var ts=document.getElementById("tor-s"); if(ts) ts.textContent=pad((diff%60000)/1000);
-}
+updateCountdown();
+setInterval(function(){ updateCountdown(); }, 1000);
 
-updateCountdown(); updateToronto();
-setInterval(function(){ updateCountdown(); updateToronto(); }, 1000);
+function updateStockholm(){
+  var sto=new Date("2026-07-11T21:00:00");
+  var now=new Date(); var diff=sto-now;
+  function pad(n){return String(Math.floor(Math.max(0,n))).padStart(2,'0');}
+  var sd=document.getElementById("sto-d"); if(sd) sd.textContent=pad(diff/86400000);
+  var sh=document.getElementById("sto-h"); if(sh) sh.textContent=pad((diff%86400000)/3600000);
+  var sm=document.getElementById("sto-m"); if(sm) sm.textContent=pad((diff%3600000)/60000);
+  var ss=document.getElementById("sto-s"); if(ss) ss.textContent=pad((diff%60000)/1000);
+}
+updateStockholm();
+setInterval(updateStockholm, 1000);
 </script>
 
 
-<script>
-// Toronto countdown in announcement bar
-function updateTorontoCountdown(){
-  var target = new Date("2026-12-28T21:00:00");
-  var now = new Date();
-  var diff = target - now;
-  if(diff < 0){ document.getElementById('toronto-countdown').textContent = 'Show has passed'; return; }
-  var d = Math.floor(diff/86400000);
-  var h = Math.floor((diff%86400000)/3600000);
-  var m = Math.floor((diff%3600000)/60000);
-  var tcEl=document.getElementById('toronto-countdown'); if(tcEl) tcEl.textContent = d + ' days · ' + h + 'h · ' + m + 'm until show';
-}
-updateTorontoCountdown();
-setInterval(updateTorontoCountdown, 60000);
-</script>
+<script></script>
 <!-- SOCIAL PROOF -->
 <div id="proof">
   <div class="proof-grid">
@@ -992,7 +993,7 @@ setInterval(updateTorontoCountdown, 60000);
 <div class="timeline-wrap">
   <div class="timeline-line"></div>
 
-  <div class="divider-upcoming"><span class="du-icon">&#9654;</span><span class="du-text">Upcoming Shows</span><span class="du-sub">Get Tickets Now</span></div>
+  <div class="divider-upcoming" style="margin:0 clamp(24px,6vw,80px);position:relative;overflow:hidden;"><div class="sparkle-wrap" id="sup-sparkles"></div><div class="sparkle-wrap" id="sup-sparkles"></div><span class="du-icon">&#9654;</span><span class="du-text">Upcoming Shows</span><span class="du-sub">Get Tickets Now</span></div>
 
   <!-- Basel - always first -->
   <div class="dr upcoming">
@@ -1040,33 +1041,15 @@ setInterval(updateTorontoCountdown, 60000);
     </div>
   </div>
 
-  <!-- Toronto -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://www.ballparksofbaseball.com/wp-content/uploads/2016/03/rogers179532.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">28</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇨🇦</span> Toronto, Canada <span style="display:inline-block;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);color:var(--accent);font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 New</span></h3>
-        <p>Rogers Centre · Doors 21:00 · 28 Dec 2026</p>
-        <p class="dr-note">★ Evren Solo Performance &nbsp;·&nbsp; <span style="color:rgba(255,255,255,0.35);">Pablo unable to attend</span></p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;">
-        <a href="toronto.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
 
-  <!-- Disclaimer -->
+  </div><!-- end upcoming inner constrained -->
 </div><!-- end timeline-wrap upcoming -->
 
 <div style="height:48px;background:var(--dark);"></div>
 
 <!-- COMPLETED SECTION - visually separate -->
 <div style="margin:0 clamp(24px,6vw,80px) 0;border:2px solid rgba(52,211,153,.35);background:#060e06;">
-  <div class="divider-completed"><span>&#10003;</span><span class="dc-text">Completed Shows</span></div>
+  <div class="divider-completed" style="position:relative;overflow:hidden;"><div class="sparkle-wrap" id="sco-sparkles"></div><span>&#10003;</span><span class="dc-text">Completed Shows</span></div>
   <div class="timeline-wrap" style="padding:0 clamp(12px,3vw,32px);">
   <div class="timeline-line" style="background:linear-gradient(to bottom,rgba(52,211,153,.4),rgba(52,211,153,.05));left:clamp(12px,3vw,32px);"></div>
 
@@ -1340,6 +1323,7 @@ setInterval(updateTorontoCountdown, 60000);
       <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">18</div></div>
       <div class="dr-info">
         <h3><span class="flag">🇮🇹</span> Reggio Emilia, Italy <span style="display:inline-block;background:rgba(232,65,65,0.15);border:1px solid rgba(232,65,65,0.5);color:#e84141;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✕ Cancelled</span></h3>
+        <p style="font-size:.72rem;color:rgba(232,65,65,.7);margin-top:4px;">Cancelled due to Security Concerns &mdash; Kanye West was supposed to be Special Guest</p>
         <p>RCF Arena Campovolo · Was planned for 18 Jul 2026</p>
         <p class="dr-note" style="color:#e84141;">⚠ Cancelled due to Security Concerns. We sincerely apologize to all fans.</p>
       </div>
@@ -1454,7 +1438,6 @@ function initGlobe() {
     { city:'Basel',               country:'Switzerland',   lat:47.5596, lng: 7.5886, status:'upcoming' },
     { city:'Stockholm',           country:'Sweden',        lat:59.3293, lng:18.0686, status:'upcoming' },
     { city:'Hurghada',            country:'Egypt',         lat:27.2579, lng:33.8116, status:'upcoming' },
-    { city:'Toronto',             country:'Canada',        lat:43.6532, lng:-79.3832,status:'upcoming' },
     { city:'Barcelona',           country:'Spain',         lat:41.3851, lng: 2.1734, status:'completed' },
     { city:'Malta',               country:'Malta',         lat:35.8989, lng:14.5146, status:'completed' },
     { city:'Bern',                country:'Switzerland',   lat:46.9480, lng: 7.4474, status:'completed' },
@@ -1668,6 +1651,25 @@ if (globeScript) {
   </div>
 </section>
 
+
+<script>
+(function(){
+  function makeSparkles(id, color) {
+    var wrap = document.getElementById(id);
+    if (!wrap) return;
+    for (var i = 0; i < 18; i++) {
+      (function(i) {
+        var s = document.createElement('div');
+        s.className = 'spk';
+        s.style.cssText = 'left:' + (Math.random()*100) + '%;bottom:0;background:' + color + ';opacity:' + (Math.random()*.8+.2) + ';width:' + (Math.random()*3+2) + 'px;height:' + (Math.random()*3+2) + 'px;animation-duration:' + (Math.random()*2+1.5) + 's;animation-delay:' + (Math.random()*3) + 's;';
+        wrap.appendChild(s);
+      })(i);
+    }
+  }
+  makeSparkles('sup-sparkles', '#cdb175');
+  makeSparkles('sco-sparkles', '#3ddc84');
+})();
+</script>
 <!-- GALLERY -->
 <section id="gallery">
   <p class="section-label">Behind the Lens</p>
@@ -1681,7 +1683,7 @@ if (globeScript) {
     <div class="gallery-item g5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxr6rcTduqBmHTo2KJPh17d78b41Q5nGSMg&s" alt="Gallery 5"></div>
     <div class="gallery-item g3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN43ZYlJomJzoDcvXRF5SpOqbNF0nNKwJaag&s" alt="Gallery 6"></div>
   </div>
-  <p class="gallery-note">★ To add photos: upload images to your GitHub repo, then inside each div above add: &lt;img src="yourfile.jpg" alt="..."&gt;</p>
+  
 </section>
 
 <!-- ABOUT -->
@@ -1805,29 +1807,42 @@ if (globeScript) {
     </button>
     <div style="font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,169,110,0.5);text-align:center;margin-bottom:32px;font-family:'Barlow Condensed',sans-serif;">Tap to expand · 26 tracks · Special guests</div>
 
-    <div id="setlist-content" style="display:none;">
+    <div id="setlist-content" style="display:none;border:1px solid rgba(205,177,117,.15);"><div class="sl-header"><span class="sl-header-title">&#9836; Live Setlist &mdash; Holy Obesity World Tour 2026</span><span class="sl-header-count">26 Tracks &middot; Special Guests</span></div>
       <style>
-        .sl-row {
-        display:flex; align-items:center; gap:16px; padding:14px 16px;
+        /* SETLIST — special design */
+      #setlist-content { position:relative; }
+      #setlist-content::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--accent),rgba(205,177,117,.1)); }
+      .sl-row {
+        display:flex; align-items:center; gap:16px; padding:16px 20px;
         border-bottom:1px solid rgba(255,255,255,0.04);
-        transition:all 0.2s; cursor:pointer; border-radius:2px;
+        transition:all 0.25s; cursor:pointer;
         border-left:3px solid transparent;
+        position:relative; overflow:hidden;
       }
-      .sl-row:first-child { border-top:1px solid rgba(255,255,255,0.04); }
-      .sl-row:hover { background:rgba(200,169,110,0.06); border-left-color:var(--accent); padding-left:20px; }
-      .sl-num { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:rgba(200,169,110,0.3); min-width:32px; line-height:1.2; flex-shrink:0; transition:color 0.2s; }
-      .sl-row:hover .sl-num { color:var(--accent); }
-      .sl-play-btn { width:32px; height:32px; border-radius:50%; border:1px solid rgba(200,169,110,0.3); background:transparent; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer; transition:all 0.2s; }
-      .sl-play-btn:hover, .sl-row:hover .sl-play-btn { background:#1DB954; border-color:#1DB954; }
+      .sl-row::before { content:''; position:absolute; inset:0; background:linear-gradient(to right,rgba(205,177,117,.07),transparent); opacity:0; transition:opacity .25s; }
+      .sl-row:hover::before { opacity:1; }
+      .sl-row:first-child { border-top:1px solid rgba(255,255,255,0.06); }
+      .sl-row:hover { border-left-color:var(--accent); transform:translateX(4px); }
+      .sl-num { font-family:'Syne',sans-serif; font-weight:800; font-size:1.4rem; color:rgba(205,177,117,0.2); min-width:36px; line-height:1; flex-shrink:0; transition:all 0.25s; }
+      .sl-row:hover .sl-num { color:var(--accent); text-shadow:0 0 20px rgba(205,177,117,.5); }
+      .sl-play-btn { width:34px; height:34px; border-radius:50%; border:1.5px solid rgba(200,169,110,0.35); background:transparent; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer; transition:all 0.25s; }
+      .sl-play-btn:hover, .sl-row:hover .sl-play-btn { background:#1DB954; border-color:#1DB954; box-shadow:0 0 12px rgba(29,185,84,.4); }
       .sl-play-btn svg { fill:rgba(200,169,110,0.8); transition:fill 0.2s; margin-left:2px; }
       .sl-play-btn:hover svg, .sl-row:hover .sl-play-btn svg { fill:#fff; }
       .sl-info { flex:1; min-width:0; }
-      .sl-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); margin-bottom:3px; transition:color 0.2s; }
+      .sl-info h4 { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); margin-bottom:3px; transition:color 0.2s; }
       .sl-row:hover .sl-info h4 { color:var(--accent); }
       .sl-guests { font-size:0.7rem; color:rgba(255,255,255,0.35); letter-spacing:0.04em; }
-      .sl-guests span { color:rgba(200,169,110,0.6); }
+      .sl-guests span { color:rgba(200,169,110,0.65); font-weight:600; }
       .sl-spotify { display:none; margin-top:10px; border-radius:8px; overflow:hidden; }
       .sl-row.expanded .sl-spotify { display:block; }
+      /* SETLIST HEADER BAR */
+      .sl-header { display:flex; justify-content:space-between; align-items:center; padding:14px 20px; background:rgba(205,177,117,.06); border-bottom:1px solid rgba(205,177,117,.15); margin-bottom:0; }
+      .sl-header-title { font-family:'Syne',sans-serif; font-weight:800; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+      .sl-header-count { font-family:'Space Mono',monospace; font-size:.6rem; letter-spacing:.14em; color:rgba(255,255,255,.3); }
+      /* COLLAPSE BOTTOM BTN */
+      .sl-collapse-btn { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:16px; background:rgba(205,177,117,.07); border:none; border-top:1px solid rgba(205,177,117,.15); color:var(--accent); font-family:'Syne',sans-serif; font-weight:800; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:all .25s; margin-top:0; }
+      .sl-collapse-btn:hover { background:rgba(205,177,117,.14); }
       .sl-vote { font-size:0.75rem; background:transparent; border:none; color:rgba(255,255,255,0.2); flex-shrink:0; cursor:pointer; padding:6px 8px; border-radius:4px; transition:all 0.2s; font-family:'Barlow Condensed',sans-serif; letter-spacing:0.06em; }
       .sl-vote:hover { color:var(--accent); background:rgba(200,169,110,0.08); }
       .sl-vote.voted { color:var(--accent); }
@@ -2216,6 +2231,42 @@ function toggleSetlist(){
 </script>
 
 
+<!-- SPOTIFY PLAYLIST -->
+<section id="spotify-pl" style="background:var(--dark);padding:clamp(40px,6vw,70px) var(--pad);border-top:1px solid rgba(205,177,117,.1);">
+  <style>
+    #spotify-pl .sp-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center}
+    @media(max-width:768px){#spotify-pl .sp-inner{grid-template-columns:1fr}}
+    .sp-tag{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .sp-tag svg{flex-shrink:0}
+    .sp-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3.2rem);line-height:1;letter-spacing:-.01em;margin-bottom:14px}
+    .sp-desc{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:24px}
+    .sp-open-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:#1DB954;color:#000;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:30px;transition:all .25s}
+    .sp-open-btn:hover{background:#1ed760;transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,185,84,.4)}
+    .sp-embed{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  </style>
+  <div class="sp-inner reveal">
+    <div>
+      <div class="sp-tag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Official Tour Playlist
+      </div>
+      <h2 class="sp-title">Holy Obesity<br>Setlist</h2>
+      <p class="sp-desc">Every song from the 2026 World Tour. 26 tracks curated by Pablo — the exact set we perform every night. Save it, blast it, memorize it.</p>
+      <a href="https://open.spotify.com/playlist/6YFQG4jaxlCtp6mp194AYB" target="_blank" class="sp-open-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Open on Spotify
+      </a>
+    </div>
+    <div class="sp-embed">
+      <iframe src="https://open.spotify.com/embed/playlist/6YFQG4jaxlCtp6mp194AYB?utm_source=generator&theme=0" 
+        width="100%" height="380" frameborder="0" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy" style="display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+
 <!-- MERCH -->
 <section id="merch">
   <p class="section-label">The Collection</p>
@@ -2535,8 +2586,6 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       </div>
       <div class="milestone future">
         <div class="milestone-date">28 December 2026</div>
-        <div class="milestone-title">Toronto — First North American Show <span class="milestone-badge mb-blue">Upcoming</span></div>
-        <div class="milestone-desc">Rogers Centre, Toronto. The tour reaches North America for the first time. Evren Solo.</div>
       </div>
     </div>
   </div>
@@ -2549,7 +2598,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     var open = content.style.display !== 'none';
     content.style.display = open ? 'none' : 'block';
     arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
-    text.textContent = open ? '&#9733; View All Milestones' : 'Hide Milestones';
+    text.innerHTML = open ? '&#9733; View All Milestones' : 'Hide Milestones';
   }
   </script>
 </section>
@@ -2802,7 +2851,7 @@ window.addEventListener('DOMContentLoaded', function(){
     <div style="background:#111;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
       <a href="https://www.instagram.com/p/DX92BTtDU6-/" target="_blank" style="display:block;text-decoration:none;">
         <div style="position:relative;aspect-ratio:1;overflow:hidden;background:#1a1a1a;">
-          <img src="https://plain-weur-prod-public.komododecks.com/202605/07/JAUacBehOkcWat7U8RH8/image.jpg" alt="Latest Instagram Post" style="width:100%;height:100%;object-fit:cover;">
+          <img src="https://footballtripper.com/wp-content/uploads/Gelredome.jpg" alt="Latest Instagram Post" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding:14px 16px;">
           <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
@@ -2847,31 +2896,6 @@ window.addEventListener('DOMContentLoaded', function(){
   </div>
 </section>
 
-<!-- BOOK US -->
-<section id="press" class="on-light">
-  <p class="section-label">For Promoters &amp; Venues</p>
-  <h2 class="section-title">Book Pablo &amp; Evren</h2>
-  <div class="divider"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);">
-    <div>
-      <p style="font-size:0.97rem;color:#444;line-height:1.78;margin-bottom:16px;">Want to bring Pablo and Evren to your city? We are open to booking requests for festivals, club nights, venue shows, and private events across Europe and beyond.</p>
-      <div style="margin-top:28px;display:flex;flex-direction:column;gap:14px;">
-        <a href="mailto:booking@pabloevrentour.com" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#333;font-size:0.85rem;"><span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#9a742e;min-width:70px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">Booking</span>booking@pabloevrentour.com</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#333;font-size:0.85rem;"><span style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#9a742e;min-width:70px;font-family:'Barlow Condensed',sans-serif;font-weight:600;">Instagram</span>@king__pablito69</a>
-      </div>
-    </div>
-    <div style="background:#fff;padding:32px;border:1px solid rgba(0,0,0,0.08);">
-      <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;color:#222;margin-bottom:20px;">Send a Booking Request</p>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <input type="text" placeholder="Your name / company" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <input type="email" placeholder="your@email.com" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <input type="text" placeholder="City / Venue" style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;color:#333;">
-        <textarea rows="3" placeholder="Additional details..." style="padding:12px 14px;border:1px solid rgba(0,0,0,0.12);font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;resize:vertical;color:#333;"></textarea>
-        <button onclick="this.textContent='Request Sent ✓';this.style.background='#6a8a3e';" style="background:#9a742e;color:#fff;border:none;padding:14px;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;">Send Booking Request</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- NEWSLETTER -->
 <section id="newsletter">
@@ -3006,6 +3030,29 @@ function updateLangBtns(){
 document.addEventListener('DOMContentLoaded', function(){ updateLangBtns(); });
 </script>
 
+
+<script>
+(function(){
+  function makeSparkles(id, color) {
+    var wrap = document.getElementById(id);
+    if (!wrap) return;
+    for (var i = 0; i < 20; i++) {
+      var s = document.createElement('div');
+      s.className = 'spk';
+      s.style.left = (Math.random()*100) + '%';
+      s.style.bottom = '0';
+      s.style.background = color;
+      s.style.width = (Math.random()*3+1.5) + 'px';
+      s.style.height = s.style.width;
+      s.style.animationDuration = (Math.random()*2+1.2) + 's';
+      s.style.animationDelay = (Math.random()*3) + 's';
+      wrap.appendChild(s);
+    }
+  }
+  makeSparkles('sup-sparkles', '#cdb175');
+  makeSparkles('sco-sparkles', '#3ddc84');
+})();
+</script>
 </body>
 </html>
 
