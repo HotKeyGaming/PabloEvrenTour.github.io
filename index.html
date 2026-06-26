@@ -846,9 +846,9 @@ window.addEventListener('load',function(){
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
           <div style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulseDot 1.4s ease-in-out infinite;"></div>
-          <span id="cd-label" style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Barlow Condensed',sans-serif;">Next Show</span>
+          <span id="cd-label" style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700;">Next Show</span>
         </div>
-        <div id="cd-city" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:0.06em;color:var(--white);line-height:1;"></div>
+        <div id="cd-city" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:var(--white);line-height:1;font-style:italic;"></div>
         <div id="cd-venue" style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.05em;"></div>
       </div>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
@@ -1474,6 +1474,25 @@ setInterval(updateStockholm, 1000);
   </div>
 </section>
 
+<script>
+function switchMap(type){
+  var globe = document.getElementById('map-globe');
+  var cons  = document.getElementById('map-constellation');
+  var tbG   = document.getElementById('tab-globe');
+  var tbC   = document.getElementById('tab-constellation');
+  if(type === 'globe'){
+    globe.style.display = ''; cons.style.display = 'none';
+    tbG.style.background = 'var(--gradv)'; tbG.style.color = '#000'; tbG.style.border = 'none';
+    tbC.style.background = 'transparent'; tbC.style.color = 'var(--accent)'; tbC.style.border = '1px solid rgba(205,177,117,.4)';
+  } else {
+    globe.style.display = 'none'; cons.style.display = '';
+    tbC.style.background = 'var(--gradv)'; tbC.style.color = '#000'; tbC.style.border = 'none';
+    tbG.style.background = 'transparent'; tbG.style.color = 'var(--accent)'; tbG.style.border = '1px solid rgba(205,177,117,.4)';
+    setTimeout(function(){ if(typeof tryInitConst2==='function') tryInitConst2(); },50);
+  }
+}
+</script>
+
 <div id="map-globe">
 <script src="https://unpkg.com/globe.gl" onload="if(typeof initGlobe==='function')initGlobe()"></script>
 
@@ -1581,58 +1600,54 @@ if (globeScript) {
 </div><!-- end map-globe -->
 
 <div id="map-constellation" style="display:none;">
-
 <style>
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.const-section{background:#030208;padding:0;overflow:hidden}
-.canvas-wrap{position:relative;width:100%;height:50vh;max-height:480px;min-height:280px}
+@keyframes fadeUp2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.canvas-wrap2{position:relative;width:100%;height:50vh;max-height:480px;min-height:280px}
 #constellation{display:block;width:100%;height:100%;cursor:crosshair}
-.filters{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10;white-space:nowrap}
+.filters2{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10;white-space:nowrap}
 .filter-btn{padding:5px 16px;border-radius:20px;border:1px solid rgba(205,177,117,.45);background:transparent;color:#cdb175;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;cursor:pointer;outline:none;transition:all .2s}
 .filter-btn.active{background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);color:#030208;font-weight:700;border-color:transparent}
-.const-tooltip{position:absolute;background:rgba(3,2,8,.93);border:1px solid rgba(205,177,117,.26);border-radius:8px;padding:11px 15px;pointer-events:none;z-index:30;min-width:182px;backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(0,0,0,.6);opacity:0;transition:opacity .15s}
-.const-tooltip.visible{opacity:1}
-.tt-city{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#e8d99a;margin-bottom:3px}
-.tt-date{font-family:'Space Mono',monospace;font-size:10px;color:rgba(205,177,117,.65);letter-spacing:.06em}
-.tt-badge{display:inline-flex;align-items:center;margin-top:7px;padding:2px 9px;border-radius:3px;font-size:10px;font-family:'Space Mono',monospace;letter-spacing:.04em}
-.tt-badge.completed{background:rgba(70,150,80,.18);color:#72c47e;border:1px solid rgba(70,150,80,.42)}
-.tt-badge.upcoming{background:rgba(205,177,117,.18);color:#e8cf92;border:1px solid rgba(205,177,117,.42)}
-.tt-note{margin-top:6px;font-size:10px;font-family:'Sora',sans-serif;color:rgba(205,177,117,.62);line-height:1.4}
-.const-legend{position:absolute;bottom:14px;right:14px;display:flex;flex-direction:column;gap:7px;background:rgba(3,2,8,.78);border:1px solid rgba(205,177,117,.14);border-radius:7px;padding:10px 13px}
-.const-legend-row{display:flex;align-items:center;gap:8px}
-.const-legend-dot{border-radius:50%;flex-shrink:0}
-.const-legend-label{font-family:'Space Mono',monospace;font-size:9px;color:rgba(205,177,117,.65);letter-spacing:.07em}
-.const-footer{text-align:center;padding:14px 24px 20px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(205,177,117,.38);letter-spacing:.12em;background:#030208}
+.tooltip2{position:absolute;background:rgba(3,2,8,.93);border:1px solid rgba(205,177,117,.26);border-radius:8px;padding:11px 15px;pointer-events:none;z-index:30;min-width:182px;backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(0,0,0,.6);opacity:0;transition:opacity .15s}
+.tooltip2.visible{opacity:1}
+.tt2-city{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#e8d99a;margin-bottom:3px}
+.tt2-date{font-family:'Space Mono',monospace;font-size:10px;color:rgba(205,177,117,.65);letter-spacing:.06em}
+.tt2-badge{display:inline-flex;align-items:center;margin-top:7px;padding:2px 9px;border-radius:3px;font-size:10px;font-family:'Space Mono',monospace;letter-spacing:.04em}
+.tt2-badge.completed{background:rgba(70,150,80,.18);color:#72c47e;border:1px solid rgba(70,150,80,.42)}
+.tt2-badge.upcoming{background:rgba(205,177,117,.18);color:#e8cf92;border:1px solid rgba(205,177,117,.42)}
+.tt2-note{margin-top:6px;font-size:10px;font-family:'Sora',sans-serif;color:rgba(205,177,117,.62);line-height:1.4}
+.legend2{position:absolute;bottom:14px;right:14px;display:flex;flex-direction:column;gap:7px;background:rgba(3,2,8,.78);border:1px solid rgba(205,177,117,.14);border-radius:7px;padding:10px 13px}
+.legend2-row{display:flex;align-items:center;gap:8px}
+.legend2-dot{border-radius:50%;flex-shrink:0}
+.legend2-label{font-family:'Space Mono',monospace;font-size:9px;color:rgba(205,177,117,.65);letter-spacing:.07em}
+.const-footer2{text-align:center;padding:14px 24px 20px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(205,177,117,.38);letter-spacing:.12em;background:#030208}
 </style>
-
-<div class="const-section">
-  <div class="canvas-wrap">
+<div style="background:#030208;overflow:hidden;">
+  <div class="canvas-wrap2">
     <canvas id="constellation"></canvas>
-    <div class="filters">
+    <div class="filters2">
       <button class="filter-btn active" data-year="ALL">ALL</button>
       <button class="filter-btn" data-year="2024">2024</button>
       <button class="filter-btn" data-year="2025">2025</button>
       <button class="filter-btn" data-year="2026">2026</button>
     </div>
-    <div class="const-tooltip" id="const-tooltip">
-      <div class="tt-city" id="tt-city"></div>
-      <div class="tt-date" id="tt-date"></div>
-      <div class="tt-badge" id="tt-badge"></div>
-      <div class="tt-note" id="tt-note"></div>
+    <div class="tooltip2" id="tooltip2">
+      <div class="tt2-city" id="tt2-city"></div>
+      <div class="tt2-date" id="tt2-date"></div>
+      <div class="tt2-badge" id="tt2-badge"></div>
+      <div class="tt2-note" id="tt2-note"></div>
     </div>
-    <div class="const-legend">
-      <div class="const-legend-row"><div class="const-legend-dot" style="width:8px;height:8px;background:#e8cf92;box-shadow:0 0 7px 2px rgba(232,207,146,.55);"></div><span class="const-legend-label">UPCOMING</span></div>
-      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#cdb175;box-shadow:0 0 5px rgba(205,177,117,.5);margin-left:1px;"></div><span class="const-legend-label">2026</span></div>
-      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#5fa569;box-shadow:0 0 5px rgba(95,165,105,.5);margin-left:1px;"></div><span class="const-legend-label">2025</span></div>
-      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="const-legend-label">2024</span></div>
+    <div class="legend2">
+      <div class="legend2-row"><div class="legend2-dot" style="width:8px;height:8px;background:#e8cf92;box-shadow:0 0 7px 2px rgba(232,207,146,.55);"></div><span class="legend2-label">UPCOMING</span></div>
+      <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#cdb175;box-shadow:0 0 5px rgba(205,177,117,.5);margin-left:1px;"></div><span class="legend2-label">2026</span></div>
+      <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#5fa569;box-shadow:0 0 5px rgba(95,165,105,.5);margin-left:1px;"></div><span class="legend2-label">2025</span></div>
+      <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer"><span>45 shows &nbsp;·&nbsp; 17 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>45 shows &nbsp;·&nbsp; 17 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
-
 <script>
 (function(){
-const SHOWS=[
+const SHOWS2=[
   {id:1,year:2024,city:'London',dateStr:'Jan 19, 2024',lat:51.507,lng:-0.128,completed:true},
   {id:2,year:2024,city:'Málaga',dateStr:'Feb 19, 2024',lat:36.721,lng:-4.421,completed:true},
   {id:3,year:2024,city:'Sevilla',dateStr:'Feb 22, 2024',lat:37.389,lng:-5.985,completed:true},
@@ -1681,44 +1696,35 @@ const SHOWS=[
   {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:false},
   {id:47,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
 ];
-let activeYear='ALL',filterStart=performance.now(),globalStart=performance.now(),bgStars=[],animId=null;
-let panX=0,panY=0,zoom=1;
-const MIN_ZOOM=0.45,MAX_ZOOM=9;
-function genBgStars(){let s=54321;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280;};bgStars=Array.from({length:180},()=>({x:rnd(),y:rnd(),r:rnd()*1.1+0.15,a:rnd()*0.38+0.1,phase:rnd()*Math.PI*2,spd:rnd()*0.5+0.15}));}
-function project(lat,lng,w,h){const LNG_MIN=-130,LNG_MAX=118,LAT_MIN=4,LAT_MAX=63;const px=w*0.055,py=h*0.08;const m=(deg)=>Math.log(Math.tan(Math.PI/4+deg*Math.PI/360));const my=m(lat),myMin=m(LAT_MIN),myMax=m(LAT_MAX);return{x:px+(lng-LNG_MIN)/(LNG_MAX-LNG_MIN)*(w-2*px),y:py+(1-(my-myMin)/(myMax-myMin))*(h-2*py)};}
-function withPositions(shows,w,h){const buckets={};return shows.map((s)=>{const key=Math.round(s.lat*8)+','+Math.round(s.lng*8);if(!buckets[key])buckets[key]=0;const idx=buckets[key]++;const base=project(s.lat,s.lng,w,h);const angle=idx*2.399,r=idx*6;return Object.assign({},s,{pos:{x:base.x+Math.cos(angle)*r,y:base.y+Math.sin(angle)*r}});});}
-function clamp(w,h){const pad=80;panX=Math.max(-w*(zoom-1)-pad*zoom,Math.min(w*(zoom-1)+pad*zoom,panX));panY=Math.max(-h*(zoom-1)-pad*zoom,Math.min(h*(zoom-1)+pad*zoom,panY));}
-function resetView(){panX=0;panY=0;zoom=1;hideTooltip();}
-const canvas=document.getElementById('constellation');
-const ctx=canvas.getContext('2d');
-function resize(){const wrap=canvas.parentElement;const dpr=Math.min(window.devicePixelRatio||1,2);const cw=wrap.clientWidth,ch=wrap.clientHeight;canvas.width=Math.round(cw*dpr);canvas.height=Math.round(ch*dpr);canvas.style.width=cw+'px';canvas.style.height=ch+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
-const ttEl=document.getElementById('const-tooltip');
-const ttCity=document.getElementById('tt-city');
-const ttDate=document.getElementById('tt-date');
-const ttBadge=document.getElementById('tt-badge');
-const ttNote=document.getElementById('tt-note');
-function showTooltip(show){const wrap=canvas.parentElement;const ww=wrap.clientWidth,wh=wrap.clientHeight;const sx=show.pos.x*zoom+panX,sy=show.pos.y*zoom+panY;const TW=188,TH=show.note?108:82;let lx=sx+16,ly=sy-TH-10;if(lx+TW>ww-10)lx=sx-TW-16;if(ly<8)ly=sy+14;if(ly+TH>wh-8)ly=wh-TH-8;ttEl.style.left=lx+'px';ttEl.style.top=ly+'px';ttCity.textContent=show.city;ttDate.textContent=show.dateStr;ttBadge.textContent=show.completed?'✓  Completed':'▶  Upcoming';ttBadge.className='tt-badge '+(show.completed?'completed':'upcoming');ttNote.textContent=show.note||'';ttNote.style.display=show.note?'block':'none';ttEl.classList.add('visible');}
-function hideTooltip(){ttEl.classList.remove('visible');}
-function findShow(sx,sy,w,h){const mx=(sx-panX)/zoom,my=(sy-panY)/zoom;const filtered=activeYear==='ALL'?SHOWS:SHOWS.filter((s)=>String(s.year)===activeYear);const shows=withPositions(filtered,w,h);const hitR=13/zoom;let best=null,bestD=hitR;shows.forEach((s)=>{const d=Math.hypot(s.pos.x-mx,s.pos.y-my);if(d<bestD){bestD=d;best=s;}});return best;}
-let dragging=false,dox=0,doy=0;
-canvas.addEventListener('mousedown',(e)=>{if(e.button!==0)return;dragging=true;dox=e.clientX-panX;doy=e.clientY-panY;canvas.style.cursor='grabbing';hideTooltip();});
-window.addEventListener('mousemove',(e)=>{if(dragging){panX=e.clientX-dox;panY=e.clientY-doy;const rect=canvas.getBoundingClientRect();clamp(rect.width,rect.height);}else{const rect=canvas.getBoundingClientRect();const sx=e.clientX-rect.left,sy=e.clientY-rect.top;const best=findShow(sx,sy,rect.width,rect.height);if(best){showTooltip(best);canvas.style.cursor='pointer';}else{hideTooltip();canvas.style.cursor='grab';}}});
-window.addEventListener('mouseup',()=>{dragging=false;canvas.style.cursor='grab';});
-canvas.addEventListener('mouseleave',()=>{if(!dragging)hideTooltip();});
-canvas.addEventListener('dblclick',resetView);
-canvas.addEventListener('wheel',(e)=>{e.preventDefault();const rect=canvas.getBoundingClientRect();const mx=e.clientX-rect.left,my=e.clientY-rect.top;const f=e.deltaY<0?1.12:0.89;const nz=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*f));panX=mx+(panX-mx)*(nz/zoom);panY=my+(panY-my)*(nz/zoom);zoom=nz;clamp(rect.width,rect.height);hideTooltip();},{passive:false});
-let t1x=0,t1y=0,lastPinch=0;
-canvas.addEventListener('touchstart',(e)=>{e.preventDefault();hideTooltip();if(e.touches.length===1){t1x=e.touches[0].clientX-panX;t1y=e.touches[0].clientY-panY;}else if(e.touches.length===2)lastPinch=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);},{passive:false});
-canvas.addEventListener('touchmove',(e)=>{e.preventDefault();const rect=canvas.getBoundingClientRect();if(e.touches.length===1){panX=e.touches[0].clientX-t1x;panY=e.touches[0].clientY-t1y;clamp(rect.width,rect.height);}else if(e.touches.length===2&&lastPinch>0){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const nz=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*dist/lastPinch));const cx=(e.touches[0].clientX+e.touches[1].clientX)/2-rect.left;const cy=(e.touches[0].clientY+e.touches[1].clientY)/2-rect.top;panX=cx+(panX-cx)*(nz/zoom);panY=cy+(panY-cy)*(nz/zoom);zoom=nz;lastPinch=dist;clamp(rect.width,rect.height);}},{passive:false});
-canvas.addEventListener('touchend',(e)=>{if(e.touches.length<2)lastPinch=0;if(e.changedTouches.length===1&&e.touches.length===0){const rect=canvas.getBoundingClientRect();const best=findShow(e.changedTouches[0].clientX-rect.left,e.changedTouches[0].clientY-rect.top,rect.width,rect.height);if(best)showTooltip(best);}},{passive:false});
-document.querySelectorAll('.filter-btn').forEach((btn)=>{btn.addEventListener('click',()=>{activeYear=btn.dataset.year;filterStart=performance.now();hideTooltip();document.querySelectorAll('.filter-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');});});
-function draw(){const wrap=canvas.parentElement;const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr))resize();const t=(performance.now()-filterStart)/1000;const absT=(performance.now()-globalStart)/1000;ctx.fillStyle='#030208';ctx.fillRect(0,0,w,h);bgStars.forEach((star)=>{const a=star.a*(0.6+0.4*Math.sin(absT*star.spd+star.phase));ctx.beginPath();ctx.arc(star.x*w,star.y*h,star.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';ctx.fill();});const vg=ctx.createRadialGradient(w/2,h*0.55,h*0.05,w/2,h*0.55,Math.max(w,h)*0.75);vg.addColorStop(0,'rgba(3,2,8,0)');vg.addColorStop(1,'rgba(3,2,8,0.72)');ctx.fillStyle=vg;ctx.fillRect(0,0,w,h);ctx.save();ctx.translate(panX,panY);ctx.scale(zoom,zoom);const filtered=activeYear==='ALL'?SHOWS:SHOWS.filter((s)=>String(s.year)===activeYear);const shows=withPositions(filtered,w,h);const YEAR_RGB={2024:[160,110,60],2025:[95,165,105],2026:[205,177,117]};const YEAR_DOT={2024:'#a06e3b',2025:'#5fa569',2026:'#cdb175'};const STAGGER=0.062,FADE=0.38;const byYear={};shows.forEach((s)=>{(byYear[s.year]=byYear[s.year]||[]).push(s);});Object.entries(byYear).forEach(([yr,arr])=>{const rgb=YEAR_RGB[yr]||[205,177,117];for(let i=1;i<arr.length;i++){const prev=arr[i-1],curr=arr[i];const dx=curr.pos.x-prev.pos.x,dy=curr.pos.y-prev.pos.y;if(Math.abs(dx)<0.5&&Math.abs(dy)<0.5)continue;const p=Math.min(1,Math.max(0,(t-(i-1)*STAGGER-0.22)/FADE));if(p<=0)continue;ctx.beginPath();ctx.moveTo(prev.pos.x,prev.pos.y);ctx.lineTo(prev.pos.x+dx*p,prev.pos.y+dy*p);ctx.strokeStyle='rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+(0.3*p).toFixed(3)+')';ctx.lineWidth=0.85/zoom;ctx.stroke();}});shows.forEach((show,i)=>{const fp=Math.min(1,Math.max(0,(t-i*STAGGER)/FADE));if(fp<=0)return;const{x,y}=show.pos,upcoming=!show.completed;const rgb=YEAR_RGB[show.year]||[205,177,117];const sr=upcoming?232:rgb[0],sg=upcoming?207:rgb[1],sb=upcoming?146:rgb[2];const dotR=(upcoming?5.5:4)/zoom,glowR=(upcoming?26:16)/zoom;const gl=ctx.createRadialGradient(x,y,0,x,y,glowR);gl.addColorStop(0,'rgba('+sr+','+sg+','+sb+','+(0.52*fp).toFixed(3)+')');gl.addColorStop(0.45,'rgba('+sr+','+sg+','+sb+','+(0.18*fp).toFixed(3)+')');gl.addColorStop(1,'rgba('+sr+','+sg+','+sb+',0)');ctx.beginPath();ctx.arc(x,y,glowR,0,Math.PI*2);ctx.fillStyle=gl;ctx.fill();if(upcoming){[0,0.5].forEach((off)=>{const ph=((absT*1.35)+off)%1;const pr=(dotR+4/zoom)+ph*15/zoom,pa=(1-ph)*0.6*fp;ctx.beginPath();ctx.arc(x,y,pr,0,Math.PI*2);ctx.strokeStyle='rgba(232,207,146,'+pa.toFixed(3)+')';ctx.lineWidth=1.3/zoom;ctx.stroke();});}ctx.globalAlpha=fp;ctx.beginPath();ctx.arc(x,y,dotR,0,Math.PI*2);ctx.fillStyle=upcoming?'#e8cf92':(YEAR_DOT[show.year]||'#cdb175');ctx.fill();ctx.beginPath();ctx.arc(x,y,dotR*0.42,0,Math.PI*2);ctx.fillStyle=upcoming?'rgba(255,248,224,0.9)':'rgba(255,255,255,0.5)';ctx.fill();ctx.globalAlpha=1;});ctx.restore();}
-const ro=new ResizeObserver(()=>{resize();});ro.observe(canvas.parentElement);
-genBgStars();canvas.style.cursor='grab';
-// Only init when visible
-window._constInited2=false;
-function tryInitConst(){const wrap=canvas.parentElement;if(!wrap||wrap.offsetWidth===0)return;if(!window._constInited2){window._constInited2=true;resize();draw();setInterval(draw,16);}}
-setTimeout(tryInitConst,100);
+let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
+const MIN_ZOOM2=0.45,MAX_ZOOM2=9;
+function genBg2(){let s=54321;const r=()=>{s=(s*9301+49297)%233280;return s/233280;};bgStars2=Array.from({length:180},()=>({x:r(),y:r(),rad:r()*1.1+0.15,a:r()*0.38+0.1,phase:r()*Math.PI*2,spd:r()*0.5+0.15}));}
+function proj2(lat,lng,w,h){const LNG_MIN=-130,LNG_MAX=118,LAT_MIN=4,LAT_MAX=63;const px=w*0.055,py=h*0.08;const m=(d)=>Math.log(Math.tan(Math.PI/4+d*Math.PI/360));const my=m(lat),myMin=m(LAT_MIN),myMax=m(LAT_MAX);return{x:px+(lng-LNG_MIN)/(LNG_MAX-LNG_MIN)*(w-2*px),y:py+(1-(my-myMin)/(myMax-myMin))*(h-2*py)};}
+function withPos2(shows,w,h){const b={};return shows.map((s)=>{const k=Math.round(s.lat*8)+','+Math.round(s.lng*8);if(!b[k])b[k]=0;const idx=b[k]++;const base=proj2(s.lat,s.lng,w,h);return Object.assign({},s,{pos:{x:base.x+Math.cos(idx*2.399)*idx*6,y:base.y+Math.sin(idx*2.399)*idx*6}});});}
+function clamp2(w,h){const p=80;panX2=Math.max(-w*(zoom2-1)-p*zoom2,Math.min(w*(zoom2-1)+p*zoom2,panX2));panY2=Math.max(-h*(zoom2-1)-p*zoom2,Math.min(h*(zoom2-1)+p*zoom2,panY2));}
+const canvas2=document.getElementById('constellation');
+const ctx2=canvas2.getContext('2d');
+function resize2(){const wrap=canvas2.parentElement;const dpr=Math.min(window.devicePixelRatio||1,2);const cw=wrap.clientWidth,ch=wrap.clientHeight;canvas2.width=Math.round(cw*dpr);canvas2.height=Math.round(ch*dpr);canvas2.style.width=cw+'px';canvas2.style.height=ch+'px';ctx2.setTransform(dpr,0,0,dpr,0,0);}
+const ttEl2=document.getElementById('tooltip2');
+function showTT2(show){const wrap=canvas2.parentElement;const ww=wrap.clientWidth,wh=wrap.clientHeight;const sx=show.pos.x*zoom2+panX2,sy=show.pos.y*zoom2+panY2;const TW=188,TH=show.note?108:82;let lx=sx+16,ly=sy-TH-10;if(lx+TW>ww-10)lx=sx-TW-16;if(ly<8)ly=sy+14;if(ly+TH>wh-8)ly=wh-TH-8;ttEl2.style.left=lx+'px';ttEl2.style.top=ly+'px';document.getElementById('tt2-city').textContent=show.city;document.getElementById('tt2-date').textContent=show.dateStr;const b=document.getElementById('tt2-badge');b.textContent=show.completed?'✓  Completed':'▶  Upcoming';b.className='tt2-badge '+(show.completed?'completed':'upcoming');const n=document.getElementById('tt2-note');n.textContent=show.note||'';n.style.display=show.note?'block':'none';ttEl2.classList.add('visible');}
+function hideTT2(){ttEl2.classList.remove('visible');}
+function findShow2(sx,sy,w,h){const mx=(sx-panX2)/zoom2,my=(sy-panY2)/zoom2;const shows=withPos2(activeYear2==='ALL'?SHOWS2:SHOWS2.filter((s)=>String(s.year)===activeYear2),w,h);let best=null,bestD=13/zoom2;shows.forEach((s)=>{const d=Math.hypot(s.pos.x-mx,s.pos.y-my);if(d<bestD){bestD=d;best=s;}});return best;}
+function draw2(){const wrap=canvas2.parentElement;const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas2.width!==Math.round(w*dpr)||canvas2.height!==Math.round(h*dpr))resize2();const t=(performance.now()-filterStart2)/1e3,absT=(performance.now()-globalStart2)/1e3;ctx2.fillStyle='#030208';ctx2.fillRect(0,0,w,h);bgStars2.forEach((star)=>{const a=star.a*(0.6+0.4*Math.sin(absT*star.spd+star.phase));ctx2.beginPath();ctx2.arc(star.x*w,star.y*h,star.rad,0,Math.PI*2);ctx2.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';ctx2.fill();});const vg=ctx2.createRadialGradient(w/2,h*0.55,h*0.05,w/2,h*0.55,Math.max(w,h)*0.75);vg.addColorStop(0,'rgba(3,2,8,0)');vg.addColorStop(1,'rgba(3,2,8,0.72)');ctx2.fillStyle=vg;ctx2.fillRect(0,0,w,h);ctx2.save();ctx2.translate(panX2,panY2);ctx2.scale(zoom2,zoom2);const filtered=activeYear2==='ALL'?SHOWS2:SHOWS2.filter((s)=>String(s.year)===activeYear2);const shows=withPos2(filtered,w,h);const YEAR_RGB={2024:[160,110,60],2025:[95,165,105],2026:[205,177,117]};const YEAR_DOT={2024:'#a06e3b',2025:'#5fa569',2026:'#cdb175'};const ST=0.062,FD=0.38;const byYear={};shows.forEach((s)=>{(byYear[s.year]=byYear[s.year]||[]).push(s);});Object.entries(byYear).forEach(([yr,arr])=>{const rgb=YEAR_RGB[yr]||[205,177,117];for(let i=1;i<arr.length;i++){const prev=arr[i-1],curr=arr[i];const dx=curr.pos.x-prev.pos.x,dy=curr.pos.y-prev.pos.y;if(Math.abs(dx)<0.5&&Math.abs(dy)<0.5)continue;const p=Math.min(1,Math.max(0,(t-(i-1)*ST-0.22)/FD));if(p<=0)continue;ctx2.beginPath();ctx2.moveTo(prev.pos.x,prev.pos.y);ctx2.lineTo(prev.pos.x+dx*p,prev.pos.y+dy*p);ctx2.strokeStyle='rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+(0.3*p).toFixed(3)+')';ctx2.lineWidth=0.85/zoom2;ctx2.stroke();}});shows.forEach((show,i)=>{const fp=Math.min(1,Math.max(0,(t-i*ST)/FD));if(fp<=0)return;const{x,y}=show.pos,up=!show.completed;const rgb=YEAR_RGB[show.year]||[205,177,117];const sr=up?232:rgb[0],sg=up?207:rgb[1],sb=up?146:rgb[2];const dotR=(up?5.5:4)/zoom2,glowR=(up?26:16)/zoom2;const gl=ctx2.createRadialGradient(x,y,0,x,y,glowR);gl.addColorStop(0,'rgba('+sr+','+sg+','+sb+','+(0.52*fp).toFixed(3)+')');gl.addColorStop(0.45,'rgba('+sr+','+sg+','+sb+','+(0.18*fp).toFixed(3)+')');gl.addColorStop(1,'rgba('+sr+','+sg+','+sb+',0)');ctx2.beginPath();ctx2.arc(x,y,glowR,0,Math.PI*2);ctx2.fillStyle=gl;ctx2.fill();if(up){[0,0.5].forEach((off)=>{const ph=((absT*1.35)+off)%1;const pr=(dotR+4/zoom2)+ph*15/zoom2,pa=(1-ph)*0.6*fp;ctx2.beginPath();ctx2.arc(x,y,pr,0,Math.PI*2);ctx2.strokeStyle='rgba(232,207,146,'+pa.toFixed(3)+')';ctx2.lineWidth=1.3/zoom2;ctx2.stroke();});}ctx2.globalAlpha=fp;ctx2.beginPath();ctx2.arc(x,y,dotR,0,Math.PI*2);ctx2.fillStyle=up?'#e8cf92':(YEAR_DOT[show.year]||'#cdb175');ctx2.fill();ctx2.beginPath();ctx2.arc(x,y,dotR*0.42,0,Math.PI*2);ctx2.fillStyle=up?'rgba(255,248,224,0.9)':'rgba(255,255,255,0.5)';ctx2.fill();ctx2.globalAlpha=1;});ctx2.restore();}
+let drag2=false,d2ox=0,d2oy=0;
+canvas2.addEventListener('mousedown',(e)=>{if(e.button!==0)return;drag2=true;d2ox=e.clientX-panX2;d2oy=e.clientY-panY2;canvas2.style.cursor='grabbing';hideTT2();});
+window.addEventListener('mousemove',(e)=>{if(drag2){panX2=e.clientX-d2ox;panY2=e.clientY-d2oy;const rect=canvas2.getBoundingClientRect();clamp2(rect.width,rect.height);}else if(canvas2.parentElement&&canvas2.offsetParent){const rect=canvas2.getBoundingClientRect();const sx=e.clientX-rect.left,sy=e.clientY-rect.top;if(sx>=0&&sy>=0&&sx<=rect.width&&sy<=rect.height){const best=findShow2(sx,sy,rect.width,rect.height);if(best){showTT2(best);canvas2.style.cursor='pointer';}else{hideTT2();canvas2.style.cursor='grab';}}}});
+window.addEventListener('mouseup',()=>{drag2=false;canvas2.style.cursor='grab';});
+canvas2.addEventListener('mouseleave',()=>{if(!drag2)hideTT2();});
+canvas2.addEventListener('dblclick',()=>{panX2=0;panY2=0;zoom2=1;hideTT2();});
+canvas2.addEventListener('wheel',(e)=>{e.preventDefault();const rect=canvas2.getBoundingClientRect();const mx=e.clientX-rect.left,my=e.clientY-rect.top;const f=e.deltaY<0?1.12:0.89;const nz=Math.max(MIN_ZOOM2,Math.min(MAX_ZOOM2,zoom2*f));panX2=mx+(panX2-mx)*(nz/zoom2);panY2=my+(panY2-my)*(nz/zoom2);zoom2=nz;clamp2(rect.width,rect.height);hideTT2();},{passive:false});
+let t2x=0,t2y=0,lp2=0;
+canvas2.addEventListener('touchstart',(e)=>{e.preventDefault();hideTT2();if(e.touches.length===1){t2x=e.touches[0].clientX-panX2;t2y=e.touches[0].clientY-panY2;}else if(e.touches.length===2)lp2=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);},{passive:false});
+canvas2.addEventListener('touchmove',(e)=>{e.preventDefault();const rect=canvas2.getBoundingClientRect();if(e.touches.length===1){panX2=e.touches[0].clientX-t2x;panY2=e.touches[0].clientY-t2y;clamp2(rect.width,rect.height);}else if(e.touches.length===2&&lp2>0){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const nz=Math.max(MIN_ZOOM2,Math.min(MAX_ZOOM2,zoom2*dist/lp2));const cx=(e.touches[0].clientX+e.touches[1].clientX)/2-rect.left;const cy=(e.touches[0].clientY+e.touches[1].clientY)/2-rect.top;panX2=cx+(panX2-cx)*(nz/zoom2);panY2=cy+(panY2-cy)*(nz/zoom2);zoom2=nz;lp2=dist;clamp2(rect.width,rect.height);}},{passive:false});
+canvas2.addEventListener('touchend',(e)=>{if(e.touches.length<2)lp2=0;if(e.changedTouches.length===1&&e.touches.length===0){const rect=canvas2.getBoundingClientRect();const best=findShow2(e.changedTouches[0].clientX-rect.left,e.changedTouches[0].clientY-rect.top,rect.width,rect.height);if(best)showTT2(best);}},{passive:false});
+document.querySelectorAll('.filter-btn').forEach((btn)=>{btn.addEventListener('click',()=>{activeYear2=btn.dataset.year;filterStart2=performance.now();hideTT2();document.querySelectorAll('.filter-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');});});
+const ro2=new ResizeObserver(()=>{resize2();});ro2.observe(canvas2.parentElement);
+genBg2();canvas2.style.cursor='grab';
+window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setInterval(draw2,16);}};
 })();
 </script>
 </div>
@@ -1804,15 +1810,15 @@ setTimeout(tryInitConst,100);
     ],
     '2026': [
       {date:'Feb 13',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
-      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/d/d2/London_Wembley.jpg'},
-      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/1/1e/Ta%27_Qali_National_Stadium.jpg'},
+      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/5/5a/Stadion_Wankdorf_2012.jpg'},
       {date:'Apr 25',city:'Erzincan',flag:'🇹🇷',venue:'13 Şubat City Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
-      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
-      {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
-      {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Nuevo Mirandilla',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/8/8c/Atat%C3%BCrk_Olympic_Stadium.jpg'},
+      {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-7w6iSbA4cqABHNGFoswxRAeQcPOEaH17JWbMRxFxh5NqEBa3&s=10'},
+      {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Nuevo Mirandilla',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0ZJrxk8sYRyZVb2oU7MqBEHXUmRzMsA7hT_JwGpQjzrT7ZhQ&s=10'},
       {date:'May 4',city:'Sevilla',flag:'🇪🇸',venue:'Sánchez-Pizjuán',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
       {date:'May 16',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
-      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',perf:'both',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/7/7f/Rheinpark_Stadion.jpg'},
       {date:'Jun 3',city:'Luxembourg',flag:'🇱🇺',venue:'Stade de Luxembourg',perf:'evren',done:true,img:'https://images.adsttc.com/media/images/617b/0194/f91c/8199/3100/002c/large_jpg/3116_210812_MB99_0523_A3_pressp.jpg?1635451242'},
       {date:'Jun 8 ⭐',city:'Arnhem',flag:'🇳🇱',venue:'GelreDome + Kanye',perf:'both',done:true,img:'https://footballtripper.com/wp-content/uploads/Gelredome.jpg'},
       {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
@@ -1936,7 +1942,7 @@ setTimeout(tryInitConst,100);
   .nums-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;margin-top:40px}
   .num-card{background:rgba(205,177,117,.04);border:1px solid rgba(205,177,117,.12);padding:0;text-align:center;cursor:pointer;transition:all .3s;position:relative;perspective:800px;height:160px}
   .num-card-inner{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
-  .num-card:hover .num-card-inner,.num-card.flipped .num-card-inner{transform:rotateY(180deg)}
+  .num-card.flipped .num-card-inner{transform:rotateY(180deg)}
   .num-card-front,.num-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 14px;border:1px solid rgba(205,177,117,.12);background:rgba(205,177,117,.04)}
   .num-card-back{transform:rotateY(180deg);background:rgba(205,177,117,.1);border-color:rgba(205,177,117,.4)}
   .num-card:hover .num-card-front,.num-card:hover .num-card-back{border-color:rgba(205,177,117,.5)}
@@ -1958,7 +1964,7 @@ setTimeout(tryInitConst,100);
   <p style="font-size:.88rem;color:rgba(255,255,255,.38);margin-top:14px;max-width:500px;line-height:1.7;" class="reveal d1">3 years. Every continent except Antarctica. The numbers speak for themselves.</p>
 
   <div style="display:flex;align-items:center;gap:10px;margin-top:16px;margin-bottom:4px;" class="reveal">
-    <span style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.3);color:var(--accent);padding:4px 12px;border-radius:20px;">↩ Tap card for details</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gradv);color:#000;padding:5px 14px;border-radius:20px;font-weight:700;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(205,177,117,.3);animation:milePulse 2.5s ease-in-out infinite;">↩ Tap any card for details</span>
   </div>
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
@@ -2030,30 +2036,30 @@ setTimeout(tryInitConst,100);
 </section>
 
 <!-- WHAT TO EXPECT -->
-<section id="expect">
-  <p class="section-label">The Experience</p>
-  <h2 class="section-title">What to Expect</h2>
-  <div class="divider"></div>
-  <div class="expect-grid">
-    <div class="expect-card">
-      <div class="expect-icon">🎤</div>
+<section id="expect" style="background:var(--dark2);padding:clamp(50px,7vw,90px) var(--pad);">
+  <p class="section-label reveal">At The Show</p>
+  <h2 class="section-title reveal d1">What To Expect</h2>
+  <div class="divider reveal d1"></div>
+  <div class="expect-grid" style="margin-top:32px;">
+    <div class="expect-card reveal">
+      <div style="font-size:2.2rem;margin-bottom:16px;">🎤</div>
       <h3>Live Performance</h3>
-      <p>Raw, unfiltered energy on stage. No backing track excuses — Pablo and Evren bring everything live, every single night.</p>
+      <p>Raw energy, no backing tracks. Pablo and Evren performing every song live with full production — lights, sound, and real crowd energy from the first second.</p>
     </div>
-    <div class="expect-card">
-      <div class="expect-icon">💡</div>
+    <div class="expect-card reveal d1">
+      <div style="font-size:2.2rem;margin-bottom:16px;">✨</div>
       <h3>Special Visuals</h3>
-      <p>A full production with custom lighting, LED displays, and synchronized stage design built specifically for this world tour.</p>
+      <p>Cinematic stage design and visuals inspired by the Holy Obesity universe. Every show is a full sensory experience — not just a concert, a moment.</p>
     </div>
-    <div class="expect-card">
-      <div class="expect-icon">🤝</div>
+    <div class="expect-card reveal d1">
+      <div style="font-size:2.2rem;margin-bottom:16px;">🙌</div>
       <h3>Fan Moments</h3>
-      <p>They don't just perform at you — they perform with you. Crowd moments, call-and-response, and real connection every night.</p>
+      <p>Pablo and Evren believe the crowd is part of the show. Expect interaction, surprises, and memories that don't happen anywhere else.</p>
     </div>
-    <div class="expect-card">
-      <div class="expect-icon">🔒</div>
+    <div class="expect-card reveal">
+      <div style="font-size:2.2rem;margin-bottom:16px;">🎵</div>
       <h3>Exclusive Songs</h3>
-      <p>Tour-only tracks and unreleased music dropped live before they hit streaming. You have to be there to hear them first.</p>
+      <p>Songs that don't exist on streaming — performed live only. You have to be there. These are the moments fans talk about for years.</p>
     </div>
   </div>
 </section>
@@ -2161,11 +2167,11 @@ setTimeout(tryInitConst,100);
   <div class="about-inner">
     <div>
       <div class="about-photos-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-        <div style="background:#111;overflow:hidden;">
-          <img src="yeconcert.jpg" alt="Pablo & Evren on stage" style="width:100%;height:100%;object-fit:contain;background:#111;display:block;">
+        <div style="background:#111;overflow:hidden;height:280px;">
+          <img src="yeconcert.jpg" alt="Pablo & Evren on stage" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
-        <div style="background:#111;overflow:hidden;">
-          <img src="obese.jpg" alt="Holy Obesity" style="width:100%;height:100%;object-fit:contain;background:#111;display:block;">
+        <div style="background:#111;overflow:hidden;height:280px;">
+          <img src="obnese.jpg" alt="Pablo &amp; Evren" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
       </div>
       <p style="font-size:0.62rem;color:#aaa;letter-spacing:0.1em;margin-top:8px;text-align:center;">Pablo & Evren Live on Stage</p>
@@ -2183,63 +2189,6 @@ setTimeout(tryInitConst,100);
     </div>
   </div>
 </section>
-
-<!-- MUSIC -->
-<section id="music">
-  <p class="section-label">The Sound</p>
-  <h2 class="section-title">Listen Now</h2>
-  <div class="divider"></div>
-  <!--
-    HOW TO EDIT TRACKS:
-    Change "Track Title Here" → your real song name
-    Change "Album Name" → your album/EP name
-    Add more: copy a full <div class="track-card">...</div> block
-    Remove one: delete its full <div class="track-card">...</div> block
-
-    HOW TO UPDATE PLATFORM LINKS:
-    Replace href="#" with your real link e.g.:
-    href="https://open.spotify.com/artist/YOURID"
-    href="https://www.youtube.com/@YOURCHANNEL"
-  -->
-  <div class="music-grid">
-    <div class="track-card" onclick="window.open('https://open.spotify.com/track/5RzSnxqTx4vYEp9re5E0ud?si=f0e568ad058b4b3c','_blank')" style="cursor:pointer;">
-      <div class="track-number">01</div>
-      <h3 class="track-title">River</h3>
-      <p class="track-meta">Vultures 2 · 2024</p>
-      <p style="font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.04em;">Feat. Kanye West, Ty Dolla Sign</p>
-      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play on Spotify</div>
-    </div>
-    <div class="track-card" onclick="window.open('https://open.spotify.com/track/2kgxyflhiicDbF8SDrBxqy?si=d078fb3ba1d348bd','_blank')" style="cursor:pointer;">
-      <div class="track-number">02</div>
-      <h3 class="track-title">Bomb</h3>
-      <p class="track-meta">Vultures 2 · 2024</p>
-      <p style="font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.04em;">Feat. Kanye West, Yuno Miles, North West, Chicago West</p>
-      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play on Spotify</div>
-    </div>
-    <div class="track-card" onclick="window.open('https://open.spotify.com/track/2SjnvpedDUU0Ga69bxnoCa?si=d723e8270964468b','_blank')" style="cursor:pointer;">
-      <div class="track-number">03</div>
-      <h3 class="track-title">All The Love</h3>
-      <p class="track-meta">Bully · 2026</p>
-      <p style="font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.04em;">Feat. Kanye West, Andre Troutman</p>
-      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play on Spotify</div>
-    </div>
-    <div class="track-card" onclick="window.open('https://open.spotify.com/track/42GcjriRK6srwHkfbkBqVl?si=76aa749bd5224873','_blank')" style="cursor:pointer;">
-      <div class="track-number">04</div>
-      <h3 class="track-title">Blood On The Leaves</h3>
-      <p class="track-meta">Yeezus · 2013</p>
-      <p style="font-size:0.7rem;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.04em;">Feat. Kanye West, Terence, Big D, Holy Obesity, TBD</p>
-      <div class="track-play"><div class="play-icon"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>Play on Spotify</div>
-    </div>
-  </div>
-  <div class="music-platforms">
-    <span>Listen on</span>
-    <a href="https://open.spotify.com/playlist/0PKmq1pb4hNCIYHz5csXiu" target="_blank" class="platform-btn">Spotify</a>
-    <a href="#" class="platform-btn">Apple Music</a>
-    <a href="#" class="platform-btn">YouTube</a>
-    <a href="#" class="platform-btn">SoundCloud</a>
-  </div>
-</section>
-
 
 <!-- SETLIST -->
 <section id="setlist" style="position:relative;overflow:hidden;">
@@ -2703,6 +2652,11 @@ function toggleSetlist(){
   arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
   text.textContent = open ? 'VIEW FULL SETLIST — 26 SONGS' : 'COLLAPSE SETLIST';
   if(sticky) sticky.style.display = open ? 'none' : 'flex';
+  if(open){
+    // Scrolling back up to the toggle button
+    var toggleBtn = document.getElementById('setlist-toggle');
+    if(toggleBtn){ setTimeout(function(){ toggleBtn.scrollIntoView({behavior:'smooth',block:'center'}); }, 50); }
+  }
 }
 // Sticky collapse button scroll visibility
 window.addEventListener('scroll', function(){
@@ -3029,7 +2983,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
         '<div class="tl-city">'+s.city+'</div>'+
         '<div class="tl-venue">'+s.venue+'</div>'+
         (perfLabel?'<span class="tl-perf-pill '+(s.perf||'pablo')+'">'+perfLabel+'</span>':'')+
-        (s.done?'':'<div style="font-size:.42rem;color:rgba(205,177,117,.5);font-family:'Space Mono',monospace;letter-spacing:.1em;margin-top:3px;">UPCOMING</div>');
+        (s.done?'':'<div style="font-size:.42rem;color:rgba(205,177,117,.5);font-family:Space Mono,monospace;letter-spacing:.1em;margin-top:3px;">UPCOMING</div>');
       inner.appendChild(item);
     });
   }
@@ -3542,26 +3496,31 @@ window.addEventListener('DOMContentLoaded', function(){
 <!-- FAN WALL -->
 <section id="fanwall" style="background:var(--dark2);padding:clamp(50px,7vw,90px) var(--pad);">
 <style>
-  .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:3px;margin-top:28px}
-  .fw-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:24px 20px;transition:all .3s;position:relative;overflow:hidden}
-  .fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+  .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:3px;margin-top:28px}
+  .fw-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:0;transition:all .3s;position:relative;overflow:hidden;cursor:pointer;perspective:800px;height:170px}
+  .fw-card-inner{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+  .fw-card.flipped .fw-card-inner{transform:rotateY(180deg)}
+  .fw-card-front,.fw-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:22px 18px;display:flex;flex-direction:column;justify-content:space-between}
+  .fw-card-back{transform:rotateY(180deg);background:rgba(205,177,117,.08);border:1px solid rgba(205,177,117,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .3s;transform-origin:left;z-index:2}
   .fw-card:hover::before{transform:scaleX(1)}
-  .fw-card:hover{border-color:rgba(205,177,117,.25);background:rgba(205,177,117,.04);transform:translateY(-3px)}
-  .fw-stars{color:var(--accent);font-size:.9rem;letter-spacing:3px;margin-bottom:12px}
-  .fw-quote{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;font-style:italic;margin-bottom:14px}
-  .fw-author{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px}
+  .fw-stars{color:var(--accent);font-size:.85rem;letter-spacing:3px;margin-bottom:10px}
+  .fw-quote{font-size:.76rem;color:rgba(255,255,255,.6);line-height:1.65;font-style:italic;margin-bottom:10px;flex:1;overflow:hidden}
+  .fw-author{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
   .fw-city{color:rgba(205,177,117,.5)}
+  .fw-back-emoji{font-size:2rem;margin-bottom:8px}
+  .fw-back-text{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);line-height:1.6}
 </style>
   <p class="section-label reveal">The Crowd Speaks</p>
   <h2 class="section-title reveal d1">Fan Wall</h2>
   <div class="divider reveal d1"></div>
   <div class="fw-grid">
-    <div class="fw-card reveal"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote><div class="fw-author">moggogogers <span class="fw-city">/ Basel, CH</span></div></div>
-    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote><div class="fw-author">family nibbooggers <span class="fw-city">/ Istanbul</span></div></div>
-    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote><div class="fw-author">big terence <span class="fw-city">/ Germany</span></div></div>
-    <div class="fw-card reveal"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"These two together are a movement. Cannot wait for more dates. Basel is lucky to have them every single day."</blockquote><div class="fw-author">dogmoggers <span class="fw-city">/ Switzerland</span></div></div>
-    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote><div class="fw-author">big bork <span class="fw-city">/ France</span></div></div>
-    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote><div class="fw-author">bus line 45 <span class="fw-city">/ Spain</span></div></div>
+    <div class="fw-card reveal" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Unforgettable. Nothing hit like this. Pablo commanded that stage like nobody I have ever seen."</blockquote><div class="fw-author">moggogogers <span class="fw-city">/ Basel</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🏟️</div><div class="fw-back-text">St. Jakob Park<br>Basel, Switzerland<br>2026 World Tour</div></div></div></div>
+    <div class="fw-card reveal d1" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Evren's energy is unreal. The whole crowd insane from second one. I cried twice."</blockquote><div class="fw-author">family nibbooggers <span class="fw-city">/ Istanbul</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🇹🇷</div><div class="fw-back-text">Istanbul, Turkey<br>May 2026<br>Evren Solo Show</div></div></div></div>
+    <div class="fw-card reveal d1" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Drove 4 hours. Worth every minute. This is what live music is supposed to feel like."</blockquote><div class="fw-author">big terence <span class="fw-city">/ Germany</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🇩🇪</div><div class="fw-back-text">Karlsruhe<br>Dec 20, 2025<br>Pablo Solo Show</div></div></div></div>
+    <div class="fw-card reveal" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"These two together are a movement. Basel is lucky to have them every single day."</blockquote><div class="fw-author">dogmoggers <span class="fw-city">/ Switzerland</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🇨🇭</div><div class="fw-back-text">Basel, Switzerland<br>Daily 2026<br>Pablo Solo</div></div></div></div>
+    <div class="fw-card reveal d1" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Wasn't expecting much then they blew the roof off. Meet & greet was the highlight of my year."</blockquote><div class="fw-author">big bork <span class="fw-city">/ France</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🇫🇷</div><div class="fw-back-text">Fan from France<br>Attended 2025 Tour<br>Barcelona Show</div></div></div></div>
+    <div class="fw-card reveal d1" onclick="this.classList.toggle('flipped')"><div class="fw-card-inner"><div class="fw-card-front"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Came for the music, stayed for everything else. The exclusive songs — waiting for them on Spotify ever since."</blockquote><div class="fw-author">bus line 45 <span class="fw-city">/ Spain</span></div></div><div class="fw-card-back"><div class="fw-back-emoji">🇪🇸</div><div class="fw-back-text">Spain<br>Barcelona 2025<br>Camp Nou Show</div></div></div></div>
   </div>
 </section>
 
