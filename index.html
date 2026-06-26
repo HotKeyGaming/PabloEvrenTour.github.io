@@ -1,3 +1,58 @@
+<style>
+#section-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:transparent;pointer-events:none}
+#section-progress-fill{height:100%;background:linear-gradient(to right,#b8923f,#cdb175,#e8cf92);width:0%;transition:width .1s;box-shadow:0 0 8px rgba(205,177,117,.6)}
+#section-indicator{position:fixed;top:6px;right:var(--pad);z-index:9998;font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(205,177,117,.6);opacity:0;transition:opacity .3s;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:3px;pointer-events:none}
+</style>
+<div id="section-progress"><div id="section-progress-fill"></div></div>
+<div id="section-indicator"></div>
+<script>
+(function(){
+  var sections=[
+    {id:'hero',label:'Home'},
+    {id:'countdown',label:'Next Show'},
+    {id:'dates',label:'Tour Dates'},
+    {id:'tourmap',label:'Tour Map'},
+    {id:'tourstory',label:'Tour Story'},
+    {id:'socials',label:'Find Us Online'},
+    {id:'thenumbers',label:'The Numbers'},
+    {id:'expect',label:'What to Expect'},
+    {id:'lorecta',label:'Lore Archive'},
+    {id:'gallery',label:'Gallery'},
+    {id:'about',label:'Our Story'},
+    {id:'music',label:'Music Player'},
+    {id:'setlist',label:'Setlist'},
+    {id:'merch',label:'Merchandise'},
+    {id:'documentary',label:'Concert Footage'},
+    {id:'timeline',label:'Concert Timeline'},
+    {id:'news',label:'Latest News'},
+    {id:'milestones',label:'Milestones'},
+    {id:'feed',label:'Social Feed'},
+    {id:'fanwall',label:'Fan Wall'},
+    {id:'newsletter',label:'Newsletter'},
+  ];
+  var ind=document.getElementById('section-indicator');
+  var fill=document.getElementById('section-progress-fill');
+  var indTimer=null;
+  window.addEventListener('scroll',function(){
+    var scrollY=window.scrollY;
+    var maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+    var pct=maxScroll>0?(scrollY/maxScroll*100):0;
+    fill.style.width=pct+'%';
+    // Find current section
+    var current='';
+    sections.forEach(function(s){
+      var el=document.getElementById(s.id);
+      if(el&&el.getBoundingClientRect().top<=80)current=s.label;
+    });
+    if(current&&ind){
+      ind.textContent=current;
+      ind.style.opacity='1';
+      clearTimeout(indTimer);
+      indTimer=setTimeout(function(){if(ind)ind.style.opacity='0';},1800);
+    }
+  });
+})();
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -482,27 +537,34 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
 <div id="mob-nav">
   <button class="mob-close" onclick="closeMob()">&#10005;</button>
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
-  <div class="dsec">Tour</div>
-  <a href="#countdown" class="dl hot" onclick="closeMob()">New Date</a>
-  <a href="#dates" class="dl hot" onclick="closeMob()">Tour Dates</a>
-  <a href="#tourmap" class="dl" onclick="closeMob()">Tour Map</a>
-  <div class="dsec">Content</div>
-  <a href="#gallery" class="dl" onclick="closeMob()">Gallery</a>
-  <a href="#about" class="dl" onclick="closeMob()">Story</a>
-  <a href="#music" class="dl" onclick="closeMob()">Music</a>
-  <a href="#setlist" class="dl" onclick="closeMob()">Setlist</a>
-  <a href="#spotify-pl" class="dl" onclick="closeMob()">&#9654; Spotify Playlist</a>
-  <a href="#milestones" class="dl" onclick="closeMob()">Milestones</a>
-  <a href="#news" class="dl hot" onclick="closeMob()">News</a>
-  <div class="dsec">Experience</div>
-  <a href="#merch" class="dl" onclick="closeMob()">Merchandise</a>
-  <a href="#fanwall" class="dl" onclick="closeMob()">Fan Wall</a>
-  <a href="#vip" class="dl" onclick="closeMob()">VIP Experience</a>
-  <a href="#pasttours" class="dl" onclick="closeMob()" style="color:var(--accent);font-weight:800">&#9733; Past Tours</a>
-  <div class="dsec">Info</div>
-  <a href="#socials" class="dl" onclick="closeMob()">Socials</a>
-  <a href="#contact" class="dl" onclick="closeMob()">Contact</a>
-  <a href="lore.html" class="dl spec" onclick="closeMob()">The Lore Archive &#8594;</a>
+  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">45 Shows · 17 Countries</span>
+  </div>
+  <div class="dsec">🗓 Tour</div>
+  <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
+  <a href="#dates" class="dl hot" onclick="closeMob()">📍 Tour Dates 2026</a>
+  <a href="#tourmap" class="dl" onclick="closeMob()">🌍 Tour Map</a>
+  <a href="#tourstory" class="dl" onclick="closeMob()">📖 Tour Story</a>
+  <a href="#timeline" class="dl" onclick="closeMob()">⏳ Concert Timeline</a>
+  <a href="#thenumbers" class="dl" onclick="closeMob()">📊 The Numbers</a>
+  <div class="dsec">🎵 Music & Media</div>
+  <a href="#music" class="dl" onclick="closeMob()">🎵 Music Player</a>
+  <a href="#setlist" class="dl" onclick="closeMob()">🎤 Setlist</a>
+  <a href="#spotify-pl" class="dl" onclick="closeMob()">▶ Spotify Playlist</a>
+  <a href="#documentary" class="dl" onclick="closeMob()">🎬 Concert Footage</a>
+  <a href="#gallery" class="dl" onclick="closeMob()">📸 Gallery</a>
+  <a href="#milestones" class="dl" onclick="closeMob()">🏆 Milestones</a>
+  <div class="dsec">🛍 Fan Zone</div>
+  <a href="#merch" class="dl" onclick="closeMob()">👕 Merchandise</a>
+  <a href="#fanwall" class="dl" onclick="closeMob()">💬 Fan Wall</a>
+  <a href="#feed" class="dl" onclick="closeMob()">📱 Social Feed</a>
+  <a href="#news" class="dl hot" onclick="closeMob()">📰 Latest News</a>
+  <div class="dsec">🗂 More</div>
+  <a href="#about" class="dl" onclick="closeMob()">📜 Our Story</a>
+  <a href="#socials" class="dl" onclick="closeMob()">🔗 Find Us Online</a>
+  <a href="#pasttours" class="dl" onclick="closeMob()" style="color:var(--accent);font-weight:800">⭐ Past Tours</a>
+  <a href="lore.html" class="dl spec" onclick="closeMob()">🔴 The Lore Archive &#8594;</a>
   <a href="2025.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2025 World Tour</a>
   <a href="2024.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2024 World Tour</a>
   <div class="dtools">
@@ -808,10 +870,32 @@ window.addEventListener('load',function(){
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
           <div style="width:7px;height:7px;border-radius:50%;background:#cdb175;animation:pulseDot 1.4s ease-in-out infinite;"></div>
-          <span style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:'Space Mono',monospace;">&#9733; Next After Milan</span>
+          <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700;">&#9733; Next Show</span>
         </div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:0.02em;color:rgba(255,255,255,0.9);line-height:1;font-style:italic;">Stockholm, Sweden &#127480;&#127466;</div>
-        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:4px;letter-spacing:0.05em;">Strawberry Arena &middot; Doors 21:00 &middot; 11 Jul 2026 &middot; Pablo Only</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3.5vw,2.4rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Stockholm, Sweden &#127480;&#127466;</div>
+        <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Strawberry Arena &middot; 11 Jul 2026 &middot; Pablo Only</div>
+        <!-- WEATHER WIDGET -->
+        <div id="sto-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 12px;">
+          <span id="sto-weather-icon" style="font-size:1rem;">⏳</span>
+          <span id="sto-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
+        </div>
+        <script>
+        (function(){
+          // Stockholm lat/lng — Open-Meteo free API, no key needed
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=59.33&longitude=18.07&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Europe%2FStockholm')
+            .then(function(r){return r.json();})
+            .then(function(d){
+              var temp = Math.round(d.current.temperature_2m);
+              var code = d.current.weathercode;
+              var icons = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
+              var icon = icons[code] || '🌡️';
+              document.getElementById('sto-weather-icon').textContent = icon;
+              document.getElementById('sto-weather-text').textContent = 'Stockholm now: ' + temp + '°C';
+              document.getElementById('sto-weather').style.borderColor = 'rgba(205,177,117,.25)';
+            })
+            .catch(function(){ document.getElementById('sto-weather-text').textContent = 'Stockholm, Sweden 🇸🇪'; });
+        })();
+        </script>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
         <div style="display:flex;gap:8px;">
@@ -1326,15 +1410,6 @@ setInterval(updateStockholm, 1000);
   </div>
 
   <!-- ══ UNCONFIRMED ══ -->
-  <div class="dates-divider" style="font-size:0.82rem;padding:18px clamp(24px,6vw,80px) 18px calc(clamp(24px,6vw,80px) + 60px);">? Unconfirmed</div>
-
-
-
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇵🇪</span> Lima, Peru</h3><p>Venue TBC</p></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇯🇵</span> Tokyo, Japan</h3><p>Venue TBC</p></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇺🇸</span> Florida, USA</h3><p>Venue TBC</p></div></div></div>
-  <div class="dr unconfirmed"><div class="dr-inner"><div class="dr-dot"></div><div class="dr-date"><div class="dr-month">TBC</div><div class="dr-day">?</div></div><div class="dr-info"><h3><span class="flag">🇲🇽</span> Mexico</h3><p>Venue TBC</p></div></div></div>
-
   <div style="padding-bottom:var(--gap);"></div>
 </div><!-- end dates timeline-wrap (unconfirmed+cancelled) -->
 </div><!-- end dates-info -->
@@ -1506,253 +1581,187 @@ if (globeScript) {
 </div><!-- end map-globe -->
 
 <div id="map-constellation" style="display:none;">
-<section style="position:relative;width:100%;height:50vh;max-height:420px;background:#030208;overflow:hidden;">
-  <canvas id="constCanvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
-  <!-- Year filter -->
-  <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:6px;">
-    <button onclick="setConstYear('all')" id="cy-all" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;padding:6px 14px;border:none;cursor:pointer;background:var(--gradv);color:#000;transition:all .2s;">ALL</button>
-    <button onclick="setConstYear('2024')" id="cy-2024" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;padding:6px 14px;border:1px solid rgba(205,177,117,.4);cursor:pointer;background:transparent;color:var(--accent);transition:all .2s;">2024</button>
-    <button onclick="setConstYear('2025')" id="cy-2025" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;padding:6px 14px;border:1px solid rgba(205,177,117,.4);cursor:pointer;background:transparent;color:var(--accent);transition:all .2s;">2025</button>
-    <button onclick="setConstYear('2026')" id="cy-2026" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.12em;padding:6px 14px;border:1px solid rgba(205,177,117,.4);cursor:pointer;background:transparent;color:var(--accent);transition:all .2s;">2026</button>
+
+<style>
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.const-section{background:#030208;padding:0;overflow:hidden}
+.canvas-wrap{position:relative;width:100%;height:50vh;max-height:480px;min-height:280px}
+#constellation{display:block;width:100%;height:100%;cursor:crosshair}
+.filters{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10;white-space:nowrap}
+.filter-btn{padding:5px 16px;border-radius:20px;border:1px solid rgba(205,177,117,.45);background:transparent;color:#cdb175;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;cursor:pointer;outline:none;transition:all .2s}
+.filter-btn.active{background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);color:#030208;font-weight:700;border-color:transparent}
+.const-tooltip{position:absolute;background:rgba(3,2,8,.93);border:1px solid rgba(205,177,117,.26);border-radius:8px;padding:11px 15px;pointer-events:none;z-index:30;min-width:182px;backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(0,0,0,.6);opacity:0;transition:opacity .15s}
+.const-tooltip.visible{opacity:1}
+.tt-city{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#e8d99a;margin-bottom:3px}
+.tt-date{font-family:'Space Mono',monospace;font-size:10px;color:rgba(205,177,117,.65);letter-spacing:.06em}
+.tt-badge{display:inline-flex;align-items:center;margin-top:7px;padding:2px 9px;border-radius:3px;font-size:10px;font-family:'Space Mono',monospace;letter-spacing:.04em}
+.tt-badge.completed{background:rgba(70,150,80,.18);color:#72c47e;border:1px solid rgba(70,150,80,.42)}
+.tt-badge.upcoming{background:rgba(205,177,117,.18);color:#e8cf92;border:1px solid rgba(205,177,117,.42)}
+.tt-note{margin-top:6px;font-size:10px;font-family:'Sora',sans-serif;color:rgba(205,177,117,.62);line-height:1.4}
+.const-legend{position:absolute;bottom:14px;right:14px;display:flex;flex-direction:column;gap:7px;background:rgba(3,2,8,.78);border:1px solid rgba(205,177,117,.14);border-radius:7px;padding:10px 13px}
+.const-legend-row{display:flex;align-items:center;gap:8px}
+.const-legend-dot{border-radius:50%;flex-shrink:0}
+.const-legend-label{font-family:'Space Mono',monospace;font-size:9px;color:rgba(205,177,117,.65);letter-spacing:.07em}
+.const-footer{text-align:center;padding:14px 24px 20px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(205,177,117,.38);letter-spacing:.12em;background:#030208}
+</style>
+
+<div class="const-section">
+  <div class="canvas-wrap">
+    <canvas id="constellation"></canvas>
+    <div class="filters">
+      <button class="filter-btn active" data-year="ALL">ALL</button>
+      <button class="filter-btn" data-year="2024">2024</button>
+      <button class="filter-btn" data-year="2025">2025</button>
+      <button class="filter-btn" data-year="2026">2026</button>
+    </div>
+    <div class="const-tooltip" id="const-tooltip">
+      <div class="tt-city" id="tt-city"></div>
+      <div class="tt-date" id="tt-date"></div>
+      <div class="tt-badge" id="tt-badge"></div>
+      <div class="tt-note" id="tt-note"></div>
+    </div>
+    <div class="const-legend">
+      <div class="const-legend-row"><div class="const-legend-dot" style="width:8px;height:8px;background:#e8cf92;box-shadow:0 0 7px 2px rgba(232,207,146,.55);"></div><span class="const-legend-label">UPCOMING</span></div>
+      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#cdb175;box-shadow:0 0 5px rgba(205,177,117,.5);margin-left:1px;"></div><span class="const-legend-label">2026</span></div>
+      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#5fa569;box-shadow:0 0 5px rgba(95,165,105,.5);margin-left:1px;"></div><span class="const-legend-label">2025</span></div>
+      <div class="const-legend-row"><div class="const-legend-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="const-legend-label">2024</span></div>
+    </div>
   </div>
-  <!-- Tooltip -->
-  <div id="const-tooltip" style="display:none;position:absolute;background:rgba(10,8,6,.95);border:1px solid rgba(205,177,117,.4);border-radius:10px;padding:10px 16px;pointer-events:none;z-index:20;font-family:'Syne',sans-serif;max-width:180px;">
-    <div id="ctt-city" style="font-weight:800;font-size:.95rem;color:#fff;"></div>
-    <div id="ctt-date" style="font-size:.68rem;color:rgba(205,177,117,.8);margin-top:3px;font-family:'Space Mono',monospace;"></div>
-    <div id="ctt-status" style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;margin-top:5px;"></div>
-  </div>
-</section>
+  <div class="const-footer"><span>45 shows &nbsp;·&nbsp; 17 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 
 <script>
-// ── MAP SWITCH ────────────────────────────────────────────────
-function switchMap(type){
-  var globe = document.getElementById('map-globe');
-  var cons  = document.getElementById('map-constellation');
-  var tbG   = document.getElementById('tab-globe');
-  var tbC   = document.getElementById('tab-constellation');
-  if(type === 'globe'){
-    globe.style.display = ''; cons.style.display = 'none';
-    tbG.style.background = 'var(--gradv)'; tbG.style.color = '#000'; tbG.style.border = 'none';
-    tbC.style.background = 'transparent'; tbC.style.color = 'var(--accent)'; tbC.style.border = '1px solid rgba(205,177,117,.4)';
-  } else {
-    globe.style.display = 'none'; cons.style.display = '';
-    tbC.style.background = 'var(--gradv)'; tbC.style.color = '#000'; tbC.style.border = 'none';
-    tbG.style.background = 'transparent'; tbG.style.color = 'var(--accent)'; tbG.style.border = '1px solid rgba(205,177,117,.4)';
-    if(!window._constInited){ initConstellation(); window._constInited = true; }
-  }
-}
-
-// ── CONSTELLATION DATA ─────────────────────────────────────────
-var constShows = [
-  // 2024
-  {city:'London',lat:51.5074,lng:-0.1278,date:'Jan 19, 2024',year:'2024',status:'completed'},
-  {city:'Las Vegas (Fremont)',lat:36.1703,lng:-115.1423,date:'Apr 4, 2024',year:'2024',status:'completed'},
-  {city:'Málaga',lat:36.7213,lng:-4.4214,date:'Feb 19, 2024',year:'2024',status:'completed'},
-  {city:'Sevilla',lat:37.3891,lng:-5.9845,date:'Feb 22, 2024',year:'2024',status:'completed'},
-  {city:'Las Vegas',lat:36.1699,lng:-115.1398,date:'Apr 1, 2024',year:'2024',status:'completed'},
-  {city:'Philadelphia',lat:39.9526,lng:-75.1652,date:'Apr 6, 2024',year:'2024',status:'completed'},
-  {city:'Milan (San Siro)',lat:45.4781,lng:9.1240,date:'May 9, 2024',year:'2024',status:'completed'},
-  {city:'Pisa',lat:43.7228,lng:10.4017,date:'May 10, 2024',year:'2024',status:'completed'},
-  {city:'Antalya',lat:36.8969,lng:30.7133,date:'Jul 28, 2024',year:'2024',status:'completed'},
-  {city:'Geneva',lat:46.2044,lng:6.1432,date:'Sep 8, 2024',year:'2024',status:'completed'},
-  {city:'Athens',lat:37.9838,lng:23.7275,date:'Sep 30, 2024',year:'2024',status:'completed'},
-  {city:'Sofia',lat:42.6977,lng:23.3219,date:'Oct 7, 2024',year:'2024',status:'completed'},
-  // 2025
-  {city:'Barcelona',lat:41.3851,lng:2.1734,date:'Jan 30, 2025',year:'2025',status:'completed'},
-  {city:'New York (MSG)',lat:40.7505,lng:-73.9934,date:'Mar 2, 2025',year:'2025',status:'completed'},
-  {city:'New York (MSG) II',lat:40.7508,lng:-73.9940,date:'Mar 4, 2025',year:'2025',status:'completed'},
-  {city:'Bergamo',lat:45.6983,lng:9.6773,date:'Mar 13, 2025',year:'2025',status:'completed'},
-  {city:'Palermo',lat:38.1157,lng:13.3615,date:'Apr 22, 2025',year:'2025',status:'completed'},
-  {city:'Barcelona II',lat:41.3856,lng:2.1734,date:'May 10, 2025',year:'2025',status:'completed'},
-  {city:'Basel (Eurovision)',lat:47.5596,lng:7.5886,date:'May 17, 2025',year:'2025',status:'completed'},
-  {city:'Milan (San Siro) II',lat:45.4785,lng:9.1244,date:'May 29, 2025',year:'2025',status:'completed'},
-  {city:'Turin',lat:45.0703,lng:7.6869,date:'May 30, 2025',year:'2025',status:'completed'},
-  {city:'Barcelona III',lat:41.3860,lng:2.1740,date:'Jun 23, 2025',year:'2025',status:'completed'},
-  {city:'Milan (Piazza Duomo)',lat:45.4642,lng:9.1900,date:'Jul 13, 2025',year:'2025',status:'completed'},
-  {city:'Bangkok',lat:13.7563,lng:100.5018,date:'Jul 21, 2025',year:'2025',status:'completed'},
-  {city:'Phuket',lat:7.8804,lng:98.3923,date:'Jul 23, 2025',year:'2025',status:'completed'},
-  {city:'Koh Samui',lat:9.5120,lng:100.0136,date:'Jul 27, 2025',year:'2025',status:'completed'},
-  {city:'Rome',lat:41.8719,lng:12.5674,date:'Sep 6, 2025',year:'2025',status:'completed'},
-  {city:'San Marino',lat:43.9424,lng:12.4578,date:'Oct 6, 2025',year:'2025',status:'completed'},
-  {city:'Madrid',lat:40.4168,lng:-3.7038,date:'Nov 2, 2025',year:'2025',status:'completed'},
-  {city:'Karlsruhe',lat:49.0069,lng:8.4037,date:'Dec 20, 2025',year:'2025',status:'completed'},
-  // 2026
-  {city:'Barcelona',lat:41.3855,lng:2.1730,date:'Feb 13, 2026',year:'2026',status:'completed'},
-  {city:'Malta',lat:35.8989,lng:14.5146,date:'Feb 20, 2026',year:'2026',status:'completed'},
-  {city:'Bern',lat:46.9480,lng:7.4474,date:'Mar 21, 2026',year:'2026',status:'completed'},
-  {city:'Erzincan',lat:39.7500,lng:39.5000,date:'Apr 25, 2026',year:'2026',status:'completed'},
-  {city:'Istanbul',lat:41.0082,lng:28.9784,date:'May 1, 2026',year:'2026',status:'completed'},
-  {city:'Jerez',lat:36.6850,lng:-6.1261,date:'May 1, 2026',year:'2026',status:'completed'},
-  {city:'Cádiz',lat:36.5271,lng:-6.2886,date:'May 2, 2026',year:'2026',status:'completed'},
-  {city:'Sevilla',lat:37.3891,lng:-5.9845,date:'May 4, 2026',year:'2026',status:'completed'},
-  {city:'Milan (San Siro)',lat:45.4780,lng:9.1242,date:'May 16, 2026',year:'2026',status:'completed'},
-  {city:'Vaduz',lat:47.1410,lng:9.5209,date:'May 17, 2026',year:'2026',status:'completed'},
-  {city:'Luxembourg City',lat:49.6116,lng:6.1319,date:'Jun 3, 2026',year:'2026',status:'completed'},
-  {city:'Arnhem',lat:51.9851,lng:5.8987,date:'Jun 8, 2026',year:'2026',status:'completed'},
-  {city:'Milan (Jun 19)',lat:45.4642,lng:9.1900,date:'Jun 19, 2026',year:'2026',status:'completed'},
-  {city:'Milan (Jun 21)',lat:45.4648,lng:9.1905,date:'Jun 21, 2026',year:'2026',status:'completed'},
-  {city:'Basel',lat:47.5596,lng:7.5886,date:'Daily 2026',year:'2026',status:'upcoming'},
-  {city:'Stockholm',lat:59.3293,lng:18.0686,date:'Jul 11, 2026',year:'2026',status:'upcoming'},
-  {city:'Hurghada',lat:27.2579,lng:33.8116,date:'Jul 17, 2026',year:'2026',status:'upcoming'},
+(function(){
+const SHOWS=[
+  {id:1,year:2024,city:'London',dateStr:'Jan 19, 2024',lat:51.507,lng:-0.128,completed:true},
+  {id:2,year:2024,city:'Málaga',dateStr:'Feb 19, 2024',lat:36.721,lng:-4.421,completed:true},
+  {id:3,year:2024,city:'Sevilla',dateStr:'Feb 22, 2024',lat:37.389,lng:-5.985,completed:true},
+  {id:4,year:2024,city:'Las Vegas',dateStr:'Apr 1, 2024',lat:36.090,lng:-115.183,completed:true,note:'Allegiant Stadium'},
+  {id:5,year:2024,city:'Las Vegas',dateStr:'Apr 4, 2024',lat:36.170,lng:-115.140,completed:true,note:'Fremont Street'},
+  {id:6,year:2024,city:'Philadelphia',dateStr:'Apr 6, 2024',lat:39.953,lng:-75.165,completed:true},
+  {id:7,year:2024,city:'Milan',dateStr:'May 9, 2024',lat:45.465,lng:9.186,completed:true},
+  {id:8,year:2024,city:'Pisa',dateStr:'May 10, 2024',lat:43.723,lng:10.402,completed:true},
+  {id:9,year:2024,city:'Antalya',dateStr:'Jul 28, 2024',lat:36.897,lng:30.713,completed:true},
+  {id:10,year:2024,city:'Geneva',dateStr:'Sep 8, 2024',lat:46.204,lng:6.143,completed:true},
+  {id:11,year:2024,city:'Athens',dateStr:'Sep 30, 2024',lat:37.984,lng:23.728,completed:true},
+  {id:12,year:2024,city:'Sofia',dateStr:'Oct 7, 2024',lat:42.698,lng:23.322,completed:true},
+  {id:13,year:2025,city:'Barcelona',dateStr:'Jan 30, 2025',lat:41.385,lng:2.173,completed:true},
+  {id:14,year:2025,city:'New York',dateStr:'Mar 2, 2025',lat:40.713,lng:-74.006,completed:true},
+  {id:15,year:2025,city:'New York',dateStr:'Mar 4, 2025',lat:40.713,lng:-74.006,completed:true},
+  {id:16,year:2025,city:'Bergamo',dateStr:'Mar 13, 2025',lat:45.698,lng:9.677,completed:true},
+  {id:17,year:2025,city:'Palermo',dateStr:'Apr 22, 2025',lat:38.116,lng:13.361,completed:true},
+  {id:18,year:2025,city:'Barcelona',dateStr:'May 10, 2025',lat:41.385,lng:2.173,completed:true},
+  {id:19,year:2025,city:'Basel',dateStr:'May 17, 2025',lat:47.560,lng:7.589,completed:true},
+  {id:20,year:2025,city:'Milan',dateStr:'May 29, 2025',lat:45.465,lng:9.186,completed:true},
+  {id:21,year:2025,city:'Turin',dateStr:'May 30, 2025',lat:45.070,lng:7.687,completed:true},
+  {id:22,year:2025,city:'Barcelona',dateStr:'Jun 23, 2025',lat:41.385,lng:2.173,completed:true},
+  {id:23,year:2025,city:'Milan',dateStr:'Jul 13, 2025',lat:45.465,lng:9.186,completed:true},
+  {id:24,year:2025,city:'Bangkok',dateStr:'Jul 21, 2025',lat:13.756,lng:100.502,completed:true},
+  {id:25,year:2025,city:'Phuket',dateStr:'Jul 23, 2025',lat:7.880,lng:98.392,completed:true},
+  {id:26,year:2025,city:'Koh Samui',dateStr:'Jul 27, 2025',lat:9.512,lng:100.014,completed:true},
+  {id:27,year:2025,city:'Rome',dateStr:'Sep 6, 2025',lat:41.903,lng:12.496,completed:true},
+  {id:28,year:2025,city:'San Marino',dateStr:'Oct 6, 2025',lat:43.942,lng:12.458,completed:true},
+  {id:29,year:2025,city:'Madrid',dateStr:'Nov 2, 2025',lat:40.417,lng:-3.704,completed:true},
+  {id:30,year:2025,city:'Karlsruhe',dateStr:'Dec 20, 2025',lat:49.007,lng:8.404,completed:true},
+  {id:31,year:2026,city:'Barcelona',dateStr:'Feb 13, 2026',lat:41.385,lng:2.173,completed:true},
+  {id:32,year:2026,city:'Malta',dateStr:'Feb 20, 2026',lat:35.937,lng:14.375,completed:true},
+  {id:33,year:2026,city:'Bern',dateStr:'Mar 21, 2026',lat:46.948,lng:7.447,completed:true},
+  {id:34,year:2026,city:'Erzincan',dateStr:'Apr 25, 2026',lat:39.750,lng:39.500,completed:true},
+  {id:35,year:2026,city:'Istanbul',dateStr:'May 1, 2026',lat:41.008,lng:28.978,completed:true},
+  {id:36,year:2026,city:'Jerez',dateStr:'May 1, 2026',lat:36.685,lng:-6.126,completed:true},
+  {id:37,year:2026,city:'Cádiz',dateStr:'May 2, 2026',lat:36.530,lng:-6.293,completed:true},
+  {id:38,year:2026,city:'Sevilla',dateStr:'May 4, 2026',lat:37.389,lng:-5.985,completed:true},
+  {id:39,year:2026,city:'Milan',dateStr:'May 16, 2026',lat:45.465,lng:9.186,completed:true},
+  {id:40,year:2026,city:'Vaduz',dateStr:'May 17, 2026',lat:47.141,lng:9.521,completed:true},
+  {id:41,year:2026,city:'Luxembourg',dateStr:'Jun 3, 2026',lat:49.612,lng:6.132,completed:true},
+  {id:42,year:2026,city:'Arnhem',dateStr:'Jun 8, 2026',lat:51.985,lng:5.899,completed:true,note:'⭐ Kanye West special guest'},
+  {id:43,year:2026,city:'Milan',dateStr:'Jun 19, 2026',lat:45.465,lng:9.186,completed:true},
+  {id:44,year:2026,city:'Milan',dateStr:'Jun 21, 2026',lat:45.465,lng:9.186,completed:true},
+  {id:45,year:2026,city:'Basel',dateStr:'Coming soon',lat:47.560,lng:7.589,completed:false},
+  {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:false},
+  {id:47,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
 ];
-
-var _constYear = 'all';
-function setConstYear(y){
-  _constYear = y;
-  ['all','2024','2025','2026'].forEach(function(yr){
-    var btn = document.getElementById('cy-'+yr);
-    if(btn){ btn.style.background = (yr===y) ? 'var(--gradv)' : 'transparent'; btn.style.color = (yr===y) ? '#000' : 'var(--accent)'; btn.style.border = (yr===y) ? 'none' : '1px solid rgba(205,177,117,.4)'; }
-  });
-  drawConstellation();
-}
-
-function initConstellation(){
-  var canvas = document.getElementById('constCanvas');
-  if(!canvas) return;
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-  drawConstellation();
-  window.addEventListener('resize', function(){
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    drawConstellation();
-  });
-
-  // Hover detection
-  canvas.addEventListener('mousemove', function(e){
-    var rect = canvas.getBoundingClientRect();
-    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    var found = null;
-    var shown = _constYear==='all' ? constShows : constShows.filter(function(s){return s.year===_constYear;});
-    shown.forEach(function(s){
-      if(!s._cx) return;
-      var dx = mx - s._cx, dy = my - s._cy;
-      if(Math.sqrt(dx*dx+dy*dy) < 12) found = s;
-    });
-    var tip = document.getElementById('const-tooltip');
-    if(found){
-      canvas.style.cursor='pointer';
-      document.getElementById('ctt-city').textContent = found.city;
-      document.getElementById('ctt-date').textContent = found.date;
-      var st = document.getElementById('ctt-status');
-      st.textContent = found.status === 'upcoming' ? '▶ Upcoming Show' : '✓ Completed Show';
-      st.style.color = found.status === 'upcoming' ? '#cdb175' : '#3ddc84';
-      tip.style.display = 'block';
-      tip.style.left = (e.clientX - rect.left + 14) + 'px';
-      tip.style.top = (e.clientY - rect.top - 40) + 'px';
-    } else {
-      canvas.style.cursor='default';
-      tip.style.display='none';
-    }
-  });
-  canvas.addEventListener('mouseleave', function(){ document.getElementById('const-tooltip').style.display='none'; });
-}
-
-function drawConstellation(){
-  var canvas = document.getElementById('constCanvas');
-  if(!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var W = canvas.width, H = canvas.height;
-  ctx.clearRect(0,0,W,H);
-
-  // Background stars
-  ctx.fillStyle = '#030208';
-  ctx.fillRect(0,0,W,H);
-  for(var i=0;i<180;i++){
-    var bx=Math.random()*W, by=Math.random()*H, br=Math.random()*1.2;
-    ctx.beginPath(); ctx.arc(bx,by,br,0,Math.PI*2);
-    ctx.fillStyle='rgba(255,255,255,'+(Math.random()*.4+.1)+')'; ctx.fill();
-  }
-
-  var shown = _constYear==='all' ? constShows : constShows.filter(function(s){return s.year===_constYear;});
-
-  // Project lat/lng to canvas (Mercator-ish)
-  shown.forEach(function(s){
-    s._cx = (s.lng + 180) / 360 * W;
-    s._cy = (90 - s.lat) / 180 * H;
-  });
-
-  // Draw connecting lines
-  var yearColors = {'2024':'rgba(132,107,56,0.25)','2025':'rgba(92,147,92,0.25)','2026':'rgba(205,177,117,0.3)'};
-  if(_constYear === 'all'){
-    ['2024','2025','2026'].forEach(function(yr){
-      var sub = shown.filter(function(s){return s.year===yr;});
-      ctx.beginPath();
-      sub.forEach(function(s,i){ if(i===0) ctx.moveTo(s._cx,s._cy); else ctx.lineTo(s._cx,s._cy); });
-      ctx.strokeStyle = yearColors[yr]; ctx.lineWidth = 1; ctx.stroke();
-    });
-  } else {
-    ctx.beginPath();
-    shown.forEach(function(s,i){ if(i===0) ctx.moveTo(s._cx,s._cy); else ctx.lineTo(s._cx,s._cy); });
-    ctx.strokeStyle='rgba(205,177,117,0.4)'; ctx.lineWidth=1.2; ctx.stroke();
-  }
-
-  // Draw stars
-  shown.forEach(function(s){
-    var isUpcoming = s.status==='upcoming';
-    var color = isUpcoming ? '#cdb175' : (_constYear==='all' ? (s.year==='2024'?'#8a7a4a':s.year==='2025'?'#5ca87a':'#cdb175') : '#cdb175');
-    var r = isUpcoming ? 6 : 5;
-    // Glow
-    var grd = ctx.createRadialGradient(s._cx,s._cy,0,s._cx,s._cy,r*3);
-    grd.addColorStop(0,color.replace('#','rgba(').replace(/(..)(..)(..)/, function(m,r,g,b){
-      return parseInt(r,16)+','+parseInt(g,16)+','+parseInt(b,16)+',0.4)';
-    }));
-    // simpler glow
-    ctx.save();
-    ctx.globalAlpha=0.3;
-    ctx.beginPath(); ctx.arc(s._cx,s._cy,r*2.5,0,Math.PI*2);
-    ctx.fillStyle=color; ctx.fill();
-    ctx.restore();
-    // Main dot
-    ctx.beginPath(); ctx.arc(s._cx,s._cy,r,0,Math.PI*2);
-    ctx.fillStyle=color; ctx.fill();
-    // Ring for upcoming
-    if(isUpcoming){
-      ctx.beginPath(); ctx.arc(s._cx,s._cy,r+3,0,Math.PI*2);
-      ctx.strokeStyle=color; ctx.lineWidth=1; ctx.stroke();
-    }
-  });
-}
+let activeYear='ALL',filterStart=performance.now(),globalStart=performance.now(),bgStars=[],animId=null;
+let panX=0,panY=0,zoom=1;
+const MIN_ZOOM=0.45,MAX_ZOOM=9;
+function genBgStars(){let s=54321;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280;};bgStars=Array.from({length:180},()=>({x:rnd(),y:rnd(),r:rnd()*1.1+0.15,a:rnd()*0.38+0.1,phase:rnd()*Math.PI*2,spd:rnd()*0.5+0.15}));}
+function project(lat,lng,w,h){const LNG_MIN=-130,LNG_MAX=118,LAT_MIN=4,LAT_MAX=63;const px=w*0.055,py=h*0.08;const m=(deg)=>Math.log(Math.tan(Math.PI/4+deg*Math.PI/360));const my=m(lat),myMin=m(LAT_MIN),myMax=m(LAT_MAX);return{x:px+(lng-LNG_MIN)/(LNG_MAX-LNG_MIN)*(w-2*px),y:py+(1-(my-myMin)/(myMax-myMin))*(h-2*py)};}
+function withPositions(shows,w,h){const buckets={};return shows.map((s)=>{const key=Math.round(s.lat*8)+','+Math.round(s.lng*8);if(!buckets[key])buckets[key]=0;const idx=buckets[key]++;const base=project(s.lat,s.lng,w,h);const angle=idx*2.399,r=idx*6;return Object.assign({},s,{pos:{x:base.x+Math.cos(angle)*r,y:base.y+Math.sin(angle)*r}});});}
+function clamp(w,h){const pad=80;panX=Math.max(-w*(zoom-1)-pad*zoom,Math.min(w*(zoom-1)+pad*zoom,panX));panY=Math.max(-h*(zoom-1)-pad*zoom,Math.min(h*(zoom-1)+pad*zoom,panY));}
+function resetView(){panX=0;panY=0;zoom=1;hideTooltip();}
+const canvas=document.getElementById('constellation');
+const ctx=canvas.getContext('2d');
+function resize(){const wrap=canvas.parentElement;const dpr=Math.min(window.devicePixelRatio||1,2);const cw=wrap.clientWidth,ch=wrap.clientHeight;canvas.width=Math.round(cw*dpr);canvas.height=Math.round(ch*dpr);canvas.style.width=cw+'px';canvas.style.height=ch+'px';ctx.setTransform(dpr,0,0,dpr,0,0);}
+const ttEl=document.getElementById('const-tooltip');
+const ttCity=document.getElementById('tt-city');
+const ttDate=document.getElementById('tt-date');
+const ttBadge=document.getElementById('tt-badge');
+const ttNote=document.getElementById('tt-note');
+function showTooltip(show){const wrap=canvas.parentElement;const ww=wrap.clientWidth,wh=wrap.clientHeight;const sx=show.pos.x*zoom+panX,sy=show.pos.y*zoom+panY;const TW=188,TH=show.note?108:82;let lx=sx+16,ly=sy-TH-10;if(lx+TW>ww-10)lx=sx-TW-16;if(ly<8)ly=sy+14;if(ly+TH>wh-8)ly=wh-TH-8;ttEl.style.left=lx+'px';ttEl.style.top=ly+'px';ttCity.textContent=show.city;ttDate.textContent=show.dateStr;ttBadge.textContent=show.completed?'✓  Completed':'▶  Upcoming';ttBadge.className='tt-badge '+(show.completed?'completed':'upcoming');ttNote.textContent=show.note||'';ttNote.style.display=show.note?'block':'none';ttEl.classList.add('visible');}
+function hideTooltip(){ttEl.classList.remove('visible');}
+function findShow(sx,sy,w,h){const mx=(sx-panX)/zoom,my=(sy-panY)/zoom;const filtered=activeYear==='ALL'?SHOWS:SHOWS.filter((s)=>String(s.year)===activeYear);const shows=withPositions(filtered,w,h);const hitR=13/zoom;let best=null,bestD=hitR;shows.forEach((s)=>{const d=Math.hypot(s.pos.x-mx,s.pos.y-my);if(d<bestD){bestD=d;best=s;}});return best;}
+let dragging=false,dox=0,doy=0;
+canvas.addEventListener('mousedown',(e)=>{if(e.button!==0)return;dragging=true;dox=e.clientX-panX;doy=e.clientY-panY;canvas.style.cursor='grabbing';hideTooltip();});
+window.addEventListener('mousemove',(e)=>{if(dragging){panX=e.clientX-dox;panY=e.clientY-doy;const rect=canvas.getBoundingClientRect();clamp(rect.width,rect.height);}else{const rect=canvas.getBoundingClientRect();const sx=e.clientX-rect.left,sy=e.clientY-rect.top;const best=findShow(sx,sy,rect.width,rect.height);if(best){showTooltip(best);canvas.style.cursor='pointer';}else{hideTooltip();canvas.style.cursor='grab';}}});
+window.addEventListener('mouseup',()=>{dragging=false;canvas.style.cursor='grab';});
+canvas.addEventListener('mouseleave',()=>{if(!dragging)hideTooltip();});
+canvas.addEventListener('dblclick',resetView);
+canvas.addEventListener('wheel',(e)=>{e.preventDefault();const rect=canvas.getBoundingClientRect();const mx=e.clientX-rect.left,my=e.clientY-rect.top;const f=e.deltaY<0?1.12:0.89;const nz=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*f));panX=mx+(panX-mx)*(nz/zoom);panY=my+(panY-my)*(nz/zoom);zoom=nz;clamp(rect.width,rect.height);hideTooltip();},{passive:false});
+let t1x=0,t1y=0,lastPinch=0;
+canvas.addEventListener('touchstart',(e)=>{e.preventDefault();hideTooltip();if(e.touches.length===1){t1x=e.touches[0].clientX-panX;t1y=e.touches[0].clientY-panY;}else if(e.touches.length===2)lastPinch=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);},{passive:false});
+canvas.addEventListener('touchmove',(e)=>{e.preventDefault();const rect=canvas.getBoundingClientRect();if(e.touches.length===1){panX=e.touches[0].clientX-t1x;panY=e.touches[0].clientY-t1y;clamp(rect.width,rect.height);}else if(e.touches.length===2&&lastPinch>0){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const nz=Math.max(MIN_ZOOM,Math.min(MAX_ZOOM,zoom*dist/lastPinch));const cx=(e.touches[0].clientX+e.touches[1].clientX)/2-rect.left;const cy=(e.touches[0].clientY+e.touches[1].clientY)/2-rect.top;panX=cx+(panX-cx)*(nz/zoom);panY=cy+(panY-cy)*(nz/zoom);zoom=nz;lastPinch=dist;clamp(rect.width,rect.height);}},{passive:false});
+canvas.addEventListener('touchend',(e)=>{if(e.touches.length<2)lastPinch=0;if(e.changedTouches.length===1&&e.touches.length===0){const rect=canvas.getBoundingClientRect();const best=findShow(e.changedTouches[0].clientX-rect.left,e.changedTouches[0].clientY-rect.top,rect.width,rect.height);if(best)showTooltip(best);}},{passive:false});
+document.querySelectorAll('.filter-btn').forEach((btn)=>{btn.addEventListener('click',()=>{activeYear=btn.dataset.year;filterStart=performance.now();hideTooltip();document.querySelectorAll('.filter-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');});});
+function draw(){const wrap=canvas.parentElement;const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr))resize();const t=(performance.now()-filterStart)/1000;const absT=(performance.now()-globalStart)/1000;ctx.fillStyle='#030208';ctx.fillRect(0,0,w,h);bgStars.forEach((star)=>{const a=star.a*(0.6+0.4*Math.sin(absT*star.spd+star.phase));ctx.beginPath();ctx.arc(star.x*w,star.y*h,star.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';ctx.fill();});const vg=ctx.createRadialGradient(w/2,h*0.55,h*0.05,w/2,h*0.55,Math.max(w,h)*0.75);vg.addColorStop(0,'rgba(3,2,8,0)');vg.addColorStop(1,'rgba(3,2,8,0.72)');ctx.fillStyle=vg;ctx.fillRect(0,0,w,h);ctx.save();ctx.translate(panX,panY);ctx.scale(zoom,zoom);const filtered=activeYear==='ALL'?SHOWS:SHOWS.filter((s)=>String(s.year)===activeYear);const shows=withPositions(filtered,w,h);const YEAR_RGB={2024:[160,110,60],2025:[95,165,105],2026:[205,177,117]};const YEAR_DOT={2024:'#a06e3b',2025:'#5fa569',2026:'#cdb175'};const STAGGER=0.062,FADE=0.38;const byYear={};shows.forEach((s)=>{(byYear[s.year]=byYear[s.year]||[]).push(s);});Object.entries(byYear).forEach(([yr,arr])=>{const rgb=YEAR_RGB[yr]||[205,177,117];for(let i=1;i<arr.length;i++){const prev=arr[i-1],curr=arr[i];const dx=curr.pos.x-prev.pos.x,dy=curr.pos.y-prev.pos.y;if(Math.abs(dx)<0.5&&Math.abs(dy)<0.5)continue;const p=Math.min(1,Math.max(0,(t-(i-1)*STAGGER-0.22)/FADE));if(p<=0)continue;ctx.beginPath();ctx.moveTo(prev.pos.x,prev.pos.y);ctx.lineTo(prev.pos.x+dx*p,prev.pos.y+dy*p);ctx.strokeStyle='rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+(0.3*p).toFixed(3)+')';ctx.lineWidth=0.85/zoom;ctx.stroke();}});shows.forEach((show,i)=>{const fp=Math.min(1,Math.max(0,(t-i*STAGGER)/FADE));if(fp<=0)return;const{x,y}=show.pos,upcoming=!show.completed;const rgb=YEAR_RGB[show.year]||[205,177,117];const sr=upcoming?232:rgb[0],sg=upcoming?207:rgb[1],sb=upcoming?146:rgb[2];const dotR=(upcoming?5.5:4)/zoom,glowR=(upcoming?26:16)/zoom;const gl=ctx.createRadialGradient(x,y,0,x,y,glowR);gl.addColorStop(0,'rgba('+sr+','+sg+','+sb+','+(0.52*fp).toFixed(3)+')');gl.addColorStop(0.45,'rgba('+sr+','+sg+','+sb+','+(0.18*fp).toFixed(3)+')');gl.addColorStop(1,'rgba('+sr+','+sg+','+sb+',0)');ctx.beginPath();ctx.arc(x,y,glowR,0,Math.PI*2);ctx.fillStyle=gl;ctx.fill();if(upcoming){[0,0.5].forEach((off)=>{const ph=((absT*1.35)+off)%1;const pr=(dotR+4/zoom)+ph*15/zoom,pa=(1-ph)*0.6*fp;ctx.beginPath();ctx.arc(x,y,pr,0,Math.PI*2);ctx.strokeStyle='rgba(232,207,146,'+pa.toFixed(3)+')';ctx.lineWidth=1.3/zoom;ctx.stroke();});}ctx.globalAlpha=fp;ctx.beginPath();ctx.arc(x,y,dotR,0,Math.PI*2);ctx.fillStyle=upcoming?'#e8cf92':(YEAR_DOT[show.year]||'#cdb175');ctx.fill();ctx.beginPath();ctx.arc(x,y,dotR*0.42,0,Math.PI*2);ctx.fillStyle=upcoming?'rgba(255,248,224,0.9)':'rgba(255,255,255,0.5)';ctx.fill();ctx.globalAlpha=1;});ctx.restore();}
+const ro=new ResizeObserver(()=>{resize();});ro.observe(canvas.parentElement);
+genBgStars();canvas.style.cursor='grab';
+// Only init when visible
+window._constInited2=false;
+function tryInitConst(){const wrap=canvas.parentElement;if(!wrap||wrap.offsetWidth===0)return;if(!window._constInited2){window._constInited2=true;resize();draw();setInterval(draw,16);}}
+setTimeout(tryInitConst,100);
+})();
 </script>
-
+</div>
 
 <!-- TOUR STORY -->
 <section id="tourstory" style="background:#0a0a08;border-top:1px solid rgba(205,177,117,.1);overflow:hidden;">
 <style>
-  #story-wrap{position:relative}
   .story-tabs{display:flex;gap:6px;padding:clamp(30px,5vw,60px) var(--pad) 0;flex-wrap:wrap}
   .story-tab{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:all .25s}
   .story-tab.active{background:var(--gradv);color:#000;font-weight:700}
   .story-tab:not(.active){background:transparent;border:1px solid rgba(205,177,117,.3);color:var(--accent)}
-  .story-scroll{overflow-x:auto;overflow-y:hidden;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;padding:28px var(--pad) clamp(30px,5vw,60px)}
+  .story-scroll{overflow-x:auto;overflow-y:hidden;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;padding:28px var(--pad) clamp(30px,5vw,60px)}
   .story-scroll:active{cursor:grabbing}
   .story-scroll::-webkit-scrollbar{height:3px}
-  .story-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,.04)}
   .story-scroll::-webkit-scrollbar-thumb{background:rgba(205,177,117,.4);border-radius:2px}
-  .story-track{display:flex;gap:0;align-items:stretch;width:max-content;position:relative}
-  .story-track::before{content:'';position:absolute;top:38px;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,rgba(205,177,117,.3) 5%,rgba(205,177,117,.3) 95%,transparent);z-index:0}
-  .story-card{flex-shrink:0;width:200px;padding:0 10px;position:relative;z-index:1;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+  .story-track{display:flex;gap:4px;align-items:stretch;width:max-content;position:relative}
+  .story-card{flex-shrink:0;width:180px;border:1px solid rgba(205,177,117,.1);overflow:hidden;transition:all .3s;position:relative;background:#0d0d0b;opacity:0;transform:translateY(16px)}
   .story-card.vis{opacity:1;transform:none}
-  .story-dot{width:14px;height:14px;border-radius:50%;margin:0 auto 14px;border:2px solid var(--accent);background:#0a0a08;transition:all .3s;position:relative;z-index:2;cursor:pointer}
-  .story-card:hover .story-dot{background:var(--accent);box-shadow:0 0 16px rgba(205,177,117,.6);transform:scale(1.3)}
-  .story-card.done .story-dot{background:rgba(52,211,153,.2);border-color:#3ddc84}
-  .story-card.done:hover .story-dot{background:#3ddc84;box-shadow:0 0 16px rgba(52,211,153,.6)}
-  .story-date{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:6px}
-  .story-city{font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;text-align:center;color:#fff;line-height:1.2;margin-bottom:4px}
-  .story-venue{font-size:.66rem;color:rgba(255,255,255,.3);text-align:center;line-height:1.3}
-  .story-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin:5px auto 0;border-radius:20px}
-  .story-badge.done{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84}
-  .story-badge.up{background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.3);color:var(--accent)}
-  .story-card-inner{text-align:center;padding-top:4px}
-  .story-flag{font-size:1.1rem;display:block;text-align:center;margin-bottom:4px}
+  .story-card:hover{border-color:rgba(205,177,117,.45);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  .story-card.done{border-color:rgba(52,211,153,.15)}
+  .story-card.done:hover{border-color:rgba(52,211,153,.5)}
+  .story-card-img{width:100%;height:100px;object-fit:cover;display:block;filter:saturate(.7);transition:filter .3s}
+  .story-card:hover .story-card-img{filter:saturate(1)}
+  .story-card-img-placeholder{width:100%;height:100px;background:linear-gradient(135deg,#1a1a18,#0d0d0b);display:flex;align-items:center;justify-content:center;font-size:2rem}
+  .story-card-body{padding:12px 10px 14px}
+  .story-card-flag{font-size:.9rem;margin-bottom:4px;display:block}
+  .story-card-date{font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .story-card-city{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:#fff;line-height:1.1;margin-bottom:3px}
+  .story-card-venue{font-size:.62rem;color:rgba(255,255,255,.3);line-height:1.3;margin-bottom:6px}
+  .story-card-perf{font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;display:inline-block}
+  .story-card-perf.pablo{background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.3);color:var(--accent)}
+  .story-card-perf.evren{background:rgba(100,150,255,.1);border:1px solid rgba(100,150,255,.3);color:#7eb5ff}
+  .story-card-perf.both{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:#3ddc84}
+  .story-card-badge{position:absolute;top:8px;right:8px;font-family:'Space Mono',monospace;font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+  .story-card-badge.done{background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);color:#3ddc84}
+  .story-card-badge.up{background:rgba(205,177,117,.15);border:1px solid rgba(205,177,117,.4);color:var(--accent);animation:tlpulse 2s ease-in-out infinite}
 </style>
   <div class="story-tabs">
-    <button class="story-tab active" id="stab-2026" onclick="setStoryYear('2026')">2026 Tour</button>
+    <button class="story-tab active" id="stab-2026" onclick="setStoryYear('2026')">🔥 2026 Tour</button>
     <button class="story-tab" id="stab-2025" onclick="setStoryYear('2025')">2025 Tour</button>
     <button class="story-tab" id="stab-2024" onclick="setStoryYear('2024')">2024 Tour</button>
   </div>
-
+  <div style="padding:10px var(--pad) 0;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;color:rgba(255,255,255,.3);">← Drag to explore all shows →</div>
   <div class="story-scroll" id="storyScroll">
     <div class="story-track" id="storyTrack"></div>
   </div>
@@ -1760,105 +1769,105 @@ function drawConstellation(){
   <script>
   var storyData = {
     '2024': [
-      {date:'Jan 19',city:'London',flag:'🇬🇧',venue:'Wembley Stadium',done:true},
-      {date:'Feb 4',city:'Las Vegas',flag:'🇺🇸',venue:'Fremont Street ⚡ Surprise',done:true},
-      {date:'Feb 19',city:'Málaga',flag:'🇪🇸',venue:'La Rosaleda Stadium',done:true},
-      {date:'Feb 22',city:'Sevilla',flag:'🇪🇸',venue:'Ramón Sánchez-Pizjuán',done:true},
-      {date:'Apr 1',city:'Las Vegas',flag:'🇺🇸',venue:'Allegiant Stadium',done:true},
-      {date:'Apr 6',city:'Philadelphia',flag:'🇺🇸',venue:'Lincoln Financial Field',done:true},
-      {date:'May 9',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',done:true},
-      {date:'May 10',city:'Pisa',flag:'🇮🇹',venue:'Arena Garibaldi',done:true},
-      {date:'Jul 28',city:'Antalya',flag:'🇹🇷',venue:'Antalya Stadium',done:true},
-      {date:'Sep 8',city:'Geneva',flag:'🇨🇭',venue:'Stade de Genève',done:true},
-      {date:'Sep 30',city:'Athens',flag:'🇬🇷',venue:'Athens Olympic Stadium',done:true},
-      {date:'Oct 7',city:'Sofia',flag:'🇧🇬',venue:'Vasil Levski Stadium',done:true},
+      {date:'Jan 19',city:'London',flag:'🇬🇧',venue:'Wembley Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/d/d2/London_Wembley.jpg'},
+      {date:'Apr 4',city:'Las Vegas',flag:'🇺🇸',venue:'Fremont Street ⚡',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/4f/LasVegas-FremontStreet.jpg'},
+      {date:'Feb 19',city:'Málaga',flag:'🇪🇸',venue:'La Rosaleda Stadium',perf:'pablo',done:true,img:'https://statics-maker.llt-services.com/mga/images/2022/12/30/xlarge/de502f0f-fac8-4c7d-afb1-68a9fd6d41ac.jpg'},
+      {date:'Feb 22',city:'Sevilla',flag:'🇪🇸',venue:'Sánchez-Pizjuán',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'Apr 1',city:'Las Vegas',flag:'🇺🇸',venue:'Allegiant Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxYvkoxdTpyuJha-siMQJ833FPkE3KAYYwZQyuSRrADgXB0o8hTd-X1j4&s=10'},
+      {date:'Apr 6',city:'Philadelphia',flag:'🇺🇸',venue:'Lincoln Financial Field',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg'},
+      {date:'May 9',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
+      {date:'May 10',city:'Pisa',flag:'🇮🇹',venue:'Arena Garibaldi',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/3/32/Italy_-_Pisa_-_Stadium.jpg'},
+      {date:'Jul 28',city:'Antalya',flag:'🇹🇷',venue:'Antalya Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
+      {date:'Sep 8',city:'Geneva',flag:'🇨🇭',venue:'Stade de Genève',perf:'pablo',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'Sep 30',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvJdRZ_khDAqq0ROmYTw65LLkxzfB-ggAilZwcdbVAX99SPMw_txdHuQ&s=10'},
+      {date:'Oct 7',city:'Sofia',flag:'🇧🇬',venue:'Vasil Levski Stadium',perf:'pablo',done:true,img:'https://visitsofia.bg/images/vegas_media/category30000/object1137/bc9eda16929341c44a00f67d99a530c1.jpg'},
     ],
     '2025': [
-      {date:'Jan 30',city:'Barcelona',flag:'🇪🇸',venue:'Spotify Camp Nou',done:true},
-      {date:'Mar 2',city:'New York',flag:'🇺🇸',venue:'Madison Square Garden',done:true},
-      {date:'Mar 4',city:'New York',flag:'🇺🇸',venue:'MSG — 2nd Night',done:true},
-      {date:'Mar 13',city:'Bergamo',flag:'🇮🇹',venue:'New Balance Arena',done:true},
-      {date:'Apr 22',city:'Palermo',flag:'🇮🇹',venue:'Renzo Barbera Stadium',done:true},
-      {date:'May 10',city:'Barcelona',flag:'🇪🇸',venue:'Spotify Camp Nou',done:true},
-      {date:'May 17',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park — Eurovision',done:true},
-      {date:'May 29',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',done:true},
-      {date:'May 30',city:'Turin',flag:'🇮🇹',venue:'Juventus Stadium',done:true},
-      {date:'Jun 23',city:'Barcelona',flag:'🇪🇸',venue:'Spotify Camp Nou',done:true},
-      {date:'Jul 13',city:'Milan',flag:'🇮🇹',venue:'Piazza del Duomo 🎂',done:true},
-      {date:'Jul 21',city:'Bangkok',flag:'🇹🇭',venue:'Rajamangala Stadium',done:true},
-      {date:'Jul 23',city:'Phuket',flag:'🇹🇭',venue:'Surakul Stadium',done:true},
-      {date:'Jul 27',city:'Koh Samui',flag:'🇹🇭',venue:'Koh Samui Stadium',done:true},
-      {date:'Sep 6',city:'Rome',flag:'🇮🇹',venue:'Stadio Olimpico',done:true},
-      {date:'Oct 6',city:'San Marino',flag:'🇸🇲',venue:'San Marino Stadium',done:true},
-      {date:'Nov 2',city:'Madrid',flag:'🇪🇸',venue:'Santiago Bernabéu',done:true},
-      {date:'Dec 20',city:'Karlsruhe',flag:'🇩🇪',venue:'Wildparkstadion',done:true},
+      {date:'Jan 30',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+      {date:'Mar 2',city:'New York',flag:'🇺🇸',venue:'Madison Square Garden',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1erAhUWKYpab-pVwUgy_70UPG0GmwR4etps_46d3T4Q&s=10'},
+      {date:'Mar 4',city:'New York',flag:'🇺🇸',venue:'MSG — 2nd Night',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1erAhUWKYpab-pVwUgy_70UPG0GmwR4etps_46d3T4Q&s=10'},
+      {date:'Mar 13',city:'Bergamo',flag:'🇮🇹',venue:'New Balance Arena',perf:'pablo',done:true,img:'https://images.atalanta.it/image/private/t_ratio16_9-size60/v1726401606/prd/l20wkvcuaxidxhj9d1j1'},
+      {date:'Apr 22',city:'Palermo',flag:'🇮🇹',venue:'Renzo Barbera',perf:'pablo',done:true,img:'https://destinationcalcio.com/wp-content/uploads/2024/12/GettyImages-1402951705.jpg'},
+      {date:'May 10',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+      {date:'May 17',city:'Basel',flag:'🇨🇭',venue:'Eurovision Special',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
+      {date:'May 29',city:'Milan',flag:'🇮🇹',venue:'San Siro',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
+      {date:'May 30',city:'Turin',flag:'🇮🇹',venue:'Juventus Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/0/02/Juventus_v_Real_Madrid%2C_Champions_League%2C_Stadium%2C_Turin%2C_2013.jpg'},
+      {date:'Jun 23',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+      {date:'Jul 13 🎂',city:'Milan',flag:'🇮🇹',venue:'Piazza del Duomo',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGblILrxkWdwUQo6fhpR_xES1qV_WXDjr-feJ7mEmxQ&s=10'},
+      {date:'Jul 21',city:'Bangkok',flag:'🇹🇭',venue:'Rajamangala Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
+      {date:'Jul 23',city:'Phuket',flag:'🇹🇭',venue:'Surakul Stadium',perf:'pablo',done:true,img:'https://thephuketexpress.com/wp-content/uploads/2026/01/620050677_1345314434295662_1910546898521294975_n.jpg'},
+      {date:'Jul 27',city:'Koh Samui',flag:'🇹🇭',venue:'Koh Samui Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkpPnaznKzI0QBhI_R9u1N9d8saGRVTvy9U9tfO9dUaMIvcezzqX4Ijlg&s=10'},
+      {date:'Sep 6',city:'Rome',flag:'🇮🇹',venue:'Stadio Olimpico',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/5/5f/Stadio_Olimpico_2024.jpg'},
+      {date:'Oct 6',city:'San Marino',flag:'🇸🇲',venue:'San Marino Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2z1aK9z8YEVXSCQSCEIAF0gb0OhveQQGmw-bLMUSlTw&s=10'},
+      {date:'Nov 2',city:'Madrid',flag:'🇪🇸',venue:'Bernabéu',perf:'pablo',done:true,img:'https://assets.realmadrid.com/is/image/realmadrid/231102_ESB_TorreEuropa_01_ND?$Mobile$&fit=wrap'},
+      {date:'Dec 20',city:'Karlsruhe',flag:'🇩🇪',venue:'Wildparkstadion',perf:'pablo',done:true,img:'https://www.sbp.de/app/uploads/2024/03/QGPY7370_MAX.jpg'},
     ],
     '2026': [
-      {date:'Feb 13',city:'Barcelona',flag:'🇪🇸',venue:'Spotify Camp Nou',done:true},
-      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',done:true},
-      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',done:true},
-      {date:'Apr 25',city:'Erzincan',flag:'🇹🇷',venue:'13 Şubat City Stadium',done:true},
-      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',done:true},
-      {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',done:true},
-      {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Estadio Nuevo Mirandilla',done:true},
-      {date:'May 4',city:'Sevilla',flag:'🇪🇸',venue:'Ramón Sánchez-Pizjuán',done:true},
-      {date:'May 16',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',done:true},
-      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',done:true},
-      {date:'Jun 3',city:'Luxembourg',flag:'🇱🇺',venue:'Stade de Luxembourg',done:true},
-      {date:'Jun 8',city:'Arnhem',flag:'🇳🇱',venue:'GelreDome ⭐ Kanye West',done:true},
-      {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',done:true},
-      {date:'Jun 21',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre — Night 2',done:true},
-      {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',done:false},
-      {date:'Jul 11',city:'Stockholm',flag:'🇸🇪',venue:'Strawberry Arena',done:false},
-      {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',done:false},
+      {date:'Feb 13',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
+      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/d/d2/London_Wembley.jpg'},
+      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'Apr 25',city:'Erzincan',flag:'🇹🇷',venue:'13 Şubat City Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
+      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Nuevo Mirandilla',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'May 4',city:'Sevilla',flag:'🇪🇸',venue:'Sánchez-Pizjuán',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
+      {date:'May 16',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
+      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',perf:'both',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'Jun 3',city:'Luxembourg',flag:'🇱🇺',venue:'Stade de Luxembourg',perf:'evren',done:true,img:'https://images.adsttc.com/media/images/617b/0194/f91c/8199/3100/002c/large_jpg/3116_210812_MB99_0523_A3_pressp.jpg?1635451242'},
+      {date:'Jun 8 ⭐',city:'Arnhem',flag:'🇳🇱',venue:'GelreDome + Kanye',perf:'both',done:true,img:'https://footballtripper.com/wp-content/uploads/Gelredome.jpg'},
+      {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
+      {date:'Jun 21',city:'Milan',flag:'🇮🇹',venue:'Mind Live — Night 2',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
+      {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
+      {date:'Jul 11',city:'Stockholm',flag:'🇸🇪',venue:'Strawberry Arena',perf:'pablo',done:false,img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+      {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
     ]
   };
-
   var _storyYear = '2026';
   function setStoryYear(y){
-    _storyYear = y;
+    _storyYear=y;
     ['2024','2025','2026'].forEach(function(yr){
-      var tab = document.getElementById('stab-'+yr);
-      if(tab){ tab.classList.toggle('active', yr===y); }
+      var tab=document.getElementById('stab-'+yr);
+      if(tab){tab.classList.toggle('active',yr===y);}
     });
     renderStory();
-    document.getElementById('storyScroll').scrollLeft = 0;
+    document.getElementById('storyScroll').scrollLeft=0;
   }
-
   function renderStory(){
-    var track = document.getElementById('storyTrack');
-    var data = storyData[_storyYear];
-    track.innerHTML = '';
-    data.forEach(function(s, i){
-      var card = document.createElement('div');
-      card.className = 'story-card' + (s.done?' done':'');
-      card.style.transitionDelay = (i*0.05)+'s';
-      card.innerHTML =
-        '<div class="story-dot"></div>' +
-        '<div class="story-card-inner">' +
-        '<span class="story-flag">'+s.flag+'</span>' +
-        '<div class="story-date">'+s.date+'</div>' +
-        '<div class="story-city">'+s.city+'</div>' +
-        '<div class="story-venue">'+s.venue+'</div>' +
-        '<span class="story-badge '+(s.done?'done':'up')+'">'+( s.done ? '✓ Done' : '▶ Upcoming')+'</span>' +
+    var track=document.getElementById('storyTrack');
+    var data=storyData[_storyYear];
+    track.innerHTML='';
+    data.forEach(function(s,i){
+      var card=document.createElement('div');
+      card.className='story-card'+(s.done?' done':'');
+      card.style.transitionDelay=(i*0.04)+'s';
+      var imgHtml=s.img
+        ?'<img class="story-card-img" src="'+s.img+'" alt="'+s.city+'" loading="lazy">'
+        :'<div class="story-card-img-placeholder">'+s.flag+'</div>';
+      var perfLabel={pablo:'Pablo',evren:'Evren',both:'Pablo & Evren'}[s.perf]||'';
+      card.innerHTML=
+        '<span class="story-card-badge '+(s.done?'done':'up')+'">'+(s.done?'✓ Done':'▶ Soon')+'</span>'+
+        imgHtml+
+        '<div class="story-card-body">'+
+        '<span class="story-card-flag">'+s.flag+'</span>'+
+        '<div class="story-card-date">'+s.date+'</div>'+
+        '<div class="story-card-city">'+s.city+'</div>'+
+        '<div class="story-card-venue">'+s.venue+'</div>'+
+        (perfLabel?'<span class="story-card-perf '+s.perf+'">'+perfLabel+'</span>':'')+
         '</div>';
       track.appendChild(card);
-      setTimeout(function(c){ c.classList.add('vis'); }, 50 + i*40, card);
+      setTimeout(function(c){c.classList.add('vis');},50+i*40,card);
     });
   }
-
-  // Drag-to-scroll
   (function(){
-    var el = document.getElementById('storyScroll');
-    if(!el) return;
-    var isDown=false, startX, scrollL;
+    var el=document.getElementById('storyScroll');
+    if(!el)return;
+    var isDown=false,startX,scrollL;
     el.addEventListener('mousedown',function(e){isDown=true;startX=e.pageX-el.offsetLeft;scrollL=el.scrollLeft;});
     el.addEventListener('mouseleave',function(){isDown=false;});
     el.addEventListener('mouseup',function(){isDown=false;});
     el.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-el.offsetLeft;el.scrollLeft=scrollL-(x-startX)*1.2;});
   })();
-
-  window.addEventListener('load', function(){ renderStory(); });
+  window.addEventListener('load',function(){renderStory();});
   </script>
 </section>
 
@@ -1925,7 +1934,12 @@ function drawConstellation(){
 <section id="thenumbers" style="background:var(--black);padding:clamp(50px,7vw,90px) var(--pad);border-top:1px solid rgba(205,177,117,.1);">
 <style>
   .nums-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;margin-top:40px}
-  .num-card{background:rgba(205,177,117,.04);border:1px solid rgba(205,177,117,.12);padding:28px 22px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+  .num-card{background:rgba(205,177,117,.04);border:1px solid rgba(205,177,117,.12);padding:0;text-align:center;cursor:pointer;transition:all .3s;position:relative;perspective:800px;height:160px}
+  .num-card-inner{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+  .num-card:hover .num-card-inner,.num-card.flipped .num-card-inner{transform:rotateY(180deg)}
+  .num-card-front,.num-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 14px;border:1px solid rgba(205,177,117,.12);background:rgba(205,177,117,.04)}
+  .num-card-back{transform:rotateY(180deg);background:rgba(205,177,117,.1);border-color:rgba(205,177,117,.4)}
+  .num-card:hover .num-card-front,.num-card:hover .num-card-back{border-color:rgba(205,177,117,.5)}
   .num-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(205,177,117,.08),transparent);opacity:0;transition:opacity .3s}
   .num-card:hover::before{opacity:1}
   .num-card:hover{border-color:rgba(205,177,117,.5);transform:translateY(-4px);box-shadow:0 12px 40px rgba(205,177,117,.12)}
@@ -1939,46 +1953,49 @@ function drawConstellation(){
   @keyframes numPop{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
 </style>
   <p class="section-label reveal">By The Numbers</p>
-  <h2 class="section-title reveal d1">The Holy Obesity Stats</h2>
+  <h2 class="section-title reveal d1">World Tour Stats</h2>
   <div class="divider reveal d1"></div>
   <p style="font-size:.88rem;color:rgba(255,255,255,.38);margin-top:14px;max-width:500px;line-height:1.7;" class="reveal d1">3 years. Every continent except Antarctica. The numbers speak for themselves.</p>
 
+  <div style="display:flex;align-items:center;gap:10px;margin-top:16px;margin-bottom:4px;" class="reveal">
+    <span style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.3);color:var(--accent);padding:4px 12px;border-radius:20px;">↩ Tap card for details</span>
+  </div>
   <div class="nums-grid">
-    <div class="num-card reveal" onclick="popCard(this)">
-      <span class="num-emoji">🎤</span>
-      <span class="num-val" data-target="45" data-suffix="">0</span>
-      <span class="num-label">Total Shows</span>
-      <span class="num-sub">Across 2024, 2025 &amp; 2026</span>
+    <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="45" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 15+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
+      </div>
     </div>
-    <div class="num-card reveal d1" onclick="popCard(this)">
-      <span class="num-emoji">🌍</span>
-      <span class="num-val" data-target="17" data-suffix="">0</span>
-      <span class="num-label">Countries</span>
-      <span class="num-sub">From Thailand to USA</span>
+    <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="17" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲</div>
+      </div>
     </div>
-    <div class="num-card reveal d1" onclick="popCard(this)">
-      <span class="num-emoji">✈️</span>
-      <span class="num-val" data-target="120" data-suffix="k km">0</span>
-      <span class="num-label">Kilometres Travelled</span>
-      <span class="num-sub">3× around the Earth</span>
+    <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">✈️</span><span class="num-val" data-target="120" data-suffix="k km">0</span><span class="num-label">Kilometres Travelled</span><span class="num-sub">3× around the Earth</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">London → Las Vegas<br>→ Milan → Bangkok<br>→ Arnhem → Stockholm<br><span style="color:rgba(255,255,255,.4);font-size:.5rem;">and back to Basel 🇨🇭</span></div>
+      </div>
     </div>
-    <div class="num-card reveal" onclick="popCard(this)">
-      <span class="num-emoji">🏟️</span>
-      <span class="num-val" data-target="30" data-suffix="+">0</span>
-      <span class="num-label">Venues</span>
-      <span class="num-sub">From Wembley to San Siro</span>
+    <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">🏟️</span><span class="num-val" data-target="30" data-suffix="+">0</span><span class="num-label">Venues</span><span class="num-sub">From Wembley to San Siro</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.54rem;color:var(--accent);line-height:1.8;text-align:center;">Wembley · San Siro<br>Madison Square Garden<br>Camp Nou · Bernabéu<br>GelreDome · Allegiant</div>
+      </div>
     </div>
-    <div class="num-card reveal d1" onclick="popCard(this)">
-      <span class="num-emoji">🌐</span>
-      <span class="num-val" data-target="5" data-suffix="">0</span>
-      <span class="num-label">Continents</span>
-      <span class="num-sub">Europe, America, Asia, Africa, Oceania</span>
+    <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">🌐</span><span class="num-val" data-target="5" data-suffix="">0</span><span class="num-label">Continents</span><span class="num-sub">On every major continent</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:2;text-align:center;">🌍 Europe<br>🌎 North America<br>🌏 Asia<br>🌍 Africa<br>🌍 (Oceania TBC)</div>
+      </div>
     </div>
-    <div class="num-card reveal d1" onclick="popCard(this)">
-      <span class="num-emoji">⭐</span>
-      <span class="num-val" data-target="1" data-suffix="">0</span>
-      <span class="num-label">Kanye Guest Appearance</span>
-      <span class="num-sub">Arnhem, Jun 8 2026</span>
+    <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
+      <div class="num-card-inner">
+        <div class="num-card-front"><span class="num-emoji">⭐</span><span class="num-val" data-target="1" data-suffix="">0</span><span class="num-label">Kanye Guest Appearance</span><span class="num-sub">Arnhem, Jun 8 2026</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.54rem;color:var(--accent);line-height:1.8;text-align:center;">GelreDome · Arnhem<br>Jun 8, 2026<br>Performed: Runaway<br><span style="color:rgba(255,255,255,.4);font-size:.5rem;">Nobody saw it coming 🤯</span></div>
+      </div>
     </div>
   </div>
 
@@ -2699,42 +2716,28 @@ window.addEventListener('scroll', function(){
 });
 </script>
 
-
-<!-- SPOTIFY PLAYLIST -->
-<section id="spotify-pl" style="background:var(--dark);padding:clamp(40px,6vw,70px) var(--pad);border-top:1px solid rgba(205,177,117,.1);">
-  <style>
-    #spotify-pl .sp-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center}
-    @media(max-width:768px){#spotify-pl .sp-inner{grid-template-columns:1fr}}
-    .sp-tag{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:14px}
-    .sp-tag svg{flex-shrink:0}
-    .sp-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,3.2rem);line-height:1;letter-spacing:-.01em;margin-bottom:14px}
-    .sp-desc{font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:24px}
-    .sp-open-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:#1DB954;color:#000;font-family:'Syne',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:30px;transition:all .25s}
-    .sp-open-btn:hover{background:#1ed760;transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,185,84,.4)}
-    .sp-embed{border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  </style>
-  <div class="sp-inner reveal">
-    <div>
-      <div class="sp-tag">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Official Tour Playlist
+  <!-- Spotify embed inside setlist -->
+  <div style="background:rgba(29,185,84,.04);border:1px solid rgba(29,185,84,.2);padding:clamp(24px,4vw,48px) clamp(24px,5vw,60px);margin:0 clamp(24px,6vw,80px) clamp(30px,5vw,60px);">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,50px);align-items:center;">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:#1DB954;display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Listen Now on Spotify
+        </div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.05;margin-bottom:12px;">The Official<br>Tour Playlist</h3>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:18px;">All 26 songs from the 2026 World Tour — exactly as performed live every night.</p>
+        <a href="https://open.spotify.com/playlist/6YFQG4jaxlCtp6mp194AYB" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:11px 24px;background:#1DB954;color:#000;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:30px;transition:all .25s;" onmouseover="this.style.background='#1ed760'" onmouseout="this.style.background='#1DB954'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Open Spotify
+        </a>
       </div>
-      <h2 class="sp-title">Holy Obesity<br>Setlist</h2>
-      <p class="sp-desc">Every song from the 2026 World Tour. 26 tracks curated by Pablo — the exact set we perform every night. Save it, blast it, memorize it.</p>
-      <a href="https://open.spotify.com/playlist/6YFQG4jaxlCtp6mp194AYB" target="_blank" class="sp-open-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-        Open on Spotify
-      </a>
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.5);">
+        <iframe src="https://open.spotify.com/embed/playlist/6YFQG4jaxlCtp6mp194AYB?utm_source=generator&theme=0" width="100%" height="280" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="display:block;"></iframe>
+      </div>
     </div>
-    <div class="sp-embed">
-      <iframe src="https://open.spotify.com/embed/playlist/6YFQG4jaxlCtp6mp194AYB?utm_source=generator&theme=0" 
-        width="100%" height="380" frameborder="0" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy" style="display:block;"></iframe>
-    </div>
+    <style>@media(max-width:768px){.sp-inner-merged{grid-template-columns:1fr!important}}</style>
   </div>
 </section>
-
 
 <!-- MERCH -->
 <section id="merch">
@@ -2755,7 +2758,16 @@ window.addEventListener('scroll', function(){
     .merch-badge-new { position:absolute; top:10px; right:10px; background:var(--accent); color:var(--black); font-size:0.56rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; padding:4px 9px; font-family:'Barlow Condensed',sans-serif; }
     .merch-badge-new.new { background:#4caf50; }
     .merch-badge-new.limited { background:#e84141; color:#fff; }
-    /* Currency converter */
+    
+@media(max-width:768px){
+  .merch-grid-new{grid-template-columns:repeat(2,1fr)!important;gap:2px!important}
+  .merch-card-new{font-size:.82rem}
+  .merch-img-new{height:130px}
+  .merch-info-new{padding:10px 8px}
+  .merch-name-new{font-size:.78rem}
+  .merch-price-new{font-size:.85rem}
+}
+/* Currency converter */
     .currency-box { border:1px solid rgba(200,169,110,0.25); background:rgba(200,169,110,0.04); padding:28px 28px; margin-top:3px; }
   </style>
 
@@ -2877,13 +2889,13 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 </style>
   <div class="doc-inner reveal">
     <div>
-      <div class="doc-eyebrow">Live Concert Footage</div>
-      <h2 class="doc-title">Ye Live In Arnhem<br><span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">Performing Runaway</span></h2>
+      <div class="doc-eyebrow">🎬 Live Concert Footage 🎤</div>
+      <h2 class="doc-title">🎵 Ye Live In Arnhem<br><span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;">Performing Runaway 🙏</span></h2>
       <p class="doc-desc">June 8, 2026. GelreDome, Arnhem, Netherlands. Kanye West performed as a special guest at the Holy Obesity World Tour. This is the moment — Runaway, live, unrepeatable.</p>
       <div class="doc-meta">
-        <div class="doc-meta-item">8 Jun 2026</div>
-        <div class="doc-meta-item">GelreDome, Arnhem</div>
-        <div class="doc-meta-item">Special Guest: Kanye West</div>
+        <div class="doc-meta-item">📅 8 Jun 2026</div>
+        <div class="doc-meta-item">📍 GelreDome, Arnhem</div>
+        <div class="doc-meta-item">⭐ Special Guest: Kanye West</div>
       </div>
     </div>
     <div class="doc-frame">
@@ -2902,6 +2914,12 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 <section id="timeline" style="background:var(--dark);padding:clamp(50px,7vw,90px) var(--pad);border-top:1px solid rgba(205,177,117,.1);">
 <style>
   .tl-outer{overflow-x:auto;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;padding-bottom:12px}
+  .tl-item:hover .tl-city{color:var(--accent)}
+  .tl-perf-pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-top:4px}
+  .tl-perf-pill.pablo{background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.3);color:var(--accent)}
+  .tl-perf-pill.evren{background:rgba(100,150,255,.1);border:1px solid rgba(100,150,255,.3);color:#7eb5ff}
+  .tl-perf-pill.both{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:#3ddc84}
+  .tl-special{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:.7rem;white-space:nowrap}
   .tl-outer:active{cursor:grabbing}
   .tl-outer::-webkit-scrollbar{height:3px}
   .tl-outer::-webkit-scrollbar-thumb{background:rgba(205,177,117,.4);border-radius:2px}
@@ -2935,57 +2953,59 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   <script>
   var tlShows = [
     // 2024
-    {flag:'🇬🇧',city:'London',date:'Jan 19',venue:'Wembley Stadium',year:'2024',done:true},
-    {flag:'🇺🇸',city:'Las Vegas',date:'Feb 4',venue:'Fremont Street',year:'2024',done:true},
-    {flag:'🇪🇸',city:'Málaga',date:'Feb 19',venue:'La Rosaleda',year:'2024',done:true},
-    {flag:'🇪🇸',city:'Sevilla',date:'Feb 22',venue:'Sánchez-Pizjuán',year:'2024',done:true},
-    {flag:'🇺🇸',city:'Las Vegas',date:'Apr 1',venue:'Allegiant Stadium',year:'2024',done:true},
-    {flag:'🇺🇸',city:'Philadelphia',date:'Apr 6',venue:'Lincoln Financial',year:'2024',done:true},
-    {flag:'🇮🇹',city:'Milan',date:'May 9',venue:'San Siro',year:'2024',done:true},
-    {flag:'🇮🇹',city:'Pisa',date:'May 10',venue:'Arena Garibaldi',year:'2024',done:true},
-    {flag:'🇹🇷',city:'Antalya',date:'Jul 28',venue:'Antalya Stadium',year:'2024',done:true},
-    {flag:'🇨🇭',city:'Geneva',date:'Sep 8',venue:'Stade de Genève',year:'2024',done:true},
-    {flag:'🇬🇷',city:'Athens',date:'Sep 30',venue:'Olympic Stadium',year:'2024',done:true},
-    {flag:'🇧🇬',city:'Sofia',date:'Oct 7',venue:'Vasil Levski',year:'2024',done:true},
+    {flag:'🇬🇧',city:'London',date:'Jan 19',venue:'Wembley Stadium',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'Las Vegas',date:'Apr 4',venue:'Fremont Street',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Málaga',date:'Feb 19',venue:'La Rosaleda',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Sevilla',date:'Feb 22',venue:'Sánchez-Pizjuán',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'Las Vegas',date:'Apr 1',venue:'Allegiant Stadium',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'Philadelphia',date:'Apr 6',venue:'Lincoln Financial',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Milan',date:'May 9',venue:'San Siro',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Pisa',date:'May 10',venue:'Arena Garibaldi',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇹🇷',city:'Antalya',date:'Jul 28',venue:'Antalya Stadium',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇨🇭',city:'Geneva',date:'Sep 8',venue:'Stade de Genève',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇬🇷',city:'Athens',date:'Sep 30',venue:'Olympic Stadium',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇧🇬',city:'Sofia',date:'Oct 7',venue:'Vasil Levski',year:'2024',done:true,perf:'pablo'},
     // 2025
-    {flag:'🇪🇸',city:'Barcelona',date:'Jan 30',venue:'Camp Nou',year:'2025',done:true},
-    {flag:'🇺🇸',city:'New York',date:'Mar 2',venue:'MSG',year:'2025',done:true},
-    {flag:'🇺🇸',city:'New York',date:'Mar 4',venue:'MSG Night 2',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Bergamo',date:'Mar 13',venue:'New Balance Arena',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Palermo',date:'Apr 22',venue:'Renzo Barbera',year:'2025',done:true},
-    {flag:'🇪🇸',city:'Barcelona',date:'May 10',venue:'Camp Nou',year:'2025',done:true},
-    {flag:'🇨🇭',city:'Basel',date:'May 17',venue:'Eurovision',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Milan',date:'May 29',venue:'San Siro',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Turin',date:'May 30',venue:'Juventus Stadium',year:'2025',done:true},
-    {flag:'🇪🇸',city:'Barcelona',date:'Jun 23',venue:'Camp Nou',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Milan 🎂',date:'Jul 13',venue:'Piazza del Duomo',year:'2025',done:true},
-    {flag:'🇹🇭',city:'Bangkok',date:'Jul 21',venue:'Rajamangala',year:'2025',done:true},
-    {flag:'🇹🇭',city:'Phuket',date:'Jul 23',venue:'Surakul Stadium',year:'2025',done:true},
-    {flag:'🇹🇭',city:'Koh Samui',date:'Jul 27',venue:'Koh Samui Stadium',year:'2025',done:true},
-    {flag:'🇮🇹',city:'Rome',date:'Sep 6',venue:'Stadio Olimpico',year:'2025',done:true},
-    {flag:'🇸🇲',city:'San Marino',date:'Oct 6',venue:'San Marino Stadium',year:'2025',done:true},
-    {flag:'🇪🇸',city:'Madrid',date:'Nov 2',venue:'Bernabéu',year:'2025',done:true},
-    {flag:'🇩🇪',city:'Karlsruhe',date:'Dec 20',venue:'Wildparkstadion',year:'2025',done:true},
+    {flag:'🇪🇸',city:'Barcelona',date:'Jan 30',venue:'Camp Nou',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'New York',date:'Mar 2',venue:'MSG',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'New York',date:'Mar 4',venue:'MSG Night 2',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Bergamo',date:'Mar 13',venue:'New Balance Arena',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Palermo',date:'Apr 22',venue:'Renzo Barbera',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Barcelona',date:'May 10',venue:'Camp Nou',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇨🇭',city:'Basel',date:'May 17',venue:'Eurovision',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Milan',date:'May 29',venue:'San Siro',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Turin',date:'May 30',venue:'Juventus Stadium',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Barcelona',date:'Jun 23',venue:'Camp Nou',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Milan 🎂',date:'Jul 13',venue:'Piazza del Duomo',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇹🇭',city:'Bangkok',date:'Jul 21',venue:'Rajamangala',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇹🇭',city:'Phuket',date:'Jul 23',venue:'Surakul Stadium',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇹🇭',city:'Koh Samui',date:'Jul 27',venue:'Koh Samui Stadium',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Rome',date:'Sep 6',venue:'Stadio Olimpico',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇸🇲',city:'San Marino',date:'Oct 6',venue:'San Marino Stadium',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Madrid',date:'Nov 2',venue:'Bernabéu',year:'2025',done:true,perf:'pablo'},
+    {flag:'🇩🇪',city:'Karlsruhe',date:'Dec 20',venue:'Wildparkstadion',year:'2025',done:true,perf:'pablo'},
     // 2026
-    {flag:'🇪🇸',city:'Barcelona',date:'Feb 13',venue:'Camp Nou',year:'2026',done:true},
-    {flag:'🇲🇹',city:'Malta',date:'Feb 20',venue:'National Stadium',year:'2026',done:true},
-    {flag:'🇨🇭',city:'Bern',date:'Mar 21',venue:'Wankdorf Stadion',year:'2026',done:true},
-    {flag:'🇹🇷',city:'Erzincan',date:'Apr 25',venue:'13 Şubat City',year:'2026',done:true},
-    {flag:'🇹🇷',city:'Istanbul',date:'May 1',venue:'Atatürk Stadium',year:'2026',done:true},
-    {flag:'🇪🇸',city:'Jerez',date:'May 1',venue:'Estadio Municipal',year:'2026',done:true},
-    {flag:'🇪🇸',city:'Cádiz',date:'May 2',venue:'Nuevo Mirandilla',year:'2026',done:true},
-    {flag:'🇪🇸',city:'Sevilla',date:'May 4',venue:'Sánchez-Pizjuán',year:'2026',done:true},
-    {flag:'🇮🇹',city:'Milan',date:'May 16',venue:'San Siro',year:'2026',done:true},
-    {flag:'🇱🇮',city:'Vaduz',date:'May 17',venue:'Rheinpark',year:'2026',done:true},
-    {flag:'🇱🇺',city:'Luxembourg',date:'Jun 3',venue:'Stade de Luxembourg',year:'2026',done:true},
-    {flag:'🇳🇱',city:'Arnhem ⭐',date:'Jun 8',venue:'GelreDome',year:'2026',done:true},
-    {flag:'🇮🇹',city:'Milan',date:'Jun 19',venue:'Mind Live Theatre',year:'2026',done:true},
-    {flag:'🇮🇹',city:'Milan',date:'Jun 21',venue:'Mind Live — Night 2',year:'2026',done:true},
-    {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false},
-    {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena',year:'2026',done:false},
-    {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false},
+    {flag:'🇪🇸',city:'Barcelona',date:'Feb 13',venue:'Camp Nou',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇲🇹',city:'Malta',date:'Feb 20',venue:'National Stadium',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇨🇭',city:'Bern',date:'Mar 21',venue:'Wankdorf Stadion',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇹🇷',city:'Erzincan',date:'Apr 25',venue:'13 Şubat City',year:'2026',done:true,perf:'evren'},
+    {flag:'🇹🇷',city:'Istanbul',date:'May 1',venue:'Atatürk Stadium',year:'2026',done:true,perf:'evren'},
+    {flag:'🇪🇸',city:'Jerez',date:'May 1',venue:'Estadio Municipal',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Cádiz',date:'May 2',venue:'Nuevo Mirandilla',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇪🇸',city:'Sevilla',date:'May 4',venue:'Sánchez-Pizjuán',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Milan',date:'May 16',venue:'San Siro',year:'2026',done:true,perf:'both'},
+    {flag:'🇱🇮',city:'Vaduz',date:'May 17',venue:'Rheinpark',year:'2026',done:true,perf:'both'},
+    {flag:'🇱🇺',city:'Luxembourg',date:'Jun 3',venue:'Stade de Luxembourg',year:'2026',done:true,perf:'evren'},
+    {flag:'🇳🇱',city:'Arnhem',date:'Jun 8',venue:'GelreDome',year:'2026',done:true,perf:'both',special:'⭐ Kanye'},
+    {flag:'🇮🇹',city:'Milan',date:'Jun 19',venue:'Mind Live Theatre',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇮🇹',city:'Milan',date:'Jun 21',venue:'Mind Live — Night 2',year:'2026',done:true,perf:'pablo'},
+    {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false,perf:'pablo'},
+    {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena',year:'2026',done:false,perf:'pablo'},
+    {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
   ];
 
+  var perfColors={pablo:'rgba(205,177,117,.9)',evren:'#7eb5ff',both:'#3ddc84'};
+  var perfLabels={pablo:'Pablo',evren:'Evren',both:'Pablo & Evren'};
   function buildTimeline(){
     var inner = document.getElementById('tlInner');
     if(!inner) return;
@@ -2993,23 +3013,23 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     var curYear = null;
     tlShows.forEach(function(s, i){
       if(s.year !== curYear){
-        if(curYear !== null){
-          var sep = document.createElement('div'); sep.className='tl-year-sep';
-          sep.innerHTML = '<div class="tl-year-sep-text">'+s.year+'</div><div style="width:1px;height:20px;background:rgba(205,177,117,.2)"></div>';
-          inner.appendChild(sep);
-        } else {
-          var sep0 = document.createElement('div'); sep0.className='tl-year-sep';
-          sep0.innerHTML = '<div class="tl-year-sep-text">'+s.year+'</div><div style="width:1px;height:20px;background:rgba(205,177,117,.2)"></div>';
-          inner.appendChild(sep0);
-        }
+        var sep = document.createElement('div'); sep.className='tl-year-sep';
+        sep.innerHTML = '<div class="tl-year-sep-text">'+s.year+'</div><div style="width:1px;height:20px;background:rgba(205,177,117,.2)"></div>';
+        inner.appendChild(sep);
         curYear = s.year;
       }
       var item = document.createElement('div'); item.className='tl-item';
+      var perfColor = s.perf ? (perfColors[s.perf]||'var(--accent)') : 'var(--accent)';
+      var perfLabel = s.perf ? (perfLabels[s.perf]||'') : '';
+      var bubbleBorderColor = s.done ? (s.perf==='evren'?'rgba(100,150,255,.5)':s.perf==='both'?'rgba(52,211,153,.5)':'rgba(205,177,117,.5)') : 'rgba(205,177,117,.5)';
       item.innerHTML =
-        '<div class="tl-bubble '+(s.done?'done':'up')+'">'+s.flag+'</div>'+
-        '<div class="tl-date">'+s.date+'</div>'+
+        (s.special?'<div class="tl-special">'+s.special+'</div>':'')+
+        '<div class="tl-bubble '+(s.done?'done':'up')+'" style="border-color:'+bubbleBorderColor+'">'+s.flag+'</div>'+
+        '<div class="tl-date" style="color:'+perfColor+'">'+s.date+'</div>'+
         '<div class="tl-city">'+s.city+'</div>'+
-        '<div class="tl-venue">'+s.venue+'</div>';
+        '<div class="tl-venue">'+s.venue+'</div>'+
+        (perfLabel?'<span class="tl-perf-pill '+(s.perf||'pablo')+'">'+perfLabel+'</span>':'')+
+        (s.done?'':'<div style="font-size:.42rem;color:rgba(205,177,117,.5);font-family:'Space Mono',monospace;letter-spacing:.1em;margin-top:3px;">UPCOMING</div>');
       inner.appendChild(item);
     });
   }
@@ -3493,7 +3513,7 @@ window.addEventListener('DOMContentLoaded', function(){
         </div>
         <div style="padding:14px 16px;">
           <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(200,169,110,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:600;margin-bottom:6px;">Latest Post · Instagram</div>
-          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">Spain leg complete ✓ Jerez, Cádiz and Sevilla done. Liechtenstein & Austria next 🇱🇮🇦🇹</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.5;">🤯 Kanye West showed up. GelreDome, Arnhem, Netherlands. Jun 8, 2026. He performed Runaway. Nothing will ever be the same. 🔥 #Ye #KanyeWest</div>
           <div style="font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:8px;">@king__pablito69 · View on Instagram →</div>
         </div>
       </a>
@@ -3520,17 +3540,28 @@ window.addEventListener('DOMContentLoaded', function(){
 </section>
 
 <!-- FAN WALL -->
-<section id="fanwall">
-  <p class="section-label">The Crowd Speaks</p>
-  <h2 class="section-title">Fan Wall</h2>
-  <div class="divider"></div>
-  <div class="fanwall-grid">
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote><div class="fan-author">— moggogogers <span class="fan-city">/ Basel, CH</span></div></div>
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote><div class="fan-author">— family nibbooggers <span class="fan-city">/ Istanbul</span></div></div>
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote><div class="fan-author">— big terence <span class="fan-city">/ Germany</span></div></div>
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"Holy Obesity is the best thing to come out of Basel. These two together are a movement. Cannot wait for the world tour."</blockquote><div class="fan-author">— dogmoggers <span class="fan-city">/ Switzerland</span></div></div>
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote><div class="fan-author">— big bork <span class="fan-city">/ France</span></div></div>
-    <div class="fan-msg"><div class="fan-stars">★★★★★</div><blockquote>"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote><div class="fan-author">— bus line 45 <span class="fan-city">/ Spain</span></div></div>
+<section id="fanwall" style="background:var(--dark2);padding:clamp(50px,7vw,90px) var(--pad);">
+<style>
+  .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:3px;margin-top:28px}
+  .fw-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:24px 20px;transition:all .3s;position:relative;overflow:hidden}
+  .fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+  .fw-card:hover::before{transform:scaleX(1)}
+  .fw-card:hover{border-color:rgba(205,177,117,.25);background:rgba(205,177,117,.04);transform:translateY(-3px)}
+  .fw-stars{color:var(--accent);font-size:.9rem;letter-spacing:3px;margin-bottom:12px}
+  .fw-quote{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;font-style:italic;margin-bottom:14px}
+  .fw-author{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:6px}
+  .fw-city{color:rgba(205,177,117,.5)}
+</style>
+  <p class="section-label reveal">The Crowd Speaks</p>
+  <h2 class="section-title reveal d1">Fan Wall</h2>
+  <div class="divider reveal d1"></div>
+  <div class="fw-grid">
+    <div class="fw-card reveal"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Unforgettable. I have been to over 30 concerts and nothing hit like this one. Pablo commanded that stage like nobody I have ever seen."</blockquote><div class="fw-author">moggogogers <span class="fw-city">/ Basel, CH</span></div></div>
+    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Evren's energy is unreal. The whole crowd was going insane from the first second. I cried twice and I am not even embarrassed about it."</blockquote><div class="fw-author">family nibbooggers <span class="fw-city">/ Istanbul</span></div></div>
+    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"I drove 4 hours to see them. Worth every minute. The visuals, the music, the vibe — this is what live music is supposed to feel like."</blockquote><div class="fw-author">big terence <span class="fw-city">/ Germany</span></div></div>
+    <div class="fw-card reveal"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"These two together are a movement. Cannot wait for more dates. Basel is lucky to have them every single day."</blockquote><div class="fw-author">dogmoggers <span class="fw-city">/ Switzerland</span></div></div>
+    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"I wasn't expecting much and then they blew the roof off. The meet and greet was the highlight of my year. They're both so real."</blockquote><div class="fw-author">big bork <span class="fw-city">/ France</span></div></div>
+    <div class="fw-card reveal d1"><div class="fw-stars">★★★★★</div><blockquote class="fw-quote">"Came for the music, stayed for the experience. The exclusive songs they dropped live — I have been waiting for them on Spotify ever since."</blockquote><div class="fw-author">bus line 45 <span class="fw-city">/ Spain</span></div></div>
   </div>
 </section>
 
