@@ -869,61 +869,34 @@ window.addEventListener('load',function(){
       </div>
     </div>
 
-    <!-- BOTTOM: Stockholm New Date -->
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:18px;">
-      <div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <div style="width:7px;height:7px;border-radius:50%;background:#cdb175;animation:pulseDot 1.4s ease-in-out infinite;"></div>
-          <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700;">&#9733; Next Show</span>
-        </div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3.5vw,2.4rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Stockholm, Sweden &#127480;&#127466;</div>
-        <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Strawberry Arena &middot; 11 Jul 2026 &middot; Pablo Only</div>
-        <!-- WEATHER WIDGET -->
-        <div id="sto-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 12px;">
-          <span id="sto-weather-icon" style="font-size:1rem;">⏳</span>
-          <span id="sto-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
-        </div>
-        <script>
-        (function(){
-          // Stockholm lat/lng — Open-Meteo free API, no key needed
-          fetch('https://api.open-meteo.com/v1/forecast?latitude=59.33&longitude=18.07&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Europe%2FStockholm')
-            .then(function(r){return r.json();})
-            .then(function(d){
-              var temp = Math.round(d.current.temperature_2m);
-              var code = d.current.weathercode;
-              var icons = {0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
-              var icon = icons[code] || '🌡️';
-              document.getElementById('sto-weather-icon').textContent = icon;
-              document.getElementById('sto-weather-text').textContent = 'Stockholm now: ' + temp + '°C';
-              document.getElementById('sto-weather').style.borderColor = 'rgba(205,177,117,.25)';
-            })
-            .catch(function(){ document.getElementById('sto-weather-text').textContent = 'Stockholm, Sweden 🇸🇪'; });
-        })();
-        </script>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        <div style="display:flex;gap:8px;">
-          <div style="text-align:center;"><div id="sto-d" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Days</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="sto-h" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Hrs</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="sto-m" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Min</div></div>
-          <div style="font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);color:rgba(205,177,117,0.35);align-self:flex-start;padding-top:2px;">:</div>
-          <div style="text-align:center;"><div id="sto-s" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.4rem,3vw,2.2rem);color:var(--accent);line-height:1;">--</div><div style="font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:2px;">Sec</div></div>
-        </div>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:var(--accent);padding:10px 20px;font-family:'Space Mono',monospace;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(205,177,117,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(205,177,117,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
-      </div>
-    
-
     <!-- NEW DATE: Iceland Dec 12 -->
     <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(100,180,255,.2);">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
         <div style="width:7px;height:7px;border-radius:50%;background:#64b4ff;animation:pulseDot 1.4s ease-in-out infinite;"></div>
         <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#64b4ff;font-weight:700;">🆕 New Date Announced!</span>
       </div>
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
-      <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
-    </div></div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
+      <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
+      <div id="ice-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(100,180,255,.08);border:1px solid rgba(100,180,255,.2);border-radius:20px;padding:5px 12px;">
+        <span id="ice-weather-icon" style="font-size:1rem;">⏳</span>
+        <span id="ice-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
+      </div>
+      <script>
+      (function(){
+        fetch('https://api.open-meteo.com/v1/forecast?latitude=64.13&longitude=-21.89&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Atlantic%2FReykjavik')
+          .then(function(r){return r.json();})
+          .then(function(d){
+            var temp=Math.round(d.current.temperature_2m);
+            var icons={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',71:'🌨',73:'🌨',75:'❄️',77:'❄️'};
+            var icon=icons[d.current.weathercode]||'🌡️';
+            document.getElementById('ice-weather-icon').textContent=icon;
+            document.getElementById('ice-weather-text').textContent='Reykjavík now: '+temp+'°C';
+            document.getElementById('ice-weather').style.borderColor='rgba(100,180,255,.4)';
+          })
+          .catch(function(){document.getElementById('ice-weather-text').textContent='Reykjavík, Iceland 🇮🇸';});
+      })();
+      </script>
+    </div>
 
   </div>
 </div>
@@ -1135,7 +1108,8 @@ setInterval(updateStockholm, 1000);
       <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
       <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;"><span style="display:inline-block;background:rgba(255,165,0,.12);border:1px solid rgba(255,165,0,.5);color:#ffa500;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">⚡ 67% Sold</span><div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:67%;height:100%;background:linear-gradient(to right,#ffa500,#ff6b00);border-radius:2px;"></div></div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a></div>
     </div>
-  
+  </div>
+
   <!-- Reykjavik Iceland -->
   <div class="dr upcoming">
     <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg/1280px-Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg');"></div>
@@ -2081,42 +2055,42 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
   <h2 class="section-title reveal d1">What To Expect</h2>
   <div class="divider reveal d1"></div>
   <div class="nums-grid" style="margin-top:32px;">
-    <div class="num-card reveal" style="height:auto;min-height:160px;">
+    <div class="num-card reveal" style="height:190px;">
       <div class="num-card-inner">
-        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
-          <div style="font-size:2rem;margin-bottom:10px;">🎤</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Live Performance</div>
-          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Raw energy, no backing tracks. Full production from the first second.</div>
+        <div class="num-card-front" style="justify-content:flex-start;padding:18px 16px;overflow:hidden;">
+          <div style="font-size:1.6rem;margin-bottom:8px;">🎤</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;color:var(--accent);margin-bottom:6px;">Live Performance</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.5;">Raw energy. Full production. Real crowd from second one.</div>
         </div>
         <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🎤</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Live instruments<br>Full band production<br>No lip sync, ever<br>Real crowd energy</div></div>
       </div>
     </div>
-    <div class="num-card reveal d1" style="height:auto;min-height:160px;">
+    <div class="num-card reveal d1" style="height:190px;">
       <div class="num-card-inner">
-        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
-          <div style="font-size:2rem;margin-bottom:10px;">✨</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Special Visuals</div>
-          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Cinematic stage design. Not just a concert — a moment.</div>
+        <div class="num-card-front" style="justify-content:flex-start;padding:18px 16px;overflow:hidden;">
+          <div style="font-size:1.6rem;margin-bottom:8px;">✨</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;color:var(--accent);margin-bottom:6px;">Special Visuals</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.5;">Cinematic stage. Not just a concert — a moment.</div>
         </div>
         <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">✨</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Custom lighting rigs<br>LED stage backdrops<br>Pyrotechnics<br>Cinematic direction</div></div>
       </div>
     </div>
-    <div class="num-card reveal d1" style="height:auto;min-height:160px;">
+    <div class="num-card reveal d1" style="height:190px;">
       <div class="num-card-inner">
-        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
-          <div style="font-size:2rem;margin-bottom:10px;">🙌</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Fan Moments</div>
-          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">The crowd is part of the show. Surprises, interaction, memories.</div>
+        <div class="num-card-front" style="justify-content:flex-start;padding:18px 16px;overflow:hidden;">
+          <div style="font-size:1.6rem;margin-bottom:8px;">🙌</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;color:var(--accent);margin-bottom:6px;">Fan Moments</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.5;">The crowd is the show. Surprises, interaction, memories.</div>
         </div>
         <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🙌</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Fan callouts on stage<br>Crowd sing-alongs<br>Surprise guests<br>Special fan moments</div></div>
       </div>
     </div>
-    <div class="num-card reveal" style="height:auto;min-height:160px;">
+    <div class="num-card reveal" style="height:190px;">
       <div class="num-card-inner">
-        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
-          <div style="font-size:2rem;margin-bottom:10px;">🎵</div>
-          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Exclusive Songs</div>
-          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Songs not on streaming. Live only. You had to be there.</div>
+        <div class="num-card-front" style="justify-content:flex-start;padding:18px 16px;overflow:hidden;">
+          <div style="font-size:1.6rem;margin-bottom:8px;">🎵</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;color:var(--accent);margin-bottom:6px;">Exclusive Songs</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.42);line-height:1.5;">Not on streaming. Live only. You had to be there.</div>
         </div>
         <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🎵</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Unreleased tracks<br>Live-only edits<br>Special mashups<br>Acoustic versions</div></div>
       </div>
