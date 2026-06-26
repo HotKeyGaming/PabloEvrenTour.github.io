@@ -567,6 +567,9 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <a href="lore.html" class="dl spec" onclick="closeMob()">🔴 The Lore Archive &#8594;</a>
   <a href="2025.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2025 World Tour</a>
   <a href="2024.html" class="dl" onclick="closeMob()" style="color:rgba(205,177,117,.7)">2024 World Tour</a>
+  <div style="margin-top:20px;border-top:1px solid rgba(255,255,255,.06);padding-top:16px;">
+    <button onclick="playCrowdNoise();closeMob();" style="width:100%;background:rgba(205,177,117,.08);border:1px solid rgba(205,177,117,.2);color:rgba(255,255,255,.4);font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;padding:10px;cursor:pointer;transition:.2s;border-radius:4px;" onmouseover="this.style.background='rgba(205,177,117,.15)';this.style.color='rgba(255,255,255,.8)'" onmouseout="this.style.background='rgba(205,177,117,.08)';this.style.color='rgba(255,255,255,.4)'">&#127881; you found it</button>
+  </div>
   <div class="dtools">
     <div class="dsec" style="margin:0">Language</div>
     <div class="lrow"><button id="lang-en" onclick="setLang('en');updLang();" class="on">EN</button><button id="lang-de" onclick="setLang('de');updLang();">DE</button><button id="lang-es" onclick="setLang('es');updLang();">ES</button></div>
@@ -605,6 +608,7 @@ var searchData = [
 {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
   {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
   {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
+  {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
   {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
   {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist',icon:'🎵'},
@@ -909,7 +913,17 @@ window.addEventListener('load',function(){
         </div>
         <a href="https://www.instagram.com/king__pablito69" target="_blank" style="background:transparent;color:var(--accent);padding:10px 20px;font-family:'Space Mono',monospace;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:1px solid rgba(205,177,117,0.45);transition:all 0.2s;" onmouseover="this.style.background='rgba(205,177,117,0.12)'" onmouseout="this.style.background='transparent'">Get Tickets</a>
       </div>
-    </div>
+    
+
+    <!-- NEW DATE: Iceland Dec 12 -->
+    <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(100,180,255,.2);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="width:7px;height:7px;border-radius:50%;background:#64b4ff;animation:pulseDot 1.4s ease-in-out infinite;"></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#64b4ff;font-weight:700;">🆕 New Date Announced!</span>
+      </div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.2rem,3vw,2rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
+      <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
+    </div></div>
 
   </div>
 </div>
@@ -920,6 +934,7 @@ var shows = [
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
+  { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
 ];
 
 function getNextShow(){ var now=new Date(); for(var i=0;i<shows.length;i++){ if(shows[i].date>now) return shows[i]; } return null; }
@@ -1120,7 +1135,27 @@ setInterval(updateStockholm, 1000);
       <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
       <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;"><span style="display:inline-block;background:rgba(255,165,0,.12);border:1px solid rgba(255,165,0,.5);color:#ffa500;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">⚡ 67% Sold</span><div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:67%;height:100%;background:linear-gradient(to right,#ffa500,#ff6b00);border-radius:2px;"></div></div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a></div>
     </div>
+  
+  <!-- Reykjavik Iceland -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg/1280px-Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">12</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇸</span> Reykjavík, Iceland <span style="display:inline-block;background:rgba(100,180,255,.15);border:1px solid rgba(100,180,255,.5);color:#64b4ff;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 NEW</span></h3>
+        <p>Laugardalsvöllur Stadium · Doors 21:00 · 12 Dec 2026</p>
+        <p class="dr-note">★ Evren Only Performance · <span style="color:rgba(255,255,255,0.35);">Too cold for Pablo 🥶</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(100,200,100,.12);border:1px solid rgba(100,200,100,.5);color:#64c864;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">🔥 21% Sold</span>
+        <div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:21%;height:100%;background:linear-gradient(to right,#64c864,#3ddc84);border-radius:2px;"></div></div>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
   </div>
+</div>
 </div><!-- end timeline-wrap upcoming -->
 
 <div style="height:48px;background:var(--dark);"></div>
@@ -1543,6 +1578,7 @@ function initGlobe() {
     { city:'Vaduz',               country:'Liechtenstein', lat:47.1410, lng: 9.5209, status:'completed' },
     { city:'Luxembourg City',     country:'Luxembourg',    lat:49.6116, lng: 6.1319, status:'completed' },
     { city:'Arnhem',              country:'Netherlands',   lat:51.9851, lng: 5.8987, status:'completed' },
+    { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
   ];
 
@@ -1561,6 +1597,7 @@ function initGlobe() {
     .pointsMerge(false)
     .pointLabel(function(d){ return '<div style="background:rgba(10,8,6,.9);border:1px solid '+d.color+'88;border-radius:8px;padding:6px 12px;color:#f4efe6;font-size:13px;font-family:Syne,sans-serif;font-weight:700;white-space:nowrap;">'+d.city+', '+d.country+'</div>'; })
     .onPointClick(function(d){
+      if(typeof playGlobeSound==='function')playGlobeSound(d.city);
       document.getElementById('card-city').textContent    = d.city;
       document.getElementById('card-country').textContent = d.country;
       document.getElementById('card-dot').style.background   = d.color;
@@ -1695,6 +1732,7 @@ const SHOWS2=[
   {id:45,year:2026,city:'Basel',dateStr:'Coming soon',lat:47.560,lng:7.589,completed:false},
   {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:false},
   {id:47,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
+  {id:48,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
 let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
 const MIN_ZOOM2=0.45,MAX_ZOOM2=9;
@@ -1706,7 +1744,7 @@ const canvas2=document.getElementById('constellation');
 const ctx2=canvas2.getContext('2d');
 function resize2(){const wrap=canvas2.parentElement;const dpr=Math.min(window.devicePixelRatio||1,2);const cw=wrap.clientWidth,ch=wrap.clientHeight;canvas2.width=Math.round(cw*dpr);canvas2.height=Math.round(ch*dpr);canvas2.style.width=cw+'px';canvas2.style.height=ch+'px';ctx2.setTransform(dpr,0,0,dpr,0,0);}
 const ttEl2=document.getElementById('tooltip2');
-function showTT2(show){const wrap=canvas2.parentElement;const ww=wrap.clientWidth,wh=wrap.clientHeight;const sx=show.pos.x*zoom2+panX2,sy=show.pos.y*zoom2+panY2;const TW=188,TH=show.note?108:82;let lx=sx+16,ly=sy-TH-10;if(lx+TW>ww-10)lx=sx-TW-16;if(ly<8)ly=sy+14;if(ly+TH>wh-8)ly=wh-TH-8;ttEl2.style.left=lx+'px';ttEl2.style.top=ly+'px';document.getElementById('tt2-city').textContent=show.city;document.getElementById('tt2-date').textContent=show.dateStr;const b=document.getElementById('tt2-badge');b.textContent=show.completed?'✓  Completed':'▶  Upcoming';b.className='tt2-badge '+(show.completed?'completed':'upcoming');const n=document.getElementById('tt2-note');n.textContent=show.note||'';n.style.display=show.note?'block':'none';ttEl2.classList.add('visible');}
+function showTT2(show){if(typeof playGlobeSound==='function')playGlobeSound(show.city);const wrap=canvas2.parentElement;const ww=wrap.clientWidth,wh=wrap.clientHeight;const sx=show.pos.x*zoom2+panX2,sy=show.pos.y*zoom2+panY2;const TW=188,TH=show.note?108:82;let lx=sx+16,ly=sy-TH-10;if(lx+TW>ww-10)lx=sx-TW-16;if(ly<8)ly=sy+14;if(ly+TH>wh-8)ly=wh-TH-8;ttEl2.style.left=lx+'px';ttEl2.style.top=ly+'px';document.getElementById('tt2-city').textContent=show.city;document.getElementById('tt2-date').textContent=show.dateStr;const b=document.getElementById('tt2-badge');b.textContent=show.completed?'✓  Completed':'▶  Upcoming';b.className='tt2-badge '+(show.completed?'completed':'upcoming');const n=document.getElementById('tt2-note');n.textContent=show.note||'';n.style.display=show.note?'block':'none';ttEl2.classList.add('visible');}
 function hideTT2(){ttEl2.classList.remove('visible');}
 function findShow2(sx,sy,w,h){const mx=(sx-panX2)/zoom2,my=(sy-panY2)/zoom2;const shows=withPos2(activeYear2==='ALL'?SHOWS2:SHOWS2.filter((s)=>String(s.year)===activeYear2),w,h);let best=null,bestD=13/zoom2;shows.forEach((s)=>{const d=Math.hypot(s.pos.x-mx,s.pos.y-my);if(d<bestD){bestD=d;best=s;}});return best;}
 function draw2(){const wrap=canvas2.parentElement;const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;const dpr=Math.min(window.devicePixelRatio||1,2);if(canvas2.width!==Math.round(w*dpr)||canvas2.height!==Math.round(h*dpr))resize2();const t=(performance.now()-filterStart2)/1e3,absT=(performance.now()-globalStart2)/1e3;ctx2.fillStyle='#030208';ctx2.fillRect(0,0,w,h);bgStars2.forEach((star)=>{const a=star.a*(0.6+0.4*Math.sin(absT*star.spd+star.phase));ctx2.beginPath();ctx2.arc(star.x*w,star.y*h,star.rad,0,Math.PI*2);ctx2.fillStyle='rgba(255,255,255,'+a.toFixed(3)+')';ctx2.fill();});const vg=ctx2.createRadialGradient(w/2,h*0.55,h*0.05,w/2,h*0.55,Math.max(w,h)*0.75);vg.addColorStop(0,'rgba(3,2,8,0)');vg.addColorStop(1,'rgba(3,2,8,0.72)');ctx2.fillStyle=vg;ctx2.fillRect(0,0,w,h);ctx2.save();ctx2.translate(panX2,panY2);ctx2.scale(zoom2,zoom2);const filtered=activeYear2==='ALL'?SHOWS2:SHOWS2.filter((s)=>String(s.year)===activeYear2);const shows=withPos2(filtered,w,h);const YEAR_RGB={2024:[160,110,60],2025:[95,165,105],2026:[205,177,117]};const YEAR_DOT={2024:'#a06e3b',2025:'#5fa569',2026:'#cdb175'};const ST=0.062,FD=0.38;const byYear={};shows.forEach((s)=>{(byYear[s.year]=byYear[s.year]||[]).push(s);});Object.entries(byYear).forEach(([yr,arr])=>{const rgb=YEAR_RGB[yr]||[205,177,117];for(let i=1;i<arr.length;i++){const prev=arr[i-1],curr=arr[i];const dx=curr.pos.x-prev.pos.x,dy=curr.pos.y-prev.pos.y;if(Math.abs(dx)<0.5&&Math.abs(dy)<0.5)continue;const p=Math.min(1,Math.max(0,(t-(i-1)*ST-0.22)/FD));if(p<=0)continue;ctx2.beginPath();ctx2.moveTo(prev.pos.x,prev.pos.y);ctx2.lineTo(prev.pos.x+dx*p,prev.pos.y+dy*p);ctx2.strokeStyle='rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+','+(0.3*p).toFixed(3)+')';ctx2.lineWidth=0.85/zoom2;ctx2.stroke();}});shows.forEach((show,i)=>{const fp=Math.min(1,Math.max(0,(t-i*ST)/FD));if(fp<=0)return;const{x,y}=show.pos,up=!show.completed;const rgb=YEAR_RGB[show.year]||[205,177,117];const sr=up?232:rgb[0],sg=up?207:rgb[1],sb=up?146:rgb[2];const dotR=(up?5.5:4)/zoom2,glowR=(up?26:16)/zoom2;const gl=ctx2.createRadialGradient(x,y,0,x,y,glowR);gl.addColorStop(0,'rgba('+sr+','+sg+','+sb+','+(0.52*fp).toFixed(3)+')');gl.addColorStop(0.45,'rgba('+sr+','+sg+','+sb+','+(0.18*fp).toFixed(3)+')');gl.addColorStop(1,'rgba('+sr+','+sg+','+sb+',0)');ctx2.beginPath();ctx2.arc(x,y,glowR,0,Math.PI*2);ctx2.fillStyle=gl;ctx2.fill();if(up){[0,0.5].forEach((off)=>{const ph=((absT*1.35)+off)%1;const pr=(dotR+4/zoom2)+ph*15/zoom2,pa=(1-ph)*0.6*fp;ctx2.beginPath();ctx2.arc(x,y,pr,0,Math.PI*2);ctx2.strokeStyle='rgba(232,207,146,'+pa.toFixed(3)+')';ctx2.lineWidth=1.3/zoom2;ctx2.stroke();});}ctx2.globalAlpha=fp;ctx2.beginPath();ctx2.arc(x,y,dotR,0,Math.PI*2);ctx2.fillStyle=up?'#e8cf92':(YEAR_DOT[show.year]||'#cdb175');ctx2.fill();ctx2.beginPath();ctx2.arc(x,y,dotR*0.42,0,Math.PI*2);ctx2.fillStyle=up?'rgba(255,248,224,0.9)':'rgba(255,255,255,0.5)';ctx2.fill();ctx2.globalAlpha=1;});ctx2.restore();}
@@ -1810,15 +1848,15 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
     ],
     '2026': [
       {date:'Feb 13',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
-      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/1/1e/Ta%27_Qali_National_Stadium.jpg'},
-      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/5/5a/Stadion_Wankdorf_2012.jpg'},
+      {date:'Feb 20',city:'Malta',flag:'🇲🇹',venue:'National Stadium',perf:'pablo',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
+      {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg'},
       {date:'Apr 25',city:'Erzincan',flag:'🇹🇷',venue:'13 Şubat City Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
-      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/8/8c/Atat%C3%BCrk_Olympic_Stadium.jpg'},
+      {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
       {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-7w6iSbA4cqABHNGFoswxRAeQcPOEaH17JWbMRxFxh5NqEBa3&s=10'},
       {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Nuevo Mirandilla',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0ZJrxk8sYRyZVb2oU7MqBEHXUmRzMsA7hT_JwGpQjzrT7ZhQ&s=10'},
       {date:'May 4',city:'Sevilla',flag:'🇪🇸',venue:'Sánchez-Pizjuán',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
       {date:'May 16',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
-      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/7/7f/Rheinpark_Stadion.jpg'},
+      {date:'May 17',city:'Vaduz',flag:'🇱🇮',venue:'Rheinpark Stadion',perf:'both',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
       {date:'Jun 3',city:'Luxembourg',flag:'🇱🇺',venue:'Stade de Luxembourg',perf:'evren',done:true,img:'https://images.adsttc.com/media/images/617b/0194/f91c/8199/3100/002c/large_jpg/3116_210812_MB99_0523_A3_pressp.jpg?1635451242'},
       {date:'Jun 8 ⭐',city:'Arnhem',flag:'🇳🇱',venue:'GelreDome + Kanye',perf:'both',done:true,img:'https://footballtripper.com/wp-content/uploads/Gelredome.jpg'},
       {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
@@ -1826,6 +1864,8 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
       {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
       {date:'Jul 11',city:'Stockholm',flag:'🇸🇪',venue:'Strawberry Arena',perf:'pablo',done:false,img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
       {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
+      {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
+      {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     ]
   };
   var _storyYear = '2026';
@@ -1975,8 +2015,8 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="17" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲</div>
+        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="18" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸</div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
@@ -2040,28 +2080,49 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
   <p class="section-label reveal">At The Show</p>
   <h2 class="section-title reveal d1">What To Expect</h2>
   <div class="divider reveal d1"></div>
-  <div class="expect-grid" style="margin-top:32px;">
-    <div class="expect-card reveal">
-      <div style="font-size:2.2rem;margin-bottom:16px;">🎤</div>
-      <h3>Live Performance</h3>
-      <p>Raw energy, no backing tracks. Pablo and Evren performing every song live with full production — lights, sound, and real crowd energy from the first second.</p>
+  <div class="nums-grid" style="margin-top:32px;">
+    <div class="num-card reveal" style="height:auto;min-height:160px;">
+      <div class="num-card-inner">
+        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🎤</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Live Performance</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Raw energy, no backing tracks. Full production from the first second.</div>
+        </div>
+        <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🎤</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Live instruments<br>Full band production<br>No lip sync, ever<br>Real crowd energy</div></div>
+      </div>
     </div>
-    <div class="expect-card reveal d1">
-      <div style="font-size:2.2rem;margin-bottom:16px;">✨</div>
-      <h3>Special Visuals</h3>
-      <p>Cinematic stage design and visuals inspired by the Holy Obesity universe. Every show is a full sensory experience — not just a concert, a moment.</p>
+    <div class="num-card reveal d1" style="height:auto;min-height:160px;">
+      <div class="num-card-inner">
+        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
+          <div style="font-size:2rem;margin-bottom:10px;">✨</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Special Visuals</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Cinematic stage design. Not just a concert — a moment.</div>
+        </div>
+        <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">✨</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Custom lighting rigs<br>LED stage backdrops<br>Pyrotechnics<br>Cinematic direction</div></div>
+      </div>
     </div>
-    <div class="expect-card reveal d1">
-      <div style="font-size:2.2rem;margin-bottom:16px;">🙌</div>
-      <h3>Fan Moments</h3>
-      <p>Pablo and Evren believe the crowd is part of the show. Expect interaction, surprises, and memories that don't happen anywhere else.</p>
+    <div class="num-card reveal d1" style="height:auto;min-height:160px;">
+      <div class="num-card-inner">
+        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🙌</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Fan Moments</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">The crowd is part of the show. Surprises, interaction, memories.</div>
+        </div>
+        <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🙌</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Fan callouts on stage<br>Crowd sing-alongs<br>Surprise guests<br>Special fan moments</div></div>
+      </div>
     </div>
-    <div class="expect-card reveal">
-      <div style="font-size:2.2rem;margin-bottom:16px;">🎵</div>
-      <h3>Exclusive Songs</h3>
-      <p>Songs that don't exist on streaming — performed live only. You have to be there. These are the moments fans talk about for years.</p>
+    <div class="num-card reveal" style="height:auto;min-height:160px;">
+      <div class="num-card-inner">
+        <div class="num-card-front" style="justify-content:flex-start;padding:22px 18px;">
+          <div style="font-size:2rem;margin-bottom:10px;">🎵</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--accent);margin-bottom:8px;">Exclusive Songs</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6;">Songs not on streaming. Live only. You had to be there.</div>
+        </div>
+        <div class="num-card-back"><div style="font-size:1.8rem;margin-bottom:10px;">🎵</div><div style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--accent);line-height:1.8;text-align:center;">Unreleased tracks<br>Live-only edits<br>Special mashups<br>Acoustic versions</div></div>
+      </div>
     </div>
   </div>
+  <p style="font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:16px;text-align:right;">↩ Tap any card for details</p>
 </section>
 
 <!-- LORE CTA -->
@@ -2908,10 +2969,10 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   var tlShows = [
     // 2024
     {flag:'🇬🇧',city:'London',date:'Jan 19',venue:'Wembley Stadium',year:'2024',done:true,perf:'pablo'},
-    {flag:'🇺🇸',city:'Las Vegas',date:'Apr 4',venue:'Fremont Street',year:'2024',done:true,perf:'pablo'},
     {flag:'🇪🇸',city:'Málaga',date:'Feb 19',venue:'La Rosaleda',year:'2024',done:true,perf:'pablo'},
     {flag:'🇪🇸',city:'Sevilla',date:'Feb 22',venue:'Sánchez-Pizjuán',year:'2024',done:true,perf:'pablo'},
     {flag:'🇺🇸',city:'Las Vegas',date:'Apr 1',venue:'Allegiant Stadium',year:'2024',done:true,perf:'pablo'},
+    {flag:'🇺🇸',city:'Las Vegas',date:'Apr 4',venue:'Fremont Street ⚡',year:'2024',done:true,perf:'pablo'},
     {flag:'🇺🇸',city:'Philadelphia',date:'Apr 6',venue:'Lincoln Financial',year:'2024',done:true,perf:'pablo'},
     {flag:'🇮🇹',city:'Milan',date:'May 9',venue:'San Siro',year:'2024',done:true,perf:'pablo'},
     {flag:'🇮🇹',city:'Pisa',date:'May 10',venue:'Arena Garibaldi',year:'2024',done:true,perf:'pablo'},
@@ -2956,6 +3017,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false,perf:'pablo'},
     {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
+    {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
 
   var perfColors={pablo:'rgba(205,177,117,.9)',evren:'#7eb5ff',both:'#3ddc84'};
@@ -3497,19 +3559,18 @@ window.addEventListener('DOMContentLoaded', function(){
 <section id="fanwall" style="background:var(--dark2);padding:clamp(50px,7vw,90px) var(--pad);">
 <style>
   .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:3px;margin-top:28px}
-  .fw-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:0;transition:all .3s;position:relative;overflow:hidden;cursor:pointer;perspective:800px;height:170px}
+  .fw-card{background:rgba(205,177,117,.04);border:1px solid rgba(205,177,117,.1);padding:0;transition:all .3s;position:relative;overflow:hidden;cursor:pointer;perspective:800px;height:190px}
   .fw-card-inner{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
   .fw-card.flipped .fw-card-inner{transform:rotateY(180deg)}
-  .fw-card-front,.fw-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:22px 18px;display:flex;flex-direction:column;justify-content:space-between}
-  .fw-card-back{transform:rotateY(180deg);background:rgba(205,177,117,.08);border:1px solid rgba(205,177,117,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .3s;transform-origin:left;z-index:2}
-  .fw-card:hover::before{transform:scaleX(1)}
-  .fw-stars{color:var(--accent);font-size:.85rem;letter-spacing:3px;margin-bottom:10px}
-  .fw-quote{font-size:.76rem;color:rgba(255,255,255,.6);line-height:1.65;font-style:italic;margin-bottom:10px;flex:1;overflow:hidden}
-  .fw-author{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+  .fw-card-front,.fw-card-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:20px 18px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(205,177,117,.04);border:1px solid rgba(205,177,117,.1)}
+  .fw-card-back{transform:rotateY(180deg);background:rgba(205,177,117,.1);border-color:rgba(205,177,117,.4);align-items:center;justify-content:center;text-align:center}
+  .fw-card:hover{border-color:rgba(205,177,117,.4);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .fw-stars{color:var(--accent);font-size:.8rem;letter-spacing:3px;margin-bottom:8px;display:block}
+  .fw-quote{font-size:.74rem;color:rgba(255,255,255,.55);line-height:1.6;font-style:italic;margin-bottom:8px;flex:1;overflow:hidden}
+  .fw-author{font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28)}
   .fw-city{color:rgba(205,177,117,.5)}
-  .fw-back-emoji{font-size:2rem;margin-bottom:8px}
-  .fw-back-text{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);line-height:1.6}
+  .fw-back-emoji{font-size:1.8rem;margin-bottom:8px}
+  .fw-back-text{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);line-height:1.7}
 </style>
   <p class="section-label reveal">The Crowd Speaks</p>
   <h2 class="section-title reveal d1">Fan Wall</h2>
@@ -3691,6 +3752,115 @@ document.addEventListener('DOMContentLoaded', function(){ updateLangBtns(); });
   };
 })();
 </script>
+
+
+<canvas id="trail-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:99990;width:100%;height:100%;"></canvas>
+<script>
+(function(){
+  var c=document.getElementById('trail-canvas');
+  var ctx=c.getContext('2d');
+  var particles=[];
+  var mx=0,my=0;
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    for(var i=0;i<3;i++){
+      particles.push({
+        x:mx,y:my,
+        vx:(Math.random()-.5)*1.5,
+        vy:(Math.random()-.5)*1.5-0.8,
+        size:Math.random()*3+1,
+        alpha:1,
+        color:Math.random()>.5?'#cdb175':'#e8cf92'
+      });
+    }
+    if(particles.length>200)particles.splice(0,particles.length-200);
+  });
+  function loop(){
+    ctx.clearRect(0,0,c.width,c.height);
+    for(var i=particles.length-1;i>=0;i--){
+      var p=particles[i];
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.04; p.alpha-=0.025;
+      if(p.alpha<=0){particles.splice(i,1);continue;}
+      ctx.save();
+      ctx.globalAlpha=p.alpha;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fillStyle=p.color;
+      ctx.fill();
+      ctx.restore();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+
+<script>
+function playCrowdNoise(){
+  // Create synthetic crowd roar with Web Audio API
+  var ctx=new(window.AudioContext||window.webkitAudioContext)();
+  var buf=ctx.createBuffer(1,ctx.sampleRate*2.5,ctx.sampleRate);
+  var data=buf.getChannelData(0);
+  for(var i=0;i<data.length;i++){
+    var env=i<ctx.sampleRate*.3?(i/(ctx.sampleRate*.3)):i>ctx.sampleRate*2?(1-(i-ctx.sampleRate*2)/(ctx.sampleRate*.5)):1;
+    data[i]=(Math.random()*2-1)*env*.8;
+  }
+  var src=ctx.createBufferSource();
+  src.buffer=buf;
+  var gain=ctx.createGain();
+  gain.gain.setValueAtTime(0,ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(1,ctx.currentTime+.3);
+  gain.gain.linearRampToValueAtTime(0,ctx.currentTime+2.5);
+  src.connect(gain);gain.connect(ctx.destination);
+  src.start();
+  // Flash gold
+  var flash=document.createElement('div');
+  flash.style.cssText='position:fixed;inset:0;background:rgba(205,177,117,.15);z-index:99995;pointer-events:none;animation:crowdFlash .4s ease-out forwards;';
+  document.body.appendChild(flash);
+  setTimeout(function(){flash.remove();},400);
+  // Shake
+  document.body.style.animation='crowdShake .3s ease-out';
+  setTimeout(function(){document.body.style.animation='';},300);
+}
+</script>
+<style>
+@keyframes crowdFlash{0%{opacity:1}100%{opacity:0}}
+@keyframes crowdShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+</style>
+
+
+<script>
+// Sound visualizer on globe/constellation city click
+function playGlobeSound(cityName){
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();
+    var buf=ac.createBuffer(1,ac.sampleRate*1.2,ac.sampleRate);
+    var d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++){
+      var env=i<ac.sampleRate*.15?(i/(ac.sampleRate*.15)):1-(i-ac.sampleRate*.15)/(ac.sampleRate*1.05);
+      d[i]=(Math.random()*2-1)*Math.max(0,env)*.7;
+    }
+    var s=ac.createBufferSource();s.buffer=buf;
+    var g=ac.createGain();g.gain.value=0.5;
+    s.connect(g);g.connect(ac.destination);s.start();
+  }catch(e){}
+  // Gold ripple on globe
+  var el=document.getElementById('globe-container');
+  if(el){
+    var ripple=document.createElement('div');
+    ripple.style.cssText='position:absolute;top:50%;left:50%;width:10px;height:10px;border-radius:50%;border:2px solid #cdb175;transform:translate(-50%,-50%);animation:globeRipple 1s ease-out forwards;pointer-events:none;z-index:20;';
+    el.appendChild(ripple);
+    setTimeout(function(){ripple.remove();},1000);
+  }
+}
+</script>
+<style>
+@keyframes globeRipple{0%{width:10px;height:10px;opacity:1}100%{width:300px;height:300px;opacity:0;margin-left:-145px;margin-top:-145px}}
+</style>
 
 </body>
 </html>
