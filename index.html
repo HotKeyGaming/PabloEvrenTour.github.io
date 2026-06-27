@@ -854,6 +854,25 @@ window.addEventListener('load',function(){
         </div>
         <div id="cd-city" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:var(--white);line-height:1;font-style:italic;"></div>
         <div id="cd-venue" style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.05em;"></div>
+        <div id="sto-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 12px;">
+          <span id="sto-weather-icon" style="font-size:1rem;">⏳</span>
+          <span id="sto-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
+        </div>
+        <script>
+        (function(){
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=59.33&longitude=18.07&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Europe%2FStockholm')
+            .then(function(r){return r.json();})
+            .then(function(d){
+              var temp=Math.round(d.current.temperature_2m);
+              var icons={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈'};
+              var icon=icons[d.current.weathercode]||'🌡️';
+              document.getElementById('sto-weather-icon').textContent=icon;
+              document.getElementById('sto-weather-text').textContent='Stockholm now: '+temp+'°C';
+              document.getElementById('sto-weather').style.borderColor='rgba(205,177,117,.25)';
+            })
+            .catch(function(){document.getElementById('sto-weather-text').textContent='Stockholm, Sweden 🇸🇪';});
+        })();
+        </script>
       </div>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
         <div style="display:flex;gap:10px;">
@@ -877,9 +896,20 @@ window.addEventListener('load',function(){
       </div>
       <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
       <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
-      <div id="ice-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(100,180,255,.08);border:1px solid rgba(100,180,255,.2);border-radius:20px;padding:5px 12px;">
-        <span id="ice-weather-icon" style="font-size:1rem;">⏳</span>
-        <span id="ice-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:14px;">
+        <div style="display:flex;gap:10px;">
+          <div style="text-align:center;"><div id="ice-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Days</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="ice-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Hrs</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="ice-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Min</div></div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
+          <div style="text-align:center;"><div id="ice-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Sec</div></div>
+        </div>
+        <div id="ice-weather" style="display:inline-flex;align-items:center;gap:8px;background:rgba(100,180,255,.08);border:1px solid rgba(100,180,255,.2);border-radius:20px;padding:5px 12px;">
+          <span id="ice-weather-icon" style="font-size:1rem;">⏳</span>
+          <span id="ice-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading...</span>
+        </div>
       </div>
       <script>
       (function(){
@@ -895,6 +925,19 @@ window.addEventListener('load',function(){
           })
           .catch(function(){document.getElementById('ice-weather-text').textContent='Reykjavík, Iceland 🇮🇸';});
       })();
+      </script>
+      <script>
+      function updateIceland(){
+        var ice=new Date("2026-12-12T21:00:00");
+        var now=new Date(); var diff=ice-now;
+        function pad(n){return String(Math.floor(Math.max(0,n))).padStart(2,'0');}
+        var dd=document.getElementById("ice-d"); if(dd) dd.textContent=pad(diff/86400000);
+        var dh=document.getElementById("ice-h"); if(dh) dh.textContent=pad((diff%86400000)/3600000);
+        var dm=document.getElementById("ice-m"); if(dm) dm.textContent=pad((diff%3600000)/60000);
+        var ds=document.getElementById("ice-s"); if(ds) ds.textContent=pad((diff%60000)/1000);
+      }
+      updateIceland();
+      setInterval(updateIceland,1000);
       </script>
     </div>
 
