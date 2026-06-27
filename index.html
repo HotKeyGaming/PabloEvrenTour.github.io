@@ -1523,6 +1523,7 @@ setInterval(updateStockholm, 1000);
   <div style="display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;">
     <button id="tab-globe" onclick="switchMap('globe')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:all .25s;background:var(--gradv);color:#000;font-weight:700;">&#127760; 3D Globe</button>
     <button id="tab-constellation" onclick="switchMap('constellation')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#10022; Constellation Map</button>
+    <button id="tab-route" onclick="switchMap('route')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#9654; The Route <span style="font-size:.5rem;letter-spacing:.1em;opacity:.6;">— Coming Soon</span></button>
   </div>
 </section>
 
@@ -1532,15 +1533,26 @@ function switchMap(type){
   var cons  = document.getElementById('map-constellation');
   var tbG   = document.getElementById('tab-globe');
   var tbC   = document.getElementById('tab-constellation');
-  if(type === 'globe'){
-    globe.style.display = ''; cons.style.display = 'none';
-    tbG.style.background = 'var(--gradv)'; tbG.style.color = '#000'; tbG.style.border = 'none';
-    tbC.style.background = 'transparent'; tbC.style.color = 'var(--accent)'; tbC.style.border = '1px solid rgba(205,177,117,.4)';
-  } else {
-    globe.style.display = 'none'; cons.style.display = '';
-    tbC.style.background = 'var(--gradv)'; tbC.style.color = '#000'; tbC.style.border = 'none';
-    tbG.style.background = 'transparent'; tbG.style.color = 'var(--accent)'; tbG.style.border = '1px solid rgba(205,177,117,.4)';
+  var tbR   = document.getElementById('tab-route');
+  // reset all
+  [tbG,tbC,tbR].forEach(function(b){if(b){b.style.background='transparent';b.style.color='var(--accent)';b.style.border='1px solid rgba(205,177,117,.4)';}});
+  globe.style.display='none'; cons.style.display='none';
+  if(type==='globe'){
+    globe.style.display='';
+    tbG.style.background='var(--gradv)'; tbG.style.color='#000'; tbG.style.border='none';
+  } else if(type==='constellation'){
+    cons.style.display='';
+    tbC.style.background='var(--gradv)'; tbC.style.color='#000'; tbC.style.border='none';
     setTimeout(function(){ if(typeof tryInitConst2==='function') tryInitConst2(); },50);
+  } else if(type==='route'){
+    globe.style.display='';// show globe as placeholder until route is built
+    tbR.style.background='var(--gradv)'; tbR.style.color='#000'; tbR.style.border='none';
+    // show coming soon toast
+    var t=document.createElement('div');
+    t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(10,10,10,.95);border:1px solid rgba(205,177,117,.4);border-radius:12px;padding:12px 24px;font-family:Space Mono,monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);z-index:9999;white-space:nowrap;';
+    t.textContent='✦ The Route — Coming Soon. Built with Claude Design.';
+    document.body.appendChild(t);
+    setTimeout(function(){t.remove();},3000);
   }
 }
 </script>
@@ -2770,6 +2782,65 @@ window.addEventListener('scroll', function(){
     <style>@media(max-width:768px){.sp-inner-merged{grid-template-columns:1fr!important}}</style>
   </div>
 </section>
+
+<!-- SPINNING DISC -->
+<section id="disc-section" style="background:#030208;padding:clamp(50px,7vw,90px) 0;overflow:hidden;position:relative;">
+  <div id="disc-glow" style="position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(184,146,63,.22) 0%,rgba(184,146,63,.08) 40%,transparent 70%);pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div style="text-align:center;margin-bottom:32px;position:relative;z-index:2;">
+    <p style="font-family:'Space Mono',monospace;font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(205,177,117,.55);margin-bottom:12px;">The Album</p>
+    <h2 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,4rem);background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.01em;line-height:1;">Holy Obesity</h2>
+  </div>
+  <style>
+    @keyframes discSweep{0%{left:-30%;opacity:0}8%{opacity:.7}50%{left:130%;opacity:.7}51%{opacity:0}100%{left:130%;opacity:0}}
+    #disc-wrap{width:min(320px,70vw);height:min(320px,70vw);position:relative;transform-style:preserve-3d;transform:rotateX(18deg) rotateY(0deg);will-change:transform;margin:0 auto;touch-action:none;}
+    .disc-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.85),0 0 60px rgba(184,146,63,.15)}
+    .disc-face img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;}
+    .disc-back{transform:rotateY(180deg)}
+    .disc-shine{position:absolute;top:0;bottom:0;width:25%;background:linear-gradient(90deg,transparent,rgba(232,207,146,.55),transparent);transform:skewX(-15deg);pointer-events:none;animation:discSweep 3s linear infinite}
+    .disc-label{position:absolute;left:50%;bottom:20%;transform:translateX(-50%);text-align:center;pointer-events:none}
+    .disc-label h3{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(10px,2vw,13px);background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;white-space:nowrap}
+    .disc-label p{font-family:'Space Mono',monospace;font-size:clamp(6px,1.5vw,8px);color:rgba(205,177,117,.75);letter-spacing:.04em;margin-top:3px;white-space:nowrap}
+    #disc-scene{perspective:1100px;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;}
+  </style>
+  <div id="disc-scene">
+    <div id="disc-wrap">
+      <div class="disc-face">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg" alt="Pablo × Evren — Holy Obesity">
+        <div class="disc-shine"></div>
+        <div class="disc-label"><h3>Pablo × Evren</h3><p>World Tour 2026</p></div>
+      </div>
+      <div class="disc-face disc-back">
+        <img src="https://i.redd.it/xl647j9kk0w61.png" alt="back">
+        <div class="disc-shine"></div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:28px;position:relative;z-index:2;">Click to speed up &middot; Release to slow down</p>
+  <script>
+  (function(){
+    var discA=0,discCur=4,discTgt=4,discLast=null;
+    var discEl=document.getElementById('disc-wrap');
+    var discScene=document.getElementById('disc-scene');
+    if(!discEl||!discScene)return;
+    discScene.addEventListener('mouseenter',function(){discTgt=14;});
+    discScene.addEventListener('mouseleave',function(){discTgt=4;});
+    discScene.addEventListener('mousedown',function(){discTgt=26;});
+    discScene.addEventListener('mouseup',function(){discTgt=discScene.matches(':hover')?14:4;});
+    discScene.addEventListener('touchstart',function(){discTgt=26;},{passive:true});
+    discScene.addEventListener('touchend',function(){discTgt=4;});
+    function discTick(ts){
+      if(!discLast)discLast=ts;
+      var dt=Math.min((ts-discLast)/1000,.05);discLast=ts;
+      discCur+=(discTgt-discCur)*(discCur<discTgt?4:1.5)*dt;
+      discA+=(discCur/60)*360*dt;if(discA>=360)discA-=360;
+      discEl.style.transform='rotateX(18deg) rotateY('+discA+'deg)';
+      requestAnimationFrame(discTick);
+    }
+    requestAnimationFrame(discTick);
+  })();
+  </script>
+</section>
+
 
 <!-- MERCH -->
 <section id="merch">
