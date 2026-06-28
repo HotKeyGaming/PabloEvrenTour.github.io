@@ -1522,8 +1522,8 @@ setInterval(updateStockholm, 1000);
   <div class="divider reveal d1"></div>
   <div style="display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;">
     <button id="tab-globe" onclick="switchMap('globe')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:all .25s;background:var(--gradv);color:#000;font-weight:700;">&#127760; 3D Globe</button>
-    <button id="tab-constellation" onclick="switchMap('constellation')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#10022; Constellation Map</button>
-    <button id="tab-route" onclick="switchMap('route')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#9654; The Route <span style="font-size:.5rem;letter-spacing:.1em;opacity:.6;">— Coming Soon</span></button>
+    <button id="tab-route" onclick="switchMap('route')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#9654; The Route</button>
+    <button id="tab-constellation" onclick="switchMap('constellation')" style="font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border:1px solid rgba(205,177,117,.4);cursor:pointer;transition:all .25s;background:transparent;color:var(--accent);font-weight:700;">&#10022; Constellation</button>
   </div>
 </section>
 
@@ -1531,28 +1531,25 @@ setInterval(updateStockholm, 1000);
 function switchMap(type){
   var globe = document.getElementById('map-globe');
   var cons  = document.getElementById('map-constellation');
+  var route = document.getElementById('map-route');
   var tbG   = document.getElementById('tab-globe');
   var tbC   = document.getElementById('tab-constellation');
   var tbR   = document.getElementById('tab-route');
-  // reset all
   [tbG,tbC,tbR].forEach(function(b){if(b){b.style.background='transparent';b.style.color='var(--accent)';b.style.border='1px solid rgba(205,177,117,.4)';}});
-  globe.style.display='none'; cons.style.display='none';
+  if(globe) globe.style.display='none';
+  if(cons)  cons.style.display='none';
+  if(route) route.style.display='none';
   if(type==='globe'){
-    globe.style.display='';
+    if(globe) globe.style.display='';
     tbG.style.background='var(--gradv)'; tbG.style.color='#000'; tbG.style.border='none';
+  } else if(type==='route'){
+    if(route) route.style.display='';
+    tbR.style.background='var(--gradv)'; tbR.style.color='#000'; tbR.style.border='none';
+    setTimeout(function(){if(typeof initRoute==='function')initRoute();},50);
   } else if(type==='constellation'){
-    cons.style.display='';
+    if(cons) cons.style.display='';
     tbC.style.background='var(--gradv)'; tbC.style.color='#000'; tbC.style.border='none';
     setTimeout(function(){ if(typeof tryInitConst2==='function') tryInitConst2(); },50);
-  } else if(type==='route'){
-    globe.style.display='';// show globe as placeholder until route is built
-    tbR.style.background='var(--gradv)'; tbR.style.color='#000'; tbR.style.border='none';
-    // show coming soon toast
-    var t=document.createElement('div');
-    t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(10,10,10,.95);border:1px solid rgba(205,177,117,.4);border-radius:12px;padding:12px 24px;font-family:Space Mono,monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);z-index:9999;white-space:nowrap;';
-    t.textContent='✦ The Route — Coming Soon. Built with Claude Design.';
-    document.body.appendChild(t);
-    setTimeout(function(){t.remove();},3000);
   }
 }
 </script>
@@ -1795,6 +1792,155 @@ window.tryInitConst2=function(){if(canvas2.offsetWidth>0){resize2();draw2();setI
 })();
 </script>
 </div>
+
+<div id="map-route" style="display:none;">
+<style>
+#route-section{position:relative;width:100%;height:50vh;max-height:420px;overflow:hidden;background:#030208}
+#route-section canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#route-card{position:absolute;display:none;pointer-events:none;z-index:10;width:240px;background:rgba(10,10,10,0.95);border:1px solid rgba(205,177,117,0.45);border-radius:8px;padding:14px 16px;box-shadow:0 4px 28px rgba(0,0,0,0.7)}
+#rc-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px}
+#rc-city{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;line-height:1.15}
+#rc-badge{flex-shrink:0;border-radius:3px;padding:2px 8px;font-size:10px;letter-spacing:.05em}
+#rc-date{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:.05em}
+#rc-note{margin-top:9px;padding-top:9px;border-top:1px solid rgba(205,177,117,0.18);font-size:10px;color:#cdb175;line-height:1.5;display:none}
+#route-endcard{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:20}
+#route-endcard-inner{background:rgba(6,4,14,0.97);border:1px solid rgba(205,177,117,0.35);border-radius:14px;padding:44px 60px;text-align:center;box-shadow:0 0 100px rgba(205,177,117,0.08)}
+#route-controls{position:absolute;bottom:0;left:0;right:0;z-index:15;background:rgba(3,2,8,0.9);backdrop-filter:blur(20px);padding:12px 32px 20px}
+.rrow{display:flex;align-items:center;justify-content:center}
+#r-yr-row{gap:8px;margin-bottom:10px}
+#r-pb-row{margin-bottom:12px}
+#r-ctrl-row{gap:16px}
+#r-progressbar{width:100%;height:4px;background:rgba(255,255,255,0.07);border-radius:2px;cursor:pointer}
+#r-progressfill{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#a06e3b 0%,#5fa569 40%,#cdb175 100%)}
+.rbtn{cursor:pointer;border-radius:4px;font-family:'Space Mono',monospace;font-size:11px;line-height:1;background:transparent}
+.ryr-btn{padding:5px 14px}
+.rsp-btn{padding:5px 10px}
+#r-play-btn{width:38px;height:38px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.2)}
+#r-sp-row{display:flex;gap:5px}
+</style>
+
+<section id="route-section">
+  <canvas id="route-canvas"></canvas>
+  <div id="route-card">
+    <div id="rc-header"><div id="rc-city"></div><span id="rc-badge"></span></div>
+    <div id="rc-date"></div>
+    <div id="rc-note"></div>
+  </div>
+  <div id="route-endcard">
+    <div id="route-endcard-inner">
+      <div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,0.3);margin-bottom:20px;text-transform:uppercase">Pablo × Evren</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px">Holy Obesity World Tour</div>
+      <div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,0.3);margin-bottom:28px">2024 – 2026</div>
+      <div style="width:40px;height:1px;background:rgba(205,177,117,0.25);margin:0 auto 24px"></div>
+      <div id="r-end-count" style="font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.1em;margin-bottom:32px"></div>
+      <button id="r-replay-btn" style="font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#030208;background:#cdb175;border:none;padding:13px 36px;border-radius:3px;cursor:pointer">REPLAY</button>
+    </div>
+  </div>
+  <div id="route-controls">
+    <div class="rrow" id="r-yr-row"></div>
+    <div class="rrow" id="r-pb-row"><div id="r-progressbar"><div id="r-progressfill"></div></div></div>
+    <div class="rrow" id="r-ctrl-row">
+      <button id="r-play-btn" class="rbtn">▶</button>
+      <div id="r-sp-row"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+const RSHOWS=[
+  {city:'London',lat:51.507,lng:-0.128,date:'Jan 19, 2024',year:2024,note:null},
+  {city:'Málaga',lat:36.721,lng:-4.421,date:'Feb 19, 2024',year:2024,note:null},
+  {city:'Sevilla',lat:37.389,lng:-5.985,date:'Feb 22, 2024',year:2024,note:null},
+  {city:'Las Vegas',lat:36.090,lng:-115.183,date:'Apr 1, 2024',year:2024,note:null},
+  {city:'Las Vegas',lat:36.170,lng:-115.140,date:'Apr 4, 2024',year:2024,note:'⚡ Surprise Concert'},
+  {city:'Philadelphia',lat:39.953,lng:-75.165,date:'Apr 6, 2024',year:2024,note:null},
+  {city:'Milan',lat:45.465,lng:9.186,date:'May 9, 2024',year:2024,note:null},
+  {city:'Pisa',lat:43.723,lng:10.402,date:'May 10, 2024',year:2024,note:null},
+  {city:'Antalya',lat:36.897,lng:30.713,date:'Jul 28, 2024',year:2024,note:null},
+  {city:'Geneva',lat:46.204,lng:6.143,date:'Sep 8, 2024',year:2024,note:null},
+  {city:'Athens',lat:37.984,lng:23.728,date:'Sep 30, 2024',year:2024,note:null},
+  {city:'Sofia',lat:42.698,lng:23.322,date:'Oct 7, 2024',year:2024,note:null},
+  {city:'Barcelona',lat:41.385,lng:2.173,date:'Jan 30, 2025',year:2025,note:null},
+  {city:'New York',lat:40.713,lng:-74.006,date:'Mar 2, 2025',year:2025,note:null},
+  {city:'New York',lat:40.750,lng:-73.994,date:'Mar 4, 2025',year:2025,note:null},
+  {city:'Bergamo',lat:45.698,lng:9.677,date:'Mar 13, 2025',year:2025,note:null},
+  {city:'Palermo',lat:38.116,lng:13.361,date:'Apr 22, 2025',year:2025,note:null},
+  {city:'Barcelona',lat:41.386,lng:2.174,date:'May 10, 2025',year:2025,note:null},
+  {city:'Basel',lat:47.560,lng:7.589,date:'May 17, 2025',year:2025,note:null},
+  {city:'Milan',lat:45.466,lng:9.187,date:'May 29, 2025',year:2025,note:null},
+  {city:'Turin',lat:45.070,lng:7.687,date:'May 30, 2025',year:2025,note:null},
+  {city:'Barcelona',lat:41.387,lng:2.175,date:'Jun 23, 2025',year:2025,note:null},
+  {city:'Milan',lat:45.464,lng:9.190,date:'Jul 13, 2025',year:2025,note:'🎂 Birthday Show'},
+  {city:'Bangkok',lat:13.756,lng:100.502,date:'Jul 21, 2025',year:2025,note:null},
+  {city:'Phuket',lat:7.880,lng:98.392,date:'Jul 23, 2025',year:2025,note:null},
+  {city:'Koh Samui',lat:9.512,lng:100.014,date:'Jul 27, 2025',year:2025,note:null},
+  {city:'Rome',lat:41.903,lng:12.496,date:'Sep 6, 2025',year:2025,note:null},
+  {city:'San Marino',lat:43.942,lng:12.458,date:'Oct 6, 2025',year:2025,note:null},
+  {city:'Madrid',lat:40.417,lng:-3.704,date:'Nov 2, 2025',year:2025,note:null},
+  {city:'Karlsruhe',lat:49.007,lng:8.404,date:'Dec 20, 2025',year:2025,note:null},
+  {city:'Barcelona',lat:41.385,lng:2.173,date:'Feb 13, 2026',year:2026,note:null},
+  {city:'Malta',lat:35.937,lng:14.375,date:'Feb 20, 2026',year:2026,note:null},
+  {city:'Bern',lat:46.948,lng:7.447,date:'Mar 21, 2026',year:2026,note:null},
+  {city:'Erzincan',lat:39.750,lng:39.500,date:'Apr 25, 2026',year:2026,note:null},
+  {city:'Istanbul',lat:41.008,lng:28.978,date:'May 1, 2026',year:2026,note:null},
+  {city:'Jerez',lat:36.685,lng:-6.126,date:'May 1, 2026',year:2026,note:null},
+  {city:'Cádiz',lat:36.530,lng:-6.293,date:'May 2, 2026',year:2026,note:null},
+  {city:'Sevilla',lat:37.389,lng:-5.985,date:'May 4, 2026',year:2026,note:null},
+  {city:'Milan',lat:45.465,lng:9.186,date:'May 16, 2026',year:2026,note:null},
+  {city:'Vaduz',lat:47.141,lng:9.521,date:'May 17, 2026',year:2026,note:null},
+  {city:'Luxembourg',lat:49.612,lng:6.132,date:'Jun 3, 2026',year:2026,note:null},
+  {city:'Arnhem',lat:51.985,lng:5.899,date:'Jun 8, 2026',year:2026,note:'⭐ Kanye West special guest'},
+  {city:'Milan',lat:45.464,lng:9.190,date:'Jun 19, 2026',year:2026,note:null},
+  {city:'Milan',lat:45.463,lng:9.191,date:'Jun 21, 2026',year:2026,note:null},
+  {city:'Stockholm',lat:59.329,lng:18.069,date:'Jul 11, 2026',year:2026,note:null},
+  {city:'Hurghada',lat:27.258,lng:33.812,date:'Jul 17, 2026',year:2026,note:null},
+  {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
+];
+const RYC={2024:{hex:'#a06e3b',r:160,g:110,b:59},2025:{hex:'#5fa569',r:95,g:165,b:105},2026:{hex:'#cdb175',r:205,g:177,b:117}};
+const rcv=document.getElementById('route-canvas');
+const rctx=rcv.getContext('2d');
+let rcw,rch,rdpr,rmapCanvas,rmapCtx,rmapImg;
+function rSetup(){rdpr=Math.min(window.devicePixelRatio||1,2);rcw=rcv.offsetWidth||window.innerWidth;rch=rcv.offsetHeight||window.innerHeight;rcv.width=rcw*rdpr;rcv.height=rch*rdpr;rctx.scale(rdpr,rdpr);var mc=document.createElement('canvas');mc.width=rcv.width;mc.height=rcv.height;rmapCanvas=mc;rmapCtx=mc.getContext('2d');rmapCtx.scale(rdpr,rdpr);}
+function rProj(lat,lng){var mh=rcw/2,yo=(rch-mh)/2;return[(lng+180)/360*rcw,(90-lat)/180*mh+yo];}
+function rLoadMap(){var img=new Image();img.crossOrigin='anonymous';img.onload=function(){rmapImg=img;rDrawMap();};img.onerror=function(){rDrawMap();};img.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/1280px-Blue_Marble_2002.png';}
+function rDrawMap(){var mh=rcw/2,yo=(rch-mh)/2;rmapCtx.clearRect(0,0,rcw,rch);rmapCtx.fillStyle='#030208';rmapCtx.fillRect(0,0,rcw,rch);if(rmapImg){rmapCtx.drawImage(rmapImg,0,yo,rcw,mh);rmapCtx.fillStyle='rgba(0,2,12,0.52)';rmapCtx.fillRect(0,yo,rcw,mh);var t1=rmapCtx.createLinearGradient(0,yo,0,yo+mh*.18);t1.addColorStop(0,'rgba(3,2,8,.9)');t1.addColorStop(1,'rgba(3,2,8,0)');rmapCtx.fillStyle=t1;rmapCtx.fillRect(0,yo,rcw,mh*.18);var t2=rmapCtx.createLinearGradient(0,yo+mh*.82,0,yo+mh);t2.addColorStop(0,'rgba(3,2,8,0)');t2.addColorStop(1,'rgba(3,2,8,.9)');rmapCtx.fillStyle=t2;rmapCtx.fillRect(0,yo+mh*.82,rcw,mh*.18);}}
+function rCp(p0,p2){var d=Math.hypot(p2[0]-p0[0],p2[1]-p0[1]);return[(p0[0]+p2[0])/2,(p0[1]+p2[1])/2-Math.min(d*.35,rch*.22)];}
+function rBz(p0,c,p2,t){var u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p2[0],u*u*p0[1]+2*u*t*c[1]+t*t*p2[1]];}
+const RA={phase:'idle',idx:0,segT:0,landT:0,cardT:0,trails:[]};
+var rPlaying=false,rSpeed=1,rFilter='ALL',rLastTs=null;
+function rShows(){return rFilter==='ALL'?RSHOWS:RSHOWS.filter(function(s){return s.year===+rFilter;});}
+function rAdvance(dt){var ss=rShows(),n=ss.length;if(!n||dt<=0)return;if(RA.phase==='flying'){RA.segT+=dt/2;if(RA.segT>=1){RA.segT=1;RA.trails.push({fi:RA.idx-1,ti:RA.idx});RA.phase='landing';RA.landT=0;rShowCard(ss[RA.idx]);}}else if(RA.phase==='landing'){RA.landT+=dt/.7;if(RA.landT>=1){RA.landT=1;RA.phase='card';RA.cardT=0;}}else if(RA.phase==='card'){RA.cardT+=dt;if(RA.cardT>=2.5){rHideCard();if(RA.idx+1<n){RA.idx++;RA.segT=0;RA.phase='flying';}else{RA.phase='done';rPlaying=false;rUpdatePlayBtn();rShowEnd();}}}}
+function rArc(p0,c,p2,t,year){var yc=RYC[year],steps=60,max=Math.ceil(steps*Math.min(t,1));rctx.beginPath();for(var i=0;i<=max;i++){var pt=rBz(p0,c,p2,Math.min(i/steps,t));i===0?rctx.moveTo(pt[0],pt[1]):rctx.lineTo(pt[0],pt[1]);}rctx.strokeStyle='rgba('+yc.r+','+yc.g+','+yc.b+',.7)';rctx.lineWidth=1.5;rctx.lineCap='round';rctx.stroke();}
+function rDot(x,y,year,pT){var yc=RYC[year];var g2=rctx.createRadialGradient(x,y,0,x,y,32);g2.addColorStop(0,'rgba('+yc.r+','+yc.g+','+yc.b+',.4)');g2.addColorStop(1,'rgba('+yc.r+','+yc.g+','+yc.b+',0)');rctx.beginPath();rctx.arc(x,y,32,0,Math.PI*2);rctx.fillStyle=g2;rctx.fill();if(pT>0){for(var i=0;i<3;i++){var pt=Math.max(0,pT-i*.22);if(pt>0){rctx.beginPath();rctx.arc(x,y,8+pt*38,0,Math.PI*2);rctx.strokeStyle='rgba('+yc.r+','+yc.g+','+yc.b+','+(1-pt)*.65+')';rctx.lineWidth=1.5;rctx.stroke();}}}rctx.beginPath();rctx.arc(x,y,8,0,Math.PI*2);rctx.fillStyle=yc.hex;rctx.fill();rctx.beginPath();rctx.arc(x-2,y-2.5,2.5,0,Math.PI*2);rctx.fillStyle='rgba(255,255,255,.28)';rctx.fill();}
+function rDrawFrame(){rctx.clearRect(0,0,rcw,rch);rctx.fillStyle='#030208';rctx.fillRect(0,0,rcw,rch);if(rmapCanvas)rctx.drawImage(rmapCanvas,0,0,rcw,rch);var ss=rShows();if(!ss.length||RA.phase==='idle'){rSetPBar(0);return;}for(var i=0;i<RA.trails.length;i++){var tr=RA.trails[i];var p0=rProj(ss[tr.fi].lat,ss[tr.fi].lng);var p2=rProj(ss[tr.ti].lat,ss[tr.ti].lng);rArc(p0,rCp(p0,p2),p2,1,ss[tr.ti].year);}if(RA.phase==='flying'&&RA.idx>0){var p0=rProj(ss[RA.idx-1].lat,ss[RA.idx-1].lng);var p2=rProj(ss[RA.idx].lat,ss[RA.idx].lng);rArc(p0,rCp(p0,p2),p2,RA.segT,ss[RA.idx].year);}for(var i=0;i<RA.idx&&i<ss.length;i++){var pt=rProj(ss[i].lat,ss[i].lng);var yc=RYC[ss[i].year];rctx.beginPath();rctx.arc(pt[0],pt[1],3,0,Math.PI*2);rctx.fillStyle='rgba('+yc.r+','+yc.g+','+yc.b+',.55)';rctx.fill();}var s=ss[RA.idx];if(s){var p;if(RA.phase==='flying'&&RA.idx>0){var p0=rProj(ss[RA.idx-1].lat,ss[RA.idx-1].lng);var p2=rProj(s.lat,s.lng);p=rBz(p0,rCp(p0,p2),p2,RA.segT);}else{p=rProj(s.lat,s.lng);}rDot(p[0],p[1],s.year,RA.phase==='landing'?RA.landT:0);}var prog=0;if(RA.phase==='flying')prog=(RA.idx-1+RA.segT)/ss.length;else if(RA.phase==='landing'||RA.phase==='card')prog=RA.idx/ss.length;else if(RA.phase==='done')prog=1;rSetPBar(prog);}
+function rSetPBar(p){document.getElementById('r-progressfill').style.width=Math.min(p*100,100)+'%';}
+function rLoop(ts){var dt=rLastTs?Math.min((ts-rLastTs)/1000,.1):0;rLastTs=ts;if(rPlaying&&RA.phase!=='idle'&&RA.phase!=='done')rAdvance(dt*rSpeed);rDrawFrame();requestAnimationFrame(rLoop);}
+function rShowCard(s){var yc=RYC[s.year];var p=rProj(s.lat,s.lng);document.getElementById('rc-city').textContent=s.city;document.getElementById('rc-date').textContent=s.date;var badge=document.getElementById('rc-badge');badge.textContent=s.year;badge.style.cssText='flex-shrink:0;border-radius:3px;padding:2px 8px;font-size:10px;letter-spacing:.05em;background:'+yc.hex+'22;border:1px solid '+yc.hex+';color:'+yc.hex;var note=document.getElementById('rc-note');note.textContent=s.note||'';note.style.display=s.note?'block':'none';var card=document.getElementById('route-card');var cl=Math.max(8,Math.min(p[0]-120,rcw-248));var ct=Math.max(8,Math.min(p[1]-155,rch-200));card.style.left=cl+'px';card.style.top=ct+'px';card.style.display='block';}
+function rHideCard(){document.getElementById('route-card').style.display='none';}
+function rShowEnd(){document.getElementById('r-end-count').textContent=rShows().length+' SHOWS · 18 COUNTRIES · 3 YEARS';document.getElementById('route-endcard').style.display='flex';}
+document.getElementById('r-replay-btn').addEventListener('click',function(){document.getElementById('route-endcard').style.display='none';rResetAnim();rStartPlay();});
+function rResetAnim(){RA.phase='idle';RA.idx=0;RA.segT=0;RA.landT=0;RA.cardT=0;RA.trails=[];}
+function rStartPlay(){var ss=rShows();if(!ss.length)return;RA.phase='landing';RA.landT=0;rShowCard(ss[0]);rPlaying=true;rUpdatePlayBtn();}
+var rPlayBtn=document.getElementById('r-play-btn');
+function rUpdatePlayBtn(){var on=rPlaying;rPlayBtn.textContent=on?'⏸':'▶';rPlayBtn.style.color=on?'#cdb175':'rgba(255,255,255,.75)';rPlayBtn.style.border='1px solid '+(on?'rgba(205,177,117,.5)':'rgba(255,255,255,.2)');rPlayBtn.style.background=on?'rgba(205,177,117,.1)':'transparent';}
+rPlayBtn.addEventListener('click',function(){if(rPlaying){rPlaying=false;rUpdatePlayBtn();}else if(RA.phase==='idle'||RA.phase==='done'){document.getElementById('route-endcard').style.display='none';rResetAnim();rStartPlay();}else{rPlaying=true;rUpdatePlayBtn();}});
+var rYrRow=document.getElementById('r-yr-row');
+['ALL','2024','2025','2026'].forEach(function(y){var b=document.createElement('button');b.className='rbtn ryr-btn';b.textContent=y;b.addEventListener('click',function(){rFilter=y;rPlaying=false;rHideCard();document.getElementById('route-endcard').style.display='none';rResetAnim();rUpdatePlayBtn();rRefreshYr();});rYrRow.appendChild(b);});
+function rRefreshYr(){rYrRow.querySelectorAll('.ryr-btn').forEach(function(b,i){var y=['ALL','2024','2025','2026'][i],on=rFilter===y;b.style.background=on?'rgba(205,177,117,.15)':'transparent';b.style.border='1px solid '+(on?'rgba(205,177,117,.4)':'rgba(255,255,255,.08)');b.style.color=on?'#cdb175':'rgba(255,255,255,.3)';});}
+rRefreshYr();
+var rSpRow=document.getElementById('r-sp-row');
+[.5,1,2,4].forEach(function(s){var b=document.createElement('button');b.className='rbtn rsp-btn';b.textContent=s===.5?'½×':s+'×';b.addEventListener('click',function(){rSpeed=s;rRefreshSp();});rSpRow.appendChild(b);});
+function rRefreshSp(){rSpRow.querySelectorAll('.rsp-btn').forEach(function(b,i){var s=[.5,1,2,4][i],on=rSpeed===s;b.style.background=on?'rgba(205,177,117,.18)':'transparent';b.style.border='1px solid '+(on?'rgba(205,177,117,.5)':'rgba(255,255,255,.1)');b.style.color=on?'#cdb175':'rgba(255,255,255,.35)';});}
+rRefreshSp();
+document.getElementById('r-progressbar').addEventListener('click',function(e){var rect=e.currentTarget.getBoundingClientRect();var frac=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));var ss=rShows(),idx=Math.min(Math.floor(frac*ss.length),ss.length-1);RA.trails=[];for(var i=1;i<=idx;i++)RA.trails.push({fi:i-1,ti:i});RA.idx=idx;RA.segT=0;RA.landT=0;RA.cardT=0;RA.phase='landing';rShowCard(ss[idx]);document.getElementById('route-endcard').style.display='none';});
+window.addEventListener('resize',function(){if(document.getElementById('map-route').style.display!=='none'){rSetup();if(rmapImg)rDrawMap();}});
+// Init when tab is opened
+window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimationFrame(rLoop);rLoadMap();};
+})();
+</script>
+</div>
+
 
 <!-- TOUR STORY -->
 <section id="tourstory" style="background:#0a0a08;border-top:1px solid rgba(205,177,117,.1);overflow:hidden;">
