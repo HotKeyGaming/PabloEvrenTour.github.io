@@ -539,7 +539,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
-    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">45 Shows · 17 Countries</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">46 Shows · 19 Countries</span>
   </div>
   <div class="dsec">🗓 Tour</div>
   <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
@@ -551,7 +551,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div class="dsec">🎵 Music & Media</div>
   <a href="#music" class="dl" onclick="closeMob()">🎵 Music Player</a>
   <a href="#setlist" class="dl" onclick="closeMob()">🎤 Setlist</a>
-  <a href="#spotify-pl" class="dl" onclick="closeMob()">▶ Spotify Playlist</a>
+  <a href="#setlist" class="dl" onclick="closeMob()">▶ Spotify Playlist</a>
   <a href="#documentary" class="dl" onclick="closeMob()">🎬 Concert Footage</a>
   <a href="#gallery" class="dl" onclick="closeMob()">📸 Gallery</a>
   <a href="#milestones" class="dl" onclick="closeMob()">🏆 Milestones</a>
@@ -608,6 +608,7 @@ var searchData = [
 {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
   {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
   {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
+  {cat:'Concert',title:'Paris, France',sub:'Accor Arena · 13 Jul 2026 · Pablo Only · 🎂 Birthday Night',href:'#dates',img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
   {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
   {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
@@ -892,7 +893,7 @@ window.addEventListener('load',function(){
     <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(100,180,255,.2);">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
         <div style="width:7px;height:7px;border-radius:50%;background:#64b4ff;animation:pulseDot 1.4s ease-in-out infinite;"></div>
-        <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#64b4ff;font-weight:700;">🆕 New Date Announced!</span>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:700;">🎂 Birthday Show · Paris Jul 13 · 🇮🇸 Reykjavík Dec 12</span>
       </div>
       <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
       <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
@@ -950,6 +951,7 @@ var shows = [
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
+  { city:"Paris, France", venue:"Accor Arena · Doors 21:00 · Pablo Only 🎂 Birthday Night", date:new Date("2026-07-13T21:00:00"), img:"https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG" },
   { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
 ];
 
@@ -1150,6 +1152,30 @@ setInterval(updateStockholm, 1000);
       <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">17</div></div>
       <div class="dr-info"><h3><span class="flag">🇪🇬</span> Hurghada, Egypt</h3><p>Khaled Bichara Stadium · Doors 21:00 · 17 Jul 2026</p><p class="dr-note">★ Evren's First Solo Performance · <span style="color:rgba(255,255,255,0.35);">Pablo entry to Egypt not permitted</span></p></div>
       <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;"><span style="display:inline-block;background:rgba(255,165,0,.12);border:1px solid rgba(255,165,0,.5);color:#ffa500;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">⚡ 67% Sold</span><div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:67%;height:100%;background:linear-gradient(to right,#ffa500,#ff6b00);border-radius:2px;"></div></div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a></div>
+    </div>
+  </div>
+
+  <!-- Paris France - Pablo Birthday -->
+  
+<style>
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(120px) rotate(720deg);opacity:0}}
+.confetti-piece{position:absolute;width:7px;height:7px;border-radius:1px;animation:confettiFall linear infinite;pointer-events:none;z-index:5}
+</style>
+
+  <div class="dr upcoming" id="paris-birthday-row" style="overflow:hidden;">
+    <div class="dr-bg" style="background-image:url('https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">13</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇫🇷</span> Paris, France <span style="display:inline-block;background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);color:#000;font-size:.52rem;letter-spacing:.14em;padding:3px 10px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🎂 Birthday Special</span></h3>
+        <p>Accor Arena · Doors 21:00 · 13 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance · <span style="color:var(--accent);">Pablo's Birthday Night 🎂🔥</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+<span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">🔥 83% Sold</span><div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:83%;height:100%;background:linear-gradient(to right,#e84141,#ff6b00);border-radius:2px;"></div></div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
     </div>
   </div>
 
@@ -1604,6 +1630,7 @@ function initGlobe() {
     { city:'Vaduz',               country:'Liechtenstein', lat:47.1410, lng: 9.5209, status:'completed' },
     { city:'Luxembourg City',     country:'Luxembourg',    lat:49.6116, lng: 6.1319, status:'completed' },
     { city:'Arnhem',              country:'Netherlands',   lat:51.9851, lng: 5.8987, status:'completed' },
+    { city:'Paris',               country:'France',         lat:48.8395, lng: 2.3780, status:'upcoming' },
     { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
   ];
@@ -1706,7 +1733,7 @@ if (globeScript) {
       <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer2"><span>45 shows &nbsp;·&nbsp; 17 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>46 shows &nbsp;·&nbsp; 19 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 <script>
 (function(){
@@ -1757,8 +1784,9 @@ const SHOWS2=[
   {id:44,year:2026,city:'Milan',dateStr:'Jun 21, 2026',lat:45.465,lng:9.186,completed:true},
   {id:45,year:2026,city:'Basel',dateStr:'Coming soon',lat:47.560,lng:7.589,completed:false},
   {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:false},
-  {id:47,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
-  {id:48,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
+  {id:47,year:2026,city:'Paris',dateStr:'Jul 13, 2026',lat:48.839,lng:2.378,completed:false,note:'🎂 Pablo Birthday Night'},
+  {id:49,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
+  {id:50,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
 let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
 const MIN_ZOOM2=0.45,MAX_ZOOM2=9;
@@ -1894,6 +1922,7 @@ const RSHOWS=[
   {city:'Milan',lat:45.464,lng:9.190,date:'Jun 19, 2026',year:2026,note:null},
   {city:'Milan',lat:45.463,lng:9.191,date:'Jun 21, 2026',year:2026,note:null},
   {city:'Stockholm',lat:59.329,lng:18.069,date:'Jul 11, 2026',year:2026,note:null},
+  {city:'Paris',lat:48.839,lng:2.378,date:'Jul 13, 2026',year:2026,note:'🎂 Pablo Birthday Night'},
   {city:'Hurghada',lat:27.258,lng:33.812,date:'Jul 17, 2026',year:2026,note:null},
   {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
 ];
@@ -1918,7 +1947,7 @@ function rSetPBar(p){document.getElementById('r-progressfill').style.width=Math.
 function rLoop(ts){var dt=rLastTs?Math.min((ts-rLastTs)/1000,.1):0;rLastTs=ts;if(rPlaying&&RA.phase!=='idle'&&RA.phase!=='done')rAdvance(dt*rSpeed);rDrawFrame();requestAnimationFrame(rLoop);}
 function rShowCard(s){var yc=RYC[s.year];var p=rProj(s.lat,s.lng);document.getElementById('rc-city').textContent=s.city;document.getElementById('rc-date').textContent=s.date;var badge=document.getElementById('rc-badge');badge.textContent=s.year;badge.style.cssText='flex-shrink:0;border-radius:3px;padding:2px 8px;font-size:10px;letter-spacing:.05em;background:'+yc.hex+'22;border:1px solid '+yc.hex+';color:'+yc.hex;var note=document.getElementById('rc-note');note.textContent=s.note||'';note.style.display=s.note?'block':'none';var card=document.getElementById('route-card');var cl=Math.max(8,Math.min(p[0]-120,rcw-248));var ct=Math.max(8,Math.min(p[1]-155,rch-200));card.style.left=cl+'px';card.style.top=ct+'px';card.style.display='block';}
 function rHideCard(){document.getElementById('route-card').style.display='none';}
-function rShowEnd(){document.getElementById('r-end-count').textContent=rShows().length+' SHOWS · 18 COUNTRIES · 3 YEARS';document.getElementById('route-endcard').style.display='flex';}
+function rShowEnd(){document.getElementById('r-end-count').textContent=rShows().length+' SHOWS · 19 COUNTRIES · 3 YEARS';document.getElementById('route-endcard').style.display='flex';}
 document.getElementById('r-replay-btn').addEventListener('click',function(){document.getElementById('route-endcard').style.display='none';rResetAnim();rStartPlay();});
 function rResetAnim(){RA.phase='idle';RA.idx=0;RA.segT=0;RA.landT=0;RA.cardT=0;RA.trails=[];}
 function rStartPlay(){var ss=rShows();if(!ss.length)return;RA.phase='landing';RA.landT=0;rShowCard(ss[0]);rPlaying=true;rUpdatePlayBtn();}
@@ -2038,6 +2067,7 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jun 21',city:'Milan',flag:'🇮🇹',venue:'Mind Live — Night 2',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
       {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
       {date:'Jul 11',city:'Stockholm',flag:'🇸🇪',venue:'Strawberry Arena',perf:'pablo',done:false,img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
+      {date:'Jul 13 🎂',city:'Paris',flag:'🇫🇷',venue:'Accor Arena',perf:'pablo',done:false,img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
       {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
@@ -2191,7 +2221,7 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
         <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="18" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸</div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸 🇫🇷</div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
@@ -3250,6 +3280,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇮🇹',city:'Milan',date:'Jun 21',venue:'Mind Live — Night 2',year:'2026',done:true,perf:'pablo'},
     {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false,perf:'pablo'},
     {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena',year:'2026',done:false,perf:'pablo'},
+    {flag:'🇫🇷',city:'Paris',date:'Jul 13',venue:'Accor Arena 🎂',year:'2026',done:false,perf:'pablo',special:'🎂 Birthday'},
     {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
     {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
@@ -4095,6 +4126,28 @@ function playGlobeSound(cityName){
 <style>
 @keyframes globeRipple{0%{width:10px;height:10px;opacity:1}100%{width:300px;height:300px;opacity:0;margin-left:-145px;margin-top:-145px}}
 </style>
+
+
+<script>
+(function(){
+  var row = document.getElementById('paris-birthday-row');
+  if(!row) return;
+  var colors=['#cdb175','#e8cf92','#ff6b6b','#fff','#b8923f','#ffd700'];
+  for(var i=0;i<28;i++){
+    var c=document.createElement('div');
+    c.className='confetti-piece';
+    c.style.left=Math.random()*100+'%';
+    c.style.top=Math.random()*100+'%';
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(Math.random()*2+1.5)+'s';
+    c.style.animationDelay=(Math.random()*2)+'s';
+    c.style.transform='rotate('+Math.random()*360+'deg)';
+    c.style.width=(Math.random()*6+4)+'px';
+    c.style.height=(Math.random()*6+4)+'px';
+    row.appendChild(c);
+  }
+})();
+</script>
 
 </body>
 </html>
