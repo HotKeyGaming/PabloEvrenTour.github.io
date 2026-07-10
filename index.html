@@ -539,7 +539,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
-    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">46 Shows · 19 Countries</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">48 Shows · 21 Countries</span>
   </div>
   <div class="dsec">🗓 Tour</div>
   <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
@@ -606,9 +606,10 @@ var searchData = [
   {cat:'Concert',title:'Luxembourg City, Luxembourg',sub:'Stade de Luxembourg · 3 Jun 2026 · Evren Only',href:'#dates',img:'https://images.adsttc.com/media/images/617b/0194/f91c/8199/3100/002c/large_jpg/3116_210812_MB99_0523_A3_pressp.jpg?1635451242'},
   {cat:'Concert',title:'Arnhem, Netherlands',sub:'Gelredome Stadium · 8 Jun 2026 · Special Guest: Kanye West',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/Gelredome.jpg'},
 {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
-  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
   {cat:'Concert',title:'Hurghada, Egypt',sub:'Khaled Bichara Stadium · 17 Jul 2026',href:'#dates',img:'https://imgs.ysscores.com/stadium/600/5711727168786.jpg'},
   {cat:'Concert',title:'Paris, France',sub:'Accor Arena · 13 Jul 2026 · Pablo Only · 🎂 Birthday Night',href:'#dates',img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
+  {cat:'Concert',title:'Kuala Lumpur, Malaysia',sub:'Bukit Jalil National Stadium · 20 Jul 2026 · Pablo Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg'},
+  {cat:'Concert',title:'Singapore',sub:'Singapore National Stadium · 26 Jul 2026 · Pablo Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg'},
   {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
   {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
@@ -673,7 +674,6 @@ var recommendPool = [
   {cat:'Concert',title:'Vaduz, Liechtenstein',sub:'Rheinpark Stadium · 17 May 2026',href:'#dates',img:'https://www.lfv.li/fileadmin/_processed_/a/0/csm_Rheinpark-Stadion-Vaduz-2019_f5ded10d56.jpg'},
   {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 30 May 2026',href:'#dates',img:'https://sealandtrip.com/wp-content/uploads/2023/06/Ataturk-Olympic-Stadium-3.jpg'},
   {cat:'Concert',title:'Milan, Italy',sub:'Mind Live Theatre / Mind Live Arena Milano · 19 & 21 Jun 2026',href:'#dates',img:'https://lh3.googleusercontent.com/gps-cs-s/APNQkAEgs-s_vnXBsuLDlvYwbv1lJjRwqw1EgbhVcBmd3Ux69yAvL2EnNYVouZI_dhjCwWgSWKlDZK6axmOL6DUFhkFnQysMP2gBbav_prx-5M_YeO7vN9n0L8ZOnptGmCx45E6nZg1WtdnYnHCH=s1360-w1360-h1020-rw'},
-  {cat:'Concert',title:'Stockholm, Sweden',sub:'Strawberry Arena · 11 Jul 2026',href:'#dates',img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
   {cat:'Merch',title:'World Tour Tee',sub:'67 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg'},
   {cat:'Merch',title:'Holy Obesity Cap',sub:'21 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/gyAsVMyNworfvte1nm5v/image.jpg'},
   {cat:'Merch',title:'Tour Hoodie',sub:'45 CHF',href:'#merch',img:'https://plain-weur-prod-public.komododecks.com/202605/06/cNn4nYRUYP1fyePp9GCw/image.webp'},
@@ -855,25 +855,7 @@ window.addEventListener('load',function(){
         </div>
         <div id="cd-city" style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:var(--white);line-height:1;font-style:italic;"></div>
         <div id="cd-venue" style="font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.05em;"></div>
-        <div id="sto-weather" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:5px 12px;">
-          <span id="sto-weather-icon" style="font-size:1rem;">⏳</span>
-          <span id="sto-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading weather...</span>
-        </div>
-        <script>
-        (function(){
-          fetch('https://api.open-meteo.com/v1/forecast?latitude=59.33&longitude=18.07&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Europe%2FStockholm')
-            .then(function(r){return r.json();})
-            .then(function(d){
-              var temp=Math.round(d.current.temperature_2m);
-              var icons={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',75:'❄️',80:'🌦',81:'🌧',82:'⛈',95:'⛈'};
-              var icon=icons[d.current.weathercode]||'🌡️';
-              document.getElementById('sto-weather-icon').textContent=icon;
-              document.getElementById('sto-weather-text').textContent='Stockholm now: '+temp+'°C';
-              document.getElementById('sto-weather').style.borderColor='rgba(205,177,117,.25)';
-            })
-            .catch(function(){document.getElementById('sto-weather-text').textContent='Stockholm, Sweden 🇸🇪';});
-        })();
-        </script>
+
       </div>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
         <div style="display:flex;gap:10px;">
@@ -949,9 +931,10 @@ window.addEventListener('load',function(){
 var shows = [
   { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
-  { city:"Stockholm, Sweden", venue:"Strawberry Arena · Doors 21:00", date:new Date("2026-07-11T21:00:00"), img:"https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
   { city:"Paris, France", venue:"Accor Arena · Doors 21:00 · Pablo Only 🎂 Birthday Night", date:new Date("2026-07-13T21:00:00"), img:"https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG" },
+  { city:"Kuala Lumpur, Malaysia", venue:"Bukit Jalil National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-20T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg" },
+  { city:"Singapore", venue:"Singapore National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-26T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg" },
   { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
 ];
 
@@ -1124,24 +1107,6 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
-  <!-- Stockholm -->
-  <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">&#127480;&#127466;</span> Stockholm, Sweden</h3>
-        <p>Strawberry Arena &middot; Doors 21:00 &middot; 11 Jul 2026</p>
-        <p class="dr-note">&#9733; Pablo Only Performance</p>
-      </div>
-      <div class="dr-action" style="display:flex;gap:6px;flex-direction:column;align-items:flex-end;"><span style="display:inline-block;background:rgba(232,65,65,.15);border:1px solid rgba(232,65,65,.6);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.16em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✕ Sold Out</span>
-        <a href="stockholm.html" style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);padding:6px 12px;text-decoration:none;color:rgba(200,169,110,0.7);font-family:'Barlow Condensed',sans-serif;font-weight:600;white-space:nowrap;">Show Info</a>
-        <a href="https://www.instagram.com/king__pablito69" target="_blank">Tickets</a>
-      </div>
-    </div>
-  </div>
   <!-- Paris France - Pablo Birthday -->
   
 <style>
@@ -1178,6 +1143,44 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
+
+  <!-- Kuala Lumpur Malaysia -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">20</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇲🇾</span> Kuala Lumpur, Malaysia</h3>
+        <p>Bukit Jalil National Stadium · Doors 21:00 · 20 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.5);color:var(--accent);font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Singapore -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">26</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇸🇬</span> Singapore</h3>
+        <p>Singapore National Stadium · Doors 21:00 · 26 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.5);color:var(--accent);font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Reykjavik Iceland -->
   <div class="dr upcoming">
@@ -1470,6 +1473,22 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
+  <!-- Stockholm Jul 11 CANCELLED -->
+  <div class="dr" style="opacity:0.5;border-left:3px solid #e84141;">
+    <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');filter:grayscale(0.8);"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot" style="background:#e84141;border-color:#e84141;animation:none;"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">11</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇸🇪</span> Stockholm, Sweden <span style="display:inline-block;background:rgba(232,65,65,0.15);border:1px solid rgba(232,65,65,0.5);color:#e84141;font-size:0.58rem;letter-spacing:0.16em;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✕ Cancelled</span></h3>
+        <p>Strawberry Arena · Was planned for 11 Jul 2026</p>
+        <p class="dr-note" style="color:#e84141;">⚠ Cancelled due to Cancelled Flight. We sincerely apologize to all fans. 💔</p>
+      </div>
+      <div class="dr-action"><span class="unavail">Cancelled</span></div>
+    </div>
+  </div>
+
   <!-- Reggio Emilia - CANCELLED -->
   <div class="dr" style="opacity:0.5;border-left:3px solid #e84141;">
     <div class="dr-bg" style="background-image:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/70/8e/2b/caption.jpg?w=1200&h=-1&s=1');filter:grayscale(0.8);"></div>
@@ -1616,7 +1635,6 @@ function initGlobe() {
   var GOLD = '#f0c75e', GREEN = '#3ddc84';
   var cities = [
     { city:'Basel',               country:'Switzerland',   lat:47.5596, lng: 7.5886, status:'upcoming' },
-    { city:'Stockholm',           country:'Sweden',        lat:59.3293, lng:18.0686, status:'upcoming' },
     { city:'Hurghada',            country:'Egypt',         lat:27.2579, lng:33.8116, status:'upcoming' },
     { city:'Barcelona',           country:'Spain',         lat:41.3851, lng: 2.1734, status:'completed' },
     { city:'Malta',               country:'Malta',         lat:35.8989, lng:14.5146, status:'completed' },
@@ -1631,6 +1649,8 @@ function initGlobe() {
     { city:'Luxembourg City',     country:'Luxembourg',    lat:49.6116, lng: 6.1319, status:'completed' },
     { city:'Arnhem',              country:'Netherlands',   lat:51.9851, lng: 5.8987, status:'completed' },
     { city:'Paris',               country:'France',         lat:48.8395, lng: 2.3780, status:'upcoming' },
+    { city:'Kuala Lumpur',          country:'Malaysia',       lat: 3.0575, lng:101.7030, status:'upcoming' },
+    { city:'Singapore',             country:'Singapore',      lat: 1.3044, lng:103.8748, status:'upcoming' },
     { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
   ];
@@ -1733,7 +1753,7 @@ if (globeScript) {
       <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer2"><span>46 shows &nbsp;·&nbsp; 19 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>48 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 <script>
 (function(){
@@ -1783,8 +1803,10 @@ const SHOWS2=[
   {id:43,year:2026,city:'Milan',dateStr:'Jun 19, 2026',lat:45.465,lng:9.186,completed:true},
   {id:44,year:2026,city:'Milan',dateStr:'Jun 21, 2026',lat:45.465,lng:9.186,completed:true},
   {id:45,year:2026,city:'Basel',dateStr:'Coming soon',lat:47.560,lng:7.589,completed:false},
-  {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:false},
+  {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:true,note:'💔 Cancelled — Flight issues'},
   {id:47,year:2026,city:'Paris',dateStr:'Jul 13, 2026',lat:48.839,lng:2.378,completed:false,note:'🎂 Pablo Birthday Night'},
+  {id:47,year:2026,city:'Kuala Lumpur',dateStr:'Jul 20, 2026',lat:3.057,lng:101.703,completed:false},
+  {id:48,year:2026,city:'Singapore',dateStr:'Jul 26, 2026',lat:1.304,lng:103.875,completed:false},
   {id:49,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
   {id:50,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
@@ -1921,8 +1943,10 @@ const RSHOWS=[
   {city:'Arnhem',lat:51.985,lng:5.899,date:'Jun 8, 2026',year:2026,note:'⭐ Kanye West special guest'},
   {city:'Milan',lat:45.464,lng:9.190,date:'Jun 19, 2026',year:2026,note:null},
   {city:'Milan',lat:45.463,lng:9.191,date:'Jun 21, 2026',year:2026,note:null},
-  {city:'Stockholm',lat:59.329,lng:18.069,date:'Jul 11, 2026',year:2026,note:null},
+  {city:'Stockholm',lat:59.329,lng:18.069,date:'Jul 11, 2026',year:2026,note:'💔 Cancelled — Flight issues',completed:true},
   {city:'Paris',lat:48.839,lng:2.378,date:'Jul 13, 2026',year:2026,note:'🎂 Pablo Birthday Night'},
+  {city:'Kuala Lumpur',lat:3.057,lng:101.703,date:'Jul 20, 2026',year:2026,note:null},
+  {city:'Singapore',lat:1.304,lng:103.875,date:'Jul 26, 2026',year:2026,note:null},
   {city:'Hurghada',lat:27.258,lng:33.812,date:'Jul 17, 2026',year:2026,note:null},
   {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
 ];
@@ -2066,8 +2090,9 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
       {date:'Jun 21',city:'Milan',flag:'🇮🇹',venue:'Mind Live — Night 2',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
       {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
-      {date:'Jul 11',city:'Stockholm',flag:'🇸🇪',venue:'Strawberry Arena',perf:'pablo',done:false,img:'https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg'},
       {date:'Jul 13 🎂',city:'Paris',flag:'🇫🇷',venue:'Accor Arena',perf:'pablo',done:false,img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
+      {date:'Jul 20',city:'Kuala Lumpur',flag:'🇲🇾',venue:'Bukit Jalil National Stadium',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg'},
+      {date:'Jul 26',city:'Singapore',flag:'🇸🇬',venue:'Singapore National Stadium',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg'},
       {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
@@ -2214,14 +2239,14 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="45" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 15+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="48" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 17+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="18" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸 🇫🇷</div>
+        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="21" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸 🇫🇷 🇲🇾 🇸🇬</div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
@@ -3279,8 +3304,10 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇮🇹',city:'Milan',date:'Jun 19',venue:'Mind Live Theatre',year:'2026',done:true,perf:'pablo'},
     {flag:'🇮🇹',city:'Milan',date:'Jun 21',venue:'Mind Live — Night 2',year:'2026',done:true,perf:'pablo'},
     {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false,perf:'pablo'},
-    {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena',year:'2026',done:false,perf:'pablo'},
+    {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena 💔',year:'2026',done:true,perf:'pablo',special:'✕ Cancelled'},
     {flag:'🇫🇷',city:'Paris',date:'Jul 13',venue:'Accor Arena 🎂',year:'2026',done:false,perf:'pablo',special:'🎂 Birthday'},
+    {flag:'🇲🇾',city:'Kuala Lumpur',date:'Jul 20',venue:'Bukit Jalil Stadium',year:'2026',done:false,perf:'pablo'},
+    {flag:'🇸🇬',city:'Singapore',date:'Jul 26',venue:'Singapore Natl Stadium',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
     {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
