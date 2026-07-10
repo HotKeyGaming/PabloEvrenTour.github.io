@@ -539,7 +539,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
-    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">48 Shows · 21 Countries</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">49 Shows · 21 Countries</span>
   </div>
   <div class="dsec">🗓 Tour</div>
   <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
@@ -597,7 +597,6 @@ var searchData = [
   {cat:'Concert',title:'Barcelona, Spain',sub:'Spotify Camp Nou · 13 Feb 2026',href:'#dates',img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
   {cat:'Concert',title:'Malta',sub:'National Stadium · 20 Feb 2026',href:'#dates',img:'https://footballtripper.com/wp-content/uploads/malta-national-stadium.jpg'},
   {cat:'Concert',title:'Erzincan, Turkey',sub:'13 Şubat City Stadium · 25 Apr 2026',href:'#dates',img:'https://stadiumdb.com/pictures/stadiums/tur/yeni_erzincan_stadyumu/yeni_erzincan_stadyumu06.jpg'},
-  {cat:'Concert',title:'Jerez de la Frontera, Spain',sub:'Estadio Chapín · 1 May 2026',href:'#dates',img:'https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg'},
   {cat:'Concert',title:'Cádiz, Spain',sub:'JP Financial Stadium · 2 May 2026',href:'#dates',img:'https://e01-phantom-expansion.uecdn.es/110e1fe4d00e90ce73ba3f563e71784e/crop/152x0/1201x699/f/webp/assets/multimedia/imagenes/2026/03/02/17724711659019.jpg'},
   {cat:'Concert',title:'Sevilla, Spain',sub:'Ramón S-P Stadium · 4 May 2026',href:'#dates',img:'https://i.ytimg.com/vi/BUJDup-o8ic/hq720.jpg'},
   {cat:'Concert',title:'Milan, Italy (San Siro)',sub:'San Siro Stadium · 16 May 2026 · Pablo Only',href:'#dates',img:'https://www.webuildgroup.com/_next/image/?url=https%3A%2F%2Fadmin.webuildgroup.com%2Fsites%2Fdefault%2Ffiles%2F2024-03%2FStadio_Meazza_Italia_Webuild_02_edited.jpg&w=3840&q=75'},
@@ -610,6 +609,7 @@ var searchData = [
   {cat:'Concert',title:'Paris, France',sub:'Accor Arena · 13 Jul 2026 · Pablo Only · 🎂 Birthday Night',href:'#dates',img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
   {cat:'Concert',title:'Kuala Lumpur, Malaysia',sub:'Bukit Jalil National Stadium · 20 Jul 2026 · Pablo Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg'},
   {cat:'Concert',title:'Singapore',sub:'Singapore National Stadium · 26 Jul 2026 · Pablo Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg'},
+  {cat:'Concert',title:'Geneva, Switzerland',sub:'Uptown Geneva · 28 Jul 2026 · Pablo Only · 💙 Comeback Concert',href:'#dates',img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/90/3c/caption.jpg?w=1200&h=-1&s=1'},
   {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
   {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
@@ -931,10 +931,11 @@ window.addEventListener('load',function(){
 var shows = [
   { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
-  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
   { city:"Paris, France", venue:"Accor Arena · Doors 21:00 · Pablo Only 🎂 Birthday Night", date:new Date("2026-07-13T21:00:00"), img:"https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG" },
+  { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
   { city:"Kuala Lumpur, Malaysia", venue:"Bukit Jalil National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-20T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg" },
   { city:"Singapore", venue:"Singapore National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-26T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg" },
+  { city:"Geneva, Switzerland", venue:"Uptown Geneva · Doors 21:00 · Pablo Only 🥹 Comeback Concert", date:new Date("2026-07-28T21:00:00"), img:"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/90/3c/caption.jpg?w=1200&h=-1&s=1" },
   { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
 ];
 
@@ -1182,6 +1183,27 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
+  <!-- Geneva Switzerland Comeback -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/90/3c/caption.jpg?w=1200&h=-1&s=1');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">28</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇨🇭</span> Geneva, Switzerland <span style="display:inline-block;background:rgba(205,177,117,.15);border:1px solid rgba(205,177,117,.5);color:var(--accent);font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">💙 Comeback Concert</span></h3>
+        <p>Uptown Geneva · Doors 21:00 · 28 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance · <span style="color:var(--accent);">Geneva Comeback After 2 Years 🥺</span></p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">🔥 Low Tickets</span>
+        <div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:91%;height:100%;background:linear-gradient(to right,#e84141,#ff6b00);border-radius:2px;"></div></div>
+        <span style="font-size:.48rem;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace;letter-spacing:.08em;">High Demand</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Reykjavik Iceland -->
   <div class="dr upcoming">
     <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg/1280px-Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg');"></div>
@@ -1256,18 +1278,6 @@ setInterval(updateStockholm, 1000);
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
       <div class="dr-info"><h3><span class="flag">🇹🇷</span> Istanbul, Turkey <span class="badge-done">✓ Completed</span></h3><p>Beşiktaş Stadium · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Evren Solo Performance</p></div>
-      <div class="dr-action"><span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✕ Sold Out</span></div>
-    </div>
-  </div>
-
-  <!-- Jerez -->
-  <div class="dr completed">
-    <div class="dr-bg" style="background-image:url('https://espanaestadios.com/wp-content/uploads/2021/08/xerez050824a.jpg');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">May 2026</div><div class="dr-day">01</div></div>
-      <div class="dr-info"><h3><span class="flag">🇪🇸</span> Jerez de la Frontera, Spain <span class="badge-done">✓ Completed</span></h3><p>Estadio Chapín · Doors 21:00 · 1 May 2026</p><p class="dr-note">★ Pablo Only Performance</p></div>
       <div class="dr-action"><span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✕ Sold Out</span></div>
     </div>
   </div>
@@ -1641,7 +1651,6 @@ function initGlobe() {
     { city:'Bern',                country:'Switzerland',   lat:46.9480, lng: 7.4474, status:'completed' },
     { city:'Erzincan',            country:'Turkey',        lat:39.7500, lng:39.5000, status:'completed' },
     { city:'Istanbul',            country:'Turkey',        lat:41.0082, lng:28.9784, status:'completed' },
-    { city:'Jerez de la Frontera',country:'Spain',         lat:36.6850, lng:-6.1261, status:'completed' },
     { city:'C\u00e1diz',          country:'Spain',         lat:36.5271, lng:-6.2886, status:'completed' },
     { city:'Sevilla',             country:'Spain',         lat:37.3891, lng:-5.9845, status:'completed' },
     { city:'Milan (San Siro)',     country:'Italy',         lat:45.4780, lng: 9.1240, status:'completed' },
@@ -1651,6 +1660,7 @@ function initGlobe() {
     { city:'Paris',               country:'France',         lat:48.8395, lng: 2.3780, status:'upcoming' },
     { city:'Kuala Lumpur',          country:'Malaysia',       lat: 3.0575, lng:101.7030, status:'upcoming' },
     { city:'Singapore',             country:'Singapore',      lat: 1.3044, lng:103.8748, status:'upcoming' },
+    { city:'Geneva',               country:'Switzerland',    lat:46.2044, lng: 6.1432, status:'upcoming' },
     { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
   ];
@@ -1753,7 +1763,7 @@ if (globeScript) {
       <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer2"><span>48 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>49 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 <script>
 (function(){
@@ -1793,7 +1803,6 @@ const SHOWS2=[
   {id:33,year:2026,city:'Bern',dateStr:'Mar 21, 2026',lat:46.948,lng:7.447,completed:true},
   {id:34,year:2026,city:'Erzincan',dateStr:'Apr 25, 2026',lat:39.750,lng:39.500,completed:true},
   {id:35,year:2026,city:'Istanbul',dateStr:'May 1, 2026',lat:41.008,lng:28.978,completed:true},
-  {id:36,year:2026,city:'Jerez',dateStr:'May 1, 2026',lat:36.685,lng:-6.126,completed:true},
   {id:37,year:2026,city:'Cádiz',dateStr:'May 2, 2026',lat:36.530,lng:-6.293,completed:true},
   {id:38,year:2026,city:'Sevilla',dateStr:'May 4, 2026',lat:37.389,lng:-5.985,completed:true},
   {id:39,year:2026,city:'Milan',dateStr:'May 16, 2026',lat:45.465,lng:9.186,completed:true},
@@ -1808,6 +1817,7 @@ const SHOWS2=[
   {id:47,year:2026,city:'Kuala Lumpur',dateStr:'Jul 20, 2026',lat:3.057,lng:101.703,completed:false},
   {id:48,year:2026,city:'Singapore',dateStr:'Jul 26, 2026',lat:1.304,lng:103.875,completed:false},
   {id:49,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
+  {id:51,year:2026,city:'Geneva',dateStr:'Jul 28, 2026',lat:46.204,lng:6.143,completed:false},
   {id:50,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
 let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
@@ -1934,7 +1944,6 @@ const RSHOWS=[
   {city:'Bern',lat:46.948,lng:7.447,date:'Mar 21, 2026',year:2026,note:null},
   {city:'Erzincan',lat:39.750,lng:39.500,date:'Apr 25, 2026',year:2026,note:null},
   {city:'Istanbul',lat:41.008,lng:28.978,date:'May 1, 2026',year:2026,note:null},
-  {city:'Jerez',lat:36.685,lng:-6.126,date:'May 1, 2026',year:2026,note:null},
   {city:'Cádiz',lat:36.530,lng:-6.293,date:'May 2, 2026',year:2026,note:null},
   {city:'Sevilla',lat:37.389,lng:-5.985,date:'May 4, 2026',year:2026,note:null},
   {city:'Milan',lat:45.465,lng:9.186,date:'May 16, 2026',year:2026,note:null},
@@ -1948,6 +1957,7 @@ const RSHOWS=[
   {city:'Kuala Lumpur',lat:3.057,lng:101.703,date:'Jul 20, 2026',year:2026,note:null},
   {city:'Singapore',lat:1.304,lng:103.875,date:'Jul 26, 2026',year:2026,note:null},
   {city:'Hurghada',lat:27.258,lng:33.812,date:'Jul 17, 2026',year:2026,note:null},
+  {city:'Geneva',lat:46.204,lng:6.143,date:'Jul 28, 2026',year:2026,note:'💙 Comeback Concert — 2 Years Later'},
   {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
 ];
 const RYC={2024:{hex:'#a06e3b',r:160,g:110,b:59},2025:{hex:'#5fa569',r:95,g:165,b:105},2026:{hex:'#cdb175',r:205,g:177,b:117}};
@@ -2080,7 +2090,6 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Mar 21',city:'Bern',flag:'🇨🇭',venue:'Wankdorf Stadion',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/a/a1/Lincoln_Financial_Field_%28Aerial_view%29.jpg'},
       {date:'Apr 25',city:'Erzincan',flag:'🇹🇷',venue:'13 Şubat City Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
       {date:'May 1',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Stadium',perf:'evren',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
-      {date:'May 1',city:'Jerez',flag:'🇪🇸',venue:'Estadio Municipal',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-7w6iSbA4cqABHNGFoswxRAeQcPOEaH17JWbMRxFxh5NqEBa3&s=10'},
       {date:'May 2',city:'Cádiz',flag:'🇪🇸',venue:'Nuevo Mirandilla',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI0ZJrxk8sYRyZVb2oU7MqBEHXUmRzMsA7hT_JwGpQjzrT7ZhQ&s=10'},
       {date:'May 4',city:'Sevilla',flag:'🇪🇸',venue:'Sánchez-Pizjuán',perf:'pablo',done:true,img:'https://visitasevilla.es/wp-content/uploads/2025/06/IMG20210125_036.jpg'},
       {date:'May 16',city:'Milan',flag:'🇮🇹',venue:'San Siro Stadium',perf:'both',done:true,img:'https://upload.wikimedia.org/wikipedia/en/1/1a/San_siro_stadium.jpg'},
@@ -2094,7 +2103,9 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jul 20',city:'Kuala Lumpur',flag:'🇲🇾',venue:'Bukit Jalil National Stadium',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bukit_Jalil_National_Stadium.jpg/1280px-Bukit_Jalil_National_Stadium.jpg'},
       {date:'Jul 26',city:'Singapore',flag:'🇸🇬',venue:'Singapore National Stadium',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Singapore_Sports_Hub_aerial_view.jpg/1280px-Singapore_Sports_Hub_aerial_view.jpg'},
       {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
+      {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:false,img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/90/3c/caption.jpg?w=1200&h=-1&s=1'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
+      {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:false,img:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/33/90/3c/caption.jpg?w=1200&h=-1&s=1'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     ]
   };
@@ -2239,7 +2250,7 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="48" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="49" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
         <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 17+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
       </div>
     </div>
@@ -3294,7 +3305,6 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇨🇭',city:'Bern',date:'Mar 21',venue:'Wankdorf Stadion',year:'2026',done:true,perf:'pablo'},
     {flag:'🇹🇷',city:'Erzincan',date:'Apr 25',venue:'13 Şubat City',year:'2026',done:true,perf:'evren'},
     {flag:'🇹🇷',city:'Istanbul',date:'May 1',venue:'Atatürk Stadium',year:'2026',done:true,perf:'evren'},
-    {flag:'🇪🇸',city:'Jerez',date:'May 1',venue:'Estadio Municipal',year:'2026',done:true,perf:'pablo'},
     {flag:'🇪🇸',city:'Cádiz',date:'May 2',venue:'Nuevo Mirandilla',year:'2026',done:true,perf:'pablo'},
     {flag:'🇪🇸',city:'Sevilla',date:'May 4',venue:'Sánchez-Pizjuán',year:'2026',done:true,perf:'pablo'},
     {flag:'🇮🇹',city:'Milan',date:'May 16',venue:'San Siro',year:'2026',done:true,perf:'both'},
@@ -3309,6 +3319,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇲🇾',city:'Kuala Lumpur',date:'Jul 20',venue:'Bukit Jalil Stadium',year:'2026',done:false,perf:'pablo'},
     {flag:'🇸🇬',city:'Singapore',date:'Jul 26',venue:'Singapore Natl Stadium',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
+    {flag:'🇨🇭',city:'Geneva',date:'Jul 28',venue:'Uptown Geneva 💙',year:'2026',done:false,perf:'pablo',special:'💙 Comeback'},
     {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
 
@@ -3441,13 +3452,6 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 
     <div class="news-item" style="padding:24px 0 24px 24px;">
       <div class="news-tag tag-concert">Completed</div>
-      <div class="news-date">1 May 2026</div>
-      <div class="news-title">Concert — Jerez de la Frontera, Spain</div>
-      <div class="news-body">Estadio Municipal de Chapín, Jerez de la Frontera. Doors 21:00. Pablo solo performance. Show completed successfully.</div>
-    </div>
-
-    <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-concert">Completed</div>
       <div class="news-date">25 April 2026</div>
       <div class="news-title">First Official Concert — Erzincan, Turkey (Evren Solo)</div>
       <div class="news-body">Erzincan 13 Şubat City Stadium, Erzincan. Doors 21:00. Evren's first solo performance of the World Tour — Pablo was unable to attend as entry to Erzincan was not permitted. Historic first show of the 2026 World Tour.</div>
@@ -3534,12 +3538,12 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="milestone">
         <div class="milestone-date">1 May 2026</div>
         <div class="milestone-title">Double Show Day <span class="milestone-badge mb-gold">Historic</span></div>
-        <div class="milestone-desc">Two shows on the same day — Istanbul (Evren Solo) and Jerez de la Frontera (Pablo Only). First time both performed simultaneously.</div>
+        <div class="milestone-desc">Istanbul solo show — Evren performed alone for the first time in 2026.</div>
       </div>
       <div class="milestone">
         <div class="milestone-date">4 May 2026</div>
         <div class="milestone-title">Spain Leg Complete <span class="milestone-badge mb-green">Milestone</span></div>
-        <div class="milestone-desc">Sevilla, Ramón Sánchez-Pizjuán Stadium. The Spain leg officially wraps after Barcelona, Jerez, Cádiz and Sevilla.</div>
+        <div class="milestone-desc">Sevilla, Ramón Sánchez-Pizjuán Stadium. The Spain leg officially wraps after Barcelona, Cádiz and Sevilla.</div>
       </div>
       <div class="milestone">
         <div class="milestone-date">25 April 2026</div>
