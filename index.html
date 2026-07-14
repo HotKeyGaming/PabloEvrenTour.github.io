@@ -931,7 +931,6 @@ window.addEventListener('load',function(){
 var shows = [
   { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
-  { city:"Paris, France", venue:"Accor Arena · Doors 21:00 · Pablo Only 🎂 Birthday Night", date:new Date("2026-07-13T21:00:00"), img:"https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG" },
   { city:"Hurghada, Egypt", venue:"Khaled Bichara Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-07-17T21:00:00"), img:"https://imgs.ysscores.com/stadium/600/5711727168786.jpg" },
   { city:"Kuala Lumpur, Malaysia", venue:"Bukit Jalil National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-20T21:00:00"), img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBjlfn2k_kaOHtprD-89K6GPRMoTXn3swOSbjZgfvYPg6aQfEHvoS1J7n&s=10" },
   { city:"Singapore", venue:"Singapore National Stadium · Doors 21:00 · Pablo Only", date:new Date("2026-07-26T21:00:00"), img:"https://www.stadiumguide.com/wp-content/uploads/singapore_top.jpg" },
@@ -1108,29 +1107,6 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
-  <!-- Paris France - Pablo Birthday -->
-  
-<style>
-@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(120px) rotate(720deg);opacity:0}}
-.confetti-piece{position:absolute;width:7px;height:7px;border-radius:1px;animation:confettiFall linear infinite;pointer-events:none;z-index:5}
-</style>
-
-  <div class="dr upcoming" id="paris-birthday-row" style="overflow:hidden;">
-    <div class="dr-bg" style="background-image:url('https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG');"></div>
-    <div class="dr-overlay"></div>
-    <div class="dr-inner">
-      <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">13</div></div>
-      <div class="dr-info">
-        <h3><span class="flag">🇫🇷</span> Paris, France <span style="display:inline-block;background:linear-gradient(135deg,#b8923f,#cdb175,#e8cf92);color:#000;font-size:.52rem;letter-spacing:.14em;padding:3px 10px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🎂 Birthday Special</span></h3>
-        <p>Accor Arena · Doors 21:00 · 13 Jul 2026</p>
-        <p class="dr-note">★ Pablo Only Performance · <span style="color:var(--accent);">Pablo's Birthday Night 🎂🔥</span></p>
-      </div>
-      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
-<span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">🔥 83% Sold</span><div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:83%;height:100%;background:linear-gradient(to right,#e84141,#ff6b00);border-radius:2px;"></div></div><a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Hurghada -->
   <div class="dr upcoming">
@@ -1235,6 +1211,21 @@ setInterval(updateStockholm, 1000);
   <div class="timeline-line" style="background:linear-gradient(to bottom,rgba(52,211,153,.4),rgba(52,211,153,.05));left:clamp(12px,3vw,32px);"></div>
 
   <!-- Barcelona -->
+    <!-- Paris France - Birthday Show COMPLETED -->
+  <div class="dr completed">
+    <div class="dr-bg" style="background-image:url('https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Jul 2026</div><div class="dr-day">13</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇫🇷</span> Paris, France <span class="badge-done">✓ Completed</span><span style="display:inline-block;background:rgba(205,177,117,.15);border:1px solid rgba(205,177,117,.4);color:var(--accent);font-size:.52rem;letter-spacing:.14em;padding:2px 8px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:6px;">🎂 Birthday Night</span></h3>
+        <p>Accor Arena · Doors 21:00 · 13 Jul 2026</p>
+        <p class="dr-note">★ Pablo Only Performance · <span style="color:var(--accent);">Pablo's Birthday Show 🎂🔥</span></p>
+      </div>
+      <div class="dr-action"><span style="display:inline-block;background:rgba(232,65,65,.12);border:1px solid rgba(232,65,65,.5);color:#e84141;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✕ Sold Out</span></div>
+    </div>
+  </div>
   <div class="dr completed">
     <div class="dr-bg" style="background-image:url('https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750');"></div>
     <div class="dr-overlay"></div>
@@ -1657,7 +1648,7 @@ function initGlobe() {
     { city:'Vaduz',               country:'Liechtenstein', lat:47.1410, lng: 9.5209, status:'completed' },
     { city:'Luxembourg City',     country:'Luxembourg',    lat:49.6116, lng: 6.1319, status:'completed' },
     { city:'Arnhem',              country:'Netherlands',   lat:51.9851, lng: 5.8987, status:'completed' },
-    { city:'Paris',               country:'France',         lat:48.8395, lng: 2.3780, status:'upcoming' },
+    { city:'Paris',               country:'France',         lat:48.8395, lng: 2.3780, status:'completed' },
     { city:'Kuala Lumpur',          country:'Malaysia',       lat: 3.0575, lng:101.7030, status:'upcoming' },
     { city:'Singapore',             country:'Singapore',      lat: 1.3044, lng:103.8748, status:'upcoming' },
     { city:'Geneva',               country:'Switzerland',    lat:46.2044, lng: 6.1432, status:'upcoming' },
@@ -1813,7 +1804,7 @@ const SHOWS2=[
   {id:44,year:2026,city:'Milan',dateStr:'Jun 21, 2026',lat:45.465,lng:9.186,completed:true},
   {id:45,year:2026,city:'Basel',dateStr:'Coming soon',lat:47.560,lng:7.589,completed:false},
   {id:46,year:2026,city:'Stockholm',dateStr:'Jul 11, 2026',lat:59.329,lng:18.069,completed:true,note:'💔 Cancelled — Flight issues'},
-  {id:47,year:2026,city:'Paris',dateStr:'Jul 13, 2026',lat:48.839,lng:2.378,completed:false,note:'🎂 Pablo Birthday Night'},
+  {id:47,year:2026,city:'Paris',dateStr:'Jul 13, 2026',lat:48.839,lng:2.378,completed:true,note:'🎂 Pablo Birthday Night'},
   {id:47,year:2026,city:'Kuala Lumpur',dateStr:'Jul 20, 2026',lat:3.057,lng:101.703,completed:false},
   {id:48,year:2026,city:'Singapore',dateStr:'Jul 26, 2026',lat:1.304,lng:103.875,completed:false},
   {id:49,year:2026,city:'Hurghada',dateStr:'Jul 17, 2026',lat:27.258,lng:33.812,completed:false},
@@ -2099,7 +2090,7 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jun 19',city:'Milan',flag:'🇮🇹',venue:'Mind Live Theatre',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
       {date:'Jun 21',city:'Milan',flag:'🇮🇹',venue:'Mind Live — Night 2',perf:'pablo',done:true,img:'https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg'},
       {date:'Daily',city:'Basel',flag:'🇨🇭',venue:'St. Jakob Park',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdqgF7mOcmyUvWqWhKehxqy1R6pi9AwdIsWO8n-YxuFkjXxIrqauzJWDFw&s=10'},
-      {date:'Jul 13 🎂',city:'Paris',flag:'🇫🇷',venue:'Accor Arena',perf:'pablo',done:false,img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
+      {date:'Jul 13 🎂',city:'Paris',flag:'🇫🇷',venue:'Accor Arena',perf:'pablo',done:true,img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
       {date:'Jul 20',city:'Kuala Lumpur',flag:'🇲🇾',venue:'Bukit Jalil National Stadium',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBjlfn2k_kaOHtprD-89K6GPRMoTXn3swOSbjZgfvYPg6aQfEHvoS1J7n&s=10'},
       {date:'Jul 26',city:'Singapore',flag:'🇸🇬',venue:'Singapore National Stadium',perf:'pablo',done:false,img:'https://www.stadiumguide.com/wp-content/uploads/singapore_top.jpg'},
       {date:'Jul 17',city:'Hurghada',flag:'🇪🇬',venue:'Khaled Bichara Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcyG0dbu4orz8Yu9rL4nqfP3SsJEyBWVEnXKgkN3osZU6M8VVtksIePXe&s=10'},
@@ -3315,7 +3306,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇮🇹',city:'Milan',date:'Jun 21',venue:'Mind Live — Night 2',year:'2026',done:true,perf:'pablo'},
     {flag:'🇨🇭',city:'Basel',date:'Daily',venue:'St. Jakob Park',year:'2026',done:false,perf:'pablo'},
     {flag:'🇸🇪',city:'Stockholm',date:'Jul 11',venue:'Strawberry Arena 💔',year:'2026',done:true,perf:'pablo',special:'✕ Cancelled'},
-    {flag:'🇫🇷',city:'Paris',date:'Jul 13',venue:'Accor Arena 🎂',year:'2026',done:false,perf:'pablo',special:'🎂 Birthday'},
+    {flag:'🇫🇷',city:'Paris',date:'Jul 13',venue:'Accor Arena 🎂',year:'2026',done:true,perf:'pablo',special:'🎂 Birthday'},
     {flag:'🇲🇾',city:'Kuala Lumpur',date:'Jul 20',venue:'Bukit Jalil Stadium',year:'2026',done:false,perf:'pablo'},
     {flag:'🇸🇬',city:'Singapore',date:'Jul 26',venue:'Singapore Natl Stadium',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇬',city:'Hurghada',date:'Jul 17',venue:'Khaled Bichara',year:'2026',done:false,perf:'evren'},
@@ -3397,6 +3388,13 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
 
   <!-- LATEST FIRST -->
   <div style="display:flex;flex-direction:column;gap:2px;">
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">13 July 2026</div>
+      <div class="news-title">Concert — Paris, France 🎂</div>
+      <div class="news-body">Accor Arena, Paris. Pablo's Birthday Night. Sold Out. Pablo solo performance. The crowd sang Happy Birthday. One of the most emotional shows of the entire tour. Show completed successfully.</div>
+    </div>
 
     <div class="news-item" style="padding:28px 0 28px 24px;">
       <div class="news-tag tag-concert">Completed</div>
