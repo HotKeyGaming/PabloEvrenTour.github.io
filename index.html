@@ -539,7 +539,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
-    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">53 Shows · 21 Countries</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">54 Shows · 21 Countries</span>
   </div>
   <div class="dsec">🗓 Tour</div>
   <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
@@ -613,6 +613,7 @@ var searchData = [
   {cat:'Concert',title:'Athens, Greece',sub:'Olympic Stadium of Athens · 24 Jul 2026 · Pablo Only',href:'#dates',img:''},
   {cat:'Concert',title:'Geneva, Switzerland',sub:'Uptown Geneva · 28 Jul 2026 · Pablo Only · 💙 Comeback Concert',href:'#dates',img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
   {cat:'Concert',title:'Madrid, Spain',sub:'Riyadh Air Metropolitano · 30 Jul 2026 · Pablo Only · ⭐ Special Guest: Ye',href:'#dates',img:''},
+  {cat:'Concert',title:'Valencia, Spain',sub:'Camp de Mestalla · 9 Oct 2026 · Pablo Only · 🔥 New Date',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
   {cat:'Concert',title:'Madrid, Spain (Oct 10)',sub:'Movistar Arena · 10 Oct 2026 · Pablo Only',href:'#dates',img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
   {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
@@ -936,6 +937,7 @@ var shows = [
   { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
   { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
 
+  { city:"Valencia, Spain", venue:"Camp de Mestalla · Doors 21:00 · Pablo Only", date:new Date("2026-10-09T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg" },
   { city:"Madrid, Spain (Oct)", venue:"Movistar Arena · Doors 21:00 · Pablo Only", date:new Date("2026-10-10T21:00:00"), img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10" },
   { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
 ];
@@ -1109,6 +1111,25 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
+
+  <!-- Valencia Spain October 9 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Oct 2026</div><div class="dr-day">9</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇪🇸</span> Valencia, Spain <span style="display:inline-block;background:rgba(255,100,0,.15);border:1px solid rgba(255,100,0,.5);color:#ff6b35;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔥 New Date</span></h3>
+        <p>Camp de Mestalla · Doors 21:00 · 9 Oct 2026</p>
+        <p class="dr-note">★ Pablo Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(205,177,117,.12);border:1px solid rgba(205,177,117,.5);color:var(--accent);font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Madrid Spain October 10 -->
   <div class="dr upcoming">
@@ -1733,6 +1754,7 @@ function initGlobe() {
     { city:'Athens',               country:'Greece',         lat:37.9838, lng:23.7275, status:'completed' },
     { city:'Geneva',               country:'Switzerland',    lat:46.2044, lng: 6.1432, status:'completed' },
     { city:'Madrid (Jul)',          country:'Spain',          lat:40.4168, lng:-3.7038, status:'completed' },
+    { city:'Valencia',             country:'Spain',          lat:39.4742, lng:-0.3585, status:'upcoming' },
     { city:'Madrid (Oct)',         country:'Spain',          lat:40.4300, lng:-3.6780, status:'upcoming' },
     { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
@@ -1836,7 +1858,7 @@ if (globeScript) {
       <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer2"><span>53 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>54 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 <script>
 (function(){
@@ -1894,7 +1916,8 @@ const SHOWS2=[
   {id:52,year:2026,city:'Athens',dateStr:'Jul 24, 2026',lat:37.984,lng:23.728,completed:true},
   {id:53,year:2026,city:'Geneva',dateStr:'Jul 28, 2026',lat:46.204,lng:6.143,completed:true},
   {id:54,year:2026,city:'Madrid',dateStr:'Jul 30, 2026',lat:40.417,lng:-3.704,completed:true,note:'⭐ Special Guest: Ye'},
-  {id:50,year:2026,city:'Madrid (Oct)',dateStr:'Oct 10, 2026',lat:40.430,lng:-3.678,completed:false},
+  {id:50,year:2026,city:'Valencia',dateStr:'Oct 9, 2026',lat:39.474,lng:-0.358,completed:false},
+  {id:55,year:2026,city:'Madrid (Oct)',dateStr:'Oct 10, 2026',lat:40.430,lng:-3.678,completed:false},
   {id:51,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
 let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
@@ -2038,6 +2061,7 @@ const RSHOWS=[
   {city:'Athens',lat:37.984,lng:23.728,date:'Jul 24, 2026',year:2026,note:null},
   {city:'Geneva',lat:46.204,lng:6.143,date:'Jul 28, 2026',year:2026,note:'💙 Comeback Concert — 2 Years Later'},
   {city:'Madrid',lat:40.417,lng:-3.704,date:'Jul 30, 2026',year:2026,note:'⭐ Special Guest: Kanye West'},
+  {city:'Valencia',lat:39.474,lng:-0.358,date:'Oct 9, 2026',year:2026,note:null},
   {city:'Madrid (Oct)',lat:40.430,lng:-3.678,date:'Oct 10, 2026',year:2026,note:null},
   {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
 ];
@@ -2188,12 +2212,14 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jul 24',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium Athens',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK2-6OEYVIddtujlLJnR5fzwpSAJa2HD4B7CUlK3rHzEGjuTNx37prhls&s=10'},
       {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:true,img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
       {date:'Jul 30 ⭐',city:'Madrid',flag:'🇪🇸',venue:'Riyadh Air Metropolitano',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atleti_vs_Villarreal_-_September_2025.jpg'},
+      {date:'Oct 9 🔥',city:'Valencia',flag:'🇪🇸',venue:'Camp de Mestalla',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
       {date:'Oct 10',city:'Madrid',flag:'🇪🇸',venue:'Movistar Arena',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
       {date:'Jul 22 🔥',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Olympic Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZvNnJMQ9xydId2UViZ9Mh5kmzhY0fnE74MV8zh5UfbA&s=10'},
       {date:'Jul 24',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium Athens',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK2-6OEYVIddtujlLJnR5fzwpSAJa2HD4B7CUlK3rHzEGjuTNx37prhls&s=10'},
       {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:true,img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
       {date:'Jul 30 ⭐',city:'Madrid',flag:'🇪🇸',venue:'Riyadh Air Metropolitano',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atleti_vs_Villarreal_-_September_2025.jpg'},
+      {date:'Oct 9 🔥',city:'Valencia',flag:'🇪🇸',venue:'Camp de Mestalla',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
       {date:'Oct 10',city:'Madrid',flag:'🇪🇸',venue:'Movistar Arena',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
       {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     ]
@@ -2339,7 +2365,7 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="53" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="54" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
         <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 17+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
       </div>
     </div>
@@ -3412,6 +3438,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇬🇷',city:'Athens',date:'Jul 24',venue:'Olympic Stadium',year:'2026',done:true,perf:'pablo'},
     {flag:'🇨🇭',city:'Geneva',date:'Jul 28',venue:'Uptown Geneva 💙',year:'2026',done:true,perf:'pablo',special:'💙 Comeback'},
     {flag:'🇪🇸',city:'Madrid',date:'Jul 30',venue:'Riyadh Air Metropolitano',year:'2026',done:true,perf:'pablo',special:'⭐ Ye'},
+    {flag:'🇪🇸',city:'Valencia',date:'Oct 9',venue:'Camp de Mestalla',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇸',city:'Madrid',date:'Oct 10',venue:'Movistar Arena',year:'2026',done:false,perf:'pablo'},
     {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
@@ -3491,7 +3518,56 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
   <!-- LATEST FIRST -->
   <div style="display:flex;flex-direction:column;gap:2px;">
 
+        <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Announced</div>
+      <div class="news-date">August 2026</div>
+      <div class="news-title">New Date — Valencia, Spain 🔥</div>
+      <div class="news-body">Camp de Mestalla, Valencia. October 9, 2026. Pablo solo performance. The day before Madrid. Spain double header confirmed.</div>
+    </div>
+
     <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">30 July 2026</div>
+      <div class="news-title">Concert — Madrid, Spain ⭐ Kanye West Returns</div>
+      <div class="news-body">Riyadh Air Metropolitano, Madrid. Kanye West appeared as special guest for the second time this tour. The second Ye appearance of the Holy Obesity World Tour — after Arnhem. Unforgettable night. Sold Out.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">28 July 2026</div>
+      <div class="news-title">Concert — Geneva, Switzerland 💙 Comeback</div>
+      <div class="news-body">Uptown Geneva. Pablo's return to Geneva after almost 2 years. Small venue, sold out instantly, completely intimate. One of the most emotional shows of the entire tour. The crowd knew every word.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">24 July 2026</div>
+      <div class="news-title">Concert — Athens, Greece</div>
+      <div class="news-body">Olympic Stadium of Athens. Pablo solo performance. Announced the day before. Sold Out. Show completed successfully.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">22 July 2026</div>
+      <div class="news-title">Concert — Istanbul, Turkey 🇹🇷</div>
+      <div class="news-body">Atatürk Olympic Stadium, Istanbul. Pablo solo performance. Announced literally the day before. The crowd was insane. Sold Out. Istanbul delivered.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-cancelled">Cancelled</div>
+      <div class="news-date">July 2026</div>
+      <div class="news-title">Kuala Lumpur &amp; Singapore — Cancelled 💔</div>
+      <div class="news-body">Due to the escalating conflict situation in the Middle East affecting our layover route, Kuala Lumpur (Jul 20) and Singapore (Jul 26) have been cancelled. We sincerely apologize. Asia will happen — just not this time.</div>
+    </div>
+
+    <div class="news-item" style="padding:24px 0 24px 24px;">
+      <div class="news-tag tag-concert">Completed</div>
+      <div class="news-date">17 July 2026</div>
+      <div class="news-title">Concert — Hurghada, Egypt 🇪🇬</div>
+      <div class="news-body">Khaled Bichara Stadium, Hurghada. Evren solo performance — Pablo entry to Egypt not permitted. Evren held it down. Sold Out.</div>
+    </div>
+
+<div class="news-item" style="padding:24px 0 24px 24px;">
       <div class="news-tag tag-concert">Completed</div>
       <div class="news-date">13 July 2026</div>
       <div class="news-title">Concert — Paris, France 🎂</div>
@@ -3658,11 +3734,28 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
       <div class="milestone future">
         <div class="milestone-date">28 December 2026</div>
       </div>
+      <div class="milestone">
+        <div class="milestone-date">13 July 2026</div>
+        <div class="milestone-title">Pablo's Birthday Show — Paris <span class="milestone-badge mb-gold">Special</span></div>
+        <div class="milestone-desc">Accor Arena, Paris. Pablo performs on his own birthday. The crowd sang Happy Birthday. One of the most emotional nights of the entire tour. Sold Out.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">22–30 July 2026</div>
+        <div class="milestone-title">The 8-Day Europe Sprint <span class="milestone-badge mb-gold">Historic</span></div>
+        <div class="milestone-desc">Istanbul → Athens → Geneva → Madrid in 8 days. All announced last minute. All sold out. Arguably the most intense run of the entire world tour.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">28 July 2026</div>
+        <div class="milestone-title">Geneva Comeback <span class="milestone-badge mb-blue">Emotional</span></div>
+        <div class="milestone-desc">Nearly 2 years after the 2024 Geneva show, Pablo returns to Uptown Geneva. The most intimate venue of the tour. Sold out in minutes. The crowd knew every word.</div>
+      </div>
+      <div class="milestone">
+        <div class="milestone-date">30 July 2026</div>
+        <div class="milestone-title">Kanye Returns — Madrid <span class="milestone-badge mb-gold">Historic</span></div>
+        <div class="milestone-desc">Kanye West appears as special guest for the second time this tour at Riyadh Air Metropolitano, Madrid. Only Arnhem and Madrid have witnessed Ye on this tour.</div>
+      </div>
     </div>
   </div>
-
-  <script>
-  function toggleMilestones(){
     var content = document.getElementById('milestone-content');
     var arrow = document.getElementById('milestone-arrow');
     var text = document.getElementById('milestone-toggle-text');
