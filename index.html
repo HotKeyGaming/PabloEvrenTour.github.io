@@ -609,7 +609,7 @@ var searchData = [
   {cat:'Concert',title:'Paris, France',sub:'Accor Arena · 13 Jul 2026 · Pablo Only · 🎂 Birthday Night',href:'#dates',img:'https://aegworldwide.com/sites/default/files/styles/medium/public/real-estate/2017-10/Accor.jpg?itok=BxAUuIvG'},
   {cat:'Concert',title:'Kuala Lumpur, Malaysia',sub:'Bukit Jalil National Stadium · 20 Jul 2026 · Pablo Only',href:'#dates',img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLBjlfn2k_kaOHtprD-89K6GPRMoTXn3swOSbjZgfvYPg6aQfEHvoS1J7n&s=10'},
   {cat:'Concert',title:'Singapore',sub:'Singapore National Stadium · 26 Jul 2026 · Pablo Only',href:'#dates',img:'https://www.stadiumguide.com/wp-content/uploads/singapore_top.jpg'},
-  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 22 Jul 2026 · Pablo Only · 🔥 Tomorrow',href:'#dates',img:''},
+  {cat:'Concert',title:'Istanbul, Turkey',sub:'Atatürk Olympic Stadium · 22 Jul 2026 · Pablo Only',href:'#dates',img:''},
   {cat:'Concert',title:'Athens, Greece',sub:'Olympic Stadium of Athens · 24 Jul 2026 · Pablo Only',href:'#dates',img:''},
   {cat:'Concert',title:'Geneva, Switzerland',sub:'Uptown Geneva · 28 Jul 2026 · Pablo Only · 💙 Comeback Concert',href:'#dates',img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
   {cat:'Concert',title:'Madrid, Spain',sub:'Riyadh Air Metropolitano · 30 Jul 2026 · Pablo Only · ⭐ Special Guest: Ye',href:'#dates',img:''},
@@ -934,8 +934,6 @@ window.addEventListener('load',function(){
 
 <script>
 var shows = [
-  { city:"Milan, Italy", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-19T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
-  { city:"Milan, Italy (2nd Show)", venue:"Mind Live Theatre / Mind Live Arena Milano · Doors 21:00", date:new Date("2026-06-21T21:00:00"), img:"https://mindlivetheatre.com/wp-content/uploads/2026/01/hero_mind_live_theatre-1024x585.jpg" },
 
   { city:"Valencia, Spain", venue:"Camp de Mestalla · Doors 21:00 · Pablo Only", date:new Date("2026-10-09T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg" },
   { city:"Madrid, Spain (Oct)", venue:"Movistar Arena · Doors 21:00 · Pablo Only", date:new Date("2026-10-10T21:00:00"), img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10" },
@@ -1113,14 +1111,14 @@ setInterval(updateStockholm, 1000);
 
 
   <!-- Valencia Spain October 9 -->
-  <div class="dr upcoming">
+  <div class="dr upcoming" id="valencia-row">
     <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
       <div class="dr-date"><div class="dr-month">Oct 2026</div><div class="dr-day">9</div></div>
       <div class="dr-info">
-        <h3><span class="flag">🇪🇸</span> Valencia, Spain <span style="display:inline-block;background:rgba(255,100,0,.15);border:1px solid rgba(255,100,0,.5);color:#ff6b35;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🔥 New Date</span></h3>
+        <h3><span class="flag">🇪🇸</span> Valencia, Spain </h3>
         <p>Camp de Mestalla · Doors 21:00 · 9 Oct 2026</p>
         <p class="dr-note">★ Pablo Only Performance</p>
       </div>
@@ -2365,8 +2363,8 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="54" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">Across 2024, 2025 &amp; 2026</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 17+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="54" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">2024, 2025 &amp; 2026 — ongoing</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 20+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
@@ -3554,7 +3552,7 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     </div>
 
     <div class="news-item" style="padding:24px 0 24px 24px;">
-      <div class="news-tag tag-cancelled">Cancelled</div>
+      <div class="news-tag" style="background:rgba(232,65,65,.15);border:1px solid rgba(232,65,65,.4);color:#e84141;">Cancelled</div>
       <div class="news-date">July 2026</div>
       <div class="news-title">Kuala Lumpur &amp; Singapore — Cancelled 💔</div>
       <div class="news-body">Due to the escalating conflict situation in the Middle East affecting our layover route, Kuala Lumpur (Jul 20) and Singapore (Jul 26) have been cancelled. We sincerely apologize. Asia will happen — just not this time.</div>
