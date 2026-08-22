@@ -539,7 +539,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
-    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">54 Shows · 21 Countries</span>
+    <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">59 Shows · 23 Countries</span>
   </div>
   <div class="dsec">🗓 Tour</div>
   <a href="#countdown" class="dl hot" onclick="closeMob()">⏱ Next Show</a>
@@ -613,9 +613,13 @@ var searchData = [
   {cat:'Concert',title:'Athens, Greece',sub:'Olympic Stadium of Athens · 24 Jul 2026 · Pablo Only',href:'#dates',img:''},
   {cat:'Concert',title:'Geneva, Switzerland',sub:'Uptown Geneva · 28 Jul 2026 · Pablo Only · 💙 Comeback Concert',href:'#dates',img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
   {cat:'Concert',title:'Madrid, Spain',sub:'Riyadh Air Metropolitano · 30 Jul 2026 · Pablo Only · ⭐ Special Guest: Ye',href:'#dates',img:''},
+  {cat:'Concert',title:'Copenhagen, Denmark',sub:'Parken Stadium · 3 Oct 2026 · Evren Only',href:'#dates',img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuz8474yqnSLRH7FBo9B5AGN3_ukjhgat2cRhi7RaIQ&s=10'},
+  {cat:'Concert',title:'Malmö, Sweden',sub:'Malmö Arena · 7 Oct 2026 · Evren Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/3/3c/20171031_Malmo_Arena_0232_%2825463574977%29.jpg'},
+  {cat:'Concert',title:'Milan, Italy (Nov)',sub:'Unipol Forum · 14 Nov 2026 · Evren Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/4/49/Forum_Assago_esterno.jpg'},
+  {cat:'Concert',title:'Nice, France',sub:'Allianz Riviera · 15 Nov 2026 · Evren Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/fr/8/8c/Allianzrivierainauguration.jpg'},
+  {cat:'Concert',title:'Monaco-Ville, Monaco',sub:'Stade Louis II · 16 Nov 2026 · Evren Only',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/7/78/Panoramio_-_V%26A_Dudush_-_stade_Louis_II.jpg'},
   {cat:'Concert',title:'Valencia, Spain',sub:'Camp de Mestalla · 9 Oct 2026 · Pablo Only · 🔥 New Date',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
   {cat:'Concert',title:'Madrid, Spain (Oct 10)',sub:'Movistar Arena · 10 Oct 2026 · Pablo Only',href:'#dates',img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
-  {cat:'Concert',title:'Reykjavík, Iceland',sub:'Laugardalsvöllur · 12 Dec 2026 · Evren Only · 21% Sold',href:'#dates',img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     // Songs
   {cat:'Song',title:'POWER',sub:'Setlist · Feat. Kanye West',href:'#setlist',icon:'🎵'},
   {cat:'Song',title:'River',sub:'Setlist · Feat. Kanye West, Ty Dolla Sign',href:'#setlist',icon:'🎵'},
@@ -652,6 +656,9 @@ var searchData = [
   {cat:'Lore',title:'Terence',sub:'The fat bird. The alpha.',href:'#memes',icon:'🐦'},
   {cat:'Lore',title:'Nibbooggers',sub:'Nib + Bog = Family',href:'#alphabet',icon:'🐕'},
   {cat:'Lore',title:'Bus 45 and Bus 32',sub:'Best buses in Riehen',href:'#quiz',icon:'🚌'},
+  { city:"Milan, Italy (Nov)", venue:"Unipol Forum · Evren Only", date:new Date("2026-11-14T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/4/49/Forum_Assago_esterno.jpg" },
+  { city:"Nice, France", venue:"Allianz Riviera · Evren Only", date:new Date("2026-11-15T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/fr/8/8c/Allianzrivierainauguration.jpg" },
+  { city:"Monaco-Ville, Monaco", venue:"Stade Louis II · Evren Only", date:new Date("2026-11-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/7/78/Panoramio_-_V%26A_Dudush_-_stade_Louis_II.jpg" },
 ];
 
 function doSearch(q){
@@ -876,57 +883,6 @@ window.addEventListener('load',function(){
       </div>
     </div>
 
-    <!-- NEW DATE: Iceland Dec 12 -->
-    <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(100,180,255,.2);">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-        <div style="width:7px;height:7px;border-radius:50%;background:#64b4ff;animation:pulseDot 1.4s ease-in-out infinite;"></div>
-        <span style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#64b4ff;font-weight:700;">🆕 New Date Announced!</span>
-      </div>
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.01em;color:#fff;line-height:1;font-style:italic;">Reykjavík, Iceland 🇮🇸</div>
-      <div style="font-family:'Sora',sans-serif;font-size:.78rem;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em;">Laugardalsvöllur Stadium &middot; 12 Dec 2026 &middot; Evren Only 🥶</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:14px;">
-        <div style="display:flex;gap:10px;">
-          <div style="text-align:center;"><div id="ice-d" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Days</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
-          <div style="text-align:center;"><div id="ice-h" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Hrs</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
-          <div style="text-align:center;"><div id="ice-m" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Min</div></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);color:rgba(100,180,255,.35);align-self:flex-start;padding-top:3px;">:</div>
-          <div style="text-align:center;"><div id="ice-s" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#64b4ff;line-height:1;letter-spacing:.04em;">--</div><div style="font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;">Sec</div></div>
-        </div>
-        <div id="ice-weather" style="display:inline-flex;align-items:center;gap:8px;background:rgba(100,180,255,.08);border:1px solid rgba(100,180,255,.2);border-radius:20px;padding:5px 12px;">
-          <span id="ice-weather-icon" style="font-size:1rem;">⏳</span>
-          <span id="ice-weather-text" style="font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:rgba(255,255,255,.5);">Loading...</span>
-        </div>
-      </div>
-      <script>
-      (function(){
-        fetch('https://api.open-meteo.com/v1/forecast?latitude=64.13&longitude=-21.89&current=temperature_2m,weathercode&temperature_unit=celsius&timezone=Atlantic%2FReykjavik')
-          .then(function(r){return r.json();})
-          .then(function(d){
-            var temp=Math.round(d.current.temperature_2m);
-            var icons={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',71:'🌨',73:'🌨',75:'❄️',77:'❄️'};
-            var icon=icons[d.current.weathercode]||'🌡️';
-            document.getElementById('ice-weather-icon').textContent=icon;
-            document.getElementById('ice-weather-text').textContent='Reykjavík now: '+temp+'°C';
-            document.getElementById('ice-weather').style.borderColor='rgba(100,180,255,.4)';
-          })
-          .catch(function(){document.getElementById('ice-weather-text').textContent='Reykjavík, Iceland 🇮🇸';});
-      })();
-      </script>
-      <script>
-      function updateIceland(){
-        var ice=new Date("2026-12-12T21:00:00");
-        var now=new Date(); var diff=ice-now;
-        function pad(n){return String(Math.floor(Math.max(0,n))).padStart(2,'0');}
-        var dd=document.getElementById("ice-d"); if(dd) dd.textContent=pad(diff/86400000);
-        var dh=document.getElementById("ice-h"); if(dh) dh.textContent=pad((diff%86400000)/3600000);
-        var dm=document.getElementById("ice-m"); if(dm) dm.textContent=pad((diff%3600000)/60000);
-        var ds=document.getElementById("ice-s"); if(ds) ds.textContent=pad((diff%60000)/1000);
-      }
-      updateIceland();
-      setInterval(updateIceland,1000);
-      </script>
     </div>
 
   </div>
@@ -935,9 +891,13 @@ window.addEventListener('load',function(){
 <script>
 var shows = [
 
-  { city:"Valencia, Spain", venue:"Camp de Mestalla · Doors 21:00 · Pablo Only", date:new Date("2026-10-09T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg" },
+  { city:"Copenhagen, Denmark", venue:"Parken Stadium · Evren Only", date:new Date("2026-10-03T21:00:00"), img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuz8474yqnSLRH7FBo9B5AGN3_ukjhgat2cRhi7RaIQ&s=10" },
+  { city:"Malmö, Sweden", venue:"Malmö Arena · Evren Only", date:new Date("2026-10-07T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/3/3c/20171031_Malmo_Arena_0232_%2825463574977%29.jpg" },
+    { city:"Valencia, Spain", venue:"Camp de Mestalla · Doors 21:00 · Pablo Only", date:new Date("2026-10-09T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg" },
   { city:"Madrid, Spain (Oct)", venue:"Movistar Arena · Doors 21:00 · Pablo Only", date:new Date("2026-10-10T21:00:00"), img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10" },
-  { city:"Reykjavík, Iceland", venue:"Laugardalsvöllur Stadium · Doors 21:00 · Evren Solo", date:new Date("2026-12-12T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg" },
+  { city:"Milan, Italy (Nov)", venue:"Unipol Forum · Evren Only", date:new Date("2026-11-14T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/4/49/Forum_Assago_esterno.jpg" },
+  { city:"Nice, France", venue:"Allianz Riviera · Evren Only", date:new Date("2026-11-15T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/fr/8/8c/Allianzrivierainauguration.jpg" },
+  { city:"Monaco-Ville, Monaco", venue:"Stade Louis II · Evren Only", date:new Date("2026-11-16T21:00:00"), img:"https://upload.wikimedia.org/wikipedia/commons/7/78/Panoramio_-_V%26A_Dudush_-_stade_Louis_II.jpg" },
 ];
 
 function getNextShow(){ var now=new Date(); for(var i=0;i<shows.length;i++){ if(shows[i].date>now) return shows[i]; } return null; }
@@ -1110,6 +1070,44 @@ setInterval(updateStockholm, 1000);
   </div>
 
 
+  <!-- Copenhagen Denmark Oct 3 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuz8474yqnSLRH7FBo9B5AGN3_ukjhgat2cRhi7RaIQ&s=10');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Oct 2026</div><div class="dr-day">3</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇩🇰</span> Copenhagen, Denmark</h3>
+        <p>Parken Stadium · Doors 21:00</p>
+        <p class="dr-note">★ Evren Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(100,150,255,.12);border:1px solid rgba(100,150,255,.5);color:#7eb5ff;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Malmo Sweden Oct 7 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/3c/20171031_Malmo_Arena_0232_%2825463574977%29.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Oct 2026</div><div class="dr-day">7</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇸🇪</span> Malmö, Sweden</h3>
+        <p>Malmö Arena · Doors 21:00</p>
+        <p class="dr-note">★ Evren Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(100,150,255,.12);border:1px solid rgba(100,150,255,.5);color:#7eb5ff;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Valencia Spain October 9 -->
   <div class="dr upcoming" id="valencia-row">
     <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg');"></div>
@@ -1148,26 +1146,62 @@ setInterval(updateStockholm, 1000);
     </div>
   </div>
 
-  <!-- Reykjavik Iceland -->
+  <!-- Milan Italy Nov 14 -->
   <div class="dr upcoming">
-    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg/1280px-Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg');"></div>
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/4/49/Forum_Assago_esterno.jpg');"></div>
     <div class="dr-overlay"></div>
     <div class="dr-inner">
       <div class="dr-dot"></div>
-      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">12</div></div>
+      <div class="dr-date"><div class="dr-month">Nov 2026</div><div class="dr-day">14</div></div>
       <div class="dr-info">
-        <h3><span class="flag">🇮🇸</span> Reykjavík, Iceland <span style="display:inline-block;background:rgba(100,180,255,.15);border:1px solid rgba(100,180,255,.5);color:#64b4ff;font-size:.52rem;letter-spacing:.14em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">🆕 NEW</span></h3>
-        <p>Laugardalsvöllur Stadium · Doors 21:00 · 12 Dec 2026</p>
-        <p class="dr-note">★ Evren Only Performance · <span style="color:rgba(255,255,255,0.35);">Too cold for Pablo 🥶</span></p>
+        <h3><span class="flag">🇮🇹</span> Milan, Italy</h3>
+        <p>Unipol Forum · Doors 21:00</p>
+        <p class="dr-note">★ Evren Only Performance</p>
       </div>
       <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
-        <span style="display:inline-block;background:rgba(100,200,100,.12);border:1px solid rgba(100,200,100,.5);color:#64c864;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">🔥 21% Sold</span>
-        <div style="width:80px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-top:2px;"><div style="width:21%;height:100%;background:linear-gradient(to right,#64c864,#3ddc84);border-radius:2px;"></div></div>
+        <span style="display:inline-block;background:rgba(100,150,255,.12);border:1px solid rgba(100,150,255,.5);color:#7eb5ff;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
         <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Nice France Nov 15 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/fr/8/8c/Allianzrivierainauguration.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Nov 2026</div><div class="dr-day">15</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇫🇷</span> Nice, France</h3>
+        <p>Allianz Riviera · Doors 21:00</p>
+        <p class="dr-note">★ Evren Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(100,150,255,.12);border:1px solid rgba(100,150,255,.5);color:#7eb5ff;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monaco-Ville Monaco Nov 16 -->
+  <div class="dr upcoming">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/78/Panoramio_-_V%26A_Dudush_-_stade_Louis_II.jpg');"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot"></div>
+      <div class="dr-date"><div class="dr-month">Nov 2026</div><div class="dr-day">16</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇲🇨</span> Monaco-Ville, Monaco</h3>
+        <p>Stade Louis II · Doors 21:00</p>
+        <p class="dr-note">★ Evren Only Performance</p>
+      </div>
+      <div class="dr-action" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
+        <span style="display:inline-block;background:rgba(100,150,255,.12);border:1px solid rgba(100,150,255,.5);color:#7eb5ff;font-family:'Space Mono',monospace;font-size:.52rem;letter-spacing:.14em;padding:4px 10px;text-transform:uppercase;font-weight:700;">✓ Available</span>
+        <a href="https://www.instagram.com/king__pablito69" target="_blank" style="font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(205,177,117,.7);font-family:'Space Mono',monospace;margin-top:2px;">Get Tickets →</a>
+      </div>
+    </div>
+  </div>
 </div><!-- end timeline-wrap upcoming -->
 
 <div style="height:48px;background:var(--dark);"></div>
@@ -1540,6 +1574,22 @@ setInterval(updateStockholm, 1000);
   </div>
 
 
+  <!-- Reykjavik Iceland Dec 12 CANCELLED -->
+  <div class="dr" style="opacity:0.5;border-left:3px solid #e84141;">
+    <div class="dr-bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg');filter:grayscale(0.8);"></div>
+    <div class="dr-overlay"></div>
+    <div class="dr-inner">
+      <div class="dr-dot" style="background:#e84141;border-color:#e84141;animation:none;"></div>
+      <div class="dr-date"><div class="dr-month">Dec 2026</div><div class="dr-day">12</div></div>
+      <div class="dr-info">
+        <h3><span class="flag">🇮🇸</span> Reykjavík, Iceland <span style="display:inline-block;background:rgba(232,65,65,0.15);border:1px solid rgba(232,65,65,0.5);color:#e84141;font-size:.58rem;letter-spacing:.16em;padding:3px 9px;font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;vertical-align:middle;margin-left:8px;">✕ Cancelled</span></h3>
+        <p>Laugardalsvöllur Stadium · Was planned for 12 Dec 2026</p>
+        <p class="dr-note" style="color:#e84141;">⚠ Cancelled. We apologize to all fans in Iceland. 💔</p>
+      </div>
+      <div class="dr-action"><span class="unavail">Cancelled</span></div>
+    </div>
+  </div>
+
   <!-- Stockholm Jul 11 CANCELLED -->
   <div class="dr" style="opacity:0.5;border-left:3px solid #e84141;">
     <div class="dr-bg" style="background-image:url('https://strawberryarena.se/uploads/sites/6/2025/11/hero-1920x1080-1.jpg');filter:grayscale(0.8);"></div>
@@ -1752,9 +1802,12 @@ function initGlobe() {
     { city:'Athens',               country:'Greece',         lat:37.9838, lng:23.7275, status:'completed' },
     { city:'Geneva',               country:'Switzerland',    lat:46.2044, lng: 6.1432, status:'completed' },
     { city:'Madrid (Jul)',          country:'Spain',          lat:40.4168, lng:-3.7038, status:'completed' },
+    { city:'Copenhagen', country:'Denmark', lat:55.7022, lng:12.5783, status:'upcoming' },
+    { city:'Malmo', country:'Sweden', lat:55.5600, lng:12.9738, status:'upcoming' },
+    { city:'Nice', country:'France', lat:43.7059, lng:7.1926, status:'upcoming' },
+    { city:'Monaco', country:'Monaco', lat:43.7278, lng:7.4150, status:'upcoming' },
     { city:'Valencia',             country:'Spain',          lat:39.4742, lng:-0.3585, status:'upcoming' },
     { city:'Madrid (Oct)',         country:'Spain',          lat:40.4300, lng:-3.6780, status:'upcoming' },
-    { city:'Reykjavík',           country:'Iceland',        lat:64.1355, lng:-21.8954,status:'upcoming' },
     { city:'Milan (Jun 19+21)',    country:'Italy',         lat:45.4642, lng: 9.1900, status:'completed' }
   ];
 
@@ -1856,7 +1909,7 @@ if (globeScript) {
       <div class="legend2-row"><div class="legend2-dot" style="width:6px;height:6px;background:#a06e3b;box-shadow:0 0 5px rgba(160,110,60,.5);margin-left:1px;"></div><span class="legend2-label">2024</span></div>
     </div>
   </div>
-  <div class="const-footer2"><span>54 shows &nbsp;·&nbsp; 21 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
+  <div class="const-footer2"><span>59 shows &nbsp;·&nbsp; 23 countries &nbsp;·&nbsp; 3 years &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; drag to pan &nbsp;·&nbsp; double-click to reset</span></div>
 </div>
 <script>
 (function(){
@@ -1916,7 +1969,6 @@ const SHOWS2=[
   {id:54,year:2026,city:'Madrid',dateStr:'Jul 30, 2026',lat:40.417,lng:-3.704,completed:true,note:'⭐ Special Guest: Ye'},
   {id:50,year:2026,city:'Valencia',dateStr:'Oct 9, 2026',lat:39.474,lng:-0.358,completed:false},
   {id:55,year:2026,city:'Madrid (Oct)',dateStr:'Oct 10, 2026',lat:40.430,lng:-3.678,completed:false},
-  {id:51,year:2026,city:'Reykjavík',dateStr:'Dec 12, 2026',lat:64.135,lng:-21.895,completed:false},
 ];
 let activeYear2='ALL',filterStart2=performance.now(),globalStart2=performance.now(),bgStars2=[],panX2=0,panY2=0,zoom2=1;
 const MIN_ZOOM2=0.45,MAX_ZOOM2=9;
@@ -2050,18 +2102,19 @@ const RSHOWS=[
   {city:'Arnhem',lat:51.985,lng:5.899,date:'Jun 8, 2026',year:2026,note:'⭐ Kanye West special guest'},
   {city:'Milan',lat:45.464,lng:9.190,date:'Jun 19, 2026',year:2026,note:null},
   {city:'Milan',lat:45.463,lng:9.191,date:'Jun 21, 2026',year:2026,note:null},
-  {city:'Stockholm',lat:59.329,lng:18.069,date:'Jul 11, 2026',year:2026,note:'💔 Cancelled — Flight issues',completed:true},
   {city:'Paris',lat:48.839,lng:2.378,date:'Jul 13, 2026',year:2026,note:'🎂 Pablo Birthday Night'},
-  {city:'Kuala Lumpur',lat:3.057,lng:101.703,date:'Jul 20, 2026',year:2026,note:null},
-  {city:'Singapore',lat:1.304,lng:103.875,date:'Jul 26, 2026',year:2026,note:null},
   {city:'Hurghada',lat:27.258,lng:33.812,date:'Jul 17, 2026',year:2026,note:null},
   {city:'Istanbul',lat:41.008,lng:28.978,date:'Jul 22, 2026',year:2026,note:null},
   {city:'Athens',lat:37.984,lng:23.728,date:'Jul 24, 2026',year:2026,note:null},
   {city:'Geneva',lat:46.204,lng:6.143,date:'Jul 28, 2026',year:2026,note:'💙 Comeback Concert — 2 Years Later'},
   {city:'Madrid',lat:40.417,lng:-3.704,date:'Jul 30, 2026',year:2026,note:'⭐ Special Guest: Kanye West'},
+  {city:'Copenhagen',lat:55.702,lng:12.578,date:'Oct 3, 2026',year:2026,note:null},
+  {city:'Malmo',lat:55.560,lng:12.974,date:'Oct 7, 2026',year:2026,note:null},
   {city:'Valencia',lat:39.474,lng:-0.358,date:'Oct 9, 2026',year:2026,note:null},
-  {city:'Madrid (Oct)',lat:40.430,lng:-3.678,date:'Oct 10, 2026',year:2026,note:null},
-  {city:'Reykjavík',lat:64.135,lng:-21.895,date:'Dec 12, 2026',year:2026,note:null},
+  {city:'Madrid (Oct)',lat:40.430,lng:-3.678,date:'Oct 10, 2026',year:2026,note:null},,
+  {city:'Milan (Nov)',lat:45.406,lng:9.093,date:'Nov 14, 2026',year:2026,note:null},
+  {city:'Nice',lat:43.706,lng:7.193,date:'Nov 15, 2026',year:2026,note:null},
+  {city:'Monaco',lat:43.728,lng:7.415,date:'Nov 16, 2026',year:2026,note:null}
 ];
 const RYC={2024:{hex:'#a06e3b',r:160,g:110,b:59},2025:{hex:'#5fa569',r:95,g:165,b:105},2026:{hex:'#cdb175',r:205,g:177,b:117}};
 const rcv=document.getElementById('route-canvas');
@@ -2165,7 +2218,10 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jul 28',city:'Antalya',flag:'🇹🇷',venue:'Antalya Stadium',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/4/48/Yeni_Antalya_Stadyumu_-_23.6.15.JPG'},
       {date:'Sep 8',city:'Geneva',flag:'🇨🇭',venue:'Stade de Genève',perf:'pablo',done:true,img:'https://servettefc.ch/wp-content/uploads/2023/01/PlanDrone-SFC-scaled.jpg'},
       {date:'Sep 30',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvJdRZ_khDAqq0ROmYTw65LLkxzfB-ggAilZwcdbVAX99SPMw_txdHuQ&s=10'},
-      {date:'Oct 7',city:'Sofia',flag:'🇧🇬',venue:'Vasil Levski Stadium',perf:'pablo',done:true,img:'https://visitsofia.bg/images/vegas_media/category30000/object1137/bc9eda16929341c44a00f67d99a530c1.jpg'},
+      {date:'Oct 7',city:'Sofia',flag:'🇧🇬',venue:'Vasil Levski Stadium',perf:'pablo',done:true,img:'https://visitsofia.bg/images/vegas_media/category30000/object1137/bc9eda16929341c44a00f67d99a530c1.jpg'},,
+      {date:'Nov 14',city:'Milan (Nov)',flag:'🇮🇹',venue:'Unipol Forum',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/4/49/Forum_Assago_esterno.jpg'},
+      {date:'Nov 15',city:'Nice',flag:'🇫🇷',venue:'Allianz Riviera',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/fr/8/8c/Allianzrivierainauguration.jpg'},
+      {date:'Nov 16',city:'Monaco',flag:'🇲🇨',venue:'Stade Louis II',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/7/78/Panoramio_-_V%26A_Dudush_-_stade_Louis_II.jpg'}
     ],
     '2025': [
       {date:'Jan 30',city:'Barcelona',flag:'🇪🇸',venue:'Camp Nou',perf:'pablo',done:true,img:'https://www.fcbarcelona.com/photo-resources/2025/10/31/f405b197-5935-4768-8d44-2098f4b6effb/_GP10508.jpg?width=1200&height=750'},
@@ -2210,16 +2266,18 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
       {date:'Jul 24',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium Athens',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK2-6OEYVIddtujlLJnR5fzwpSAJa2HD4B7CUlK3rHzEGjuTNx37prhls&s=10'},
       {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:true,img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
       {date:'Jul 30 ⭐',city:'Madrid',flag:'🇪🇸',venue:'Riyadh Air Metropolitano',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atleti_vs_Villarreal_-_September_2025.jpg'},
+      {date:'Oct 3',city:'Copenhagen',flag:'🇩🇰',venue:'Parken Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuz8474yqnSLRH7FBo9B5AGN3_ukjhgat2cRhi7RaIQ&s=10'},
+      {date:'Oct 7',city:'Malmö',flag:'🇸🇪',venue:'Malmö Arena',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/3/3c/20171031_Malmo_Arena_0232_%2825463574977%29.jpg'},
       {date:'Oct 9 🔥',city:'Valencia',flag:'🇪🇸',venue:'Camp de Mestalla',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
       {date:'Oct 10',city:'Madrid',flag:'🇪🇸',venue:'Movistar Arena',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
-      {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
       {date:'Jul 22 🔥',city:'Istanbul',flag:'🇹🇷',venue:'Atatürk Olympic Stadium',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZvNnJMQ9xydId2UViZ9Mh5kmzhY0fnE74MV8zh5UfbA&s=10'},
       {date:'Jul 24',city:'Athens',flag:'🇬🇷',venue:'Olympic Stadium Athens',perf:'pablo',done:true,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLK2-6OEYVIddtujlLJnR5fzwpSAJa2HD4B7CUlK3rHzEGjuTNx37prhls&s=10'},
       {date:'Jul 28 💙',city:'Geneva',flag:'🇨🇭',venue:'Uptown Geneva — Comeback',perf:'pablo',done:true,img:'https://uptown-geneva.ch/wp-content/uploads/2023/06/broadway-1-1.jpg'},
       {date:'Jul 30 ⭐',city:'Madrid',flag:'🇪🇸',venue:'Riyadh Air Metropolitano',perf:'pablo',done:true,img:'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atleti_vs_Villarreal_-_September_2025.jpg'},
+      {date:'Oct 3',city:'Copenhagen',flag:'🇩🇰',venue:'Parken Stadium',perf:'evren',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuz8474yqnSLRH7FBo9B5AGN3_ukjhgat2cRhi7RaIQ&s=10'},
+      {date:'Oct 7',city:'Malmö',flag:'🇸🇪',venue:'Malmö Arena',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/3/3c/20171031_Malmo_Arena_0232_%2825463574977%29.jpg'},
       {date:'Oct 9 🔥',city:'Valencia',flag:'🇪🇸',venue:'Camp de Mestalla',perf:'pablo',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/d/d6/Mestalla_antes_del_partido_Valencia-Barcelona_LaLiga_2023-2024.jpg'},
       {date:'Oct 10',city:'Madrid',flag:'🇪🇸',venue:'Movistar Arena',perf:'pablo',done:false,img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2yN01A9eFvfR0123JTm-lun1bWXgA_sskcvCG-4HUAeqOX5wvDRQVthY&s=10'},
-      {date:'Dec 12 🆕',city:'Reykjavík',flag:'🇮🇸',venue:'Laugardalsvöllur Stadium',perf:'evren',done:false,img:'https://upload.wikimedia.org/wikipedia/commons/5/54/Laugardalsv%C3%B6llur%2C_Iceland%27s_national_football_stadium.jpg'},
     ]
   };
   var _storyYear = '2026';
@@ -2363,14 +2421,14 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
   <div class="nums-grid">
     <div class="num-card reveal" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="54" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">2024, 2025 &amp; 2026 — ongoing</span></div>
+        <div class="num-card-front"><span class="num-emoji">🎤</span><span class="num-val" data-target="59" data-suffix="">0</span><span class="num-label">Total Shows</span><span class="num-sub">2024, 2025 &amp; 2026 — ongoing</span></div>
         <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.65rem;color:var(--accent);line-height:1.8;text-align:center;letter-spacing:.04em;">2024: 12 shows<br>2025: 18 shows<br>2026: 20+ shows<br><span style="color:rgba(255,255,255,.4);font-size:.55rem;">and counting ✓</span></div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
       <div class="num-card-inner">
-        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="21" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
-        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸 🇫🇷 🇲🇾 🇸🇬</div>
+        <div class="num-card-front"><span class="num-emoji">🌍</span><span class="num-val" data-target="23" data-suffix="">0</span><span class="num-label">Countries</span><span class="num-sub">From Thailand to USA</span></div>
+        <div class="num-card-back" style="font-family:'Space Mono',monospace;font-size:.52rem;color:var(--accent);line-height:1.7;text-align:center;">🇬🇧 🇺🇸 🇪🇸 🇮🇹 🇹🇷 🇨🇭<br>🇬🇷 🇧🇬 🇹🇭 🇳🇱 🇲🇹 🇱🇮<br>🇱🇺 🇪🇬 🇸🇪 🇩🇪 🇸🇲 🇮🇸 🇫🇷 🇲🇾 🇸🇬 🇩🇰 🇲🇨</div>
       </div>
     </div>
     <div class="num-card reveal d1" onclick="this.classList.toggle('flipped')">
@@ -3436,9 +3494,10 @@ window.addEventListener('DOMContentLoaded', function(){ calcCurrency(); });
     {flag:'🇬🇷',city:'Athens',date:'Jul 24',venue:'Olympic Stadium',year:'2026',done:true,perf:'pablo'},
     {flag:'🇨🇭',city:'Geneva',date:'Jul 28',venue:'Uptown Geneva 💙',year:'2026',done:true,perf:'pablo',special:'💙 Comeback'},
     {flag:'🇪🇸',city:'Madrid',date:'Jul 30',venue:'Riyadh Air Metropolitano',year:'2026',done:true,perf:'pablo',special:'⭐ Ye'},
+    {flag:'🇩🇰',city:'Copenhagen',date:'Oct 3',venue:'Parken Stadium',year:'2026',done:false,perf:'evren'},
+    {flag:'🇸🇪',city:'Malmo',date:'Oct 7',venue:'Malmo Arena',year:'2026',done:false,perf:'evren'},
     {flag:'🇪🇸',city:'Valencia',date:'Oct 9',venue:'Camp de Mestalla',year:'2026',done:false,perf:'pablo'},
     {flag:'🇪🇸',city:'Madrid',date:'Oct 10',venue:'Movistar Arena',year:'2026',done:false,perf:'pablo'},
-    {flag:'🇮🇸',city:'Reykjavík',date:'Dec 12',venue:'Laugardalsvöllur',year:'2026',done:false,perf:'evren',special:'🆕 NEW'},
   ];
 
   var perfColors={pablo:'rgba(205,177,117,.9)',evren:'#7eb5ff',both:'#3ddc84'};
