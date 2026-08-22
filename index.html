@@ -2111,7 +2111,7 @@ const RSHOWS=[
   {city:'Copenhagen',lat:55.702,lng:12.578,date:'Oct 3, 2026',year:2026,note:null},
   {city:'Malmo',lat:55.560,lng:12.974,date:'Oct 7, 2026',year:2026,note:null},
   {city:'Valencia',lat:39.474,lng:-0.358,date:'Oct 9, 2026',year:2026,note:null},
-  {city:'Madrid (Oct)',lat:40.430,lng:-3.678,date:'Oct 10, 2026',year:2026,note:null},,
+  {city:'Madrid (Oct)',lat:40.430,lng:-3.678,date:'Oct 10, 2026',year:2026,note:null},
   {city:'Milan (Nov)',lat:45.406,lng:9.093,date:'Nov 14, 2026',year:2026,note:null},
   {city:'Nice',lat:43.706,lng:7.193,date:'Nov 15, 2026',year:2026,note:null},
   {city:'Monaco',lat:43.728,lng:7.415,date:'Nov 16, 2026',year:2026,note:null}
@@ -2137,7 +2137,7 @@ function rSetPBar(p){document.getElementById('r-progressfill').style.width=Math.
 function rLoop(ts){var dt=rLastTs?Math.min((ts-rLastTs)/1000,.1):0;rLastTs=ts;if(rPlaying&&RA.phase!=='idle'&&RA.phase!=='done')rAdvance(dt*rSpeed);rDrawFrame();requestAnimationFrame(rLoop);}
 function rShowCard(s){var yc=RYC[s.year];var p=rProj(s.lat,s.lng);document.getElementById('rc-city').textContent=s.city;document.getElementById('rc-date').textContent=s.date;var badge=document.getElementById('rc-badge');badge.textContent=s.year;badge.style.cssText='flex-shrink:0;border-radius:3px;padding:2px 8px;font-size:10px;letter-spacing:.05em;background:'+yc.hex+'22;border:1px solid '+yc.hex+';color:'+yc.hex;var note=document.getElementById('rc-note');note.textContent=s.note||'';note.style.display=s.note?'block':'none';var card=document.getElementById('route-card');var cl=Math.max(8,Math.min(p[0]-120,rcw-248));var ct=Math.max(8,Math.min(p[1]-155,rch-200));card.style.left=cl+'px';card.style.top=ct+'px';card.style.display='block';}
 function rHideCard(){document.getElementById('route-card').style.display='none';}
-function rShowEnd(){document.getElementById('r-end-count').textContent=rShows().length+' SHOWS · 19 COUNTRIES · 3 YEARS';document.getElementById('route-endcard').style.display='flex';}
+function rShowEnd(){document.getElementById('r-end-count').textContent=rShows().length+' SHOWS · 23 COUNTRIES · 3 YEARS';document.getElementById('route-endcard').style.display='flex';}
 document.getElementById('r-replay-btn').addEventListener('click',function(){document.getElementById('route-endcard').style.display='none';rResetAnim();rStartPlay();});
 function rResetAnim(){RA.phase='idle';RA.idx=0;RA.segT=0;RA.landT=0;RA.cardT=0;RA.trails=[];}
 function rStartPlay(){var ss=rShows();if(!ss.length)return;RA.phase='landing';RA.landT=0;rShowCard(ss[0]);rPlaying=true;rUpdatePlayBtn();}
