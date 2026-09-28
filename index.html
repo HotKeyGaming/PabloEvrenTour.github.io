@@ -132,6 +132,24 @@ nav.scrolled{background:rgba(10,10,10,.88);backdrop-filter:blur(18px);border-bot
 .hbtn.open span:nth-child(2){opacity:0}
 .hbtn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* SITE SWITCH (NEW / OG) + SPARKLES */
+.ss{position:relative;display:inline-flex;align-items:stretch;border:1px solid rgba(205,177,117,.6);border-radius:30px;padding:2px;background:rgba(10,8,4,.6);flex-shrink:0;animation:ssGlow 2.6s ease-in-out infinite}
+.ss a{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:.44rem;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;padding:4px 7px;border-radius:26px;color:rgba(205,177,117,.8);white-space:nowrap;transition:background .25s,color .25s}
+.ss a span{display:block}
+.ss a.on{background:var(--gradv);color:#000;box-shadow:0 0 10px rgba(205,177,117,.6)}
+.ss a:not(.on):hover{color:#fff;background:rgba(205,177,117,.2)}
+@media(min-width:641px){.ss a{flex-direction:row;gap:4px;font-size:.54rem;letter-spacing:.08em;padding:6px 13px}}
+.ss.ss-big{display:flex;width:100%;margin:0 0 20px;padding:3px}
+.ss.ss-big a{flex:1;flex-direction:row;gap:5px;font-size:.6rem;letter-spacing:.08em;padding:11px 6px}
+.sp{position:absolute;pointer-events:none;font-style:normal;color:#f7e2a3;text-shadow:0 0 6px #e8cf92,0 0 12px rgba(205,177,117,.85);font-size:9px;line-height:1;left:var(--x);top:var(--y);opacity:0;transform:scale(.3);animation:spTwinkle 2.4s ease-in-out infinite;animation-delay:var(--d);z-index:3}
+@keyframes spTwinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0deg)}40%{opacity:1;transform:scale(1.15) rotate(80deg)}70%{opacity:.35;transform:scale(.6) rotate(140deg)}}
+@keyframes ssGlow{0%,100%{box-shadow:0 0 6px rgba(205,177,117,.35),0 0 14px rgba(205,177,117,.15)}50%{box-shadow:0 0 12px rgba(205,177,117,.8),0 0 26px rgba(205,177,117,.4)}}
+@keyframes hbGlow{0%,100%{box-shadow:0 0 6px rgba(205,177,117,.3),0 0 12px rgba(205,177,117,.12)}50%{box-shadow:0 0 12px rgba(205,177,117,.75),0 0 24px rgba(205,177,117,.35)}}
+.hbtn{animation:hbGlow 2.8s ease-in-out infinite}
+.nav-right{gap:8px}
+.search-btn{padding:5px 10px!important;font-size:.5rem!important;gap:4px!important}
+@media(max-width:480px){.nav-right{gap:6px}.nav-logo{font-size:.92rem}.nav-logo small{font-size:.46rem;letter-spacing:.16em}.search-btn{padding:4px 8px!important;font-size:.46rem!important}}
+
 /* MOBILE DRAWER */
 #mob-nav{position:fixed;top:0;right:0;bottom:0;width:min(340px,88vw);background:rgba(6,6,12,.99);backdrop-filter:blur(24px);z-index:300;transform:translateX(100%);transition:transform .4s var(--ease);border-left:1px solid rgba(205,177,117,.25);overflow-y:auto;padding:80px 30px 40px}
 #mob-nav::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:1}
@@ -527,8 +545,8 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
   </ul>
   <div class="nav-right">
     <button class="nbtn search-btn" onclick="openSearch()" title="Ctrl+K">&#128269; Search</button>
-    <button class="nbtn login" onclick="showLoginModal()">Register / Login</button>
-    <button class="hbtn" id="hbtn" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="ss" id="siteswitch" role="group" aria-label="Choose website version"><a class="on" href="index.html" aria-current="page"><span>New</span><span>Website</span></a><a href="og.html"><span>OG</span><span>Website</span></a><i class="sp" style="--x:-7px;--y:-9px;--d:0s">✦</i><i class="sp" style="--x:34%;--y:-11px;--d:0.5s">✧</i><i class="sp" style="--x:72%;--y:-10px;--d:1.1s">✦</i><i class="sp" style="--x:101%;--y:8px;--d:0.3s">✧</i><i class="sp" style="--x:88%;--y:102%;--d:0.9s">✦</i><i class="sp" style="--x:42%;--y:106%;--d:1.4s">✧</i><i class="sp" style="--x:8%;--y:104%;--d:0.7s">✦</i><i class="sp" style="--x:-9px;--y:50%;--d:1.7s">✧</i></div>
+    <button class="hbtn" id="hbtn" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span><i class="sp" style="--x:-8px;--y:-8px;--d:0s">✦</i><i class="sp" style="--x:60%;--y:-10px;--d:0.6s">✧</i><i class="sp" style="--x:102%;--y:20%;--d:1.2s">✦</i><i class="sp" style="--x:96%;--y:96%;--d:0.3s">✧</i><i class="sp" style="--x:-9px;--y:88%;--d:0.9s">✦</i><i class="sp" style="--x:12%;--y:-11px;--d:1.5s">✧</i></button>
   </div>
 </nav>
 <script>window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});</script>
@@ -538,6 +556,7 @@ document.addEventListener('mouseout',function(e){if(e.target.closest('a,button,.
 <div id="mob-nav">
   <button class="mob-close" onclick="closeMob()">&#10005;</button>
   <div style="margin-bottom:26px"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Pablo &times; Evren</div><div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)">World Tour 2026</div></div>
+  <div class="ss ss-big" role="group" aria-label="Choose website version"><a class="on" href="index.html" onclick="closeMob()"><span>New</span><span>Website</span></a><a href="og.html"><span>OG</span><span>Website</span></a><i class="sp" style="--x:-7px;--y:-9px;--d:0s">✦</i><i class="sp" style="--x:34%;--y:-11px;--d:0.5s">✧</i><i class="sp" style="--x:72%;--y:-10px;--d:1.1s">✦</i><i class="sp" style="--x:101%;--y:8px;--d:0.3s">✧</i><i class="sp" style="--x:88%;--y:102%;--d:0.9s">✦</i><i class="sp" style="--x:42%;--y:106%;--d:1.4s">✧</i><i class="sp" style="--x:8%;--y:104%;--d:0.7s">✦</i><i class="sp" style="--x:-9px;--y:50%;--d:1.7s">✧</i></div>
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#3ddc84;padding:4px 10px;border-radius:20px;">● Live Tour</span>
     <span style="font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(205,177,117,.1);border:1px solid rgba(205,177,117,.25);color:var(--accent);padding:4px 10px;border-radius:20px;">67 Shows · 25 Countries</span>
