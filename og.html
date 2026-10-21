@@ -65,6 +65,16 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .buy.off:hover{background:#fff;color:#aaa}
 .show .who:empty{display:none}
 
+/* album disc */
+.albumbox{padding:6px 0 4px;text-align:center}
+.dscene{perspective:1100px;cursor:pointer;user-select:none;-webkit-user-select:none;display:flex;justify-content:center;padding:18px 0 14px}
+#dwrap{width:min(300px,72vw);height:min(300px,72vw);position:relative;transform-style:preserve-3d;transform:rotateX(18deg) rotateY(0deg);will-change:transform;touch-action:pan-y}
+.dface{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.dface img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+.dback{transform:rotateY(180deg)}
+.dhint{font-size:10px;color:#999;letter-spacing:.1em}
+.dname{font-size:13px;letter-spacing:.08em;margin-top:2px}
+
 /* map / store */
 .sec-h{font-size:14px;padding:22px 16px 10px;letter-spacing:.08em}
 .mapbox{margin:0 10px;border:1px solid #000;background:#0d0d0c;overflow:hidden}
@@ -126,7 +136,7 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 
   <div class="tabs" role="tablist">
     <button class="tab on" id="tab-tour" role="tab" aria-selected="true" onclick="ogTab('tour')">TOUR</button>
-    <button class="tab" id="tab-store" role="tab" aria-selected="false" onclick="ogTab('store')">MAP/STORE</button>
+    <button class="tab" id="tab-store" role="tab" aria-selected="false" onclick="ogTab('store')">MAP/ALBUM/STORE</button>
   </div>
 
   <!-- TOUR TAB -->
@@ -473,6 +483,17 @@ window.initRoute=function(){if(!rcv.offsetWidth)return;rSetup();requestAnimation
 
 
     </div>
+    <div class="sec-h" style="padding-top:34px">ALBUM</div>
+    <div class="albumbox">
+      <div class="dname">PABLO &times; EVREN &mdash; HOLY OBESITY</div>
+      <div class="dscene" id="dscene">
+        <div id="dwrap">
+          <div class="dface"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg" alt="Holy Obesity - front" loading="lazy"></div>
+          <div class="dface dback"><img src="https://i.redd.it/xl647j9kk0w61.png" alt="Holy Obesity - back" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="dhint">TAP &amp; HOLD TO SPEED UP</div>
+    </div>
     <div class="sec-h" style="padding-top:34px">MERCHANDISE</div>
     <div class="mgrid">
 <div class="mc"><div class="mi"><img src="https://plain-weur-prod-public.komododecks.com/202605/06/RrOsf2pTyNXCdLNR3oT0/image.jpg" alt="World Tour Tee" loading="lazy"></div><div class="mt"><div class="mnm">WORLD TOUR TEE</div><div class="mpr">67 CHF</div></div></div>
@@ -654,7 +675,7 @@ var OG_PAST = [
 },
 {
 "city": "BARCELONA",
-"venue": "CAMP NOU",
+"venue": "ESTADI OLÍMPIC LLUÍS COMPANYS",
 "date": "30 JANUARY 2025",
 "iso": "2025-01-30",
 "year": "2025",
@@ -694,7 +715,7 @@ var OG_PAST = [
 },
 {
 "city": "BARCELONA",
-"venue": "CAMP NOU",
+"venue": "ESTADI OLÍMPIC LLUÍS COMPANYS",
 "date": "10 MAY 2025",
 "iso": "2025-05-10",
 "year": "2025",
@@ -726,7 +747,7 @@ var OG_PAST = [
 },
 {
 "city": "BARCELONA",
-"venue": "CAMP NOU",
+"venue": "ESTADI OLÍMPIC LLUÍS COMPANYS",
 "date": "23 JUNE 2025",
 "iso": "2025-06-23",
 "year": "2025",
@@ -789,16 +810,8 @@ var OG_PAST = [
 "who": "PABLO ONLY"
 },
 {
-"city": "KARLSRUHE",
-"venue": "WILDPARKSTADION",
-"date": "20 DECEMBER 2025",
-"iso": "2025-12-20",
-"year": "2025",
-"who": "PABLO ONLY"
-},
-{
 "city": "BARCELONA",
-"venue": "CAMP NOU",
+"venue": "ESTADI OLÍMPIC LLUÍS COMPANYS",
 "date": "13 FEBRUARY 2026",
 "iso": "2026-02-13",
 "year": "2026",
@@ -813,14 +826,6 @@ var OG_PAST = [
 "who": "PABLO ONLY"
 },
 {
-"city": "BERN",
-"venue": "WANKDORF STADION",
-"date": "21 MARCH 2026",
-"iso": "2026-03-21",
-"year": "2026",
-"who": "PABLO ONLY"
-},
-{
 "city": "ERZINCAN",
 "venue": "13 ŞUBAT CITY",
 "date": "25 APRIL 2026",
@@ -830,7 +835,7 @@ var OG_PAST = [
 },
 {
 "city": "ISTANBUL",
-"venue": "ATATÜRK STADIUM",
+"venue": "ATATÜRK OLYMPIC STADIUM",
 "date": "1 MAY 2026",
 "iso": "2026-05-01",
 "year": "2026",
@@ -862,7 +867,7 @@ var OG_PAST = [
 },
 {
 "city": "VADUZ",
-"venue": "RHEINPARK",
+"venue": "RHEINPARK STADIUM",
 "date": "17 MAY 2026",
 "iso": "2026-05-17",
 "year": "2026",
@@ -918,7 +923,7 @@ var OG_PAST = [
 },
 {
 "city": "ISTANBUL",
-"venue": "ATATÜRK STADIUM",
+"venue": "ATATÜRK OLYMPIC STADIUM",
 "date": "22 JULY 2026",
 "iso": "2026-07-22",
 "year": "2026",
@@ -998,7 +1003,7 @@ var OG_PAST = [
 },
 {
 "city": "MADRID",
-"venue": "MOVISTAR ARENA",
+"venue": "RIYADH AIR METROPOLITANO",
 "date": "10 OCTOBER 2026",
 "iso": "2026-10-10",
 "year": "2026",
@@ -1138,6 +1143,27 @@ function ogSort(){
   ogRender();
 }
 ogRender();
+
+(function(){
+  var el=document.getElementById('dwrap'), sc=document.getElementById('dscene');
+  if(!el||!sc) return;
+  var a=0,cur=4,tgt=4,last=null;
+  sc.addEventListener('mouseenter',function(){tgt=14;});
+  sc.addEventListener('mouseleave',function(){tgt=4;});
+  sc.addEventListener('mousedown',function(){tgt=26;});
+  sc.addEventListener('mouseup',function(){tgt=14;});
+  sc.addEventListener('touchstart',function(){tgt=26;},{passive:true});
+  sc.addEventListener('touchend',function(){tgt=4;});
+  function tick(ts){
+    if(last===null) last=ts;
+    var dt=Math.min((ts-last)/1000,.05); last=ts;
+    cur+=(tgt-cur)*(cur<tgt?4:1.5)*dt;
+    a+=(cur/60)*360*dt; if(a>=360) a-=360;
+    el.style.transform='rotateX(18deg) rotateY('+a+'deg)';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
 
 var _globeStarted=false;
 function ogTab(which){
