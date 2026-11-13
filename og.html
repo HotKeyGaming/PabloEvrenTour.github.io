@@ -61,6 +61,21 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .filt2 .yrs button,.filt2 .sort{font-size:11px;line-height:16px;color:#aaa;letter-spacing:.06em;padding:1px 0}
 .filt2 .yrs button.on{color:#000;text-decoration:underline;text-underline-offset:3px}
 .filt2 .sort{margin-left:auto;color:#555}
+.more{display:inline-block;margin-top:7px;font-size:11px;line-height:16px;color:#000;letter-spacing:.14em;background:none;border:0;border-bottom:1px solid #000;padding:0 0 1px;font-family:inherit;cursor:pointer;text-transform:uppercase}
+.act{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+.chev{width:40px;height:35px;font-size:20px;line-height:35px;color:#000;text-align:center;background:none;border:0;padding:0;cursor:pointer;font-family:inherit}
+.chev.open{transform:rotate(90deg)}
+.item .show{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pn{display:none;padding:6px 0 22px}
+.pn.open{display:block}
+.pn-t{font-size:18px;line-height:26px;margin-bottom:10px}
+.pn-img{display:block;width:100%;aspect-ratio:879/545;object-fit:cover;background:#f1f1f1;margin-bottom:6px}
+.pn-v{font-size:13px;line-height:20px;margin-bottom:10px}
+.pn-r{display:flex;gap:10px;font-size:13px;line-height:22px}
+.pn-r span{flex:0 0 104px;color:#888}
+.pn-cd{background:#000;color:#fff;text-align:center;padding:20px 0 14px;margin-top:16px}
+.pn-cd b{display:block;font-size:64px;line-height:64px;font-weight:500}
+.pn-cd i{font-style:normal;font-size:12px;letter-spacing:.2em}
 .buy.off{border-color:#c4c4c4;color:#aaa;cursor:default;font-size:12px}
 .buy.off:hover{background:#fff;color:#aaa}
 .show .who:empty{display:none}
@@ -516,56 +531,88 @@ var OG_SHOWS = [
   "venue": "ST. JAKOB PARK STADIUM",
   "date": "COMING 2027",
   "iso": "",
-  "who": "PABLO ONLY"
+  "who": "PABLO ONLY",
+  "title": "BASEL, SWITZERLAND",
+  "flag": "🇨🇭",
+  "doors": "21:00",
+  "img": "https://cdn.unitycms.io/images/EWRt-ReaKtyBPbXd_6eaQ6.jpg"
  },
  {
   "city": "LONDON",
-  "venue": "EMIRATES STADIUM",
+  "venue": "TOTTENHAM HOTSPUR STADIUM",
   "date": "19 DECEMBER 2026",
   "iso": "2026-12-19T23:59:59",
-  "who": "PABLO ONLY"
+  "who": "PABLO ONLY",
+  "title": "LONDON, UNITED KINGDOM",
+  "flag": "🇬🇧",
+  "doors": "21:00",
+  "img": "https://www.mfsgroup.com/wp-content/uploads/2019/03/Screenshot-2024-05-27-at-14.32.24.png"
  },
  {
   "city": "LISBON",
   "venue": "ESTÁDIO DA LUZ",
   "date": "18 JUNE 2027",
   "iso": "2027-06-18T23:59:59",
-  "who": "PABLO ONLY · + SPECIAL GUEST"
+  "who": "PABLO ONLY · + SPECIAL GUEST",
+  "title": "LISBON, PORTUGAL",
+  "flag": "🇵🇹",
+  "doors": "21:00",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/1/18/Estadio_da_Luz_2012.jpg"
  },
  {
   "city": "INCHEON",
   "venue": "INCHEON MUNHAK STADIUM",
   "date": "5 AUGUST 2027",
   "iso": "2027-08-05T23:59:59",
-  "who": "PABLO ONLY"
+  "who": "PABLO ONLY",
+  "title": "INCHEON, SOUTH KOREA",
+  "flag": "🇰🇷",
+  "doors": "21:00",
+  "img": "https://images.trvl-media.com/place/6080027/cecf2205-a19e-42f4-b244-5e03fcf8b79f.jpg"
  },
  {
   "city": "HONG KONG",
   "venue": "ASIAWORLD-EXPO",
   "date": "19 DECEMBER 2027",
   "iso": "2027-12-19T23:59:59",
-  "who": "EVREN ONLY"
+  "who": "EVREN ONLY",
+  "title": "HONG KONG SAR",
+  "flag": "🇭🇰",
+  "doors": "21:00",
+  "img": "https://www.asiaworld-expo.com/AsiaWorldExpoLocal/media/AWE/assets/images/whats-on/Combining%20Heart%20and%20Science/RAD00920-(1)_modified.jpg?ext=.jpg"
  },
  {
   "city": "GUANGZHOU",
   "venue": "TIANHE STADIUM",
   "date": "21 DECEMBER 2027",
   "iso": "2027-12-21T23:59:59",
-  "who": "EVREN ONLY"
+  "who": "EVREN ONLY",
+  "title": "GUANGZHOU, CHINA",
+  "flag": "🇨🇳",
+  "doors": "21:00",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Aerial_View%2C_Tianhe_Stadium_20250823-B.jpg"
  },
  {
   "city": "SHENZHEN",
   "venue": "SHENZHEN STADIUM",
   "date": "23 DECEMBER 2027",
   "iso": "2027-12-23T23:59:59",
-  "who": "EVREN ONLY"
+  "who": "EVREN ONLY",
+  "title": "SHENZHEN, CHINA",
+  "flag": "🇨🇳",
+  "doors": "21:00",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/5/50/ShenzhenBaySports_Center202012east.jpg"
  },
  {
   "city": "JIANGMEN",
   "venue": "JIANGMEN SPORTS CENTER",
   "date": "27 DECEMBER 2027",
   "iso": "2027-12-27T23:59:59",
-  "who": "EVREN ONLY"
+  "who": "EVREN ONLY",
+  "title": "JIANGMEN, CHINA",
+  "flag": "🇨🇳",
+  "doors": "21:00",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Jiangyin_Sports_Centre_2024-07-17.jpg"
  }
 ];
 var OG_PAST = [
@@ -1094,8 +1141,34 @@ var OG_CANC = [
 ];
 var TICKETS = 'https://www.instagram.com/big_pablo4125?rpxt=eDZpbzB4NW5ic3Uy&utm_source=qr';
 var _view='up', _year='all', _desc=true;
-function row(s,btn){
-  return '<div class="show"><div class="info"><div class="city">'+s.city+'</div><div class="venue">'+s.venue+'</div><div class="date">'+s.date+'</div><div class="who">'+(s.who||'')+'</div></div>'+btn+'</div>';
+function row(s,btn,more){
+  return '<div class="show"'+(more?' onclick="ogToggle(event,this)"':'')+'><div class="info"><div class="city">'+s.city+'</div><div class="venue">'+s.venue+'</div><div class="date">'+s.date+'</div><div class="who">'+(s.who||'')+'</div>'+(more?'<button class="more" type="button" aria-expanded="false">MORE INFO +</button>':'')+'</div>'+btn+'</div>';
+}
+var DAYN=['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+function ogPanel(s){
+  var dateLine=s.date, big='COMING 2027', small='', ymd=(s.iso||'').slice(0,10).split('-');
+  if(ymd.length===3){
+    var y=+ymd[0],mo=+ymd[1],d=+ymd[2], t=new Date();
+    var days=Math.round((Date.UTC(y,mo-1,d)-Date.UTC(t.getFullYear(),t.getMonth(),t.getDate()))/864e5);
+    dateLine=DAYN[new Date(Date.UTC(y,mo-1,d)).getUTCDay()]+', '+s.date;
+    if(days<=0){big='TONIGHT';small='';} else {big=String(days);small=days===1?'DAY TO GO':'DAYS TO GO';}
+  }
+  return '<div class="pn"><div class="pn-t">'+s.title+' '+s.flag+'</div>'
+    +(s.img?'<img class="pn-img" src="'+s.img+'" alt="" loading="lazy">':'')
+    +'<div class="pn-v">'+s.venue+'</div>'
+    +'<div class="pn-r"><span>DOORS</span><div>'+s.doors+'</div></div>'
+    +'<div class="pn-r"><span>PERFORMING</span><div>'+(s.who||'').replace(' \u00b7 ',' ')+'</div></div>'
+    +'<div class="pn-r"><span>DATE</span><div>'+dateLine+'</div></div>'
+    +'<div class="pn-cd"><b>'+big+'</b>'+(small?'<i>'+small+'</i>':'')+'</div></div>';
+}
+function ogToggle(ev,el){
+  if(ev.target.closest('a')) return;            // BUY NOW keeps its own link
+  var item=el.closest('.item'), pn=item.querySelector('.pn'), bt=item.querySelector('.more'), ch=item.querySelector('.chev'), open=!pn.classList.contains('open');
+  Array.prototype.forEach.call(document.querySelectorAll('#showlist .pn.open'),function(x){x.classList.remove('open');});
+  Array.prototype.forEach.call(document.querySelectorAll('#showlist .more.open'),function(x){x.classList.remove('open');x.textContent='MORE INFO +';});
+  Array.prototype.forEach.call(document.querySelectorAll('#showlist .chev.open'),function(x){x.classList.remove('open');});
+  bt.setAttribute('aria-expanded',open?'true':'false'); ch.setAttribute('aria-expanded',open?'true':'false');
+  if(open){pn.classList.add('open');bt.classList.add('open');ch.classList.add('open');bt.textContent='LESS INFO \u2212';}
 }
 function ogRender(){
   var el=document.getElementById('showlist'), now=new Date(), html='', n=0, list;
@@ -1103,7 +1176,7 @@ function ogRender(){
     OG_SHOWS.forEach(function(s){
       if(s.iso && new Date(s.iso) < now) return;   // hide dates that already happened
       n++;
-      html+=row(s,'<a class="buy" href="'+TICKETS+'" target="_blank" rel="noopener">BUY NOW</a>');
+      html+='<div class="item">'+row(s,'<div class="act"><a class="buy" href="'+TICKETS+'" target="_blank" rel="noopener">BUY NOW</a><button class="chev" type="button" aria-expanded="false" aria-label="More info">&gt;</button></div>',true)+ogPanel(s)+'</div>';
     });
   } else {
     list=(_view==='past'?OG_PAST:OG_CANC).filter(function(s){return _view==='canc'||_year==='all'||s.year===_year;});
